@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Journal | Mikaro Studio — Insights on Branding, Web Design &amp; AI Marketing</title>
+<meta name="description" content="Practical insights on branding, web design, digital marketing, and AI tools for business growth in Bangkok and beyond. Written by Mikaro Studio."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://mikaro.studio/journal/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mikaro.studio/journal/"/>
+<meta property="og:title" content="Journal | Mikaro Studio — Branding, Web Design &amp; AI Marketing Insights"/>
+<meta property="og:description" content="Practical insights on branding, web design, digital marketing, and AI tools for business growth in Bangkok and beyond."/>
+<meta property="og:image" content="https://mikaro.studio/assets/img/og-cover.jpg"/>
+<meta property="og:site_name" content="Mikaro Studio"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Mikaro Studio Journal",
+  "url": "https://mikaro.studio/journal/",
+  "description": "Insights on branding, web design, digital marketing, and AI marketing tools.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mikaro Studio",
+    "url": "https://mikaro.studio"
+  }
+}
+</script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1829'/%3E%3Cpolygon points='4,24 11,11 18,24 15,24 11,16 7,24' fill='%23ffffff'/%3E%3Cpolygon points='11,24 18,11 25,24 22,24 18,16 14,24' fill='%23C9A84C'/%3E%3Crect x='4' y='25' width='21' height='2.5' rx='1.25' fill='%23ffffff' opacity='.75'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/base.css"/>
+<link rel="stylesheet" href="../assets/css/components.css"/>
+<link rel="stylesheet" href="../assets/css/layout.css"/>
+<style>
+body { opacity: 0; transition: opacity .3s ease; }
+body.loaded { opacity: 1; }
+
+/* Journal-specific overrides */
+.journal-hero {
+  background: var(--navy-deep);
+  padding: calc(var(--nav-h) + 4rem) var(--pad-x) 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.journal-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+.journal-hero-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.journal-hero h1 {
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  color: var(--white);
+  margin-bottom: .85rem;
+  letter-spacing: -.03em;
+}
+.journal-hero p {
+  font-size: var(--text-lg);
+  color: rgba(255,255,255,.5);
+  max-width: 560px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* Filter bar */
+.filter-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 1.1rem var(--pad-x);
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 80;
+}
+.filter-bar-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .38rem 1rem;
+  border-radius: var(--r-full);
+  border: 1px solid var(--border);
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: all var(--dur-fast);
+  background: transparent;
+  font-family: var(--font-body);
+}
+.filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+.filter-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+.filter-count {
+  margin-left: auto;
+  font-size: var(--text-xs);
+  color: var(--gray-400);
+}
+
+/* Journal main grid */
+.journal-main {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 3.5rem var(--pad-x) 5rem;
+}
+.journal-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Article cards */
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.article-card {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 1.75rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: box-shadow var(--dur), border-color var(--dur), transform var(--dur);
+}
+.article-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-gold);
+  transform: translateY(-3px);
+}
+.article-card-body {
+  padding: 1.75rem 0 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+}
+.article-card-img {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.article-card-img-placeholder {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  margin-bottom: .75rem;
+  flex-wrap: wrap;
+}
+.article-category {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  background: rgba(201,168,76,.1);
+  padding: .2rem .55rem;
+  border-radius: var(--r-sm);
+}
+.article-date {
+  font-size: var(--text-xs);
+  color: var(--gray-400);
+}
+.article-read-time {
+  font-size: var(--text-xs);
+  color: var(--gray-400);
+}
+.article-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin-bottom: .65rem;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: color var(--dur-fast);
+}
+.article-title:hover { color: var(--gold-dark); }
+.article-excerpt {
+  font-size: var(--text-sm);
+  color: var(--gray-600);
+  line-height: 1.8;
+  flex: 1;
+  margin-bottom: 1.1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.article-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.article-read-link {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--gold-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  transition: gap var(--dur-fast), color var(--dur-fast);
+}
+.article-card:hover .article-read-link { gap: .6rem; }
+.article-tags {
+  display: flex;
+  gap: .35rem;
+  flex-wrap: wrap;
+}
+
+/* Featured card (first article) */
+.article-card--featured {
+  grid-template-columns: 1fr;
+  grid-column: 1;
+}
+.article-card--featured .article-card-body {
+  padding: 1.75rem;
+}
+.article-card--featured .article-card-img-placeholder {
+  min-height: 280px;
+}
+.article-card--featured .article-title {
+  font-size: 1.75rem;
+}
+
+/* Sidebar */
+.journal-sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + 68px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.sidebar-widget {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1.4rem;
+}
+.sidebar-heading {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: 1rem;
+}
+.sidebar-cta {
+  background: var(--navy-deep);
+  border-color: var(--navy-deep);
+}
+.sidebar-cta .sidebar-heading { color: rgba(255,255,255,.4); }
+.sidebar-cta h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--white);
+  margin-bottom: .5rem;
+}
+.sidebar-cta p { font-size: var(--text-sm); color: rgba(255,255,255,.5); line-height: 1.7; margin-bottom: 1rem; }
+.popular-list { display: flex; flex-direction: column; gap: .85rem; }
+.popular-item a {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.4;
+  transition: color var(--dur-fast);
+}
+.popular-item a:hover { color: var(--gold-dark); }
+.popular-item-meta { font-size: var(--text-xs); color: var(--gray-400); margin-top: .15rem; }
+.topic-cloud { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--gray-400);
+}
+.empty-state svg { margin: 0 auto 1rem; opacity: .3; }
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
+  background-size: 400px 100%;
+  animation: shimmer .9s ease infinite;
+  border-radius: var(--r-sm);
+}
+
+@media (max-width: 900px) {
+  .journal-main-grid { grid-template-columns: 1fr; }
+  .journal-sidebar { position: static; }
+  .article-card { grid-template-columns: 1fr; }
+  .article-card-img-placeholder,.article-card-img { min-height: 200px; }
+}
+@media (max-width: 580px) {
+  .article-card--featured .article-title { font-size: 1.35rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV (same as homepage, paths go to ../) -->
+<nav class="nav scrolled" id="mainNav" style="background:rgba(13,24,41,.97)">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo" aria-label="Mikaro Studio home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 54" height="38">
+        <polygon points="14,36 26,18 38,36 34,36 26,26 18,36" fill="#ffffff"/>
+        <polygon points="26,36 38,18 50,36 46,36 38,26 30,36" fill="#C9A84C"/>
+        <rect x="14" y="38" width="36" height="4" rx="2" fill="#ffffff" opacity="0.85"/>
+        <text x="60" y="33" font-family="DM Sans,system-ui,sans-serif" font-size="21" font-weight="600" fill="#ffffff" letter-spacing="-0.2">Mikaro</text>
+        <text x="60" y="48" font-family="DM Sans,system-ui,sans-serif" font-size="10" font-weight="400" fill="#C9A84C" letter-spacing="2.5">STUDIO</text>
+      </svg>
+    </a>
+    <div class="nav-links" role="navigation" aria-label="Main navigation">
+      <a href="../#about" class="nav-link">About</a>
+      <a href="../#services" class="nav-link">Services</a>
+      <a href="../#work" class="nav-link">Our Work</a>
+      <a href="./" class="nav-link active">Journal</a>
+      <a href="../#faq" class="nav-link">FAQ</a>
+      <a href="../#contact" class="nav-link nav-cta">Start Your Project &#x2192;</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- JOURNAL HERO -->
+<header class="journal-hero">
+  <div class="journal-hero-inner">
+    <div class="section-eyebrow" style="margin-bottom:.9rem">Journal</div>
+    <h1>Insights on Brand,<br/>Design &amp; Marketing</h1>
+    <p>Practical articles on digital marketing, branding, AI tools, and business growth &mdash; written from 10+ years in the field.</p>
+  </div>
+</header>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar" role="navigation" aria-label="Article categories">
+  <div class="filter-bar-inner">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="Branding">Branding</button>
+    <button class="filter-btn" data-filter="Web Design">Web Design</button>
+    <button class="filter-btn" data-filter="AI Marketing">AI Marketing</button>
+    <button class="filter-btn" data-filter="Digital Marketing">Digital Marketing</button>
+    <button class="filter-btn" data-filter="Business English">Business English</button>
+    <span class="filter-count" id="filterCount" aria-live="polite"></span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="journal-main">
+  <div class="journal-main-grid">
+
+    <!-- ARTICLE LIST -->
+    <div>
+      <div class="article-list" id="articleList" aria-label="Journal articles">
+        <!-- Populated by journal-page.js -->
+        <div class="empty-state" id="loadingState">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <p style="font-size:var(--text-sm)">Loading articles&hellip;</p>
+        </div>
+      </div>
+      <div id="noResults" class="empty-state" style="display:none">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <p style="font-size:var(--text-sm);margin-top:.5rem">No articles in this category yet. Check back soon.</p>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="journal-sidebar" aria-label="Journal sidebar">
+      <div class="sidebar-widget sidebar-cta">
+        <p class="sidebar-heading">Work with us</p>
+        <h3>Ready to grow your brand?</h3>
+        <p>Logo in 48h &middot; Website in 5 days &middot; Free discovery call. 3 slots open this month.</p>
+        <a href="../#contact" class="btn btn--primary" style="width:100%;justify-content:center">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Start Your Project
+        </a>
+      </div>
+      <div class="sidebar-widget">
+        <p class="sidebar-heading">Popular Articles</p>
+        <div class="popular-list" id="popularList">
+          <div class="popular-item"><a href="#">5 Signs Your Brand Identity Is Hurting Your Sales</a><p class="popular-item-meta">Branding &middot; 5 min read</p></div>
+          <div class="popular-item"><a href="#">How Bangkok SMEs Can Use AI to Compete</a><p class="popular-item-meta">AI Marketing &middot; 7 min read</p></div>
+          <div class="popular-item"><a href="#">Why Your Website Isn&#x2019;t Converting</a><p class="popular-item-meta">Web Design &middot; 6 min read</p></div>
+        </div>
+      </div>
+      <div class="sidebar-widget">
+        <p class="sidebar-heading">Topics</p>
+        <div class="topic-cloud">
+          <button class="filter-btn" data-filter="Branding" style="font-size:.7rem">Branding</button>
+          <button class="filter-btn" data-filter="Web Design" style="font-size:.7rem">Web Design</button>
+          <button class="filter-btn" data-filter="AI Marketing" style="font-size:.7rem">AI Marketing</button>
+          <button class="filter-btn" data-filter="Digital Marketing" style="font-size:.7rem">Digital Marketing</button>
+          <button class="filter-btn" data-filter="Business English" style="font-size:.7rem">Business English</button>
+        </div>
+      </div>
+      <div class="sidebar-widget">
+        <p class="sidebar-heading">Connect with Mike</p>
+        <div style="display:flex;flex-direction:column;gap:.55rem">
+          <a href="https://www.tiktok.com/@survivalmodemike" target="_blank" rel="noopener" style="font-size:var(--text-sm);color:var(--navy);font-weight:500;display:flex;align-items:center;gap:.5rem;transition:color .15s">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+            TikTok &#x2014; @survivalmodemike
+          </a>
+          <a href="https://www.linkedin.com/in/majid-ahmadi86" target="_blank" rel="noopener" style="font-size:var(--text-sm);color:var(--navy);font-weight:500;display:flex;align-items:center;gap:.5rem;transition:color .15s">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn &#x2014; Majid Ahmadi
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="../" aria-label="Mikaro Studio home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 54" height="36"><polygon points="14,36 26,18 38,36 34,36 26,26 18,36" fill="#ffffff"/><polygon points="26,36 38,18 50,36 46,36 38,26 30,36" fill="#C9A84C"/><rect x="14" y="38" width="36" height="4" rx="2" fill="#ffffff" opacity="0.7"/><text x="60" y="33" font-family="DM Sans,system-ui,sans-serif" font-size="21" font-weight="600" fill="#ffffff" letter-spacing="-0.2">Mikaro</text><text x="60" y="48" font-family="DM Sans,system-ui,sans-serif" font-size="10" font-weight="400" fill="#C9A84C" letter-spacing="2.5">STUDIO</text></svg>
+      </a>
+      <p>Premium branding studio in Bangkok crafting web design, brand identities, AI tools, and digital solutions that make businesses unforgettable.</p>
+    </div>
+    <div>
+      <p class="footer-heading">Services</p>
+      <div class="footer-links">
+        <a href="../#services">Logo &amp; Brand Identity</a>
+        <a href="../#services">Web Design</a>
+        <a href="../#services">Digital Marketing</a>
+        <a href="../#services">AI Workshop</a>
+        <a href="../#services">English for Business</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-heading">Studio</p>
+      <div class="footer-links">
+        <a href="../#about">About</a>
+        <a href="../#work">Our Work</a>
+        <a href="./">Journal</a>
+        <a href="../#faq">FAQ</a>
+        <a href="../#contact">Contact</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-heading">Connect</p>
+      <div class="footer-links">
+        <a href="https://wa.me/66951967330" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://line.me/ti/p/~mike_aj" target="_blank" rel="noopener">LINE: mike_aj</a>
+        <a href="https://www.linkedin.com/in/majid-ahmadi86" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.tiktok.com/@survivalmodemike" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2025 Mikaro Studio &middot; Bangkok, Thailand</p>
+    <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </div>
+</footer>
+
+<script>
+'use strict';
+document.body.classList.add('loaded');
+
+/* ── GRADIENT COLORS for placeholder cards ── */
+const GRADIENTS = {
+  'Branding':          'linear-gradient(135deg,#e8f4ff,#c3dcf5)',
+  'Web Design':        'linear-gradient(135deg,#edfaf5,#b5e8d5)',
+  'AI Marketing':      'linear-gradient(135deg,#fff8e8,#f5e0b5)',
+  'Digital Marketing': 'linear-gradient(135deg,#f0e8ff,#d5c3f5)',
+  'Business English':  'linear-gradient(135deg,#ffe8e8,#f5c3c3)',
+  'default':           'linear-gradient(135deg,#f0f4f8,#d4dce8)'
+};
+
+/* ── RENDER ARTICLE CARD ── */
+function renderCard(article, featured) {
+  const grad = GRADIENTS[article.category] || GRADIENTS.default;
+  const imgHTML = article.image
+    ? `<img src="${escHtml(article.image)}" alt="${escHtml(article.title)}" class="article-card-img" loading="lazy"/>`
+    : `<div class="article-card-img-placeholder" style="background:${grad}">
+         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+       </div>`;
+  const tags = (article.tags || []).map(t => `<span class="tag">${escHtml(t)}</span>`).join('');
+  const href = article.slug ? `./${escHtml(article.slug)}/` : '#';
+  const featClass = featured ? ' article-card--featured' : '';
+  return `<article class="article-card${featClass}" data-category="${escHtml(article.category)}" data-reveal>
+    <div class="article-card-body">
+      <div class="article-meta">
+        <span class="article-category">${escHtml(article.category)}</span>
+        <span class="article-date">${escHtml(article.date || '')}</span>
+        ${article.readTime ? `<span class="article-read-time">&#x22C5; ${escHtml(article.readTime)}</span>` : ''}
+      </div>
+      <a href="${href}" class="article-title">${escHtml(article.title)}</a>
+      <p class="article-excerpt">${escHtml(article.excerpt)}</p>
+      <div class="article-footer">
+        <a href="${href}" class="article-read-link">Read article &#x2192;</a>
+        <div class="article-tags">${tags}</div>
+      </div>
+    </div>
+    ${featured ? imgHTML : ''}
+    ${!featured ? `<div style="overflow:hidden">${imgHTML}</div>` : ''}
+  </article>`;
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
+}
+
+/* ── FILTER STATE ── */
+let allArticles = [];
+let activeFilter = 'all';
+
+function applyFilter(filter) {
+  activeFilter = filter;
+  const filtered = filter === 'all' ? allArticles : allArticles.filter(a => a.category === filter);
+  const list = document.getElementById('articleList');
+  const noRes = document.getElementById('noResults');
+  const count = document.getElementById('filterCount');
+
+  if (filtered.length === 0) {
+    list.innerHTML = '';
+    noRes.style.display = 'block';
+    count.textContent = '0 articles';
+    return;
+  }
+  noRes.style.display = 'none';
+  list.innerHTML = filtered.map((a, i) => renderCard(a, i === 0 && filter === 'all')).join('');
+  count.textContent = filtered.length + (filtered.length === 1 ? ' article' : ' articles');
+
+  // Re-trigger reveal for newly rendered cards
+  setTimeout(() => {
+    list.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
+  }, 60);
+}
+
+/* ── LOAD DATA ── */
+fetch('../journal/data.json')
+  .then(r => r.json())
+  .then(data => {
+    allArticles = (data.articles || []).filter(a => a.published !== false);
+    // Sort newest first
+    allArticles.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    document.getElementById('loadingState').style.display = 'none';
+    applyFilter('all');
+  })
+  .catch(() => {
+    document.getElementById('loadingState').innerHTML =
+      '<p style="font-size:var(--text-sm);color:var(--gray-400)">Articles coming soon. Check back shortly.</p>';
+  });
+
+/* ── FILTER BUTTONS (both bar and sidebar) ── */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const filter = this.dataset.filter;
+    // Update active state on all filter buttons
+    document.querySelectorAll('[data-filter]').forEach(b => {
+      b.classList.toggle('active', b.dataset.filter === filter);
+    });
+    applyFilter(filter);
+    // Scroll to article list smoothly
+    document.getElementById('articleList').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+/* ── NAV HAMBURGER (journal page) ── */
+var hbg = document.getElementById('hamburger');
+if (hbg) {
+  hbg.addEventListener('click', function() {
+    window.location.href = '../#contact';
+  });
+}
+
+/* ── REVEAL OBSERVER ── */
+var revealObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: .08 });
+document.querySelectorAll('[data-reveal]').forEach(function(el) { revealObs.observe(el); });
+</script>
+</body>
+</html>
