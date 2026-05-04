@@ -1,0 +1,57 @@
+{
+  "_comment": "MIKARO STUDIO — Journal CMS. Add new articles here. Each entry renders a card on journal/index.html and the homepage preview. Create a matching folder in journal/[slug]/ for the full article page.",
+  "_instructions": {
+    "slug": "URL-safe identifier. Must match the folder name in journal/[slug]/",
+    "published": "Set to false to hide without deleting",
+    "image": "Optional. Path relative to site root e.g. /assets/img/journal/article-1.jpg",
+    "body": "Full article text (used only for reading-time estimate). Actual content lives in journal/[slug]/index.html",
+    "category": "One of: Branding | AI Marketing | Web Design | Digital Marketing | English | Strategy"
+  },
+  "articles": [
+    {
+      "id": 1,
+      "slug": "brand-identity-hurting-sales",
+      "title": "5 Signs Your Brand Identity Is Hurting Your Sales",
+      "excerpt": "A weak brand isn't just an aesthetic problem — it's a revenue problem. If potential clients can't tell what you do in three seconds, you've already lost them. Here's how to diagnose a broken brand and fix it fast.",
+      "category": "Branding",
+      "date": "2025-04-15",
+      "author": "Majid Ahmadi",
+      "readTime": "6 min read",
+      "image": "",
+      "tags": ["brand identity", "logo design", "marketing", "Bangkok business"],
+      "published": true,
+      "featured": true,
+      "body": "Your brand is not your logo. Your brand is the feeling someone gets when they interact with your business. And if that feeling is confusing, forgettable, or inconsistent — you are leaving money on the table every single day. After 10 years working with businesses across Asia and beyond, I can spot a brand that is hurting sales from a single glance. Here are the five signs I see most often. Sign 1: Your logo looks different everywhere. On your website it is blue. On your business card it is navy. On Instagram it is a slightly different version from three years ago. This inconsistency signals to clients that you are not serious — or worse, that you are not established. A professional brand has one logo, one colour palette, one set of fonts, applied consistently across every touchpoint. Sign 2: Your visual identity does not match your price point. If you charge premium rates but your brand looks like a free Canva template, there is a mismatch that costs you clients. People judge quality by appearance, especially before they have met you. If your brand says budget, that is the clients you will attract. Sign 3: You cannot explain what you do in one sentence. This is a brand strategy problem as much as a design problem. Your positioning — who you help, how, and why you are different — should be immediately clear from your homepage headline, your social bio, and your business card. Sign 4: Your brand attracts the wrong clients. If you consistently get enquiries from clients who haggle on price, do not value your expertise, or are looking for something different from what you offer — your brand is sending the wrong signals. The right brand repels the wrong clients as much as it attracts the right ones. Sign 5: You feel embarrassed to send people to your website. This one is telling. If you hesitate before sharing your website link, or add a disclaimer like 'it is a bit old', your brand is not working for you. Your website should be your best salesperson. If it is not, it is costing you money. What to do next: The good news is that a brand refresh does not have to be a years-long project. At Mikaro Studio, we deliver complete brand identity packages — logo, colour system, typography, and brand guidelines — within 48 hours. If any of these signs resonated with you, the time to act is now."
+    },
+    {
+      "id": 2,
+      "slug": "bangkok-smes-ai-tools",
+      "title": "How Bangkok SMEs Can Use AI to Compete With Large Agencies",
+      "excerpt": "AI tools have levelled the playing field. Small businesses in Bangkok can now produce the quality of content, strategy, and output that once required a full agency team — if they know which tools to use and how to use them effectively.",
+      "category": "AI Marketing",
+      "date": "2025-04-28",
+      "author": "Majid Ahmadi",
+      "readTime": "8 min read",
+      "image": "",
+      "tags": ["AI marketing", "Bangkok", "SME", "ChatGPT", "digital marketing"],
+      "published": true,
+      "featured": true,
+      "body": "Three years ago, creating a high-quality content calendar required a team of writers, a strategist, and a project manager. Today, a solo founder with the right AI workflow can produce the same output in a fraction of the time and cost. This is not about replacing creativity — it is about amplifying it. And for small and medium-sized businesses in Bangkok, the opportunity is enormous. Most large agencies are slow to adopt AI because they are protecting their billable hours. That is your advantage. Here are the five AI tools and workflows I recommend for Bangkok SMEs right now. Tool 1: ChatGPT for content strategy. Use it to generate a 90-day content calendar based on your industry, target audience, and business goals. Prompt it with specifics — your competitors, your customer pain points, your tone of voice — and you will get output that would take a junior strategist days to produce. Tool 2: Claude for long-form content. Claude produces more nuanced, natural writing than most AI tools. I use it for blog posts, email sequences, and website copy. Feed it your brand voice guidelines and previous examples of your writing for best results. Tool 3: Midjourney or DALL-E for visual content. Custom images for social media, blog headers, and ad creatives — without hiring a designer for every piece. The quality has reached a point where, with the right prompts, outputs are genuinely usable. Tool 4: Descript for video content. Record yourself talking about your expertise for 10 minutes. Descript transcribes, removes filler words, adds captions, and exports a polished video. No editor required. Tool 5: Make (formerly Integromat) for automation. Connect your tools so that a new blog post automatically gets shared to LinkedIn, formatted into an email newsletter, and saved to a content library — all without manual work. The businesses that will win in the next five years are not the ones with the biggest teams. They are the ones who learn to use AI as a force multiplier. At Mikaro Studio, we run practical AI marketing workshops in Bangkok that teach you and your team exactly how to implement these tools in your specific business context."
+    },
+    {
+      "id": 3,
+      "slug": "why-your-website-isnt-converting",
+      "title": "Why Your Website Isn't Converting (And What to Do About It)",
+      "excerpt": "Traffic without conversion is just noise. Most websites fail not because they look bad, but because of structural problems that stop visitors from taking action. Here are the most common conversion killers — and how to fix them.",
+      "category": "Web Design",
+      "date": "2025-05-01",
+      "author": "Majid Ahmadi",
+      "readTime": "7 min read",
+      "image": "",
+      "tags": ["web design", "conversion", "CRO", "Bangkok web design", "landing page"],
+      "published": true,
+      "featured": false,
+      "body": "If your website is getting visitors but not generating enquiries, you have a conversion problem. Most business owners assume the solution is more traffic — more SEO, more ads, more social media. But sending more people to a website that does not convert just amplifies your losses. The real problem is almost always structural. Here are the seven most common reasons websites fail to convert, and exactly how to fix them. Problem 1: Your headline does not say what you do. Visitors give you approximately three seconds before they decide to stay or leave. If your headline says something like 'Empowering businesses through excellence', you have already lost them. Your headline must state clearly who you help, what you do, and the primary benefit — in plain language. Problem 2: You have no clear primary call to action. Every page should have one dominant action you want the visitor to take. Not five. Not three. One. If you have a Contact button, a Free Quote button, a Learn More button, and a WhatsApp link all competing for attention, visitors will choose none. Problem 3: Your load time is over three seconds. Forty percent of visitors abandon a website that takes more than three seconds to load. Run your site through Google PageSpeed Insights right now. If you score below 70, you are losing clients before they even see your content. Problem 4: It is not mobile-first. Over 70 percent of Thai internet users browse primarily on mobile. If your website was designed for desktop and adapted for mobile as an afterthought, that shows — and it costs you leads. Problem 5: You have no social proof above the fold. Testimonials, client logos, case studies, and specific results should appear within the first scroll of your homepage. Social proof is what moves visitors from 'this looks interesting' to 'I want to contact them'. Problem 6: Your contact process has too many steps. Every additional step in your contact or enquiry process reduces conversions by approximately 10 percent. If you have a five-field contact form, a CAPTCHA, and a confirmation email — simplify. A WhatsApp button or a two-field form will outperform every time. Problem 7: You have not defined a clear user journey. What do you want someone to do when they land on your homepage? Read about your services? See your portfolio? Contact you? Design your pages with a clear sequence in mind. Lead the visitor — do not expect them to figure it out. At Mikaro Studio, we build websites specifically optimised for conversion — not just visual appeal. If your website is not generating leads, let us talk."
+    }
+  ]
+}
