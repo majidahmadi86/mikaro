@@ -2335,26 +2335,7 @@ footer.site-footer * {
 }
 
 .f-social a:hover svg {
-  fill: var(--gold);
-}
-
-footer .social-link svg {
-  fill: rgba(255,255,255,.55);
-  transition: fill .2s;
-}
-
-footer .social-link:hover svg {
-  fill: var(--gold);
-}
-
-body.light-mode .f-social svg,
-body.light-mode footer .social-link svg {
-  fill: rgba(255,255,255,.7);
-}
-
-body.light-mode .f-social a:hover svg,
-body.light-mode footer .social-link:hover svg {
-  fill: var(--gold);
+  fill: #C9A84C;
 }
 
 .f-bottom {
@@ -3463,65 +3444,7 @@ body.light-mode .orb2 {
   display: none !important;
 }
 
-/* Quiz text colors on light bg */
-body.light-mode .quiz .opt {
-  background: rgba(0,0,0,.03);
-  border-color: rgba(0,0,0,.1);
-}
-body.light-mode .quiz .opt:hover,
-body.light-mode .quiz .opt.sel {
-  background: rgba(138,101,32,.07);
-  border-color: rgba(138,101,32,.3);
-}
-body.light-mode .quiz .ot {
-  color: var(--text-dark, #0f0f1a);
-}
-body.light-mode .quiz .os {
-  color: var(--text-muted, #374151);
-}
-body.light-mode .quiz .qt {
-  color: var(--text-dark, #0f0f1a);
-}
-body.light-mode .quiz .ql {
-  color: var(--gold);
-}
-body.light-mode .quiz .sh2 {
-  color: var(--text-dark, #0f0f1a);
-}
-body.light-mode .quiz .ssub {
-  color: var(--text-muted, #374151);
-}
-body.light-mode .quiz .pl {
-  color: var(--text-muted, #374151);
-}
-body.light-mode .quiz .rtitle {
-  color: var(--text-dark, #0f0f1a);
-}
-body.light-mode .quiz .rdesc {
-  color: var(--text-muted, #374151);
-}
-body.light-mode .quiz .rn {
-  color: var(--text-dark, #0f0f1a);
-}
-body.light-mode .quiz .wrap {
-  background: var(--deep);
-}
-body.light-mode .quiz .sc {
-  background: #ffffff;
-  border-color: rgba(0,0,0,.1);
-}
-body.light-mode .quiz .sn {
-  color: var(--text-dark, #0f0f1a);
-}
-body.light-mode .quiz .st {
-  color: var(--text-muted, #374151);
-}
-body.light-mode .quiz .sl {
-  color: var(--gold);
-}
-body.light-mode .quiz .pb {
-  background: rgba(0,0,0,.08);
-}
+/* Quiz text colors on light bg (moved to bottom appended fixes) */
 
 /* Contact info borders in light mode */
 body.light-mode .contact-method,
@@ -3592,17 +3515,6 @@ body.light-mode .logo-poly-white { fill: #1a1a2e !important; }
 body.light-mode .logo-rect-white { fill: #1a1a2e !important; }
 body.light-mode .logo-text-main  { fill: #1a1a2e !important; }
 
-/* Social icons footer */
-footer .f-social svg,
-footer [class*="social"] svg {
-  fill: rgba(255,255,255,.55);
-  transition: fill .2s;
-}
-footer .f-social a:hover svg,
-footer [class*="social"] a:hover svg {
-  fill: #C9A84C;
-}
-
 /* Contact method borders light mode */
 body.light-mode .contact-method,
 body.light-mode .cm,
@@ -3617,12 +3529,13 @@ body.light-mode [class*="contact-val"] {
 }
 
 /* Quiz text light mode */
-body.light-mode .quiz .ot,
-body.light-mode .quiz .qt,
-body.light-mode .quiz .rtitle,
-body.light-mode .quiz .rn,
-body.light-mode .quiz .sh2 {
-  color: #0f0f1a !important;
+body.light-mode #estimator .quiz .sh2,
+body.light-mode #estimator .quiz .qt,
+body.light-mode #estimator .quiz .ql,
+body.light-mode #estimator .quiz .ot,
+body.light-mode #estimator .quiz .rtitle,
+body.light-mode #estimator .quiz .rn {
+  color: var(--text-dark) !important;
 }
 body.light-mode .quiz .os,
 body.light-mode .quiz .ssub,
@@ -3630,7 +3543,7 @@ body.light-mode .quiz .rdesc,
 body.light-mode .quiz .pl,
 body.light-mode .quiz .st,
 body.light-mode .quiz .rd {
-  color: #374151 !important;
+  color: var(--text-muted) !important;
 }
 body.light-mode .quiz .opt {
   background: rgba(0,0,0,.03) !important;
@@ -3645,14 +3558,5 @@ body.light-mode .quiz .sc {
   background: #ffffff !important;
   border-color: rgba(0,0,0,.1) !important;
 }
-body.light-mode .quiz .sn { color: #0f0f1a !important; }
-body.light-mode .quiz .st { color: #374151 !important; }
-body.light-mode .quiz .wrap .sh2,
-body.light-mode .quiz .sh2 { color: #0f0f1a !important; }
-footer .tiktok-icon:hover svg,
-footer a:hover .tiktok-icon {
-  fill: #C9A84C !important;
-}
-footer .tiktok-icon svg {
-  fill: rgba(255,255,255,.55) !important;
-}
+body.light-mode .quiz .sn { color: var(--text-dark) !important; }
+body.light-mode .quiz .st { color: var(--text-muted) !important; }
