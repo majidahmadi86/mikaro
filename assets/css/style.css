@@ -3447,3 +3447,127 @@ body.light-mode .error-page h1 {
 body.light-mode .error-page p {
   color: var(--text-muted) !important;
 }
+/* ── LIGHT MODE FIXES ── */
+
+/* Mobile nav */
+body.light-mode .nav-overlay,
+body.light-mode .mobile-nav,
+body.light-mode .nav-mobile-panel {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Hero orb */
+body.light-mode .hero-orb-2,
+body.light-mode .orb2 {
+  display: none !important;
+}
+
+/* Quiz text colors on light bg */
+body.light-mode .quiz .opt {
+  background: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.1);
+}
+body.light-mode .quiz .opt:hover,
+body.light-mode .quiz .opt.sel {
+  background: rgba(138,101,32,.07);
+  border-color: rgba(138,101,32,.3);
+}
+body.light-mode .quiz .ot {
+  color: var(--text-dark, #0f0f1a);
+}
+body.light-mode .quiz .os {
+  color: var(--text-muted, #374151);
+}
+body.light-mode .quiz .qt {
+  color: var(--text-dark, #0f0f1a);
+}
+body.light-mode .quiz .ql {
+  color: var(--gold);
+}
+body.light-mode .quiz .sh2 {
+  color: var(--text-dark, #0f0f1a);
+}
+body.light-mode .quiz .ssub {
+  color: var(--text-muted, #374151);
+}
+body.light-mode .quiz .pl {
+  color: var(--text-muted, #374151);
+}
+body.light-mode .quiz .rtitle {
+  color: var(--text-dark, #0f0f1a);
+}
+body.light-mode .quiz .rdesc {
+  color: var(--text-muted, #374151);
+}
+body.light-mode .quiz .rn {
+  color: var(--text-dark, #0f0f1a);
+}
+body.light-mode .quiz .wrap {
+  background: var(--deep);
+}
+body.light-mode .quiz .sc {
+  background: #ffffff;
+  border-color: rgba(0,0,0,.1);
+}
+body.light-mode .quiz .sn {
+  color: var(--text-dark, #0f0f1a);
+}
+body.light-mode .quiz .st {
+  color: var(--text-muted, #374151);
+}
+body.light-mode .quiz .sl {
+  color: var(--gold);
+}
+body.light-mode .quiz .pb {
+  background: rgba(0,0,0,.08);
+}
+
+/* Contact info borders in light mode */
+body.light-mode .contact-method,
+body.light-mode .cm {
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+body.light-mode .cval {
+  color: var(--text-dark, #0f0f1a);
+}
+body.light-mode .clabel {
+  color: var(--text-muted, #374151);
+}
+body.light-mode .cicon {
+  background: rgba(138,101,32,.08);
+  border-color: rgba(138,101,32,.25);
+}
+
+/* Social icons — footer always dark so use light rgba */
+.f-social a svg,
+footer .social-link svg,
+.footer-social a svg {
+  fill: rgba(255,255,255,.5);
+  transition: fill .2s;
+}
+.f-social a:hover svg,
+footer .social-link:hover svg,
+.footer-social a:hover svg {
+  fill: #C9A84C;
+}
+
+/* Logo in light mode nav */
+body.light-mode nav svg polygon:first-child,
+body.light-mode .nav-logo svg polygon:first-child,
+body.light-mode .logo-wrap svg polygon:first-child {
+  fill: #1a1a2e;
+}
+body.light-mode nav svg rect,
+body.light-mode .nav-logo svg rect,
+body.light-mode .logo-wrap svg rect {
+  fill: #1a1a2e;
+  opacity: 0.85;
+}
+body.light-mode nav svg text:first-of-type,
+body.light-mode .nav-logo svg text:first-of-type,
+body.light-mode .logo-wrap svg text:first-of-type {
+  fill: #1a1a2e;
+}
