@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /config.js
+Disallow: /journal/posts.json
+Disallow: /assets/js/
+
+Sitemap: https://mikaro.studio/sitemap.xml

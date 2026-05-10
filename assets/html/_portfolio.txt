@@ -1,0 +1,515 @@
+<!-- DESIGN PORTFOLIO -->
+<section id="design">
+  <div class="s-tag">Design Portfolio</div>
+  <h2 class="s-title">Logo &amp; Web Design Services<br/>— Sample Work</h2>
+  <p class="s-sub">Professional design samples across industries — from luxury brands to tech startups, restaurants to education platforms.</p>
+
+  <div class="design-nav">
+    <button class="d-tab on" onclick="showDesignTab('logos',this)">Logo Design</button>
+    <button class="d-tab" onclick="showDesignTab('webs',this)">Web Design</button>
+  </div>
+
+  <!-- LOGOS -->
+  <div id="dtab-logos" class="design-grid">
+
+    <!-- LOGO 1: Luxury Hospitality -->
+    <div class="logo-card reveal">
+      <div class="logo-preview" style="background:linear-gradient(135deg,#0d1117,#1a1a2e)">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" width="280">
+          <defs>
+            <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C9A84C"/><stop offset="50%" stop-color="#f5e8c0"/><stop offset="100%" stop-color="#C9A84C"/></linearGradient>
+          </defs>
+          <!-- Ornate diamond shape -->
+          <g transform="translate(55,90)">
+            <polygon points="0,-48 28,-18 48,0 28,18 0,48 -28,18 -48,0 -28,-18" fill="none" stroke="url(#lg1)" stroke-width="1.2"/>
+            <polygon points="0,-34 20,-13 34,0 20,13 0,34 -20,13 -34,0 -20,-13" fill="none" stroke="url(#lg1)" stroke-width=".6" opacity=".5"/>
+            <text x="0" y="8" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="url(#lg1)" text-anchor="middle" letter-spacing="3">V</text>
+          </g>
+          <!-- Horizontal lines -->
+          <line x1="115" y1="72" x2="285" y2="72" stroke="url(#lg1)" stroke-width=".5" opacity=".4"/>
+          <line x1="115" y1="108" x2="285" y2="108" stroke="url(#lg1)" stroke-width=".5" opacity=".4"/>
+          <!-- Text -->
+          <text x="200" y="82" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="#f5e8c0" text-anchor="middle" letter-spacing="5">VELARE</text>
+          <text x="200" y="98" font-family="Arial,sans-serif" font-size="7.5" fill="#C9A84C" text-anchor="middle" letter-spacing="7">LUXURY HOSPITALITY</text>
+        </svg>
+      </div>
+      <div class="logo-info">
+        <h4>Velare Luxury Hotels</h4>
+        <p>Ornate diamond emblem with gold gradient typography — timeless luxury identity for a premium hospitality brand.</p>
+        <span class="logo-tag">Luxury Brand</span>
+      </div>
+    </div>
+
+    <!-- LOGO 2: Tech Startup -->
+    <div class="logo-card reveal">
+      <div class="logo-preview" style="background:#f8faff">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" width="280">
+          <defs>
+            <linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#0ea5e9"/></linearGradient>
+            <linearGradient id="lg2b" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1B2A4A"/><stop offset="100%" stop-color="#243660"/></linearGradient>
+          </defs>
+          <!-- Abstract N mark -->
+          <g transform="translate(30,50)">
+            <rect width="76" height="80" rx="14" fill="url(#lg2b)"/>
+            <!-- Circuit-like N -->
+            <line x1="16" y1="60" x2="16" y2="20" stroke="url(#lg2)" stroke-width="4" stroke-linecap="round"/>
+            <line x1="60" y1="60" x2="60" y2="20" stroke="url(#lg2)" stroke-width="4" stroke-linecap="round"/>
+            <line x1="16" y1="20" x2="60" y2="60" stroke="url(#lg2)" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="16" cy="20" r="4" fill="#0ea5e9"/>
+            <circle cx="60" cy="20" r="4" fill="#2563eb"/>
+            <circle cx="16" cy="60" r="4" fill="#2563eb"/>
+            <circle cx="60" cy="60" r="4" fill="#0ea5e9"/>
+          </g>
+          <text x="124" y="84" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="url(#lg2b)" letter-spacing="1">NEXORA</text>
+          <text x="124" y="102" font-family="Arial,sans-serif" font-size="9" fill="#64748B" letter-spacing="4">AI SOLUTIONS</text>
+          <line x1="124" y1="108" x2="258" y2="108" stroke="url(#lg2)" stroke-width="1.5" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="logo-info">
+        <h4>Nexora AI Solutions</h4>
+        <p>Circuit-inspired lettermark on deep navy — sharp, modern identity communicating intelligence and technology precision.</p>
+        <span class="logo-tag">Tech / AI Brand</span>
+      </div>
+    </div>
+
+    <!-- LOGO 3: F&B / Cafe -->
+    <div class="logo-card reveal">
+      <div class="logo-preview" style="background:#fdf8f0">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" width="280">
+          <defs>
+            <linearGradient id="lg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6B3A2A"/><stop offset="100%" stop-color="#3D1F15"/></linearGradient>
+          </defs>
+          <!-- Coffee cup icon -->
+          <g transform="translate(30,40)">
+            <!-- Cup body -->
+            <path d="M12,20 L20,90 Q38,100 56,90 L64,20 Z" fill="url(#lg3)"/>
+            <!-- Steam wisps -->
+            <path d="M22,14 Q18,6 22,0" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+            <path d="M32,10 Q28,2 32,-4" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+            <path d="M44,14 Q40,6 44,0" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+            <!-- Saucer -->
+            <ellipse cx="38" cy="92" rx="36" ry="7" fill="#C9A84C" opacity=".6"/>
+            <!-- Handle -->
+            <path d="M64,35 Q88,35 88,55 Q88,75 64,75" fill="none" stroke="url(#lg3)" stroke-width="6" stroke-linecap="round"/>
+          </g>
+          <text x="140" y="80" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#3D1F15" letter-spacing="2">Breva</text>
+          <line x1="140" y1="86" x2="272" y2="86" stroke="#C9A84C" stroke-width="1" opacity=".5"/>
+          <text x="140" y="100" font-family="Arial,sans-serif" font-size="8.5" fill="#6B3A2A" letter-spacing="5">SPECIALTY COFFEE</text>
+          <text x="140" y="116" font-family="Georgia,serif" font-size="9" fill="#aaa" letter-spacing="1" font-style="italic">Est. Bangkok 2024</text>
+        </svg>
+      </div>
+      <div class="logo-info">
+        <h4>Breva Specialty Coffee</h4>
+        <p>Hand-crafted cup icon with steam detail and warm earthy tones — artisanal identity that evokes quality and craft.</p>
+        <span class="logo-tag">F&amp;B / Café</span>
+      </div>
+    </div>
+
+    <!-- LOGO 4: Real Estate -->
+    <div class="logo-card reveal">
+      <div class="logo-preview" style="background:#f4f6fb">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" width="280">
+          <defs>
+            <linearGradient id="lg4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1B2A4A"/><stop offset="100%" stop-color="#243660"/></linearGradient>
+          </defs>
+          <!-- Abstract building / arch motif -->
+          <g transform="translate(28,30)">
+            <rect x="0" y="30" width="90" height="90" rx="4" fill="url(#lg4)"/>
+            <!-- Arch window -->
+            <rect x="10" y="60" width="28" height="42" rx="14" fill="#C9A84C" opacity=".15"/>
+            <path d="M10,74 Q10,60 24,60 Q38,60 38,74" fill="#C9A84C" opacity=".3"/>
+            <!-- Right windows -->
+            <rect x="50" y="50" width="28" height="20" rx="3" fill="#C9A84C" opacity=".2"/>
+            <rect x="50" y="78" width="28" height="20" rx="3" fill="#C9A84C" opacity=".2"/>
+            <!-- Gold accent top -->
+            <rect x="0" y="30" width="90" height="5" rx="2" fill="#C9A84C"/>
+            <!-- Roof peak -->
+            <polygon points="45,5 90,30 0,30" fill="#C9A84C" opacity=".85"/>
+          </g>
+          <text x="136" y="82" font-family="Georgia,serif" font-size="18" font-weight="bold" fill="#1B2A4A" letter-spacing="2">HAVEN</text>
+          <text x="136" y="100" font-family="Georgia,serif" font-size="18" font-weight="bold" fill="#C9A84C" letter-spacing="2">GROUP</text>
+          <text x="136" y="114" font-family="Arial,sans-serif" font-size="8" fill="#64748B" letter-spacing="5">REAL ESTATE</text>
+        </svg>
+      </div>
+      <div class="logo-info">
+        <h4>Haven Group Real Estate</h4>
+        <p>Bold architectural mark with gold peak and navy block — authoritative identity for a premium property brand.</p>
+        <span class="logo-tag">Real Estate</span>
+      </div>
+    </div>
+
+    <!-- LOGO 5: Fitness / Wellness -->
+    <div class="logo-card reveal">
+      <div class="logo-preview" style="background:#0d1117">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" width="280">
+          <defs>
+            <linearGradient id="lg5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#C9A84C"/><stop offset="100%" stop-color="#e8c96a"/></linearGradient>
+          </defs>
+          <!-- Dumbbell icon geometric -->
+          <g transform="translate(28,68)">
+            <rect x="0" y="-16" width="24" height="32" rx="5" fill="url(#lg5)"/>
+            <rect x="24" y="-9" width="52" height="18" rx="4" fill="#C9A84C" opacity=".7"/>
+            <rect x="76" y="-16" width="24" height="32" rx="5" fill="url(#lg5)"/>
+            <!-- Inner grip -->
+            <rect x="28" y="-5" width="44" height="10" rx="3" fill="rgba(201,168,76,.35)"/>
+          </g>
+          <!-- Lightning bolt small accent -->
+          <polygon points="136,55 128,85 140,80 132,110" fill="url(#lg5)" opacity=".8"/>
+          <text x="154" y="82" font-family="Arial,sans-serif" font-size="22" font-weight="900" fill="white" letter-spacing="2">APEX</text>
+          <text x="154" y="100" font-family="Arial,sans-serif" font-size="22" font-weight="900" fill="url(#lg5)" letter-spacing="2">FIT</text>
+          <text x="154" y="114" font-family="Arial,sans-serif" font-size="8" fill="#64748B" letter-spacing="5">PERFORMANCE STUDIO</text>
+        </svg>
+      </div>
+      <div class="logo-info">
+        <h4>ApexFit Performance Studio</h4>
+        <p>Bold dumbbell mark with gold gradient and lightning accent — high-energy identity for a premium fitness brand.</p>
+        <span class="logo-tag">Fitness / Wellness</span>
+      </div>
+    </div>
+
+    <!-- LOGO 6: Education / Consultancy -->
+    <div class="logo-card reveal">
+      <div class="logo-preview" style="background:#fafafa">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" width="280">
+          <defs>
+            <linearGradient id="lg6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1A6B6B"/><stop offset="100%" stop-color="#134F4F"/></linearGradient>
+          </defs>
+          <!-- Open book icon -->
+          <g transform="translate(18,40)">
+            <!-- Left page -->
+            <path d="M48,0 Q24,4 8,16 L8,96 Q24,84 48,80 Z" fill="url(#lg6)"/>
+            <!-- Right page -->
+            <path d="M52,0 Q76,4 92,16 L92,96 Q76,84 52,80 Z" fill="#C9A84C" opacity=".85"/>
+            <!-- Spine -->
+            <rect x="48" y="0" width="4" height="80" rx="2" fill="#fff" opacity=".6"/>
+            <!-- Lines on pages (text simulation) -->
+            <line x1="14" y1="32" x2="44" y2="26" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="14" y1="42" x2="44" y2="36" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="14" y1="52" x2="44" y2="46" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="56" y1="32" x2="86" y2="26" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="56" y1="42" x2="86" y2="36" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <text x="132" y="78" font-family="Georgia,serif" font-size="17" font-weight="bold" fill="#1A6B6B" letter-spacing="1">Veritas</text>
+          <line x1="132" y1="84" x2="278" y2="84" stroke="#C9A84C" stroke-width="1.2" opacity=".5"/>
+          <text x="132" y="100" font-family="Arial,sans-serif" font-size="8.5" fill="#64748B" letter-spacing="4">EDUCATION &amp; CONSULTING</text>
+        </svg>
+      </div>
+      <div class="logo-info">
+        <h4>Veritas Education & Consulting</h4>
+        <p>Refined open-book mark in teal and gold — trustworthy, approachable identity for education and professional services.</p>
+        <span class="logo-tag">Education / Consulting</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WEBSITES -->
+  <div id="dtab-webs" class="design-grid" style="display:none">
+
+    <!-- WEB 1: Premium Consultant -->
+    <div class="web-card reveal">
+      <div class="web-preview">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" width="100%" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="wg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0d1829"/><stop offset="100%" stop-color="#1e3260"/></linearGradient>
+            <linearGradient id="wg1b" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="rgba(201,168,76,.15)"/><stop offset="100%" stop-color="transparent"/></linearGradient>
+          </defs>
+          <!-- Full dark hero -->
+          <rect width="400" height="260" fill="url(#wg1)"/>
+          <!-- Grid pattern -->
+          <rect width="400" height="260" fill="url(#wg1b)"/>
+          <!-- Nav -->
+          <rect width="400" height="40" fill="rgba(0,0,0,.4)"/>
+          <rect x="18" y="13" width="55" height="14" rx="3" fill="rgba(201,168,76,.8)"/>
+          <rect x="210" y="15" width="28" height="10" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="248" y="15" width="28" height="10" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="286" y="15" width="28" height="10" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="330" y="11" width="52" height="18" rx="4" fill="#C9A84C"/>
+          <!-- Hero text -->
+          <rect x="30" y="66" width="120" height="8" rx="3" fill="rgba(201,168,76,.5)"/>
+          <rect x="30" y="82" width="180" height="22" rx="4" fill="rgba(255,255,255,.9)"/>
+          <rect x="30" y="112" width="155" height="14" rx="3" fill="rgba(255,255,255,.6)"/>
+          <rect x="30" y="134" width="200" height="10" rx="3" fill="rgba(255,255,255,.2)"/>
+          <rect x="30" y="148" width="180" height="10" rx="3" fill="rgba(255,255,255,.15)"/>
+          <rect x="30" y="168" width="80" height="26" rx="5" fill="#C9A84C"/>
+          <rect x="120" y="168" width="80" height="26" rx="5" fill="none" stroke="rgba(201,168,76,.5)" stroke-width="1.5"/>
+          <!-- Right photo frame -->
+          <rect x="255" y="52" width="130" height="160" rx="6" fill="rgba(255,255,255,.04)" stroke="rgba(201,168,76,.25)" stroke-width="1.5"/>
+          <rect x="268" y="65" width="104" height="135" rx="4" fill="rgba(255,255,255,.07)"/>
+          <!-- Stats strip -->
+          <rect x="0" y="218" width="400" height="42" fill="rgba(255,255,255,.04)" stroke-top="rgba(201,168,76,.15)"/>
+          <rect x="30" y="228" width="50" height="8" rx="3" fill="rgba(201,168,76,.6)"/>
+          <rect x="30" y="240" width="70" height="6" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="140" y="228" width="50" height="8" rx="3" fill="rgba(201,168,76,.6)"/>
+          <rect x="140" y="240" width="70" height="6" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="250" y="228" width="50" height="8" rx="3" fill="rgba(201,168,76,.6)"/>
+          <rect x="250" y="240" width="70" height="6" rx="2" fill="rgba(255,255,255,.2)"/>
+        </svg>
+      </div>
+      <div class="web-info">
+        <h4>Premium Consultant / Agency</h4>
+        <p>Dark luxury design with gold accents, full-bleed hero, stat strip and professional photo frame — authoritative and conversion-focused.</p>
+        <span class="logo-tag">Dark Premium</span>
+      </div>
+    </div>
+
+    <!-- WEB 2: E-commerce / Fashion -->
+    <div class="web-card reveal">
+      <div class="web-preview">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" width="100%" preserveAspectRatio="xMidYMid meet">
+          <rect width="400" height="260" fill="#fafafa"/>
+          <!-- Nav -->
+          <rect width="400" height="44" fill="#fff" stroke="#eee" stroke-width="1"/>
+          <rect x="20" y="14" width="60" height="16" rx="3" fill="#1B2A4A"/>
+          <rect x="150" y="17" width="28" height="10" rx="2" fill="#ccc"/>
+          <rect x="192" y="17" width="28" height="10" rx="2" fill="#ccc"/>
+          <rect x="234" y="17" width="28" height="10" rx="2" fill="#ccc"/>
+          <rect x="310" y="13" width="30" height="18" rx="3" fill="#1B2A4A"/>
+          <rect x="350" y="13" width="30" height="18" rx="3" fill="#C9A84C"/>
+          <!-- Split hero -->
+          <rect x="0" y="44" width="200" height="130" fill="#f0f0f0"/>
+          <rect x="40" y="80" width="120" height="16" rx="4" fill="#1B2A4A" opacity=".7"/>
+          <rect x="40" y="102" width="90" height="10" rx="3" fill="#1B2A4A" opacity=".4"/>
+          <rect x="40" y="118" width="70" height="10" rx="3" fill="#1B2A4A" opacity=".3"/>
+          <rect x="40" y="138" width="60" height="20" rx="4" fill="#C9A84C"/>
+          <rect x="200" y="44" width="200" height="130" fill="#e8e0d4"/>
+          <!-- Product highlight -->
+          <ellipse cx="300" cy="110" rx="60" ry="72" fill="rgba(201,168,76,.08)"/>
+          <rect x="268" y="52" width="64" height="90" rx="4" fill="rgba(255,255,255,.6)"/>
+          <!-- Product grid -->
+          <rect x="0" y="180" width="95" height="70" rx="4" fill="#fff" stroke="#eee" stroke-width="1"/>
+          <rect x="0" y="180" width="95" height="38" rx="4" fill="#e0d8cc"/>
+          <rect x="8" y="224" width="60" height="6" rx="2" fill="#aaa"/>
+          <rect x="8" y="234" width="40" height="8" rx="2" fill="#C9A84C"/>
+          <rect x="103" y="180" width="95" height="70" rx="4" fill="#fff" stroke="#eee" stroke-width="1"/>
+          <rect x="103" y="180" width="95" height="38" rx="4" fill="#d4dce0"/>
+          <rect x="111" y="224" width="60" height="6" rx="2" fill="#aaa"/>
+          <rect x="111" y="234" width="40" height="8" rx="2" fill="#C9A84C"/>
+          <rect x="206" y="180" width="95" height="70" rx="4" fill="#fff" stroke="#eee" stroke-width="1"/>
+          <rect x="206" y="180" width="95" height="38" rx="4" fill="#dce4d4"/>
+          <rect x="214" y="224" width="60" height="6" rx="2" fill="#aaa"/>
+          <rect x="214" y="234" width="40" height="8" rx="2" fill="#C9A84C"/>
+          <rect x="309" y="180" width="91" height="70" rx="4" fill="#fff" stroke="#eee" stroke-width="1"/>
+          <rect x="309" y="180" width="91" height="38" rx="4" fill="#e8d8d4"/>
+          <rect x="317" y="224" width="60" height="6" rx="2" fill="#aaa"/>
+          <rect x="317" y="234" width="40" height="8" rx="2" fill="#C9A84C"/>
+        </svg>
+      </div>
+      <div class="web-info">
+        <h4>E-commerce / Fashion Boutique</h4>
+        <p>Elegant split-hero layout with product spotlight and clean card grid — sophisticated shopping experience that converts.</p>
+        <span class="logo-tag">E-commerce</span>
+      </div>
+    </div>
+
+    <!-- WEB 3: Restaurant -->
+    <div class="web-card reveal">
+      <div class="web-preview">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" width="100%" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="wg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a0800"/><stop offset="100%" stop-color="#3d1200"/></linearGradient>
+          </defs>
+          <rect width="400" height="260" fill="url(#wg3)"/>
+          <!-- Texture overlay -->
+          <rect width="400" height="260" fill="rgba(201,168,76,.03)"/>
+          <!-- Nav -->
+          <rect width="400" height="40" fill="rgba(0,0,0,.6)"/>
+          <text x="185" y="26" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#C9A84C" text-anchor="middle" letter-spacing="4">SAVEUR</text>
+          <rect x="20" y="15" width="24" height="10" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="54" y="15" width="24" height="10" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="316" y="11" width="64" height="18" rx="4" fill="#C9A84C"/>
+          <!-- Hero image area (simulated) -->
+          <rect x="0" y="40" width="400" height="120" fill="rgba(0,0,0,.35)"/>
+          <!-- Circular accent -->
+          <circle cx="200" cy="100" r="55" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
+          <text x="200" y="90" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#C9A84C" text-anchor="middle" letter-spacing="3">SAVEUR</text>
+          <text x="200" y="108" font-family="Arial,sans-serif" font-size="7" fill="rgba(255,255,255,.6)" text-anchor="middle" letter-spacing="5">RESTAURANT &amp; BAR</text>
+          <rect x="155" y="118" width="90" height="20" rx="4" fill="#C9A84C"/>
+          <text x="200" y="132" font-family="Arial,sans-serif" font-size="8" fill="#1a0800" text-anchor="middle" font-weight="bold">RESERVE A TABLE</text>
+          <!-- Menu items strip -->
+          <rect x="0" y="168" width="400" height="10" fill="#C9A84C" opacity=".12"/>
+          <text x="200" y="178" font-family="Arial,sans-serif" font-size="7" fill="rgba(201,168,76,.6)" text-anchor="middle" letter-spacing="6">OUR MENU</text>
+          <!-- Menu cards -->
+          <rect x="8" y="186" width="118" height="66" rx="5" fill="rgba(255,255,255,.05)" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
+          <rect x="8" y="186" width="118" height="36" rx="5" fill="rgba(201,168,76,.1)"/>
+          <rect x="14" y="228" width="70" height="5" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="14" y="237" width="48" height="6" rx="2" fill="#C9A84C" opacity=".7"/>
+          <rect x="142" y="186" width="118" height="66" rx="5" fill="rgba(255,255,255,.05)" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
+          <rect x="142" y="186" width="118" height="36" rx="5" fill="rgba(201,168,76,.08)"/>
+          <rect x="148" y="228" width="70" height="5" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="148" y="237" width="48" height="6" rx="2" fill="#C9A84C" opacity=".7"/>
+          <rect x="274" y="186" width="118" height="66" rx="5" fill="rgba(255,255,255,.05)" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
+          <rect x="274" y="186" width="118" height="36" rx="5" fill="rgba(201,168,76,.07)"/>
+          <rect x="280" y="228" width="70" height="5" rx="2" fill="rgba(255,255,255,.4)"/>
+          <rect x="280" y="237" width="48" height="6" rx="2" fill="#C9A84C" opacity=".7"/>
+        </svg>
+      </div>
+      <div class="web-info">
+        <h4>Restaurant & Fine Dining</h4>
+        <p>Rich dark atmosphere with gold typography, reservation CTA, and elegant menu card layout — irresistible to food lovers.</p>
+        <span class="logo-tag">Restaurant / F&amp;B</span>
+      </div>
+    </div>
+
+    <!-- WEB 4: SaaS / Tech product -->
+    <div class="web-card reveal">
+      <div class="web-preview">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" width="100%" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="wg4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a0a1a"/><stop offset="100%" stop-color="#0d1630"/></linearGradient>
+            <radialGradient id="wg4r" cx="30%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(37,99,235,.2)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+            <radialGradient id="wg4r2" cx="75%" cy="60%" r="40%"><stop offset="0%" stop-color="rgba(201,168,76,.1)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+          </defs>
+          <rect width="400" height="260" fill="url(#wg4)"/>
+          <rect width="400" height="260" fill="url(#wg4r)"/>
+          <rect width="400" height="260" fill="url(#wg4r2)"/>
+          <!-- Nav -->
+          <rect width="400" height="38" fill="rgba(255,255,255,.03)"/>
+          <rect x="18" y="12" width="50" height="14" rx="3" fill="#2563eb" opacity=".8"/>
+          <rect x="200" y="14" width="24" height="10" rx="2" fill="rgba(255,255,255,.15)"/>
+          <rect x="234" y="14" width="24" height="10" rx="2" fill="rgba(255,255,255,.15)"/>
+          <rect x="268" y="14" width="24" height="10" rx="2" fill="rgba(255,255,255,.15)"/>
+          <rect x="316" y="10" width="66" height="18" rx="5" fill="#2563eb"/>
+          <!-- Hero -->
+          <rect x="40" y="58" width="80" height="6" rx="3" fill="rgba(37,99,235,.6)"/>
+          <rect x="40" y="72" width="170" height="18" rx="4" fill="rgba(255,255,255,.9)"/>
+          <rect x="40" y="98" width="145" height="10" rx="3" fill="rgba(255,255,255,.5)"/>
+          <rect x="40" y="116" width="155" height="10" rx="3" fill="rgba(255,255,255,.3)"/>
+          <rect x="40" y="136" width="90" height="24" rx="5" fill="#2563eb"/>
+          <rect x="140" y="136" width="80" height="24" rx="5" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
+          <!-- Feature cards (glassmorphism) -->
+          <rect x="238" y="50" width="152" height="186" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+          <rect x="246" y="64" width="136" height="38" rx="5" fill="rgba(37,99,235,.15)" stroke="rgba(37,99,235,.25)" stroke-width="1"/>
+          <rect x="252" y="74" width="60" height="6" rx="2" fill="rgba(255,255,255,.5)"/>
+          <rect x="252" y="84" width="90" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="246" y="112" width="136" height="38" rx="5" fill="rgba(201,168,76,.1)" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
+          <rect x="252" y="122" width="60" height="6" rx="2" fill="rgba(255,255,255,.5)"/>
+          <rect x="252" y="132" width="90" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="246" y="160" width="136" height="38" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+          <rect x="252" y="170" width="60" height="6" rx="2" fill="rgba(255,255,255,.5)"/>
+          <rect x="252" y="180" width="90" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
+          <!-- Bottom stat bar -->
+          <rect x="0" y="196" width="230" height="54" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+          <rect x="20" y="208" width="44" height="8" rx="3" fill="#2563eb" opacity=".7"/>
+          <rect x="20" y="220" width="70" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="110" y="208" width="44" height="8" rx="3" fill="#C9A84C" opacity=".7"/>
+          <rect x="110" y="220" width="70" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
+        </svg>
+      </div>
+      <div class="web-info">
+        <h4>SaaS / Tech Product Landing</h4>
+        <p>Dark glassmorphism design with vibrant blue accents and feature cards — high-conversion layout for software and app products.</p>
+        <span class="logo-tag">SaaS / Tech</span>
+      </div>
+    </div>
+
+    <!-- WEB 5: Health / Clinic -->
+    <div class="web-card reveal">
+      <div class="web-preview">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" width="100%" preserveAspectRatio="xMidYMid meet">
+          <rect width="400" height="260" fill="#f7fffe"/>
+          <!-- Nav -->
+          <rect width="400" height="42" fill="#fff" stroke="#e2f4f0" stroke-width="1"/>
+          <rect x="20" y="13" width="72" height="16" rx="4" fill="#0d9488"/>
+          <rect x="180" y="16" width="28" height="10" rx="2" fill="#ccc"/>
+          <rect x="220" y="16" width="28" height="10" rx="2" fill="#ccc"/>
+          <rect x="260" y="16" width="28" height="10" rx="2" fill="#ccc"/>
+          <rect x="316" y="12" width="64" height="18" rx="5" fill="#0d9488"/>
+          <!-- Hero split -->
+          <rect x="0" y="42" width="220" height="115" fill="#e8f7f5"/>
+          <rect x="20" y="62" width="90" height="6" rx="3" fill="#0d9488" opacity=".6"/>
+          <rect x="20" y="76" width="170" height="14" rx="3" fill="#1B2A4A" opacity=".7"/>
+          <rect x="20" y="98" width="150" height="8" rx="3" fill="#64748B" opacity=".5"/>
+          <rect x="20" y="112" width="140" height="8" rx="3" fill="#64748B" opacity=".3"/>
+          <rect x="20" y="130" width="75" height="20" rx="4" fill="#0d9488"/>
+          <rect x="220" y="42" width="180" height="115" fill="#d0f0eb" opacity=".7"/>
+          <!-- Service cards -->
+          <rect x="8" y="165" width="88" height="86" rx="5" fill="#fff" stroke="#e2f4f0" stroke-width="1"/>
+          <rect x="8" y="165" width="88" height="34" rx="5" fill="#0d9488" opacity=".15"/>
+          <circle cx="52" cy="182" r="10" fill="#0d9488" opacity=".3"/>
+          <rect x="16" y="204" width="64" height="6" rx="2" fill="#333" opacity=".5"/>
+          <rect x="16" y="215" width="50" height="5" rx="2" fill="#aaa"/>
+          <rect x="16" y="226" width="40" height="14" rx="3" fill="#0d9488" opacity=".8"/>
+          <rect x="106" y="165" width="88" height="86" rx="5" fill="#fff" stroke="#e2f4f0" stroke-width="1"/>
+          <rect x="106" y="165" width="88" height="34" rx="5" fill="#C9A84C" opacity=".15"/>
+          <circle cx="150" cy="182" r="10" fill="#C9A84C" opacity=".4"/>
+          <rect x="114" y="204" width="64" height="6" rx="2" fill="#333" opacity=".5"/>
+          <rect x="114" y="215" width="50" height="5" rx="2" fill="#aaa"/>
+          <rect x="114" y="226" width="40" height="14" rx="3" fill="#0d9488" opacity=".8"/>
+          <rect x="204" y="165" width="88" height="86" rx="5" fill="#fff" stroke="#e2f4f0" stroke-width="1"/>
+          <rect x="204" y="165" width="88" height="34" rx="5" fill="#1B2A4A" opacity=".1"/>
+          <circle cx="248" cy="182" r="10" fill="#1B2A4A" opacity=".2"/>
+          <rect x="212" y="204" width="64" height="6" rx="2" fill="#333" opacity=".5"/>
+          <rect x="212" y="215" width="50" height="5" rx="2" fill="#aaa"/>
+          <rect x="212" y="226" width="40" height="14" rx="3" fill="#0d9488" opacity=".8"/>
+          <rect x="302" y="165" width="90" height="86" rx="5" fill="#fff" stroke="#e2f4f0" stroke-width="1"/>
+          <rect x="302" y="165" width="90" height="34" rx="5" fill="#2563eb" opacity=".1"/>
+          <circle cx="347" cy="182" r="10" fill="#2563eb" opacity=".2"/>
+          <rect x="310" y="204" width="64" height="6" rx="2" fill="#333" opacity=".5"/>
+          <rect x="310" y="215" width="50" height="5" rx="2" fill="#aaa"/>
+          <rect x="310" y="226" width="40" height="14" rx="3" fill="#0d9488" opacity=".8"/>
+        </svg>
+      </div>
+      <div class="web-info">
+        <h4>Health Clinic / Medical Centre</h4>
+        <p>Clean teal-and-white design communicating trust and care — with service cards, appointment CTA, and professional layout.</p>
+        <span class="logo-tag">Healthcare / Wellness</span>
+      </div>
+    </div>
+
+    <!-- WEB 6: Personal Brand Portfolio -->
+    <div class="web-card reveal">
+      <div class="web-preview">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" width="100%" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="wg6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0f1d38"/><stop offset="100%" stop-color="#1e3260"/></linearGradient>
+            <radialGradient id="wg6r" cx="80%" cy="20%" r="50%"><stop offset="0%" stop-color="rgba(201,168,76,.08)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+          </defs>
+          <rect width="400" height="260" fill="url(#wg6)"/>
+          <rect width="400" height="260" fill="url(#wg6r)"/>
+          <!-- Sidebar layout -->
+          <rect x="0" y="0" width="130" height="260" fill="rgba(0,0,0,.3)"/>
+          <rect x="0" y="0" width="130" height="260" stroke-right="rgba(201,168,76,.15)"/>
+          <line x1="130" y1="0" x2="130" y2="260" stroke="rgba(201,168,76,.15)" stroke-width="1"/>
+          <!-- Sidebar content -->
+          <rect x="28" y="30" width="74" height="74" rx="37" fill="rgba(201,168,76,.15)" stroke="rgba(201,168,76,.4)" stroke-width="2"/>
+          <text x="65" y="75" font-family="Georgia,serif" font-size="28" font-weight="bold" fill="rgba(201,168,76,.5)" text-anchor="middle">M</text>
+          <rect x="18" y="118" width="94" height="8" rx="4" fill="rgba(255,255,255,.6)"/>
+          <rect x="24" y="132" width="82" height="6" rx="3" fill="#C9A84C" opacity=".5"/>
+          <rect x="0" y="152" width="130" height="1" fill="rgba(201,168,76,.2)"/>
+          <rect x="18" y="162" width="70" height="6" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="18" y="174" width="70" height="6" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="18" y="186" width="70" height="6" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="18" y="198" width="70" height="6" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="18" y="222" width="94" height="24" rx="4" fill="#C9A84C"/>
+          <!-- Main content -->
+          <rect x="152" y="28" width="140" height="12" rx="4" fill="rgba(255,255,255,.85)"/>
+          <rect x="152" y="46" width="105" height="8" rx="3" fill="#C9A84C" opacity=".7"/>
+          <rect x="152" y="64" width="220" height="6" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="152" y="76" width="210" height="6" rx="2" fill="rgba(255,255,255,.15)"/>
+          <rect x="152" y="88" width="200" height="6" rx="2" fill="rgba(255,255,255,.12)"/>
+          <!-- Portfolio grid -->
+          <rect x="152" y="108" width="112" height="70" rx="5" fill="rgba(255,255,255,.05)" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
+          <rect x="152" y="108" width="112" height="38" rx="5" fill="rgba(201,168,76,.1)"/>
+          <rect x="158" y="152" width="80" height="5" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="158" y="161" width="55" height="8" rx="2" fill="#C9A84C" opacity=".5"/>
+          <rect x="274" y="108" width="108" height="70" rx="5" fill="rgba(255,255,255,.05)" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
+          <rect x="274" y="108" width="108" height="38" rx="5" fill="rgba(36,54,96,.5)"/>
+          <rect x="280" y="152" width="80" height="5" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect x="280" y="161" width="55" height="8" rx="2" fill="#C9A84C" opacity=".5"/>
+          <!-- Skills / bottom -->
+          <rect x="152" y="188" width="55" height="22" rx="11" fill="rgba(201,168,76,.15)" stroke="rgba(201,168,76,.3)" stroke-width="1"/>
+          <rect x="216" y="188" width="55" height="22" rx="11" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="280" y="188" width="55" height="22" rx="11" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <rect x="152" y="220" width="228" height="28" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="web-info">
+        <h4>Personal Brand / Portfolio</h4>
+        <p>Sophisticated sidebar layout with portfolio grid and skill tags — premium personal brand site for consultants and creatives.</p>
+        <span class="logo-tag">Personal Brand</span>
+      </div>
+    </div>
+
+  </div>
+</section>

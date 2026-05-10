@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Journal | Mikaro Studio — Design, Brand &amp; Digital Growth</title>
+<meta name="description" content="Practical articles on web design, branding, digital marketing, and AI for Bangkok business owners."/>
+<link rel="canonical" href="https://mikaro.studio/journal.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=optional" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/style.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtagReal = gtag;
+  gtag('js', new Date());
+  if(localStorage.getItem('mikaro_consent') === 'yes') gtag('config','GA_MEASUREMENT_ID');
+</script>
+</head>
+<body>
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent"><p>We use analytics to improve your experience.</p><div class="cookie-actions"><button type="button" class="cookie-accept" data-cookie="accept">Accept</button><button type="button" class="cookie-decline" data-cookie="decline">Decline</button></div></div>
+<div class="mob-overlay" id="mobOverlay">
+  <button type="button" id="mobOverlayClose" aria-label="Close menu" style="position:absolute;top:20px;right:24px;color:var(--gold);font-size:1.5rem;cursor:pointer;background:none;border:none;padding:0;line-height:1;z-index:1001">✕</button>
+  <div class="mob-inner">
+    <div class="mob-top">
+      <a href="index.html" class="mob-logo-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 54" height="34" aria-label="Mikaro Studio"><polygon points="14,36 26,18 38,36 34,36 26,26 18,36" fill="#ffffff"/><polygon points="26,36 38,18 50,36 46,36 38,26 30,36" fill="#C9A84C"/><rect x="14" y="38" width="36" height="4" rx="2" fill="#ffffff" opacity="0.85"/><text x="60" y="33" font-family="Outfit,system-ui,sans-serif" font-size="21" font-weight="600" fill="#ffffff" letter-spacing="-0.2">Mikaro</text><text x="60" y="48" font-family="Outfit,system-ui,sans-serif" font-size="10" font-weight="400" fill="#C9A84C" letter-spacing="2.5">STUDIO</text></svg></a>
+      <button type="button" class="mob-close-btn" onclick="closeMobMenu()" aria-label="Close menu">×</button>
+    </div>
+    <nav class="mob-nav">
+      <div class="mob-nav-item"><a href="index.html#about" onclick="closeMobMenu()"><span class="mni-left"><span class="mni-num">01</span><span class="mni-label">About</span></span><span class="mni-arrow">→</span></a></div>
+      <div class="mob-nav-item"><a href="index.html#services" onclick="closeMobMenu()"><span class="mni-left"><span class="mni-num">02</span><span class="mni-label">Services</span></span><span class="mni-arrow">→</span></a></div>
+      <div class="mob-nav-item"><a href="index.html#portfolio" onclick="closeMobMenu()"><span class="mni-left"><span class="mni-num">03</span><span class="mni-label">Portfolio</span></span><span class="mni-arrow">→</span></a></div>
+      <div class="mob-nav-item"><a href="journal.html" onclick="closeMobMenu()"><span class="mni-left"><span class="mni-num">04</span><span class="mni-label">Journal</span></span><span class="mni-arrow">→</span></a></div>
+      <div class="mob-nav-item"><a href="index.html#contact" onclick="closeMobMenu()"><span class="mni-left"><span class="mni-num">05</span><span class="mni-label">Contact</span></span><span class="mni-arrow">→</span></a></div>
+    </nav>
+  </div>
+</div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 54" height="38" aria-hidden="true">
+      <polygon points="14,36 26,18 38,36 34,36 26,26 18,36" fill="#ffffff"/>
+      <polygon points="26,36 38,18 50,36 46,36 38,26 30,36" fill="#C9A84C"/>
+      <rect x="14" y="38" width="36" height="4" rx="2" fill="#ffffff" opacity="0.85"/>
+      <text x="60" y="33" font-family="Outfit,system-ui,sans-serif" font-size="21" font-weight="600" fill="#ffffff" letter-spacing="-0.2">Mikaro</text>
+      <text x="60" y="48" font-family="Outfit,system-ui,sans-serif" font-size="10" font-weight="400" fill="#C9A84C" letter-spacing="2.5">STUDIO</text>
+    </svg>
+  </a>
+  <div class="nav-center">
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li class="nav-dd">
+        <a href="index.html#services">Services</a>
+        <div class="nav-dd-panel">
+          <a href="services/web-design.html">Web Design</a>
+          <a href="services/logo-design.html">Logo Design</a>
+          <a href="services/brand-package.html">Brand Package</a>
+          <a href="services/digital-marketing.html">Digital Marketing</a>
+          <a href="services/ai-workshop.html">AI Workshop</a>
+          <a href="services/english-coaching.html">English Coaching</a>
+        </div>
+      </li>
+      <li><a href="index.html#portfolio">Design Portfolio</a></li>
+      <li><a href="index.html#proof">Results</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="journal.html">Journal</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <a href="index.html#contact" class="nav-cta">Contact →</a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button type="button" class="hamburger" id="hbg" onclick="openMobMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="journal-hero">
+  <div class="s-tag">Journal</div>
+  <h1>Insights on design, brand &amp; digital growth</h1>
+  <p>Practical guidance for Bangkok owners and international brands.</p>
+</header>
+
+<div class="journal-shell">
+  <div class="j-filters">
+    <button type="button" class="filter-tab on" data-cat-filter="all">All</button>
+    <button type="button" class="filter-tab" data-cat-filter="Web Design">Web Design</button>
+    <button type="button" class="filter-tab" data-cat-filter="Branding">Branding</button>
+    <button type="button" class="filter-tab" data-cat-filter="Digital Marketing">Digital Marketing</button>
+    <button type="button" class="filter-tab" data-cat-filter="AI &amp; Technology">AI &amp; Technology</button>
+    <button type="button" class="filter-tab" data-cat-filter="Business English">Business English</button>
+  </div>
+  <div id="journalFeatured"></div>
+  <div id="journalGrid" class="skeleton"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="f-bottom" style="border:none;padding:2rem 8%;justify-content:center">
+    <a href="index.html" style="color:rgba(255,255,255,.45)">← Back to home</a>
+  </div>
+</footer>
+<script src="config.js"></script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/journal.js" defer></script>
+</body>
+</html>
