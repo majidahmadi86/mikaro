@@ -3571,3 +3571,79 @@ body.light-mode .nav-logo svg text:first-of-type,
 body.light-mode .logo-wrap svg text:first-of-type {
   fill: #1a1a2e;
 }
+
+/* Mobile hamburger overflow fix */
+.nav-overlay, .mobile-nav, [class*="mob-overlay"],
+[class*="nav-overlay"], [class*="mobile-menu"] {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Hide hero orb in light mode */
+body.light-mode .orb2,
+body.light-mode [class*="orb-2"],
+body.light-mode [class*="hero-orb-2"] {
+  display: none !important;
+}
+
+/* Logo fix in light mode */
+body.light-mode .logo-poly-white { fill: #1a1a2e !important; }
+body.light-mode .logo-rect-white { fill: #1a1a2e !important; }
+body.light-mode .logo-text-main  { fill: #1a1a2e !important; }
+
+/* Social icons footer */
+footer .f-social svg,
+footer [class*="social"] svg {
+  fill: rgba(255,255,255,.55);
+  transition: fill .2s;
+}
+footer .f-social a:hover svg,
+footer [class*="social"] a:hover svg {
+  fill: #C9A84C;
+}
+
+/* Contact method borders light mode */
+body.light-mode .contact-method,
+body.light-mode .cm,
+body.light-mode [class*="contact-method"] {
+  border: 1px solid rgba(0,0,0,.12) !important;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+body.light-mode .cval,
+body.light-mode [class*="contact-val"] {
+  color: #0f0f1a !important;
+}
+
+/* Quiz text light mode */
+body.light-mode .quiz .ot,
+body.light-mode .quiz .qt,
+body.light-mode .quiz .rtitle,
+body.light-mode .quiz .rn,
+body.light-mode .quiz .sh2 {
+  color: #0f0f1a !important;
+}
+body.light-mode .quiz .os,
+body.light-mode .quiz .ssub,
+body.light-mode .quiz .rdesc,
+body.light-mode .quiz .pl,
+body.light-mode .quiz .st,
+body.light-mode .quiz .rd {
+  color: #374151 !important;
+}
+body.light-mode .quiz .opt {
+  background: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.1) !important;
+}
+body.light-mode .quiz .opt.sel,
+body.light-mode .quiz .opt:hover {
+  background: rgba(138,101,32,.07) !important;
+  border-color: rgba(138,101,32,.3) !important;
+}
+body.light-mode .quiz .sc {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,.1) !important;
+}
+body.light-mode .quiz .sn { color: #0f0f1a !important; }
+body.light-mode .quiz .st { color: #374151 !important; }
