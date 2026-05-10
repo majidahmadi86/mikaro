@@ -3545,7 +3545,7 @@ body.light-mode .cicon {
 .f-social a svg,
 footer .social-link svg,
 .footer-social a svg {
-  fill: rgba(255,255,255,.5);
+  fill: rgba(255, 255, 255, 0.55);
   transition: fill .2s;
 }
 .f-social a:hover svg,
@@ -3647,3 +3647,12 @@ body.light-mode .quiz .sc {
 }
 body.light-mode .quiz .sn { color: #0f0f1a !important; }
 body.light-mode .quiz .st { color: #374151 !important; }
+body.light-mode .quiz .wrap .sh2,
+body.light-mode .quiz .sh2 { color: #0f0f1a !important; }
+footer .tiktok-icon:hover svg,
+footer a:hover .tiktok-icon {
+  fill: #C9A84C !important;
+}
+footer .tiktok-icon svg {
+  fill: rgba(255,255,255,.55) !important;
+}
