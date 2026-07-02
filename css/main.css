@@ -255,3 +255,92 @@ button{cursor:pointer;border:none;background:none}
   .rv{opacity:1;transform:none}
   .mio-vis .bub{opacity:1;transform:none}
 }
+
+
+/* ================================================================
+   v5 ADDITIONS — multi-page, forms, AI lab, floating MIKA
+   ================================================================ */
+.top-links a.active{background:var(--ink);color:#fff}
+.btn-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn-sm{padding:.65rem 1.2rem;font-size:.82rem}
+
+/* inner page hero */
+.phero{padding:clamp(3rem,8vh,5rem) 0 clamp(1.6rem,4vh,2.6rem);text-align:center}
+.phero h1{font-family:var(--disp);font-weight:900;letter-spacing:-.03em;line-height:1.02;font-size:clamp(2.4rem,5.6vw,4.2rem);margin:1rem 0 .9rem}
+.phero h1 .pk{color:var(--pink)}.phero h1 .bl{color:var(--blue)}.phero h1 .gd{color:var(--gold)}
+.phero p{color:var(--sub);max-width:36rem;margin:0 auto}
+
+/* case pages */
+.case-hero{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);margin-bottom:2rem;min-height:340px;display:grid;place-items:center;position:relative}
+.case-hero .imgslot{width:100%;height:100%;min-height:340px;display:grid;place-items:center}
+.case-hero img{width:100%;height:auto;display:block}
+.case-hero.mio-world{background:radial-gradient(circle at 60% 40%,#FFD1E6,#FFE3F0)}
+.case-hero.oc-world{background:radial-gradient(circle at 50% 45%,#F3E9D2,#EFE3C8)}
+.case-hero.mio-world svg{width:min(260px,50%)}
+.meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin:0 0 2.6rem}
+.meta{background:#fff;border:1px solid var(--line);border-radius:20px;padding:1.1rem 1.3rem}
+.meta h6{font-family:var(--disp);font-weight:800;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-bottom:.35rem}
+.meta p{font-weight:600;font-size:.9rem}
+.meta a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:860px){.meta-grid{grid-template-columns:1fr 1fr}}
+.case-body{max-width:760px;margin:0 auto 3rem}
+.case-body h2{font-family:var(--disp);font-weight:900;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.02em;margin:2.2rem 0 .8rem}
+.case-body p{color:var(--sub);margin-bottom:1rem}
+.case-body ul{margin:0 0 1rem 1.2rem;color:var(--sub)}
+.case-body li{margin-bottom:.5rem}
+.next-proj{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.6rem 2rem;flex-wrap:wrap}
+.next-proj .lbl{font-family:var(--disp);font-weight:800;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sub)}
+.next-proj .nm{font-family:var(--disp);font-weight:900;font-size:1.5rem}
+
+/* services CTAs */
+.sv-ctas{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.1rem}
+.sv-ctas .btn-sm.btn-ghost{border-width:1.5px}
+.consult-band{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.8rem,4vw,2.6rem);display:flex;justify-content:space-between;align-items:center;gap:1.4rem;flex-wrap:wrap;margin-top:2rem}
+.consult-band h3{font-family:var(--disp);font-weight:900;font-size:clamp(1.3rem,3vw,1.9rem);letter-spacing:-.02em}
+.consult-band p{color:var(--sub)}
+
+/* AI lab: capabilities + build log */
+.bloq{background:var(--ink);border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}
+.bloq .bbar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(232,178,60,.2);font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.06em;color:rgba(232,178,60,.75)}
+.bloq .bbar i{width:9px;height:9px;border-radius:50%;background:rgba(232,178,60,.3)}
+.bloq pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;line-height:1.9;color:var(--gold);padding:1.2rem 1.4rem;min-height:280px;white-space:pre-wrap}
+.bloq .tcur{display:inline-block;width:8px;height:14px;background:var(--gold);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* contact form */
+.cwrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.6rem,4vw,3rem);align-items:start}
+@media(max-width:900px){.cwrap{grid-template-columns:1fr}}
+.cform{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.6rem,4vw,2.6rem);box-shadow:var(--shadow)}
+.cform .row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:640px){.cform .row2{grid-template-columns:1fr}}
+.cf{display:block;margin-bottom:1.1rem}
+.cf span{display:block;font-family:var(--disp);font-weight:700;font-size:.78rem;letter-spacing:.03em;margin-bottom:.45rem}
+.cf input,.cf select,.cf textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;background:var(--milk);padding:.85rem 1.05rem;font-family:var(--body);font-size:.92rem;color:var(--ink);transition:border-color .25s}
+.cf input:focus,.cf select:focus,.cf textarea:focus{outline:none;border-color:var(--blue)}
+.cf textarea{resize:vertical;min-height:130px}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.cside .ct-card{margin-bottom:1.1rem}
+.ct-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:1.5rem 1.6rem}
+.ct-card h5{font-family:var(--disp);font-weight:800;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-bottom:.6rem}
+.ct-card p{font-size:.9rem;color:var(--sub)}
+.ct-card p b{color:var(--ink)}
+
+/* floating MIKA */
+.mika-fab{position:fixed;right:20px;bottom:20px;z-index:400;width:60px;height:60px;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;box-shadow:0 18px 40px -14px rgba(255,61,143,.65);transition:transform .3s var(--ease)}
+.mika-fab:hover{transform:translateY(-4px) scale(1.05)}
+.mika-fab svg{width:26px;height:26px}
+.mika-fab .pulse{position:absolute;top:4px;right:4px;width:12px;height:12px;border-radius:50%;background:#22C55E;border:2px solid #fff}
+.mika-panel{position:fixed;right:20px;bottom:92px;z-index:400;width:min(380px,calc(100vw - 40px));height:min(540px,calc(100vh - 130px));display:none;flex-direction:column;border-radius:24px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 40px 90px -30px rgba(23,21,31,.4)}
+.mika-panel.open{display:flex}
+.mika-panel .chat{height:100%;border-radius:0;border:none;box-shadow:none}
+/* in-chat action chips + lead form */
+.msg .acts{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.7rem}
+.msg .acts a,.msg .acts button{font-family:var(--disp);font-weight:700;font-size:.72rem;background:var(--milk);border:1.5px solid var(--line);border-radius:999px;padding:.45rem .9rem;color:var(--ink);transition:.25s;cursor:pointer}
+.msg .acts a:hover,.msg .acts button:hover{border-color:var(--blue);color:var(--blue)}
+.mk-lead{margin-top:.8rem;display:flex;flex-direction:column;gap:.55rem}
+.mk-lead input,.mk-lead textarea{border:1.5px solid var(--line);border-radius:12px;padding:.6rem .8rem;font-family:var(--body);font-size:.84rem;background:var(--milk)}
+.mk-lead textarea{min-height:64px;resize:vertical}
+.mk-lead button{background:var(--blue);color:#fff;border-radius:999px;padding:.6rem 1rem;font-family:var(--disp);font-weight:700;font-size:.8rem}
+.thanks-hero{min-height:70svh;display:grid;place-items:center;text-align:center;padding:2rem}
+.thanks-hero .ok{width:86px;height:86px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;margin:0 auto 1.4rem;box-shadow:0 20px 44px -18px rgba(36,56,255,.6)}
+.thanks-hero .ok svg{width:38px}

@@ -13,18 +13,12 @@
 <link rel="manifest" href="/assets/site.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mikaro Studio">
-<meta property="og:title" content="Mikaro — We ship real products">
-<meta property="og:description" content="Design + code + shipping, under one roof in Bangkok. Everything on this page is live.">
+<meta property="og:title" content="Mikaro — We ship real products. Bangkok.">
+<meta property="og:description" content="Mikaro is a creative technology studio in Bangkok. We design, build and ship real digital products — Miomika, OptiClean — everything here is live and clickable.">
 <meta property="og:url" content="https://mikaro.studio/">
 <meta property="og:image" content="https://mikaro.studio/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://mikaro.studio/assets/og.png">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Mikaro Studio",
-"url":"https://mikaro.studio","description":"Creative technology studio in Bangkok designing and shipping digital products end-to-end with an AI development partner.",
-"address":{"@type":"PostalAddress","addressLocality":"Bangkok","addressCountry":"TH"},
-"sameAs":["https://miomika.com","https://opticlean.mikaro.studio"]}
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -33,29 +27,13 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- ================================================================
-     ASSET SLOTS — paste real URLs here (one edit each), leave "" for fallback
-     mioMain : Miomika app/product photo for the big pink card
-     mioHero : Miomika photo for the hero collage card
-     zacPhoto: Dr. Zac's photo for the testimonial (after he confirms)
-================================================================ -->
-<script>
-/* ============ ASSET SLOTS — paste real image URLs, leave "" for fallback ============ */
-const ASSETS={
-  mioMain:"",   /* Miomika photo for the big pink card  */
-  mioHero:"",   /* Miomika photo for the hero collage    */
-  zacPhoto:""   /* Dr. Zac portrait for the testimonial  */
-};
-</script>
-
-<!-- ============ TOP BAR ============ -->
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#top"><i></i>mikaro</a>
+    <a class="logo" href="/"><i></i>mikaro</a>
     <nav class="top-links" aria-label="Main">
-      <a href="#work">Work</a><a href="#services">Services</a><a href="#ai">AI Lab</a><a href="#contact">Contact</a>
+      <a href="/work.html">Work</a><a href="/services.html">Services</a><a href="/ai-lab.html">AI Lab</a><a href="/contact.html">Contact</a>
     </nav>
-    <a class="btn btn-blue magnet" href="mailto:hello@mikaro.studio">Start a project</a>
+    <a class="btn btn-blue magnet" href="/contact.html">Start a project</a>
   </div>
 </header>
 
@@ -68,8 +46,8 @@ const ASSETS={
       <h1>We make <span class="pk">real products</span> — not <span class="swash">pretty promises.</span></h1>
       <p class="sub">Mikaro is a creative technology studio in Bangkok. <b>One human directing, an AI partner building</b> — design, code and shipping under one roof.</p>
       <div class="hero-ctas">
-        <a class="btn btn-blue magnet" href="#work">See the live work</a>
-        <a class="btn btn-ghost magnet" href="mailto:hello@mikaro.studio">Say hello</a>
+        <a class="btn btn-blue magnet" href="/work.html">See the live work</a>
+        <a class="btn btn-ghost magnet" href="/contact.html">Start a project</a>
       </div>
       <div class="hero-proof"><span class="stars">★★★★★</span><span><b>“Absolutely beautiful”</b> — Dr. Zac, first client</span></div>
     </div>
@@ -82,24 +60,24 @@ const ASSETS={
             <circle cx="78" cy="104" r="6" fill="#33121F" stroke="none"/><circle cx="122" cy="104" r="6" fill="#33121F" stroke="none"/>
             <path d="M93 120c2.6 4 11.4 4 14 0"/><path d="M100 120v7"/>
             <path d="M22 102h22M25 118h20M156 102h22M155 118h20" stroke="#FF3D8F" stroke-width="4"/>
+            <path d="M86 148c4.6 3.4 23.4 3.4 28 0" stroke="#FF3D8F"/>
             <circle cx="64" cy="128" r="7" fill="#FFC7E0" stroke="none"/><circle cx="136" cy="128" r="7" fill="#FFC7E0" stroke="none"/>
           </svg>
         </div>
         <div class="cap">Miomika — AI companion · live</div>
       </div>
       <div class="fl fl-oc">
-        <div class="ph"><img src="https://opticlean.mikaro.studio/hero-product.jpg" alt="" loading="lazy" decoding="async" width="833" height="714"></div>
+        <div class="ph" id="heroOcSlot"><img src="https://opticlean.mikaro.studio/hero-product.jpg" alt="" loading="lazy" decoding="async" width="833" height="714"></div>
         <div class="cap">OptiClean — live store</div>
       </div>
-      <span class="fl fl-chat">สวัสดีค่ะ! Say it with me 🐾</span>
-      <span class="fl fl-chat2">Checkout works — try 4242 💳</span>
+      <span class="fl fl-chat">สวัสดีค่ะ — say it with me</span>
+      <span class="fl fl-chat2">Checkout works — try 4242</span>
       <span class="stick st1">SHIPPED, NOT MOCKED</span>
       <span class="stick st2">MADE IN BKK ✦</span>
     </div>
   </div>
 </section>
 
-<!-- ============ MARQUEE ============ -->
 <div class="mq" aria-hidden="true"><div class="mq-t" id="mqt"><span>Product websites<i>✦</i>E-commerce<i>✦</i>AI-powered apps<i>✦</i>Brand systems<i>✦</i>Motion<i>✦</i>Payments<i>✦</i>Bilingual builds<i>✦</i></span></div></div>
 
 <!-- ============ WORK ============ -->
@@ -111,15 +89,16 @@ const ASSETS={
       <p>Not case studies. Not mockups. Real software you can open, tap and buy from — right now.</p>
     </div>
 
-    <!-- MIOMIKA -->
     <article class="mega mega-mio tilt rv" aria-label="Miomika">
       <div class="txt">
-        <span class="tag">🐱 Own product · TH/EN · Live</span>
+        <span class="tag">Own product · TH/EN · Live</span>
         <h3>A cat that teaches you <span class="hl">to talk.</span></h3>
         <p>Miomika is a voice-first AI companion for Thai speakers — Miomi teaches Thai and English through real conversation, not flashcards.</p>
-        <p>Built entirely in-house: the teaching brain, the speech pipeline, payments with a referral engine, and a full admin console.</p>
         <div class="stats-row"><span class="sp">Voice-first</span><span class="sp">LLM brain</span><span class="sp">Stripe + referrals</span><span class="sp">Admin console</span></div>
-        <a class="btn magnet" href="https://miomika.com" target="_blank" rel="noopener">Meet Miomi ↗</a>
+        <div class="btn-row">
+          <a class="btn magnet" href="/work/miomika.html">Read the case study</a>
+          <a class="btn btn-ghost magnet" href="https://miomika.com" target="_blank" rel="noopener">Visit live ↗</a>
+        </div>
       </div>
       <div class="vis mio-vis" id="mioVis">
         <div class="imgslot" id="mioMainSlot">
@@ -133,24 +112,25 @@ const ASSETS={
             <circle cx="64" cy="128" r="7" fill="#FFC7E0" stroke="none"/><circle cx="136" cy="128" r="7" fill="#FFC7E0" stroke="none"/>
           </svg>
         </div>
-        <span class="bub b1" id="mb1">Say “hello” in Thai? 🙋</span>
-        <span class="bub b2" id="mb2">สวัสดีค่ะ — your turn! 🎙️</span>
+        <span class="bub b1" id="mb1">Say “hello” in Thai?</span>
+        <span class="bub b2" id="mb2">สวัสดีค่ะ — your turn!</span>
       </div>
     </article>
 
-    <!-- OPTICLEAN -->
     <article class="mega mega-oc tilt rv" aria-label="OptiClean">
-      <div class="vis">
+      <div class="vis" id="ocMainSlot">
         <img src="https://opticlean.mikaro.studio/hero-product.jpg" alt="OptiClean live store product scene" loading="lazy" decoding="async" width="833" height="714">
         <span class="seal">TEST CARD<br>4242 4242</span>
       </div>
       <div class="txt">
-        <span class="tag">🧴 Client work · FR/EN · Live</span>
+        <span class="tag">Client work · FR/EN · Live</span>
         <h3>A 19th-century brand, <span class="hl">shipped in days.</span></h3>
-        <p>OptiClean by Dr. Zac — a vintage French apothecary brand turned into a complete store from a single reference image.</p>
-        <p>Ten bilingual pages, EUR/CHF pricing, a live cart and a working Stripe checkout. Go on — test-buy a bottle.</p>
+        <p>OptiClean by Dr. Zac — a vintage French apothecary brand turned into a complete store from a single reference image. Ten bilingual pages, EUR/CHF, working Stripe checkout.</p>
         <div class="stats-row"><span class="sp">10 pages · FR/EN</span><span class="sp">EUR / CHF</span><span class="sp">Stripe checkout</span><span class="sp">SEO + schema</span></div>
-        <a class="btn magnet" href="https://opticlean.mikaro.studio" target="_blank" rel="noopener">Enter the store ↗</a>
+        <div class="btn-row">
+          <a class="btn magnet" href="/work/opticlean.html">Read the case study</a>
+          <a class="btn btn-ghost magnet" style="border-color:#1C1813;color:#1C1813;background:transparent" href="https://opticlean.mikaro.studio" target="_blank" rel="noopener">Enter the store ↗</a>
+        </div>
       </div>
     </article>
   </div>
@@ -170,24 +150,6 @@ const ASSETS={
   </div>
 </section>
 
-<!-- ============ SERVICES ============ -->
-<section class="serv" id="services">
-  <div class="wrap">
-    <div class="shead rv">
-      <span class="pill">What we do</span>
-      <h2>From first sketch to <span class="bl">“it's live.”</span></h2>
-    </div>
-    <div class="serv-g">
-      <div class="sv rv"><span class="ic i-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 17v4"/></svg></span><h4>Product websites</h4><p>Brand-true, fast, bilingual when needed — built to convert, not to decorate.</p></div>
-      <div class="sv rv"><span class="ic i-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span><h4>E-commerce</h4><p>Real carts, real checkouts, multi-currency — Stripe wired end to end.</p></div>
-      <div class="sv rv"><span class="ic i-pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a7 7 0 0 1 7 7c0 3-2 4.5-2 7H7c0-2.5-2-4-2-7a7 7 0 0 1 7-7z"/><path d="M9 21h6"/></svg></span><h4>AI-powered apps</h4><p>LLM brains, voice pipelines, admin consoles — like Miomika, our own flagship.</p></div>
-      <div class="sv rv"><span class="ic i-mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg></span><h4>Bilingual builds</h4><p>TH · EN · FR shipped so far — language switching done properly, SEO included.</p></div>
-      <div class="sv rv"><span class="ic i-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><h4>Motion & interaction</h4><p>Interfaces that feel alive — micro-interactions with a purpose.</p></div>
-      <div class="sv rv"><span class="ic i-ink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M6 20v-6M18 20V4"/></svg></span><h4>SEO & performance</h4><p>Schema, Core Web Vitals, lazy everything — fast by construction.</p></div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ STATS ============ -->
 <section class="stats">
   <div class="wrap">
@@ -200,47 +162,20 @@ const ASSETS={
   </div>
 </section>
 
-<!-- ============ AI LAB ============ -->
+<!-- ============ AI TEASER ============ -->
 <section class="ai" id="ai">
   <div class="wrap">
     <div class="ai-g">
       <div class="rv">
-        <span class="pill">The AI lab — try it yourself</span>
+        <span class="pill">The AI lab</span>
         <h2>Human direction.<br><span class="bl">AI horsepower.</span></h2>
         <p>Mikaro runs as a two-mind studio: one human owning taste, strategy and every decision — one AI partner writing production code at machine speed. <b>Not AI-generated. AI-amplified.</b></p>
-        <p>Ask MIKA anything about the studio — go on, it's right there. 👉</p>
-        <p class="note">On-page demo guide — runs entirely in your browser, nothing is sent anywhere. The serious AI systems are the ones we build into products like Miomika.</p>
-      </div>
-      <div class="chat rv" aria-label="MIKA studio guide">
-        <div class="chat-bar"><span class="av">M</span>MIKA — studio guide<span class="on"><span class="dot" style="width:8px;height:8px;border-radius:50%;background:#22C55E;display:inline-block"></span>online</span></div>
-        <div class="chat-log" id="chatLog" aria-live="polite"></div>
-        <div class="chat-chips" id="chatChips">
-          <button data-q="What do you build?">What do you build?</button>
-          <button data-q="Show me the live work">Live work</button>
-          <button data-q="How does the AI part work?">The AI part?</button>
-          <button data-q="What does a project cost?">Pricing</button>
+        <p>See how it works — or ask MIKA directly, the pink button in the corner is listening.</p>
+        <div class="btn-row" style="margin-top:1.4rem">
+          <a class="btn btn-blue magnet" href="/ai-lab.html">Visit the AI Lab</a>
         </div>
-        <form class="chat-in" id="chatForm">
-          <input id="chatInput" type="text" placeholder="Ask MIKA about the studio…" autocomplete="off" aria-label="Message MIKA">
-          <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        </form>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROCESS ============ -->
-<section class="proc">
-  <div class="wrap">
-    <div class="shead rv">
-      <span class="pill">How it works</span>
-      <h2>Four steps. <span class="gd">No mystery.</span></h2>
-    </div>
-    <div class="proc-g">
-      <div class="pst rv"><span class="n">01</span><h4>Listen</h4><p>Your product, your customer, your constraints — the brief is written together.</p></div>
-      <div class="pst rv"><span class="n">02</span><h4>Design</h4><p>A visual system built from your world, never from a UI kit.</p></div>
-      <div class="pst rv"><span class="n">03</span><h4>Build</h4><p>Custom code end to end — payments, languages, admin, the unglamorous parts too.</p></div>
-      <div class="pst rv"><span class="n">04</span><h4>Ship</h4><p>Live on a URL, measured, improved. That's where the work starts.</p></div>
+      <div class="rv" data-mika></div>
     </div>
   </div>
 </section>
@@ -251,22 +186,21 @@ const ASSETS={
     <div class="cta-card rv">
       <h2>Got something real to build?</h2>
       <p>Tell me what you're making — you'll get a straight answer, and if we fit, a plan within days.</p>
-      <a class="btn magnet" href="mailto:hello@mikaro.studio">hello@mikaro.studio</a>
-      <div class="avail"><i></i>Available for one project this quarter · Bangkok · <span id="clock">--:--</span> local</div>
+      <a class="btn magnet" href="/contact.html">Start a project</a>
+      <div class="avail"><i></i>Available for one project this quarter · Bangkok · <span data-clock>--:--</span> local</div>
     </div>
   </div>
 </section>
 </main>
 
-<!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="wrap">
-    <a class="logo" href="#top"><i></i>mikaro</a>
+    <a class="logo" href="/"><i></i>mikaro</a>
     <span class="f-note">© 2026 Mikaro Studio · Bangkok · Designed &amp; built in-house. Obviously.</span>
     <div class="socials">
       <a href="https://miomika.com" target="_blank" rel="noopener" aria-label="Miomika" title="Miomika"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 9 3 4l6 3"/><path d="M19 9l2-5-6 3"/><ellipse cx="12" cy="13" rx="8" ry="7"/><circle cx="9.4" cy="12.4" r=".9" fill="currentColor" stroke="none"/><circle cx="14.6" cy="12.4" r=".9" fill="currentColor" stroke="none"/></svg></a>
       <a href="#" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="#" aria-label="X / Twitter" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.1l-6.8 7.8L21.8 21h-6.3l-4.9-6.4L5 21H1.9l7.3-8.3L2.2 3h6.4l4.4 5.9L17.5 3zm-1.1 16.1h1.7L7.7 4.8H5.9l10.5 14.3z"/></svg></a>
+      <a href="#" aria-label="X" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.1l-6.8 7.8L21.8 21h-6.3l-4.9-6.4L5 21H1.9l7.3-8.3L2.2 3h6.4l4.4 5.9L17.5 3zm-1.1 16.1h1.7L7.7 4.8H5.9l10.5 14.3z"/></svg></a>
       <a href="#" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.52V23H.24V8.25zM8.34 8.25h4.33v2.01h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.51v-7.2c0-1.72-.03-3.93-2.4-3.93-2.4 0-2.77 1.87-2.77 3.8V23H8.34V8.25z"/></svg></a>
     </div>
   </div>

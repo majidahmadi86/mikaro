@@ -1,16 +1,21 @@
 # Mikaro Studio — mikaro.studio
 
-Static production site (GitHub Pages).
+Multi-page static production site (GitHub Pages).
 
-## Structure
-- `index.html` — the site (ASSETS config block at top of body for image slots)
-- `css/main.css` — design system + all styles
-- `js/main.js` — interactions (tilt, magnetics, counters, reveals, clock)
-- `js/chat.js` — MIKA, the on-page studio guide
-- `assets/` — favicons, og image, manifest
-- `404.html` — branded not-found (served automatically by GitHub Pages)
+## Pages
+- `/` home · `/work.html` overview · `/work/miomika.html` + `/work/opticlean.html` cases
+- `/services.html` (per-service CTAs) · `/ai-lab.html` (capabilities, build log, MIKA)
+- `/contact.html` (FormSubmit form) · `/thanks.html` · `/404.html`
+
+## Shared
+- `css/main.css` — design system
+- `js/main.js` — interactions + responsive image slots (see `assets/img/README.txt`)
+- `js/chat.js` — MIKA widget: embeds via `data-mika`, floating launcher on every page
+
+## Contact form (FormSubmit)
+First real submission triggers a one-time activation email to hello@mikaro.studio — click the link once and it's live forever. Same for the in-chat lead form.
 
 ## Editing
-- Swap Miomika / Dr. Zac images: paste URLs in the `ASSETS` block in `index.html`.
-- Social links: footer + contact section (`aria-label` Instagram / X / LinkedIn).
-- Keep the existing `CNAME` file — it binds the custom domain.
+- Images: drop files into `assets/img/` with the exact names in the README there.
+- Socials: footer `aria-label` Instagram / X / LinkedIn placeholders.
+- Keep `CNAME` — it binds the custom domain.
