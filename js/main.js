@@ -22,7 +22,7 @@ const IMG_SLOTS={
   Object.entries(IMG_SLOTS).forEach(([id,cfg])=>{
     const el=document.getElementById(id);if(!el)return;
     const img=new Image();
-    img.onload=()=>{el.innerHTML='';img.alt=cfg.alt;img.loading='lazy';img.decoding='async';el.appendChild(img);};
+    img.onload=()=>{img.alt=cfg.alt;img.loading='lazy';img.decoding='async';const old=el.querySelector('img,svg');if(old)old.remove();el.prepend(img);el.classList.add('has-img');};
     img.src=mobile&&cfg.m?cfg.m:cfg.d;
   });
   const av=document.getElementById('zacAvatar');
