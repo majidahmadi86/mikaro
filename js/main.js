@@ -225,3 +225,31 @@ bkk();setInterval(bkk,15000);
   const want=q.get('want');
   if(msg&&want){msg.value='I want this — something like '+want+' for my brand. Here is my idea: ';msg.focus();msg.setSelectionRange(msg.value.length,msg.value.length);}
 })();
+
+/* ---------- v5.2 scroll engine: parallax depth + marquee velocity + clip reveals ---------- */
+(function(){
+  if(RM)return;
+  document.querySelectorAll('.mega .bframe').forEach(el=>el.dataset.sp='0.42');
+  document.querySelectorAll('.case-hero .bframe').forEach(el=>el.dataset.sp='0.3');
+  document.querySelectorAll('.testi-card .avatar').forEach(el=>el.dataset.sp='0.22');
+  document.querySelectorAll('.perf-badges').forEach(el=>el.dataset.sp='0.2');
+  document.querySelectorAll('.cta-card h2').forEach(el=>el.dataset.sp='0.16');
+  const els=[...document.querySelectorAll('[data-sp]')].map(el=>[el,parseFloat(el.dataset.sp)]);
+  const mq=document.querySelector('.mq');
+  let lastY=scrollY,vel=0;
+  (function frame(){
+    const y=scrollY;
+    vel+=((Math.min(Math.abs(y-lastY),50))*(y>=lastY?1:-1)-vel)*.1;lastY=y;
+    els.forEach(([el,f])=>{
+      const r=el.getBoundingClientRect();
+      const p=(innerHeight-r.top)/(innerHeight+r.height);
+      if(p>-.2&&p<1.2)el.style.transform='translateY('+((p-.5)*f*-150).toFixed(1)+'px)';
+    });
+    if(mq)mq.style.transform='skewX('+(-vel*.3).toFixed(2)+'deg)';
+    requestAnimationFrame(frame);
+  })();
+  const clips=document.querySelectorAll('.shead h2,.phero h1,.ai h2,.perf-copy h3');
+  clips.forEach(el=>el.classList.add('clipin'));
+  const cio=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');cio.unobserve(en.target);}});},{threshold:.35});
+  clips.forEach(el=>cio.observe(el));
+})();
