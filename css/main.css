@@ -437,3 +437,68 @@ body.scrolled .logo>i{display:none}
 [data-sp]{will-change:transform}
 .mq{transition:none}
 @media(prefers-reduced-motion:reduce){.clipin{clip-path:none;transition:none}}
+
+/* ================================================================
+   v5.3 — repair + full-motion pass (JS-only hiding: never dead space)
+   ================================================================ */
+/* kill the stuck clip reveal from v5.2 */
+.clipin{clip-path:none!important;transition:none!important}
+
+/* browser-frame hard repair: neutralize every legacy slot rule inside frames */
+.mega .vis .bframe{width:min(92%,560px)}
+.mega .vis .bframe .shot{width:100%!important;aspect-ratio:auto!important;min-height:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;background:#fff}
+.mega .vis .bframe .shot img{position:static!important;width:100%!important;height:auto!important;object-fit:unset!important;padding:0!important}
+.mega .vis .bframe .shot svg{position:static;width:100%;max-width:280px;margin:0 auto;padding:2rem;display:block}
+.case-hero .imgslot{aspect-ratio:auto!important;box-shadow:none}
+
+/* word-by-word headline reveal (hidden ONLY after JS splits) */
+.wsplit .wu{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.wsplit .wu i{display:inline-block;font-style:normal;transform:translateY(118%) rotate(5deg);transition:transform .85s var(--ease);transition-delay:var(--d,0s)}
+.wsplit.hin .wu i{transform:none}
+
+/* auto-reveal units (class added ONLY by JS) */
+.arv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .8s var(--ease);transition-delay:var(--d,0s)}
+.arv.in{opacity:1;transform:none}
+
+/* micro-motions everywhere */
+.meta,.ct-card,.sp,.tag,.pill,.badge{transition:transform .35s var(--ease),box-shadow .35s}
+.meta:hover,.ct-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.sp:hover{transform:translateY(-3px)}
+.tag:hover{transform:rotate(-2deg) scale(1.04)}
+.sv .ic{transition:transform .45s var(--ease)}
+.sv:hover .ic{transform:rotate(-8deg) scale(1.12)}
+.socials a{transition:transform .35s var(--ease),background .25s,color .25s}
+.avatar{transition:transform .5s var(--ease)}
+.testi-card:hover .avatar{transform:rotate(-4deg) scale(1.06)}
+
+/* page-hero ornaments + tighter rhythm */
+.phero{position:relative;padding:clamp(2.4rem,6vh,4rem) 0 clamp(1.4rem,3.5vh,2.2rem)}
+.phero .wrap{position:relative}
+.phero .wrap::before,.phero .wrap::after{content:"✦";position:absolute;font-size:1.6rem;animation:float3 6s ease-in-out infinite;pointer-events:none}
+.phero .wrap::before{color:var(--pink);left:8%;top:-6px;animation-delay:.6s}
+.phero .wrap::after{color:var(--blue);right:8%;bottom:-2px}
+
+/* mobile-first assurance */
+@media(max-width:768px){
+  .phero h1{font-size:clamp(2rem,9vw,2.6rem)}
+  .hero{padding-top:2rem}
+  .hero h1{font-size:clamp(2.2rem,10.5vw,2.8rem)}
+  .collage{min-height:400px}
+  .fl-mio{width:74%}
+  .fl-oc{width:60%;right:0}
+  .mega .txt{padding:1.6rem 1.4rem}
+  .mega .vis{padding:1.2rem}
+  .mega .vis .bframe{width:100%}
+  .case-hero{padding:1rem}
+  .slider .sarrow{width:38px;height:38px}
+  .testi-card::before{font-size:7rem}
+  .theater .code{font-size:.66rem;padding:1rem}
+  .perf-card{justify-content:center;text-align:center}
+  .perf-copy p{margin-left:auto;margin-right:auto}
+  .consult-band,.next-proj{justify-content:center;text-align:center}
+  .mq-t{font-size:.74rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .wsplit .wu i{transform:none;transition:none}
+  .arv{opacity:1;transform:none;transition:none}
+}
