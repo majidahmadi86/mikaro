@@ -8,18 +8,26 @@ const MOBILE=matchMedia('(max-width:768px)').matches;
 
 /* ---------- responsive image slots (Mike's files in /assets/img/) ---------- */
 const IMG_SLOTS={
-  heroMioSlot:{d:'/assets/img/miomika-hero-desktop.jpg',m:'/assets/img/miomika-hero-mobile.jpg',alt:'Miomika — live app'},
-  mioMainSlot:{d:'/assets/img/miomika-case-desktop.jpg',m:'/assets/img/miomika-case-mobile.jpg',alt:'Miomika app'},
-  heroOcSlot:{d:'/assets/img/opticlean-hero-desktop.jpg',m:'/assets/img/opticlean-hero-mobile.jpg',alt:'OptiClean live store'},
-  ocMainSlot:{d:'/assets/img/opticlean-case-desktop.jpg',m:'/assets/img/opticlean-case-mobile.jpg',alt:'OptiClean storefront'}
+  heroMioSlot:{d:'/assets/img/miomika-hero-desktop.jpg',m:['/assets/img/miomika-hero-mobile.jpg','/assets/img/miomika-hero-desktop-mobile.jpg'],alt:'Miomika — live app',lcp:true},
+  mioMainSlot:{d:'/assets/img/miomika-case-desktop.jpg',m:['/assets/img/miomika-case-mobile.jpg','/assets/img/miomika-case-desktop-mobile.jpg'],alt:'Miomika app'},
+  heroOcSlot:{d:'/assets/img/opticlean-hero-desktop.jpg',m:['/assets/img/opticlean-hero-mobile.jpg','/assets/img/opticlean-hero-desktop-mobile.jpg'],alt:'OptiClean live store',lcp:true},
+  ocMainSlot:{d:'/assets/img/opticlean-case-desktop.jpg',m:['/assets/img/opticlean-case-mobile.jpg','/assets/img/opticlean-case-desktop-mobile.jpg'],alt:'OptiClean storefront'}
 };
 Object.entries(IMG_SLOTS).forEach(([id,cfg])=>{
   const el=document.getElementById(id);if(!el)return;
-  const img=new Image();
-  img.onload=()=>{img.alt=cfg.alt;img.loading='lazy';img.decoding='async';
-    const old=el.querySelector('img,svg');if(old)old.remove();
-    el.prepend(img);el.classList.add('has-img');};
-  img.src=MOBILE&&cfg.m?cfg.m:cfg.d;
+  const list=MOBILE&&cfg.m?[].concat(cfg.m,cfg.d):[cfg.d];
+  let n=0;
+  (function tryNext(){
+    if(n>=list.length)return;
+    const img=new Image();
+    img.onload=()=>{img.alt=cfg.alt;
+      if(cfg.lcp){img.loading='eager';img.fetchPriority='high';}else{img.loading='lazy';}
+      img.decoding='async';
+      const old=el.querySelector('img,svg');if(old)old.remove();
+      el.prepend(img);el.classList.add('has-img');};
+    img.onerror=()=>{n++;tryNext();};
+    img.src=list[n];
+  })();
 });
 (function(){const av=document.getElementById('zacAvatar');
   if(av){const img=new Image();img.onload=()=>{av.textContent='';img.alt='Dr. Zac';av.appendChild(img);};img.src='/assets/img/zac.jpg';}})();
@@ -296,4 +304,41 @@ bkk();setInterval(bkk,15000);
   });
   const aio=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');aio.unobserve(en.target);}});},{threshold:.15});
   document.querySelectorAll('.arv').forEach(el=>aio.observe(el));
+})();
+
+/* ---------- v5.4: mobile menu + photo socials ---------- */
+(function(){
+  const wrap=document.querySelector('.top .wrap');
+  if(wrap&&!document.querySelector('.burger-btn')){
+    const b=document.createElement('button');
+    b.className='burger-btn';b.setAttribute('aria-label','Open menu');b.setAttribute('aria-expanded','false');
+    b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+    wrap.appendChild(b);
+    const p=document.createElement('div');p.className='mnav';p.setAttribute('role','dialog');p.setAttribute('aria-label','Menu');
+    p.innerHTML='<button class="mclose" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>'
+      +'<a class="mlink" href="/" style="--d:.05s">Home</a>'
+      +'<a class="mlink" href="/work" style="--d:.12s">Work</a>'
+      +'<a class="mlink" href="/services" style="--d:.19s">Services</a>'
+      +'<a class="mlink" href="/ai-lab" style="--d:.26s">AI Lab</a>'
+      +'<a class="mlink" href="/contact" style="--d:.33s">Contact</a>'
+      +'<a class="btn btn-blue mcta" href="/contact">Start a project</a>';
+    document.body.appendChild(p);
+    function open(){p.classList.add('open');b.setAttribute('aria-expanded','true');}
+    function close(){p.classList.remove('open');b.setAttribute('aria-expanded','false');}
+    b.addEventListener('click',open);
+    p.querySelector('.mclose').addEventListener('click',close);
+    p.addEventListener('click',e=>{if(e.target.closest('a'))close();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+  }
+  document.querySelectorAll('.socials').forEach(s=>{
+    const mio=s.querySelector('a[aria-label="Miomika"]');
+    if(mio)mio.innerHTML='<img src="/assets/img/miomi-head.png" alt="Miomika" loading="lazy">';
+    if(!s.querySelector('a[aria-label="OptiClean"]')){
+      const oc=document.createElement('a');
+      oc.href='https://opticlean.mikaro.studio';oc.target='_blank';oc.rel='noopener';
+      oc.setAttribute('aria-label','OptiClean');oc.title='OptiClean by Dr. Zac';
+      oc.innerHTML='<img src="/assets/img/zac.jpg" alt="OptiClean by Dr. Zac" loading="lazy">';
+      if(mio&&mio.nextSibling)s.insertBefore(oc,mio.nextSibling);else s.appendChild(oc);
+    }
+  });
 })();
