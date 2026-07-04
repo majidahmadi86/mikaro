@@ -8,7 +8,7 @@
    ================================================================ */
 (function(){
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
-const FORM_ENDPOINT='https://formsubmit.co/ajax/YOUR-REAL-EMAIL@gmail.com';
+const FORM_ENDPOINT='https://formsubmit.co/ajax/majid.ahmadi86@gmail.com';
 
 /* ---------- brain ---------- */
 const INTENTS=[

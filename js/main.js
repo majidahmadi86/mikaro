@@ -380,3 +380,33 @@ bkk();setInterval(bkk,15000);
   adds.forEach(b=>b.addEventListener('click',()=>{b.classList.toggle('on');calc();}));
   calc();
 })();
+
+/* ---------- v5.7: mobile menu rebuilt from scratch ---------- */
+(function(){
+  document.querySelectorAll('.burger-btn,.mnav').forEach(e=>e.remove());
+  const wrap=document.querySelector('.top .wrap');if(!wrap)return;
+  const burger=document.createElement('button');
+  burger.className='mm-burger';burger.setAttribute('aria-label','Open menu');burger.setAttribute('aria-expanded','false');
+  burger.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  wrap.appendChild(burger);
+  const mm=document.createElement('div');
+  mm.className='mm';mm.setAttribute('role','dialog');mm.setAttribute('aria-modal','true');mm.setAttribute('aria-label','Menu');
+  mm.innerHTML=
+    '<div class="mm-top"><a class="logo" href="/"><i></i>mikaro</a>'
+    +'<button class="mm-x" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'
+    +'<nav class="mm-links" aria-label="Mobile">'
+    +'<a href="/" style="--d:.04s">Home</a>'
+    +'<a href="/work" style="--d:.1s">Work</a>'
+    +'<a href="/services" style="--d:.16s">Services</a>'
+    +'<a href="/ai-lab" style="--d:.22s">AI Lab</a>'
+    +'<a href="/contact" style="--d:.28s">Contact</a>'
+    +'</nav>'
+    +'<div class="mm-foot"><a class="btn btn-blue" href="/contact">Start a project →</a></div>';
+  document.body.appendChild(mm);
+  function open(){mm.classList.add('open');document.documentElement.classList.add('mm-lock');document.body.classList.add('mm-lock');burger.setAttribute('aria-expanded','true');}
+  function close(){mm.classList.remove('open');document.documentElement.classList.remove('mm-lock');document.body.classList.remove('mm-lock');burger.setAttribute('aria-expanded','false');}
+  burger.addEventListener('click',open);
+  mm.querySelector('.mm-x').addEventListener('click',close);
+  mm.addEventListener('click',e=>{if(e.target.closest('a'))close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+})();
