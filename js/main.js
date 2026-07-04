@@ -342,3 +342,41 @@ bkk();setInterval(bkk,15000);
     }
   });
 })();
+
+/* ---------- v5.6: menu restructure + blueprint builder ---------- */
+(function(){
+  const p=document.querySelector('.mnav');
+  if(p&&!p.querySelector('.mhead')){
+    const close=p.querySelector('.mclose');
+    const head=document.createElement('div');head.className='mhead';
+    head.innerHTML='<a class="logo" href="/"><i></i>mikaro</a>';
+    head.appendChild(close);
+    const body=document.createElement('div');body.className='mbody';
+    [...p.querySelectorAll('.mlink,.mcta')].forEach(el=>body.appendChild(el));
+    p.prepend(head);p.appendChild(body);
+  }
+})();
+(function(){
+  const root=document.getElementById('blueprint');if(!root)return;
+  const types=[...root.querySelectorAll('.bp-type')],adds=[...root.querySelectorAll('.bp-add')];
+  const elP=document.getElementById('bpPages'),elT=document.getElementById('bpTime'),
+        elB=document.getElementById('bpBudget'),elS=document.getElementById('bpStack'),
+        send=document.getElementById('bpSend');
+  const STACK={website:['Design system','Custom code','Hosting'],ecommerce:['Design system','Cart + Stripe','Hosting'],ai:['LLM brain','Voice pipeline','Custom code','Hosting']};
+  function tick(el){el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick');}
+  function calc(){
+    const t=types.find(b=>b.classList.contains('on'));
+    const on=adds.filter(b=>b.classList.contains('on'));
+    let pages=+t.dataset.pages,w1=+t.dataset.w1,w2=+t.dataset.w2;
+    on.forEach(b=>{pages+=+b.dataset.p;});
+    w2+=Math.ceil(on.length/2);
+    elP.textContent=pages;elT.textContent=w1+'\u2013'+w2+' weeks';elB.textContent=t.dataset.b+(on.length>2?' +':'');
+    [elP,elT,elB].forEach(tick);
+    elS.innerHTML=STACK[t.dataset.type].concat(on.map(b=>b.dataset.add)).map(s=>'<span class="sp2">'+s+'</span>').join('');
+    const want='Blueprint: '+t.textContent.trim()+(on.length?' + '+on.map(b=>b.dataset.add).join(', '):'');
+    send.href='/contact?service='+t.dataset.type+'&want='+encodeURIComponent(want);
+  }
+  types.forEach(b=>b.addEventListener('click',()=>{types.forEach(x=>x.classList.remove('on'));b.classList.add('on');calc();}));
+  adds.forEach(b=>b.addEventListener('click',()=>{b.classList.toggle('on');calc();}));
+  calc();
+})();
