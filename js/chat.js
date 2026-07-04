@@ -104,9 +104,28 @@ function mount(root){
     });
   }
 
+  const HIST=[];
+  async function aiReply(q){
+    const t=add('bot typing','<i></i><i></i><i></i>');
+    try{
+      const r=await fetch('/api/mika',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:HIST})});
+      if(!r.ok)throw 0;
+      const d=await r.json();
+      if(!d.reply)throw 0;
+      HIST.push({role:'assistant',content:d.reply});
+      t.classList.remove('typing');
+      t.innerHTML=esc(d.reply).replace(/\n/g,'<br>');
+      if(/contact|budget|price|quote|start/i.test(q+d.reply))renderActs(t,[{h:'/contact',l:'Open the contact form'}]);
+      log.scrollTop=log.scrollHeight;
+    }catch(err){
+      t.remove();
+      reply(pick(q));
+    }
+  }
   function handle(q,label){
     add('user',esc(label||q));
-    reply(pick(q));
+    HIST.push({role:'user',content:q});
+    aiReply(q);
   }
 
   form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';handle(q);});
