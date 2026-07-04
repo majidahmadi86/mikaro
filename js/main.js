@@ -370,7 +370,7 @@ bkk();setInterval(bkk,15000);
     let pages=+t.dataset.pages,w1=+t.dataset.w1,w2=+t.dataset.w2;
     on.forEach(b=>{pages+=+b.dataset.p;});
     w2+=Math.ceil(on.length/2);
-    elP.textContent=pages;elT.textContent=w1+'\u2013'+w2+' weeks';elB.textContent=t.dataset.b+(on.length>2?' +':'');
+    elP.textContent=pages;elT.textContent=w1+'\u2013'+w2+' weeks';elB.textContent=t.dataset.b;
     [elP,elT,elB].forEach(tick);
     elS.innerHTML=STACK[t.dataset.type].concat(on.map(b=>b.dataset.add)).map(s=>'<span class="sp2">'+s+'</span>').join('');
     const want='Blueprint: '+t.textContent.trim()+(on.length?' + '+on.map(b=>b.dataset.add).join(', '):'');

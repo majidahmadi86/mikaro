@@ -13,7 +13,7 @@ Multi-page static production site (GitHub Pages).
 - `js/chat.js` — MIKA widget: embeds via `data-mika`, floating launcher on every page
 
 ## Contact form (FormSubmit)
-First real submission triggers a one-time activation email to hello@mikaro.studio — click the link once and it's live forever. Same for the in-chat lead form.
+First real submission triggers a one-time activation email to majid.ahmadi86@gmail.com — click the link once and it's live forever. Same for the in-chat lead form.
 
 ## Editing
 - Images: drop files into `assets/img/` with the exact names in the README there.
