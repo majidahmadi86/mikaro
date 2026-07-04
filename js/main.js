@@ -228,8 +228,8 @@ bkk();setInterval(bkk,15000);
     vh=innerHeight;
     els.forEach(o=>{o.h=o.el.offsetHeight;let t=0,n=o.el;while(n){t+=n.offsetTop;n=n.offsetParent;}o.top=t;});
   }
-  measure();
-  addEventListener('load',measure);
+  requestAnimationFrame(measure);
+  addEventListener('load',()=>requestAnimationFrame(measure));
   addEventListener('resize',()=>requestAnimationFrame(measure),{passive:true});
   let lastY=scrollY,vel=0;
   (function frame(){

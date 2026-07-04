@@ -28,7 +28,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <!-- inlined from css/main.css — if css/main.css changes, this block must be re-synced -->
-<style>/* ================================================================
+<style>/* v6.3 — metric-compatible font fallbacks: kill font-swap CLS */
+@font-face{font-family:'Gabarito Fallback';src:local('Arial Bold'),local('Arial');font-weight:600 900;ascent-override:100%;descent-override:24%;line-gap-override:0%;size-adjust:102%}
+@font-face{font-family:'Figtree Fallback';src:local('Arial');font-weight:400 700;ascent-override:94%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+/* ================================================================
    MIKARO STUDIO — main stylesheet
    Design system: Candy Showroom (milk / cobalt / pink / gold / mint)
    ================================================================ */
@@ -42,7 +45,7 @@
   --pink:#FF3D8F; --pink-soft:#FFE3F0;
   --gold:#E8B23C; --gold-soft:#F8EFDA; --oc-ink:#1C1813;
   --mint:#7BE0C8; --line:#EDE5DA;
-  --disp:'Gabarito',sans-serif; --body:'Figtree',sans-serif;
+  --disp:'Gabarito','Gabarito Fallback',sans-serif; --body:'Figtree','Figtree Fallback',sans-serif;
   --r:32px; --gut:clamp(20px,4vw,64px);
   --ease:cubic-bezier(.22,1,.36,1);
   --shadow:0 24px 60px -24px rgba(23,21,31,.22);
@@ -677,7 +680,7 @@ body{overflow-x:clip}
 /* ================================================================
    v6.0 — Thai language layer (/th/): typography + toggle
    ================================================================ */
-html[lang="th"]{--disp:'Prompt','Gabarito',sans-serif;--body:'Sarabun','Figtree',sans-serif}
+html[lang="th"]{--disp:'Prompt','Gabarito','Gabarito Fallback',sans-serif;--body:'Sarabun','Figtree','Figtree Fallback',sans-serif}
 html[lang="th"] h1,html[lang="th"] h2,html[lang="th"] h3,html[lang="th"] h4,html[lang="th"] .btn,html[lang="th"] .pill,html[lang="th"] .tag,html[lang="th"] .mm-links a{letter-spacing:0}
 html[lang="th"] .hero h1,html[lang="th"] .phero h1{line-height:1.22}
 html[lang="th"] .shead h2,html[lang="th"] .ai h2,html[lang="th"] .mega h3{line-height:1.28}
