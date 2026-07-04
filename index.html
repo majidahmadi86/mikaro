@@ -27,10 +27,6 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-<link rel="preload" as="image" href="/assets/img/miomika-hero-mobile.jpg" fetchpriority="high" media="(max-width:768px)">
-<link rel="preload" as="image" href="/assets/img/miomika-hero-desktop.jpg" fetchpriority="high" media="(min-width:769px)">
-<link rel="preload" as="image" href="/assets/img/opticlean-hero-desktop-mobile.jpg" media="(max-width:768px)">
-<link rel="preload" as="image" href="/assets/img/opticlean-hero-desktop.jpg" media="(min-width:769px)">
 <!-- inlined from css/main.css — if css/main.css changes, this block must be re-synced -->
 <style>/* ================================================================
    MIKARO STUDIO — main stylesheet
@@ -723,21 +719,13 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
     </div>
     <div class="collage" aria-hidden="true">
       <div class="fl fl-mio">
-        <div class="ph" id="heroMioSlot">
-          <svg viewBox="0 0 200 190" fill="none" stroke="#33121F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M52 74 L38 26 L82 52" fill="#FFE3F0"/><path d="M148 74 L162 26 L118 52" fill="#FFE3F0"/>
-            <ellipse cx="100" cy="112" rx="64" ry="58" fill="#fff"/>
-            <circle cx="78" cy="104" r="6" fill="#33121F" stroke="none"/><circle cx="122" cy="104" r="6" fill="#33121F" stroke="none"/>
-            <path d="M93 120c2.6 4 11.4 4 14 0"/><path d="M100 120v7"/>
-            <path d="M22 102h22M25 118h20M156 102h22M155 118h20" stroke="#FF3D8F" stroke-width="4"/>
-            <path d="M86 148c4.6 3.4 23.4 3.4 28 0" stroke="#FF3D8F"/>
-            <circle cx="64" cy="128" r="7" fill="#FFC7E0" stroke="none"/><circle cx="136" cy="128" r="7" fill="#FFC7E0" stroke="none"/>
-          </svg>
+        <div class="ph has-img" id="heroMioSlot">
+          <img src="/assets/img/miomika-hero-desktop.jpg" srcset="/assets/img/miomika-hero-mobile.jpg 480w, /assets/img/miomika-hero-desktop.jpg 1000w" sizes="(max-width:768px) 85vw, 30vw" alt="Miomika — live app" loading="eager" fetchpriority="high" decoding="async">
         </div>
         <div class="cap">Miomika — AI companion · live</div>
       </div>
       <div class="fl fl-oc">
-        <div class="ph" id="heroOcSlot"><img src="https://opticlean.mikaro.studio/hero-product.jpg" alt="" loading="lazy" decoding="async" width="833" height="714"></div>
+        <div class="ph has-img" id="heroOcSlot"><img src="/assets/img/opticlean-hero-desktop.jpg" srcset="/assets/img/opticlean-hero-desktop-mobile.jpg 600w, /assets/img/opticlean-hero-desktop.jpg 1343w" sizes="(max-width:768px) 85vw, 28vw" alt="OptiClean — live store" loading="eager" fetchpriority="high" decoding="async"></div>
         <div class="cap">OptiClean — live store</div>
       </div>
       <span class="fl fl-chat">สวัสดีค่ะ — say it with me</span>
@@ -774,14 +762,7 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
       <div class="vis mio-vis zoomin" id="mioVisWrap">
         <div class="bframe">
           <div class="bbar2"><i></i><i></i><i></i><span class="url">miomika.com</span></div>
-          <div class="shot imgslot" id="mioMainSlot"><svg viewBox="0 0 200 190" fill="none" stroke="#33121F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M52 74 L38 26 L82 52" fill="#FFE3F0"/><path d="M148 74 L162 26 L118 52" fill="#FFE3F0"/>
-            <ellipse cx="100" cy="112" rx="64" ry="58" fill="#fff"/>
-            <circle cx="78" cy="104" r="6" fill="#33121F" stroke="none"/><circle cx="122" cy="104" r="6" fill="#33121F" stroke="none"/>
-            <path d="M93 120c2.6 4 11.4 4 14 0"/><path d="M100 120v7"/>
-            <path d="M22 102h22M25 118h20M156 102h22M155 118h20" stroke="#FF3D8F" stroke-width="4"/>
-            <circle cx="64" cy="128" r="7" fill="#FFC7E0" stroke="none"/><circle cx="136" cy="128" r="7" fill="#FFC7E0" stroke="none"/>
-          </svg></div>
+          <div class="shot imgslot has-img" id="mioMainSlot"><img src="/assets/img/miomika-case-desktop.jpg" srcset="/assets/img/miomika-case-desktop-mobile.jpg 480w, /assets/img/miomika-case-desktop.jpg 1000w" sizes="(max-width:768px) 90vw, 42vw" alt="Miomika app" loading="lazy" decoding="async"></div>
         </div>
         <span class="bub b1" id="mb1">Say “hello” in Thai?</span>
         <span class="bub b2" id="mb2">สวัสดีค่ะ — your turn!</span>
@@ -793,7 +774,7 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
       <div class="vis zoomin">
         <div class="bframe">
           <div class="bbar2"><i></i><i></i><i></i><span class="url">opticlean.mikaro.studio</span></div>
-          <div class="shot imgslot" id="ocMainSlot"><img src="https://opticlean.mikaro.studio/hero-product.jpg" alt="OptiClean live store product scene" loading="lazy" decoding="async" width="833" height="714"></div>
+          <div class="shot imgslot has-img" id="ocMainSlot"><img src="/assets/img/opticlean-case-desktop.jpg" srcset="/assets/img/opticlean-case-desktop-mobile.jpg 600w, /assets/img/opticlean-case-desktop.jpg 1343w" sizes="(max-width:768px) 90vw, 42vw" alt="OptiClean storefront" loading="lazy" decoding="async"></div>
         </div>
         <span class="seal">TEST CARD<br>4242 4242</span>
       </div>

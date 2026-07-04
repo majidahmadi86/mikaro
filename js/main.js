@@ -8,28 +8,6 @@ const MOBILE=matchMedia('(max-width:768px)').matches;
 const THL=document.documentElement.lang==='th';
 
 /* ---------- responsive image slots (Mike's files in /assets/img/) ---------- */
-const IMG_SLOTS={
-  heroMioSlot:{d:'/assets/img/miomika-hero-desktop.jpg',m:['/assets/img/miomika-hero-mobile.jpg','/assets/img/miomika-hero-desktop-mobile.jpg'],alt:'Miomika — live app',lcp:true},
-  mioMainSlot:{d:'/assets/img/miomika-case-desktop.jpg',m:['/assets/img/miomika-case-mobile.jpg','/assets/img/miomika-case-desktop-mobile.jpg'],alt:'Miomika app'},
-  heroOcSlot:{d:'/assets/img/opticlean-hero-desktop.jpg',m:['/assets/img/opticlean-hero-mobile.jpg','/assets/img/opticlean-hero-desktop-mobile.jpg'],alt:'OptiClean live store',lcp:true},
-  ocMainSlot:{d:'/assets/img/opticlean-case-desktop.jpg',m:['/assets/img/opticlean-case-mobile.jpg','/assets/img/opticlean-case-desktop-mobile.jpg'],alt:'OptiClean storefront'}
-};
-Object.entries(IMG_SLOTS).forEach(([id,cfg])=>{
-  const el=document.getElementById(id);if(!el)return;
-  const list=MOBILE&&cfg.m?[].concat(cfg.m,cfg.d):[cfg.d];
-  let n=0;
-  (function tryNext(){
-    if(n>=list.length)return;
-    const img=new Image();
-    img.onload=()=>{img.alt=cfg.alt;
-      if(cfg.lcp){img.loading='eager';img.fetchPriority='high';}else{img.loading='lazy';}
-      img.decoding='async';
-      const old=el.querySelector('img,svg');if(old)old.remove();
-      el.prepend(img);el.classList.add('has-img');};
-    img.onerror=()=>{n++;tryNext();};
-    img.src=list[n];
-  })();
-});
 (function(){const av=document.getElementById('zacAvatar');
   if(av){const img=new Image();img.onload=()=>{av.textContent='';img.alt='Dr. Zac';av.appendChild(img);};img.src='/assets/img/zac.jpg';}})();
 
