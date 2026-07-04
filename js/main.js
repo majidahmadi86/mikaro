@@ -5,6 +5,7 @@
    ================================================================ */
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const MOBILE=matchMedia('(max-width:768px)').matches;
+const THL=document.documentElement.lang==='th';
 
 /* ---------- responsive image slots (Mike's files in /assets/img/) ---------- */
 const IMG_SLOTS={
@@ -76,13 +77,13 @@ Object.entries(IMG_SLOTS).forEach(([id,cfg])=>{
   const stage=document.getElementById('theater');if(!stage)return;
   const dir=stage.querySelector('.dir'),code=stage.querySelector('.code');
   const SCENES=[
-    {say:'<b>Direction:</b> Match the client\u2019s mockup \u2014 cream, marigold, Playfair.',
+    {say:THL?'<b>คำสั่ง:</b> จับ DNA ของแบรนด์จากม็อกอัป \u2014 ครีม มาริโกลด์ Playfair':'<b>Direction:</b> Match the client\u2019s mockup \u2014 cream, marigold, Playfair.',
      code:[['c','/* brand DNA \u2014 extracted from one JPEG */'],['k','--cream'],['p',': '],['s','#F5EFE2'],['p',';\n'],['k','--marigold'],['p',': '],['s','#E8B23C'],['p',';\n'],['k','font-family'],['p',': '],['s','\u2019Playfair Display\u2019'],['p',', serif;']],
      ok:'\u2192 shipped \u00b7 opticlean.mikaro.studio \u25cf'},
-    {say:'<b>Direction:</b> Wire a real checkout \u2014 euros and Swiss francs.',
+    {say:THL?'<b>คำสั่ง:</b> วางระบบชำระเงินจริง \u2014 ยูโรและฟรังก์สวิส':'<b>Direction:</b> Wire a real checkout \u2014 euros and Swiss francs.',
      code:[['c','// api/create-checkout-session.js'],['p','\n'],['f','stripe'],['p','.checkout.sessions.'],['f','create'],['p','({\n  '],['k','currency'],['p',': cur, '],['k','line_items'],['p',': [bottle(q)],\n  '],['k','success_url'],['p',': '],['s','\u2019/merci\u2019'],['p','\n});']],
      ok:'\u2192 test card 4242 \u00b7 payment confirmed \u25cf'},
-    {say:'<b>Direction:</b> The whole store in French and English \u2014 automatically.',
+    {say:THL?'<b>คำสั่ง:</b> ทั้งร้านเป็นฝรั่งเศสและอังกฤษ \u2014 สลับอัตโนมัติ':'<b>Direction:</b> The whole store in French and English \u2014 automatically.',
      code:[['c','// bilingual, detected from the browser'],['p','\n'],['f','setLang'],['p','(navigator.language.'],['f','startsWith'],['p','('],['s','\u2019fr\u2019'],['p',') ? '],['s','\u2019fr\u2019'],['p',' : '],['s','\u2019en\u2019'],['p',');\n'],['c','// 10 pages \u00b7 EUR/CHF \u00b7 SEO per locale']],
      ok:'\u2192 FR/EN live \u00b7 zero translation debt \u25cf'}
   ];
@@ -362,7 +363,7 @@ bkk();setInterval(bkk,15000);
   const elP=document.getElementById('bpPages'),elT=document.getElementById('bpTime'),
         elB=document.getElementById('bpBudget'),elS=document.getElementById('bpStack'),
         send=document.getElementById('bpSend');
-  const STACK={website:['Design system','Custom code','Hosting'],ecommerce:['Design system','Cart + Stripe','Hosting'],ai:['LLM brain','Voice pipeline','Custom code','Hosting']};
+  const STACK=THL?{website:['ระบบดีไซน์','โค้ดเขียนเอง','โฮสติ้ง'],ecommerce:['ระบบดีไซน์','ตะกร้า + Stripe','โฮสติ้ง'],ai:['สมอง LLM','ระบบเสียง','โค้ดเขียนเอง','โฮสติ้ง']}:{website:['Design system','Custom code','Hosting'],ecommerce:['Design system','Cart + Stripe','Hosting'],ai:['LLM brain','Voice pipeline','Custom code','Hosting']};
   function tick(el){el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick');}
   function calc(){
     const t=types.find(b=>b.classList.contains('on'));
@@ -370,11 +371,11 @@ bkk();setInterval(bkk,15000);
     let pages=+t.dataset.pages,w1=+t.dataset.w1,w2=+t.dataset.w2;
     on.forEach(b=>{pages+=+b.dataset.p;});
     w2+=Math.ceil(on.length/2);
-    elP.textContent=pages;elT.textContent=w1+'\u2013'+w2+' weeks';elB.textContent=t.dataset.b;
+    elP.textContent=pages;elT.textContent=w1+'\u2013'+w2+(THL?' สัปดาห์':' weeks');elB.textContent=t.dataset.b;
     [elP,elT,elB].forEach(tick);
     elS.innerHTML=STACK[t.dataset.type].concat(on.map(b=>b.dataset.add)).map(s=>'<span class="sp2">'+s+'</span>').join('');
     const want='Blueprint: '+t.textContent.trim()+(on.length?' + '+on.map(b=>b.dataset.add).join(', '):'');
-    send.href='/contact?service='+t.dataset.type+'&want='+encodeURIComponent(want);
+    send.href=(THL?'/th':'')+'/contact?service='+t.dataset.type+'&want='+encodeURIComponent(want);
   }
   types.forEach(b=>b.addEventListener('click',()=>{types.forEach(x=>x.classList.remove('on'));b.classList.add('on');calc();}));
   adds.forEach(b=>b.addEventListener('click',()=>{b.classList.toggle('on');calc();}));
@@ -428,5 +429,35 @@ bkk();setInterval(bkk,15000);
       drift.forEach(([el,f])=>{el.style.marginLeft=(x*f).toFixed(1)+'px';});
     });
     hero.addEventListener('mouseleave',()=>drift.forEach(([el])=>el.style.marginLeft=''));
+  }
+})();
+
+/* ---------- v6.0: language engine — detect, remember, toggle ---------- */
+(function(){
+  const THL=document.documentElement.lang==='th';
+  const path=location.pathname;
+  const underTH=path==='/th'||path.startsWith('/th/');
+  const other=underTH?(path.replace(/^\/th\/?/,'/')||'/'):('/th'+(path==='/'?'':path));
+  let pref=null;try{pref=localStorage.getItem('mikaro-lang');}catch(e){}
+  if(!underTH&&pref!=='en'){
+    const nav=(navigator.language||'').toLowerCase().startsWith('th');
+    if(pref==='th'||(!pref&&nav)){location.replace(other+location.search);return;}
+  }
+  function setPref(v){try{localStorage.setItem('mikaro-lang',v);}catch(e){}}
+  if(underTH&&!pref)setPref('th');
+  const wrap=document.querySelector('.top .wrap');
+  if(wrap){
+    const sw=document.createElement('div');sw.className='lang-sw';
+    sw.innerHTML='<a href="'+(underTH?other:path)+'"'+(underTH?'':' class="on"')+'>EN</a><a href="'+(underTH?path:other)+'"'+(underTH?' class="on"':'')+'>TH</a>';
+    const burger=wrap.querySelector('.mm-burger');
+    if(burger)wrap.insertBefore(sw,burger);else wrap.appendChild(sw);
+    sw.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;setPref(a.textContent==='TH'?'th':'en');});
+  }
+  const mfoot=document.querySelector('.mm-foot');
+  if(mfoot){
+    const ml=document.createElement('a');ml.className='btn btn-ghost';ml.style.cssText='width:100%;justify-content:center;margin-top:.6rem';
+    ml.href=other;ml.textContent=underTH?'English version':'ภาษาไทย';
+    ml.addEventListener('click',()=>setPref(underTH?'en':'th'));
+    mfoot.appendChild(ml);
   }
 })();

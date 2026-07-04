@@ -9,6 +9,17 @@
 (function(){
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const FORM_ENDPOINT='https://formsubmit.co/ajax/majid.ahmadi86@gmail.com';
+const TH=document.documentElement.lang==='th';
+const TH_HI={a:'สวัสดีค่ะ — ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย',acts:[{q:'เราสร้างอะไร',l:'เราสร้างอะไร?'},{q:'ราคา',l:'เรื่องราคา'}]};
+const TH_INTENTS=[
+ {k:['สวัสดี','หวัดดี'],a:TH_HI.a,acts:TH_HI.acts},
+ {k:['สร้างอะไร','ทำอะไร','บริการ','เราสร้างอะไร'],a:'เราออกแบบและสร้างโปรดักต์ดิจิทัลครบวงจร: เว็บไซต์ที่ตรงแบรนด์ อีคอมเมิร์ซพร้อมระบบชำระเงินจริง และแอปพลัง AI — ตอนนี้มีสองโปรดักต์ออนไลน์อยู่จริง คลิกดูได้เลย',acts:[{h:'/th/work',l:'ดูผลงาน'},{h:'/th/services',l:'บริการทั้งหมด'}]},
+ {k:['ผลงาน','ตัวอย่าง','เคส','พอร์ต'],a:'ทุกชิ้นในพอร์ตของเราอยู่ในโปรดักชันจริง — Miomika คือเพื่อน AI สั่งงานด้วยเสียงของเราเอง ส่วน OptiClean คือร้านค้าสองภาษาพร้อมระบบชำระเงิน Stripe ที่ใช้ได้จริง (ทดลองด้วยบัตร 4242 4242 4242 4242)',acts:[{h:'/th/work/miomika',l:'เคส Miomika'},{h:'/th/work/opticlean',l:'เคส OptiClean'}]},
+ {k:['ราคา','งบ','เท่าไหร่','ค่าใช้จ่าย','แพง'],a:'ทุกโปรเจกต์ประเมินขอบเขตเป็นรายกรณีในสกุลเงินบาท — คุณบอกงบมา แล้วเราออกแบบให้ลงตัว เล่าคร่าว ๆ ว่ากำลังจะสร้างอะไร หรือฝากอีเมลไว้ เราตอบกลับภายในหนึ่งวัน',acts:[{q:'__lead',l:'ฝากอีเมล'},{h:'/th/contact',l:'ฟอร์มติดต่อ'}]},
+ {k:['ai','เอไอ','ปัญญาประดิษฐ์'],a:'Mikaro ผสานการกำกับงานสร้างสรรค์โดยมืออาชีพเข้ากับไปป์ไลน์วิศวกรรมที่เร่งด้วย AI — ทุกการตัดสินใจโดยมนุษย์ ทุกงานสร้างถูกยกระดับ หน้า AI Lab แสดงให้เห็นชัด ๆ',acts:[{h:'/th/ai-lab',l:'ชม AI Lab'}]},
+ {k:['ติดต่อ','คุย','จ้าง','เริ่ม'],a:'สองช่องทาง: ฟอร์มติดต่อ (เร็วที่สุด — ถึงสตูดิโอโดยตรง) หรือฝากอีเมลไว้ตรงนี้ แล้วเราติดต่อกลับ',acts:[{h:'/th/contact',l:'เปิดฟอร์มติดต่อ'},{q:'__lead',l:'ฝากอีเมล'}]}
+];
+const TH_FALLBACK={a:'คำถามดีมาก — ฉันเป็นไกด์ตัวเล็ก ๆ เรื่องลึก ๆ ให้มนุษย์ตอบดีกว่า ฝากอีเมลไว้แล้วเราจะติดต่อกลับภายในหนึ่งวัน หรือลองปุ่มด้านล่างนี้',acts:[{q:'__lead',l:'ฝากอีเมล'},{q:'เราสร้างอะไร',l:'เราสร้างอะไร?'},{q:'ราคา',l:'เรื่องราคา'}]};
 
 /* ---------- brain ---------- */
 const INTENTS=[
@@ -31,11 +42,12 @@ const FALLBACK={a:`Good question — I'm a compact guide, so for the interesting
 
 function pick(q){
   const s=q.toLowerCase();let best=null,score=0;
-  for(const it of INTENTS){
+  const POOL=TH?TH_INTENTS.concat(INTENTS):INTENTS;
+  for(const it of POOL){
     let n=0;for(const k of it.k){if(s.includes(k))n+=k.length>3?2:1;}
     if(n>score){score=n;best=it;}
   }
-  return score>0?best:FALLBACK;
+  return score>0?best:(TH?TH_FALLBACK:FALLBACK);
 }
 
 /* ---------- ui ---------- */
@@ -48,13 +60,10 @@ function mount(root){
     <div class="chat-bar"><span class="av">M</span>MIKA — studio guide<span class="on"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E;display:inline-block"></span>online</span></div>
     <div class="chat-log" aria-live="polite"></div>
     <div class="chat-chips">
-      <button data-q="What do you build?">What do you build?</button>
-      <button data-q="show me the live work">Live work</button>
-      <button data-q="how does the ai part work">The AI part</button>
-      <button data-q="pricing">Pricing</button>
+      ${TH?'<button data-q="เราสร้างอะไร">เราสร้างอะไร?</button><button data-q="ผลงาน">ผลงานจริง</button><button data-q="เอไอ">ระบบ AI</button><button data-q="ราคา">ราคา</button>':'<button data-q="What do you build?">What do you build?</button><button data-q="show me the live work">Live work</button><button data-q="how does the ai part work">The AI part</button><button data-q="pricing">Pricing</button>'}
     </div>
     <form class="chat-in">
-      <input type="text" placeholder="Ask MIKA about the studio…" autocomplete="off" aria-label="Message MIKA">
+      <input type="text" placeholder="${TH?'ถาม MIKA เกี่ยวกับสตูดิโอ…':'Ask MIKA about the studio…'}" autocomplete="off" aria-label="Message MIKA">
       <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     </form>
   </div>`;
@@ -83,11 +92,11 @@ function mount(root){
   }
 
   function lead(){
-    const t=add('bot','Leave your email and one line about the project — it goes straight to Mike.');
+    const t=add('bot',TH?'ฝากอีเมลกับรายละเอียดสั้น ๆ หนึ่งบรรทัด — ส่งตรงถึงสตูดิโอ':'Leave your email and one line about the project — it goes straight to the studio.');
     const f=document.createElement('form');f.className='mk-lead';
     f.innerHTML=`<input type="email" name="email" placeholder="you@email.com" required>
-      <textarea name="message" placeholder="One line about your project (optional)"></textarea>
-      <button type="submit">Send to Mike</button>`;
+      <textarea name="message" placeholder="${TH?'เล่าสั้น ๆ เกี่ยวกับโปรเจกต์ (ไม่บังคับ)':'One line about your project (optional)'}"></textarea>
+      <button type="submit">${TH?'ส่งถึงสตูดิโอ':'Send to the studio'}</button>`;
     t.appendChild(f);log.scrollTop=log.scrollHeight;
     f.addEventListener('submit',async e=>{
       e.preventDefault();
@@ -96,9 +105,9 @@ function mount(root){
         const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
           body:JSON.stringify({email:f.email.value,message:f.message.value||'(from MIKA chat)',_subject:'New lead via MIKA — mikaro.studio'})});
         if(!r.ok)throw 0;
-        t.innerHTML='Sent. Mike replies within a day — thank you.';
+        t.innerHTML=TH?'ส่งเรียบร้อย เราจะตอบกลับภายในหนึ่งวัน — ขอบคุณค่ะ':'Sent. You will hear back within a day — thank you.';
       }catch(err){
-        t.innerHTML='Hmm, the direct line hiccuped. Please use the <a href="/contact.html">contact form</a> instead — it always works.';
+        t.innerHTML=TH?'สายตรงสะดุดนิดหน่อย ใช้<a href="/th/contact">ฟอร์มติดต่อ</a>แทนได้เลย — ช่องทางนั้นชัวร์เสมอ':'Hmm, the direct line hiccuped. Please use the <a href="/contact">contact form</a> instead — it always works.';
       }
       log.scrollTop=log.scrollHeight;
     });
@@ -131,7 +140,7 @@ function mount(root){
   form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';handle(q);});
   chips.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;handle(b.dataset.q,b.textContent);});
 
-  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){io.disconnect();reply(INTENTS[0]);}});},{threshold:.3});
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){io.disconnect();reply(TH?TH_HI:INTENTS[0]);}});},{threshold:.3});
   io.observe(log);
   return {open:()=>{}};
 }
