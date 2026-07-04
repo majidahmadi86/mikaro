@@ -688,6 +688,16 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
 .lang-sw a.on{background:var(--ink);color:#fff}
 .lang-sw a:not(.on):hover{color:var(--ink)}
 @media(max-width:820px){.lang-sw a{padding:.4rem .6rem;font-size:.66rem}}
+
+/* v6.2 — hero image space reservation (CLS) */
+.fl-mio .ph.has-img{aspect-ratio:735/920!important}
+.fl-oc .ph.has-img{aspect-ratio:1343/632!important}
+@media(max-width:768px){
+  .fl-mio .ph.has-img{aspect-ratio:480/808!important}
+  .fl-oc .ph.has-img{aspect-ratio:600/1132!important}
+}
+.fl .ph.has-img img,.fl .ph.has-img picture{width:100%;height:100%;display:block}
+.fl .ph.has-img img{object-fit:cover}
 </style>
 </head>
 <body>
@@ -720,12 +730,12 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
     <div class="collage" aria-hidden="true">
       <div class="fl fl-mio">
         <div class="ph has-img" id="heroMioSlot">
-          <img src="/assets/img/miomika-hero-desktop.jpg" srcset="/assets/img/miomika-hero-mobile.jpg 480w, /assets/img/miomika-hero-desktop.jpg 1000w" sizes="(max-width:768px) 85vw, 30vw" alt="Miomika — live app" loading="eager" fetchpriority="high" decoding="async">
+          <picture><source media="(max-width:768px)" srcset="/assets/img/miomika-hero-mobile.jpg"><img src="/assets/img/miomika-hero-desktop.jpg" alt="Miomika — live app" loading="eager" fetchpriority="high" decoding="async"></picture>
         </div>
         <div class="cap">Miomika — AI companion · live</div>
       </div>
       <div class="fl fl-oc">
-        <div class="ph has-img" id="heroOcSlot"><img src="/assets/img/opticlean-hero-desktop.jpg" srcset="/assets/img/opticlean-hero-desktop-mobile.jpg 600w, /assets/img/opticlean-hero-desktop.jpg 1343w" sizes="(max-width:768px) 85vw, 28vw" alt="OptiClean — live store" loading="eager" fetchpriority="high" decoding="async"></div>
+        <div class="ph has-img" id="heroOcSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/opticlean-hero-desktop-mobile.jpg"><img src="/assets/img/opticlean-hero-desktop.jpg" alt="OptiClean — live store" loading="eager" fetchpriority="high" decoding="async"></picture></div>
         <div class="cap">OptiClean — live store</div>
       </div>
       <span class="fl fl-chat">สวัสดีค่ะ — say it with me</span>
@@ -762,7 +772,7 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
       <div class="vis mio-vis zoomin" id="mioVisWrap">
         <div class="bframe">
           <div class="bbar2"><i></i><i></i><i></i><span class="url">miomika.com</span></div>
-          <div class="shot imgslot has-img" id="mioMainSlot"><img src="/assets/img/miomika-case-desktop.jpg" srcset="/assets/img/miomika-case-desktop-mobile.jpg 480w, /assets/img/miomika-case-desktop.jpg 1000w" sizes="(max-width:768px) 90vw, 42vw" alt="Miomika app" loading="lazy" decoding="async"></div>
+          <div class="shot imgslot has-img" id="mioMainSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/miomika-case-desktop-mobile.jpg"><img src="/assets/img/miomika-case-desktop.jpg" alt="Miomika app" loading="lazy" decoding="async"></picture></div>
         </div>
         <span class="bub b1" id="mb1">Say “hello” in Thai?</span>
         <span class="bub b2" id="mb2">สวัสดีค่ะ — your turn!</span>
@@ -774,7 +784,7 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
       <div class="vis zoomin">
         <div class="bframe">
           <div class="bbar2"><i></i><i></i><i></i><span class="url">opticlean.mikaro.studio</span></div>
-          <div class="shot imgslot has-img" id="ocMainSlot"><img src="/assets/img/opticlean-case-desktop.jpg" srcset="/assets/img/opticlean-case-desktop-mobile.jpg 600w, /assets/img/opticlean-case-desktop.jpg 1343w" sizes="(max-width:768px) 90vw, 42vw" alt="OptiClean storefront" loading="lazy" decoding="async"></div>
+          <div class="shot imgslot has-img" id="ocMainSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/opticlean-case-desktop-mobile.jpg"><img src="/assets/img/opticlean-case-desktop.jpg" alt="OptiClean storefront" loading="lazy" decoding="async"></picture></div>
         </div>
         <span class="seal">TEST CARD<br>4242 4242</span>
       </div>
