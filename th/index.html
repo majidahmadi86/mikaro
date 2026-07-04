@@ -28,7 +28,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;700;800;900&family=Figtree:wght@400;500;600;700&family=Prompt:wght@600;700;800;900&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;700;800;900&family=Figtree:wght@400;500;600;700&family=Prompt:wght@600;700;800;900&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 <!-- inlined from css/main.css — if css/main.css changes, this block must be re-synced -->
-<style>/* v6.3 — metric-compatible font fallbacks: kill font-swap CLS */
+<style>/* v6.4 — self-hosted brand fonts: no third-party, no render-block, no swap-shift */
+@font-face{font-family:'Gabarito';src:url('/assets/fonts/gabarito.woff2') format('woff2');font-weight:400 900;font-style:normal;font-display:optional}
+@font-face{font-family:'Figtree';src:url('/assets/fonts/figtree.woff2') format('woff2');font-weight:300 900;font-style:normal;font-display:optional}
+/* v6.3 — metric-compatible font fallbacks: kill font-swap CLS */
 @font-face{font-family:'Gabarito Fallback';src:local('Arial Bold'),local('Arial');font-weight:600 900;ascent-override:100%;descent-override:24%;line-gap-override:0%;size-adjust:102%}
 @font-face{font-family:'Figtree Fallback';src:local('Arial');font-weight:400 700;ascent-override:94%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
 /* ================================================================
@@ -839,7 +842,7 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
     <div class="perf-card rv-s">
       <div class="perf-badges">
         <div><div class="gauge" data-val="100" data-label="100"></div><span class="lbl">SEO</span></div>
-        <div><div class="gauge blue" data-val="96" data-label="96"></div><span class="lbl">แนวปฏิบัติที่ดี</span></div>
+        <div><div class="gauge blue" data-val="100" data-label="100"></div><span class="lbl">แนวปฏิบัติที่ดี</span></div>
         <div><div class="gauge" data-val="95" data-label="95"></div><span class="lbl">การเข้าถึง</span></div>
       </div>
       <div class="perf-copy">
