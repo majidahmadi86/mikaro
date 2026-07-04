@@ -1,5 +1,5 @@
 /* ================================================================
-   MIKA — studio guide widget
+   MIKA · studio guide widget
    MIKA.mount(el) renders a chat instance; a floating launcher is
    added automatically on every page (skip with <body data-no-fab>).
    Scripted intent brain with keyword scoring, in-answer action
@@ -10,35 +10,35 @@
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const FORM_ENDPOINT='https://formsubmit.co/ajax/majid.ahmadi86@gmail.com';
 const TH=document.documentElement.lang==='th';
-const TH_HI={a:'สวัสดีค่ะ — ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย',acts:[{q:'เราสร้างอะไร',l:'เราสร้างอะไร?'},{q:'ราคา',l:'เรื่องราคา'}]};
+const TH_HI={a:'สวัสดีค่ะ · ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย',acts:[{q:'เราสร้างอะไร',l:'เราสร้างอะไร?'},{q:'ราคา',l:'เรื่องราคา'}]};
 const TH_INTENTS=[
  {k:['สวัสดี','หวัดดี'],a:TH_HI.a,acts:TH_HI.acts},
- {k:['สร้างอะไร','ทำอะไร','บริการ','เราสร้างอะไร'],a:'เราออกแบบและสร้างโปรดักต์ดิจิทัลครบวงจร: เว็บไซต์ที่ตรงแบรนด์ อีคอมเมิร์ซพร้อมระบบชำระเงินจริง และแอปพลัง AI — ตอนนี้มีสองโปรดักต์ออนไลน์อยู่จริง คลิกดูได้เลย',acts:[{h:'/th/work',l:'ดูผลงาน'},{h:'/th/services',l:'บริการทั้งหมด'}]},
- {k:['ผลงาน','ตัวอย่าง','เคส','พอร์ต'],a:'ทุกชิ้นในพอร์ตของเราอยู่ในโปรดักชันจริง — Miomika คือเพื่อน AI สั่งงานด้วยเสียงของเราเอง ส่วน OptiClean คือร้านค้าสองภาษาพร้อมระบบชำระเงิน Stripe ที่ใช้ได้จริง (ทดลองด้วยบัตร 4242 4242 4242 4242)',acts:[{h:'/th/work/miomika',l:'เคส Miomika'},{h:'/th/work/opticlean',l:'เคส OptiClean'}]},
- {k:['ราคา','งบ','เท่าไหร่','ค่าใช้จ่าย','แพง'],a:'ทุกโปรเจกต์ประเมินขอบเขตเป็นรายกรณีในสกุลเงินบาท — คุณบอกงบมา แล้วเราออกแบบให้ลงตัว เล่าคร่าว ๆ ว่ากำลังจะสร้างอะไร หรือฝากอีเมลไว้ เราตอบกลับภายในหนึ่งวัน',acts:[{q:'__lead',l:'ฝากอีเมล'},{h:'/th/contact',l:'ฟอร์มติดต่อ'}]},
- {k:['ai','เอไอ','ปัญญาประดิษฐ์'],a:'Mikaro ผสานการกำกับงานสร้างสรรค์โดยมืออาชีพเข้ากับไปป์ไลน์วิศวกรรมที่เร่งด้วย AI — ทุกการตัดสินใจโดยมนุษย์ ทุกงานสร้างถูกยกระดับ หน้า AI Lab แสดงให้เห็นชัด ๆ',acts:[{h:'/th/ai-lab',l:'ชม AI Lab'}]},
- {k:['ติดต่อ','คุย','จ้าง','เริ่ม'],a:'สองช่องทาง: ฟอร์มติดต่อ (เร็วที่สุด — ถึงสตูดิโอโดยตรง) หรือฝากอีเมลไว้ตรงนี้ แล้วเราติดต่อกลับ',acts:[{h:'/th/contact',l:'เปิดฟอร์มติดต่อ'},{q:'__lead',l:'ฝากอีเมล'}]}
+ {k:['สร้างอะไร','ทำอะไร','บริการ','เราสร้างอะไร'],a:'เราออกแบบและสร้างโปรดักต์ดิจิทัลครบวงจร: เว็บไซต์ที่ตรงแบรนด์ อีคอมเมิร์ซพร้อมระบบชำระเงินจริง และแอปพลัง AI · ตอนนี้มีสองโปรดักต์ออนไลน์อยู่จริง คลิกดูได้เลย',acts:[{h:'/th/work',l:'ดูผลงาน'},{h:'/th/services',l:'บริการทั้งหมด'}]},
+ {k:['ผลงาน','ตัวอย่าง','เคส','พอร์ต'],a:'ทุกชิ้นในพอร์ตของเราอยู่ในโปรดักชันจริง · Miomika คือเพื่อน AI สั่งงานด้วยเสียงของเราเอง ส่วน OptiClean คือร้านค้าสองภาษาพร้อมระบบชำระเงิน Stripe ที่ใช้ได้จริง (ทดลองด้วยบัตร 4242 4242 4242 4242)',acts:[{h:'/th/work/miomika',l:'เคส Miomika'},{h:'/th/work/opticlean',l:'เคส OptiClean'}]},
+ {k:['ราคา','งบ','เท่าไหร่','ค่าใช้จ่าย','แพง'],a:'ทุกโปรเจกต์ประเมินขอบเขตเป็นรายกรณีในสกุลเงินบาท · คุณบอกงบมา แล้วเราออกแบบให้ลงตัว เล่าคร่าว ๆ ว่ากำลังจะสร้างอะไร หรือฝากอีเมลไว้ เราตอบกลับภายในหนึ่งวัน',acts:[{q:'__lead',l:'ฝากอีเมล'},{h:'/th/contact',l:'ฟอร์มติดต่อ'}]},
+ {k:['ai','เอไอ','ปัญญาประดิษฐ์'],a:'Mikaro ผสานการกำกับงานสร้างสรรค์โดยมืออาชีพเข้ากับไปป์ไลน์วิศวกรรมที่เร่งด้วย AI · ทุกการตัดสินใจโดยมนุษย์ ทุกงานสร้างถูกยกระดับ หน้า AI Lab แสดงให้เห็นชัด ๆ',acts:[{h:'/th/ai-lab',l:'ชม AI Lab'}]},
+ {k:['ติดต่อ','คุย','จ้าง','เริ่ม'],a:'สองช่องทาง: ฟอร์มติดต่อ (เร็วที่สุด · ถึงสตูดิโอโดยตรง) หรือฝากอีเมลไว้ตรงนี้ แล้วเราติดต่อกลับ',acts:[{h:'/th/contact',l:'เปิดฟอร์มติดต่อ'},{q:'__lead',l:'ฝากอีเมล'}]}
 ];
-const TH_FALLBACK={a:'คำถามดีมาก — ฉันเป็นไกด์ตัวเล็ก ๆ เรื่องลึก ๆ ให้มนุษย์ตอบดีกว่า ฝากอีเมลไว้แล้วเราจะติดต่อกลับภายในหนึ่งวัน หรือลองปุ่มด้านล่างนี้',acts:[{q:'__lead',l:'ฝากอีเมล'},{q:'เราสร้างอะไร',l:'เราสร้างอะไร?'},{q:'ราคา',l:'เรื่องราคา'}]};
+const TH_FALLBACK={a:'คำถามดีมาก · ฉันเป็นไกด์ตัวเล็ก ๆ เรื่องลึก ๆ ให้มนุษย์ตอบดีกว่า ฝากอีเมลไว้แล้วเราจะติดต่อกลับภายในหนึ่งวัน หรือลองปุ่มด้านล่างนี้',acts:[{q:'__lead',l:'ฝากอีเมล'},{q:'เราสร้างอะไร',l:'เราสร้างอะไร?'},{q:'ราคา',l:'เรื่องราคา'}]};
 
 /* ---------- brain ---------- */
 const INTENTS=[
- {k:['hi','hello','hey','sawasdee','สวัสดี','bonjour','good morning','good evening'],a:`Hello — I'm MIKA, the studio's guide. Ask me what we build, how the AI part works, what things cost, or use the buttons below.`,acts:[{q:'What do you build?',l:'What do you build?'},{q:'pricing',l:'Pricing'}]},
- {k:['build','do you do','services','offer','make','capab'],a:`We design and build complete digital products: brand-true websites, e-commerce with real payments, and AI-powered apps. Two are live right now — Miomika and OptiClean — and you can click both.`,acts:[{h:'/work.html',l:'See the work'},{h:'/services.html',l:'All services'}]},
- {k:['work','portfolio','case','project','live','show','example'],a:`Everything in our portfolio is in production — no mockups. Miomika is our own voice-first AI companion; OptiClean is a complete bilingual store with a working Stripe checkout (test card 4242 4242 4242 4242).`,acts:[{h:'/work/miomika.html',l:'Miomika case'},{h:'/work/opticlean.html',l:'OptiClean case'}]},
- {k:['miomika','miomi','cat','thai','language','learn'],a:`Miomika is our flagship: a voice-first companion where Miomi the cat teaches Thai and English through real conversation. Teaching brain, speech pipeline, payments with referrals, full admin console — all in-house.`,acts:[{h:'https://miomika.com',l:'Visit miomika.com ↗',x:1},{h:'/work/miomika.html',l:'Read the case'}]},
- {k:['opticlean','zac','store','shop','ecommerce','e-commerce','stripe','checkout'],a:`OptiClean by Dr. Zac — a vintage French apothecary brand we turned into a complete live store from a single reference image. Ten bilingual pages, EUR/CHF, working Stripe checkout. Try a test purchase with card 4242 4242 4242 4242.`,acts:[{h:'https://opticlean.mikaro.studio',l:'Enter the store ↗',x:1},{h:'/work/opticlean.html',l:'Read the case'}]},
- {k:['ai','artificial','llm','gpt','claude','model','machine','automat'],a:`Mikaro pairs senior creative direction with an AI-accelerated engineering pipeline — every decision human, every build amplified. The AI Lab page shows exactly how.`,acts:[{h:'/ai-lab.html',l:'Visit the AI Lab'}]},
- {k:['price','cost','budget','much','rate','quote','fee','pay'],a:`Projects are scoped individually — a focused brand site and a full commerce build are different animals. Tell me roughly what you're making and I'll connect you, or leave your email and Mike replies within a day.`,acts:[{q:'__lead',l:'Leave my email'},{h:'/contact.html',l:'Contact form'}]},
- {k:['time','long','timeline','fast','deadline','when','delivery'],a:`Efficient without cutting corners. A focused brand site typically lands in 2–3 weeks; commerce and AI builds are scoped case by case — you get a concrete timeline before anything starts.`,acts:[{q:'__lead',l:'Get an estimate'}]},
- {k:['process','how do you work','steps','method','workflow'],a:`Four steps, no mystery: Listen (the brief is written together), Design (a system built from your world, never a UI kit), Build (custom code end to end — payments, languages, admin), Ship (live on a URL, measured, improved).`,acts:[{h:'/services.html',l:'Services'},{h:'/contact.html',l:'Start a project'}]},
- {k:['language','bilingual','french','thai','english','translat'],a:`We've shipped Thai, English and French so far — proper language switching with per-locale SEO, not machine-translated afterthoughts.`,acts:[{h:'/work/opticlean.html',l:'See a bilingual build'}]},
- {k:['where','location','bangkok','based','country','remote'],a:`Bangkok, Thailand — working worldwide. It's <b data-clock>--:--</b> here right now, and Mike usually replies within a day.`,acts:[{h:'/contact.html',l:'Contact'}]},
- {k:['contact','email','reach','talk','call','hire','start'],a:`Two ways: the contact form (fastest — it lands straight in Mike's inbox), or leave your email right here and he'll write to you.`,acts:[{h:'/contact.html',l:'Open the form'},{q:'__lead',l:'Leave my email'}]},
- {k:['who','about','team','studio','founder','mike'],a:`Mikaro is a creative technology studio in Bangkok — senior creative direction paired with an AI-accelerated engineering pipeline. Compact, uncompromising on detail — and everything in the portfolio is live.`,acts:[{h:'/work.html',l:'Proof'}]},
- {k:['seo','performance','speed','lighthouse','schema'],a:`Every build ships with structured data, sitemaps, lazy loading and zero framework bloat — fast by construction, not by afterthought.`,acts:[{q:'What do you build?',l:'What else is included?'}]}
+ {k:['hi','hello','hey','sawasdee','สวัสดี','bonjour','good morning','good evening'],a:`Hello · I'm MIKA, the studio's guide. Ask me what we build, how the AI part works, what things cost, or use the buttons below.`,acts:[{q:'What do you build?',l:'What do you build?'},{q:'pricing',l:'Pricing'}]},
+ {k:['build','do you do','services','offer','make','capab'],a:`We design and build complete digital products: brand-true websites, e-commerce with real payments, and AI-powered apps. Two are live right now · Miomika and OptiClean · and you can click both.`,acts:[{h:'/work.html',l:'See the work'},{h:'/services.html',l:'All services'}]},
+ {k:['work','portfolio','case','project','live','show','example'],a:`Everything in our portfolio is in production · no mockups. Miomika is our own voice-first AI companion; OptiClean is a complete bilingual store with a working Stripe checkout (test card 4242 4242 4242 4242).`,acts:[{h:'/work/miomika.html',l:'Miomika case'},{h:'/work/opticlean.html',l:'OptiClean case'}]},
+ {k:['miomika','miomi','cat','thai','language','learn'],a:`Miomika is our flagship: a voice-first companion where Miomi the cat teaches Thai and English through real conversation. Teaching brain, speech pipeline, payments with referrals, full admin console · all in-house.`,acts:[{h:'https://miomika.com',l:'Visit miomika.com ↗',x:1},{h:'/work/miomika.html',l:'Read the case'}]},
+ {k:['opticlean','zac','store','shop','ecommerce','e-commerce','stripe','checkout'],a:`OptiClean by Dr. Zac · a vintage French apothecary brand we turned into a complete live store from a single reference image. Ten bilingual pages, EUR/CHF, working Stripe checkout. Try a test purchase with card 4242 4242 4242 4242.`,acts:[{h:'https://opticlean.mikaro.studio',l:'Enter the store ↗',x:1},{h:'/work/opticlean.html',l:'Read the case'}]},
+ {k:['ai','artificial','llm','gpt','claude','model','machine','automat'],a:`Mikaro pairs senior creative direction with an AI-accelerated engineering pipeline · every decision human, every build amplified. The AI Lab page shows exactly how.`,acts:[{h:'/ai-lab.html',l:'Visit the AI Lab'}]},
+ {k:['price','cost','budget','much','rate','quote','fee','pay'],a:`Projects are scoped individually · a focused brand site and a full commerce build are different animals. Tell me roughly what you're making and I'll connect you, or leave your email and Mike replies within a day.`,acts:[{q:'__lead',l:'Leave my email'},{h:'/contact.html',l:'Contact form'}]},
+ {k:['time','long','timeline','fast','deadline','when','delivery'],a:`Efficient without cutting corners. A focused brand site typically lands in 2–3 weeks; commerce and AI builds are scoped case by case · you get a concrete timeline before anything starts.`,acts:[{q:'__lead',l:'Get an estimate'}]},
+ {k:['process','how do you work','steps','method','workflow'],a:`Four steps, no mystery: Listen (the brief is written together), Design (a system built from your world, never a UI kit), Build (custom code end to end · payments, languages, admin), Ship (live on a URL, measured, improved).`,acts:[{h:'/services.html',l:'Services'},{h:'/contact.html',l:'Start a project'}]},
+ {k:['language','bilingual','french','thai','english','translat'],a:`We've shipped Thai, English and French so far · proper language switching with per-locale SEO, not machine-translated afterthoughts.`,acts:[{h:'/work/opticlean.html',l:'See a bilingual build'}]},
+ {k:['where','location','bangkok','based','country','remote'],a:`Bangkok, Thailand · working worldwide. It's <b data-clock>--:--</b> here right now, and Mike usually replies within a day.`,acts:[{h:'/contact.html',l:'Contact'}]},
+ {k:['contact','email','reach','talk','call','hire','start'],a:`Two ways: the contact form (fastest · it lands straight in Mike's inbox), or leave your email right here and he'll write to you.`,acts:[{h:'/contact.html',l:'Open the form'},{q:'__lead',l:'Leave my email'}]},
+ {k:['who','about','team','studio','founder','mike'],a:`Mikaro is a creative technology studio in Bangkok · senior creative direction paired with an AI-accelerated engineering pipeline. Compact, uncompromising on detail · and everything in the portfolio is live.`,acts:[{h:'/work.html',l:'Proof'}]},
+ {k:['seo','performance','speed','lighthouse','schema'],a:`Every build ships with structured data, sitemaps, lazy loading and zero framework bloat · fast by construction, not by afterthought.`,acts:[{q:'What do you build?',l:'What else is included?'}]}
 ];
-const FALLBACK={a:`Good question — I'm a compact guide, so for the interesting conversations there's a human. Leave your email and Mike replies within a day, or try one of these.`,acts:[{q:'__lead',l:'Leave my email'},{q:'What do you build?',l:'What do you build?'},{q:'pricing',l:'Pricing'}]};
+const FALLBACK={a:`Good question · I'm a compact guide, so for the interesting conversations there's a human. Leave your email and Mike replies within a day, or try one of these.`,acts:[{q:'__lead',l:'Leave my email'},{q:'What do you build?',l:'What do you build?'},{q:'pricing',l:'Pricing'}]};
 
 function pick(q){
   const s=q.toLowerCase();let best=null,score=0;
@@ -57,7 +57,7 @@ const ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wi
 function mount(root){
   root.innerHTML=`
   <div class="chat">
-    <div class="chat-bar"><span class="av">M</span>MIKA — studio guide<span class="on"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E;display:inline-block"></span>online</span></div>
+    <div class="chat-bar"><span class="av">M</span>MIKA · studio guide<span class="on"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E;display:inline-block"></span>online</span></div>
     <div class="chat-log" aria-live="polite"></div>
     <div class="chat-chips">
       ${TH?'<button data-q="เราสร้างอะไร">เราสร้างอะไร?</button><button data-q="ผลงาน">ผลงานจริง</button><button data-q="เอไอ">ระบบ AI</button><button data-q="ราคา">ราคา</button>':'<button data-q="What do you build?">What do you build?</button><button data-q="show me the live work">Live work</button><button data-q="how does the ai part work">The AI part</button><button data-q="pricing">Pricing</button>'}
@@ -92,7 +92,7 @@ function mount(root){
   }
 
   function lead(){
-    const t=add('bot',TH?'ฝากอีเมลกับรายละเอียดสั้น ๆ หนึ่งบรรทัด — ส่งตรงถึงสตูดิโอ':'Leave your email and one line about the project — it goes straight to the studio.');
+    const t=add('bot',TH?'ฝากอีเมลกับรายละเอียดสั้น ๆ หนึ่งบรรทัด · ส่งตรงถึงสตูดิโอ':'Leave your email and one line about the project · it goes straight to the studio.');
     const f=document.createElement('form');f.className='mk-lead';
     f.innerHTML=`<input type="email" name="email" placeholder="you@email.com" required>
       <textarea name="message" placeholder="${TH?'เล่าสั้น ๆ เกี่ยวกับโปรเจกต์ (ไม่บังคับ)':'One line about your project (optional)'}"></textarea>
@@ -103,11 +103,11 @@ function mount(root){
       const btn=f.querySelector('button');btn.disabled=true;btn.textContent='Sending…';
       try{
         const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-          body:JSON.stringify({email:f.email.value,message:f.message.value||'(from MIKA chat)',_subject:'New lead via MIKA — mikaro.studio'})});
+          body:JSON.stringify({email:f.email.value,message:f.message.value||'(from MIKA chat)',_subject:'New lead via MIKA · mikaro.studio'})});
         if(!r.ok)throw 0;
-        t.innerHTML=TH?'ส่งเรียบร้อย เราจะตอบกลับภายในหนึ่งวัน — ขอบคุณค่ะ':'Sent. You will hear back within a day — thank you.';
+        t.innerHTML=TH?'ส่งเรียบร้อย เราจะตอบกลับภายในหนึ่งวัน · ขอบคุณค่ะ':'Sent. You will hear back within a day · thank you.';
       }catch(err){
-        t.innerHTML=TH?'สายตรงสะดุดนิดหน่อย ใช้<a href="/th/contact">ฟอร์มติดต่อ</a>แทนได้เลย — ช่องทางนั้นชัวร์เสมอ':'Hmm, the direct line hiccuped. Please use the <a href="/contact">contact form</a> instead — it always works.';
+        t.innerHTML=TH?'สายตรงสะดุดนิดหน่อย ใช้<a href="/th/contact">ฟอร์มติดต่อ</a>แทนได้เลย · ช่องทางนั้นชัวร์เสมอ':'Hmm, the direct line hiccuped. Please use the <a href="/contact">contact form</a> instead · it always works.';
       }
       log.scrollTop=log.scrollHeight;
     });

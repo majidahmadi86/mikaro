@@ -1,5 +1,5 @@
 /* ================================================================
-   MIKARO STUDIO — interactions (v5.1)
+   MIKARO STUDIO · interactions (v5.1)
    image slots · slider · theater · perf gauges · motion pack ·
    tilt · magnetics · counters · clocks · nav mark · prefill
    ================================================================ */
@@ -55,13 +55,13 @@ const THL=document.documentElement.lang==='th';
   const stage=document.getElementById('theater');if(!stage)return;
   const dir=stage.querySelector('.dir'),code=stage.querySelector('.code');
   const SCENES=[
-    {say:THL?'<b>คำสั่ง:</b> จับ DNA ของแบรนด์จากม็อกอัป \u2014 ครีม มาริโกลด์ Playfair':'<b>Direction:</b> Match the client\u2019s mockup \u2014 cream, marigold, Playfair.',
-     code:[['c','/* brand DNA \u2014 extracted from one JPEG */'],['k','--cream'],['p',': '],['s','#F5EFE2'],['p',';\n'],['k','--marigold'],['p',': '],['s','#E8B23C'],['p',';\n'],['k','font-family'],['p',': '],['s','\u2019Playfair Display\u2019'],['p',', serif;']],
+    {say:THL?'<b>คำสั่ง:</b> จับ DNA ของแบรนด์จากม็อกอัป \u00b7 ครีม มาริโกลด์ Playfair':'<b>Direction:</b> Match the client\u2019s mockup \u00b7 cream, marigold, Playfair.',
+     code:[['c','/* brand DNA \u00b7 extracted from one JPEG */'],['k','--cream'],['p',': '],['s','#F5EFE2'],['p',';\n'],['k','--marigold'],['p',': '],['s','#E8B23C'],['p',';\n'],['k','font-family'],['p',': '],['s','\u2019Playfair Display\u2019'],['p',', serif;']],
      ok:'\u2192 shipped \u00b7 opticlean.mikaro.studio \u25cf'},
-    {say:THL?'<b>คำสั่ง:</b> วางระบบชำระเงินจริง \u2014 ยูโรและฟรังก์สวิส':'<b>Direction:</b> Wire a real checkout \u2014 euros and Swiss francs.',
+    {say:THL?'<b>คำสั่ง:</b> วางระบบชำระเงินจริง \u00b7 ยูโรและฟรังก์สวิส':'<b>Direction:</b> Wire a real checkout \u00b7 euros and Swiss francs.',
      code:[['c','// api/create-checkout-session.js'],['p','\n'],['f','stripe'],['p','.checkout.sessions.'],['f','create'],['p','({\n  '],['k','currency'],['p',': cur, '],['k','line_items'],['p',': [bottle(q)],\n  '],['k','success_url'],['p',': '],['s','\u2019/merci\u2019'],['p','\n});']],
      ok:'\u2192 test card 4242 \u00b7 payment confirmed \u25cf'},
-    {say:THL?'<b>คำสั่ง:</b> ทั้งร้านเป็นฝรั่งเศสและอังกฤษ \u2014 สลับอัตโนมัติ':'<b>Direction:</b> The whole store in French and English \u2014 automatically.',
+    {say:THL?'<b>คำสั่ง:</b> ทั้งร้านเป็นฝรั่งเศสและอังกฤษ \u00b7 สลับอัตโนมัติ':'<b>Direction:</b> The whole store in French and English \u00b7 automatically.',
      code:[['c','// bilingual, detected from the browser'],['p','\n'],['f','setLang'],['p','(navigator.language.'],['f','startsWith'],['p','('],['s','\u2019fr\u2019'],['p',') ? '],['s','\u2019fr\u2019'],['p',' : '],['s','\u2019en\u2019'],['p',');\n'],['c','// 10 pages \u00b7 EUR/CHF \u00b7 SEO per locale']],
      ok:'\u2192 FR/EN live \u00b7 zero translation debt \u25cf'}
   ];
@@ -210,7 +210,7 @@ bkk();setInterval(bkk,15000);
   if(sel){const s=q.get('service');if(s)[...sel.options].forEach(o=>{if(o.value===s)sel.value=s;});}
   const msg=document.querySelector('textarea[name="message"]');
   const want=q.get('want');
-  if(msg&&want){msg.value='I want this — something like '+want+' for my brand. Here is my idea: ';msg.focus();msg.setSelectionRange(msg.value.length,msg.value.length);}
+  if(msg&&want){msg.value='I want this · something like '+want+' for my brand. Here is my idea: ';msg.focus();msg.setSelectionRange(msg.value.length,msg.value.length);}
 })();
 
 /* ---------- v5.2 scroll engine: parallax depth + marquee velocity + clip reveals ---------- */
@@ -417,7 +417,7 @@ bkk();setInterval(bkk,15000);
   }
 })();
 
-/* ---------- v6.0: language engine — detect, remember, toggle ---------- */
+/* ---------- v6.0: language engine · detect, remember, toggle ---------- */
 (function(){
   const THL=document.documentElement.lang==='th';
   const path=location.pathname;
