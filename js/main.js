@@ -243,16 +243,23 @@ bkk();setInterval(bkk,15000);
   document.querySelectorAll('.testi-card .avatar').forEach(el=>el.dataset.sp='0.22');
   document.querySelectorAll('.perf-badges').forEach(el=>el.dataset.sp='0.2');
   document.querySelectorAll('.cta-card h2').forEach(el=>el.dataset.sp='0.16');
-  const els=[...document.querySelectorAll('[data-sp]')].map(el=>[el,parseFloat(el.dataset.sp)]);
+  const els=[...document.querySelectorAll('[data-sp]')].map(el=>({el,f:parseFloat(el.dataset.sp),top:0,h:0}));
   const mq=document.querySelector('.mq');
+  let vh=innerHeight;
+  function measure(){
+    vh=innerHeight;
+    els.forEach(o=>{o.h=o.el.offsetHeight;let t=0,n=o.el;while(n){t+=n.offsetTop;n=n.offsetParent;}o.top=t;});
+  }
+  measure();
+  addEventListener('load',measure);
+  addEventListener('resize',()=>requestAnimationFrame(measure),{passive:true});
   let lastY=scrollY,vel=0;
   (function frame(){
     const y=scrollY;
     vel+=((Math.min(Math.abs(y-lastY),50))*(y>=lastY?1:-1)-vel)*.1;lastY=y;
-    els.forEach(([el,f])=>{
-      const r=el.getBoundingClientRect();
-      const p=(innerHeight-r.top)/(innerHeight+r.height);
-      if(p>-.2&&p<1.2)el.style.transform='translateY('+((p-.5)*f*-150).toFixed(1)+'px)';
+    els.forEach(o=>{
+      const p=(vh-(o.top-y))/(vh+o.h);
+      if(p>-.2&&p<1.2)o.el.style.transform='translateY('+((p-.5)*o.f*-150).toFixed(1)+'px)';
     });
     if(mq)mq.style.transform='skewX('+(-vel*.3).toFixed(2)+'deg)';
     requestAnimationFrame(frame);
