@@ -76,13 +76,13 @@ Object.entries(IMG_SLOTS).forEach(([id,cfg])=>{
   const stage=document.getElementById('theater');if(!stage)return;
   const dir=stage.querySelector('.dir'),code=stage.querySelector('.code');
   const SCENES=[
-    {say:'<b>Mike:</b> Match the client\u2019s mockup \u2014 cream, marigold, Playfair.',
+    {say:'<b>Direction:</b> Match the client\u2019s mockup \u2014 cream, marigold, Playfair.',
      code:[['c','/* brand DNA \u2014 extracted from one JPEG */'],['k','--cream'],['p',': '],['s','#F5EFE2'],['p',';\n'],['k','--marigold'],['p',': '],['s','#E8B23C'],['p',';\n'],['k','font-family'],['p',': '],['s','\u2019Playfair Display\u2019'],['p',', serif;']],
      ok:'\u2192 shipped \u00b7 opticlean.mikaro.studio \u25cf'},
-    {say:'<b>Mike:</b> Wire a real checkout \u2014 euros and Swiss francs.',
+    {say:'<b>Direction:</b> Wire a real checkout \u2014 euros and Swiss francs.',
      code:[['c','// api/create-checkout-session.js'],['p','\n'],['f','stripe'],['p','.checkout.sessions.'],['f','create'],['p','({\n  '],['k','currency'],['p',': cur, '],['k','line_items'],['p',': [bottle(q)],\n  '],['k','success_url'],['p',': '],['s','\u2019/merci\u2019'],['p','\n});']],
      ok:'\u2192 test card 4242 \u00b7 payment confirmed \u25cf'},
-    {say:'<b>Mike:</b> The whole store in French and English \u2014 automatically.',
+    {say:'<b>Direction:</b> The whole store in French and English \u2014 automatically.',
      code:[['c','// bilingual, detected from the browser'],['p','\n'],['f','setLang'],['p','(navigator.language.'],['f','startsWith'],['p','('],['s','\u2019fr\u2019'],['p',') ? '],['s','\u2019fr\u2019'],['p',' : '],['s','\u2019en\u2019'],['p',');\n'],['c','// 10 pages \u00b7 EUR/CHF \u00b7 SEO per locale']],
      ok:'\u2192 FR/EN live \u00b7 zero translation debt \u25cf'}
   ];
@@ -409,4 +409,24 @@ bkk();setInterval(bkk,15000);
   mm.querySelector('.mm-x').addEventListener('click',close);
   mm.addEventListener('click',e=>{if(e.target.closest('a'))close();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+})();
+
+/* ---------- v5.8: cursor spotlight + hero pointer drift ---------- */
+(function(){
+  if(RM||!matchMedia('(pointer:fine)').matches)return;
+  document.querySelectorAll('.mega,.sv').forEach(card=>{
+    const g=document.createElement('span');g.className='glow';card.appendChild(g);
+    card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();
+      g.style.left=(e.clientX-r.left)+'px';g.style.top=(e.clientY-r.top)+'px';});
+  });
+  const hero=document.querySelector('.hero');
+  if(hero){
+    const drift=[['.fl-mio',14],['.fl-oc',-18],['.fl-chat',26],['.fl-chat2',-22],['.st1',30],['.st2',-26]]
+      .map(([s,f])=>[hero.querySelector(s),f]).filter(([e])=>e);
+    hero.addEventListener('mousemove',e=>{
+      const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5;
+      drift.forEach(([el,f])=>{el.style.marginLeft=(x*f).toFixed(1)+'px';});
+    });
+    hero.addEventListener('mouseleave',()=>drift.forEach(([el])=>el.style.marginLeft=''));
+  }
 })();

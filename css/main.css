@@ -625,3 +625,8 @@ body{overflow-x:clip}
   .consult-band .btn{width:100%;justify-content:center}
   .mq-t{font-size:.72rem}
 }
+
+/* v5.8 — cursor spotlight on cards */
+.sv{position:relative;overflow:hidden}
+.glow{position:absolute;width:440px;height:440px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,.4),transparent 62%);opacity:0;transition:opacity .45s;transform:translate(-50%,-50%);mix-blend-mode:soft-light;z-index:1}
+.mega:hover .glow,.sv:hover .glow{opacity:1}
