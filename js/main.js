@@ -421,7 +421,7 @@ bkk();setInterval(bkk,15000);
   });
   const hero=document.querySelector('.hero');
   if(hero){
-    const drift=[['.fl-mio',14],['.fl-oc',-18],['.fl-chat',26],['.fl-chat2',-22],['.st1',30],['.st2',-26]]
+    const drift=[['.fl-mio',44],['.fl-oc',-58],['.fl-chat',86],['.fl-chat2',-74],['.st1',100],['.st2',-88]]
       .map(([s,f])=>[hero.querySelector(s),f]).filter(([e])=>e);
     hero.addEventListener('mousemove',e=>{
       const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5;

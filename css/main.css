@@ -626,7 +626,20 @@ body{overflow-x:clip}
   .mq-t{font-size:.72rem}
 }
 
-/* v5.8 — cursor spotlight on cards */
+/* v5.8.1 — cursor spotlight, actually visible */
 .sv{position:relative;overflow:hidden}
-.glow{position:absolute;width:440px;height:440px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,.4),transparent 62%);opacity:0;transition:opacity .45s;transform:translate(-50%,-50%);mix-blend-mode:soft-light;z-index:1}
+.glow{position:absolute;width:520px;height:520px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,var(--glowc,rgba(36,56,255,.16)),transparent 60%);opacity:0;transition:opacity .35s;transform:translate(-50%,-50%);z-index:1}
 .mega:hover .glow,.sv:hover .glow{opacity:1}
+.mega-mio{--glowc:rgba(255,255,255,.65)}
+.mega-oc{--glowc:rgba(255,255,255,.6)}
+.sv:nth-child(6n+1){--glowc:rgba(36,56,255,.14)}
+.sv:nth-child(6n+2){--glowc:rgba(232,178,60,.2)}
+.sv:nth-child(6n+3){--glowc:rgba(255,61,143,.14)}
+.sv:nth-child(6n+4){--glowc:rgba(123,224,200,.24)}
+.sv:nth-child(6n+5){--glowc:rgba(224,91,58,.14)}
+.sv:nth-child(6n){--glowc:rgba(23,21,31,.08)}
+.mega .txt{position:relative;z-index:2}
+.glow{z-index:1}
+
+/* v5.8.1 — floating pieces glide smoothly with the pointer */
+.fl,.stick{transition:margin-left .9s cubic-bezier(.22,1,.36,1)}
