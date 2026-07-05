@@ -9,7 +9,7 @@ const THL=document.documentElement.lang==='th';
 
 /* ---------- responsive image slots (Mike's files in /assets/img/) ---------- */
 (function(){const av=document.getElementById('zacAvatar');
-  if(av){const img=new Image();img.onload=()=>{av.textContent='';img.alt='Dr. Zac';av.appendChild(img);};img.src='/assets/img/zac.jpg';}})();
+  if(av){const img=new Image();img.onload=()=>{av.textContent='';img.alt='Dr. Zac';av.appendChild(img);};img.src='/assets/img/chango.jpg';}})();
 
 /* ---------- case slider: known pair + auto-detected gallery shots ---------- */
 (function(){
