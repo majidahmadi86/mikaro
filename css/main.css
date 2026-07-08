@@ -24,7 +24,7 @@
   --shadow:0 24px 60px -24px rgba(23,21,31,.22);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden}
+html{scroll-behavior:smooth}
 body{background:var(--milk);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--blue);color:#fff}
 a{color:inherit;text-decoration:none}
@@ -513,7 +513,7 @@ body.scrolled .logo>i{display:none}
 /* ================================================================
    v5.4 — mobile nav, photo socials, uniform frames, sticky fix
    ================================================================ */
-html,body{overflow-x:hidden}
+body{overflow-x:hidden}
 /* uniform showcase media area: consistent size across all sections */
 .mega .vis .bframe .shot{aspect-ratio:3/2!important;display:grid;place-items:center}
 .mega .vis .bframe .shot img{width:100%!important;height:100%!important;object-fit:contain!important}
@@ -687,4 +687,10 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
 @media(max-width:768px){
   .rv-l,.rv-r{transform:translateY(28px)!important}
   .rv-l.in,.rv-r.in{transform:none!important}
+}
+
+/* v6.6 — mobile header pin: always visible at top (sticky unreliable on mobile under overflow-x) */
+@media(max-width:820px){
+  .top{position:fixed;top:0;left:0;right:0;width:100%;z-index:300}
+  main{padding-top:calc(.9rem + .9rem + 46px)}
 }
