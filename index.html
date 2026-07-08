@@ -60,11 +60,11 @@
   --shadow:0 24px 60px -24px rgba(23,21,31,.22);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--milk);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--blue);color:#fff}
 a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
+img,video,iframe,picture{display:block;max-width:100%}
 button,input{font-family:inherit;color:inherit}
 button{cursor:pointer;border:none;background:none}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
@@ -107,7 +107,7 @@ button{cursor:pointer;border:none;background:none}
 .hero-proof b{color:var(--ink)}
 
 /* hero collage */
-.collage{position:relative;min-height:530px}
+.collage{position:relative;min-height:530px;overflow:hidden;max-width:100%;contain:paint}
 .fl{position:absolute;border-radius:24px;background:#fff;box-shadow:var(--shadow);will-change:transform;transition:transform .5s var(--ease),box-shadow .5s}
 .fl:hover{box-shadow:0 34px 80px -28px rgba(23,21,31,.32);z-index:6}
 .fl-mio{width:66%;left:0;top:3%;transform:rotate(-5deg);background:var(--pink-soft);padding:14px 14px 18px;animation:float1 7s ease-in-out infinite;z-index:3}
@@ -393,9 +393,9 @@ button{cursor:pointer;border:none;background:none}
    ================================================================ */
 /* browser-frame screenshot cards (handles any landscape screenshot) */
 .bframe{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -26px rgba(23,21,31,.35);width:min(92%,560px)}
-.bframe .bbar2{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#F3F0EA;border-bottom:1px solid var(--line)}
-.bframe .bbar2 i{width:9px;height:9px;border-radius:50%;background:#DDD7CC}
-.bframe .bbar2 .url{margin-left:8px;font-family:var(--disp);font-weight:700;font-size:.62rem;color:var(--sub);background:#fff;border-radius:999px;padding:.25rem .8rem}
+.bframe .bbar2{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#F3F0EA;border-bottom:1px solid var(--line);min-width:0;max-width:100%;overflow:hidden}
+.bframe .bbar2 i{width:9px;height:9px;border-radius:50%;background:#DDD7CC;flex:0 0 auto}
+.bframe .bbar2 .url{margin-left:8px;font-family:var(--disp);font-weight:700;font-size:.62rem;color:var(--sub);background:#fff;border-radius:999px;padding:.25rem .8rem;flex:1 1 auto;min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .bframe .shot{display:block;background:#fff}
 .bframe .shot img,.bframe .shot svg{width:100%;height:auto;display:block}
 .bframe .shot svg{padding:2rem;box-sizing:border-box}
@@ -405,10 +405,10 @@ button{cursor:pointer;border:none;background:none}
 .mega-oc .seal{z-index:4}
 
 /* case-page slider */
-.slider{position:relative}
+.slider{position:relative;overflow:hidden;max-width:100%}
 .slider .track-wrap{overflow:hidden;border-radius:0}
-.slider .track{display:flex;transition:transform .6s var(--ease)}
-.slider .track>div{flex:0 0 100%}
+.slider .track{display:flex;transition:transform .6s var(--ease);min-width:0;width:100%}
+.slider .track>div{flex:0 0 100%;min-width:0;overflow:hidden}
 .slider .track img{width:100%;height:auto;display:block}
 .slider .sarrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;box-shadow:0 12px 26px -12px rgba(23,21,31,.4);transition:.25s;z-index:5}
 .slider .sarrow:hover{background:var(--ink);color:#fff}
@@ -417,8 +417,9 @@ button{cursor:pointer;border:none;background:none}
 .slider .sdots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:.45rem;z-index:5}
 .slider .sdots button{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.6);border:1.5px solid rgba(23,21,31,.25);transition:.25s;padding:0}
 .slider .sdots button.on{background:var(--pink);border-color:var(--pink);transform:scale(1.25)}
-.case-hero{padding:clamp(1.2rem,3vw,2.2rem)}
+.case-hero{padding:clamp(1.2rem,3vw,2.2rem);overflow:hidden}
 .case-hero .bframe{width:min(100%,900px)}
+.case-hero .imgslot,#caseSlider{overflow:hidden;max-width:100%;min-width:0}
 
 /* "I want this" pill */
 .want{background:#fff;color:var(--pink);border:2px solid var(--pink)}
@@ -448,7 +449,7 @@ button{cursor:pointer;border:none;background:none}
 .theater .dir .db.show{opacity:1;transform:none}
 .theater .dir .db b{color:var(--pink)}
 .theater .dir .db.ok{border-color:rgba(34,197,94,.4);color:#86EFAC;font-family:var(--disp);font-weight:700;font-size:.72rem;border-radius:999px;align-self:flex-start;padding:.5rem 1rem}
-.theater .code{padding:1.2rem 1.3rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.74rem;line-height:1.85;color:#C8C4D4;white-space:pre-wrap}
+.theater .code{padding:1.2rem 1.3rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.74rem;line-height:1.85;color:#C8C4D4;white-space:pre-wrap;overflow-x:auto;max-width:100%;word-break:break-word}
 .theater .code .k{color:#7DD3FC}.theater .code .s{color:#FCD34D}.theater .code .c{color:#6B6880}.theater .code .f{color:#F0A6C8}
 .theater .code .tcur2{display:inline-block;width:8px;height:13px;background:var(--pink);vertical-align:-2px;animation:blink 1s steps(1) infinite}
 @media(max-width:760px){.theater .stage{grid-template-columns:1fr}.theater .dir{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}}
@@ -548,7 +549,7 @@ body.scrolled .logo>i{display:none}
 /* ================================================================
    v5.4 · mobile nav, photo socials, uniform frames, sticky fix
    ================================================================ */
-body{overflow-x:clip}
+html,body{overflow-x:hidden}
 /* uniform showcase media area: consistent size across all sections */
 .mega .vis .bframe .shot{aspect-ratio:3/2!important;display:grid;place-items:center}
 .mega .vis .bframe .shot img{width:100%!important;height:100%!important;object-fit:contain!important}
@@ -710,6 +711,19 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
 }
 .fl .ph.has-img img,.fl .ph.has-img picture{width:100%;height:100%;display:block}
 .fl .ph.has-img img{object-fit:cover}
+
+/* v6.5 · mobile overflow stability: pre-paint clip + flex intrinsic sizing */
+.hero .wrap>div{min-width:0}
+.top .wrap{min-width:0}
+.mega,.mega .txt,.mega .vis{min-width:0}
+.mega .vis{overflow:hidden}
+.bframe{min-width:0;max-width:100%}
+.shot.imgslot,.shot.has-img{overflow:hidden;max-width:100%}
+.bloq pre{overflow-x:auto;max-width:100%;word-break:break-word}
+@media(max-width:768px){
+  .rv-l,.rv-r{transform:translateY(28px)!important}
+  .rv-l.in,.rv-r.in{transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -742,12 +756,12 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
     <div class="collage" aria-hidden="true">
       <div class="fl fl-mio">
         <div class="ph has-img" id="heroMioSlot">
-          <picture><source media="(max-width:768px)" srcset="/assets/img/miomika-hero-mobile.jpg"><img src="/assets/img/miomika-hero-desktop.jpg" alt="Miomika · live app" loading="eager" fetchpriority="high" decoding="async"></picture>
+          <picture><source media="(max-width:768px)" srcset="/assets/img/miomika-hero-mobile.jpg"><img src="/assets/img/miomika-hero-desktop.jpg" alt="Miomika · live app" width="1000" height="920" loading="eager" fetchpriority="high" decoding="async"></picture>
         </div>
         <div class="cap">Miomika · AI companion · live</div>
       </div>
       <div class="fl fl-oc">
-        <div class="ph has-img" id="heroOcSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/opticlean-hero-desktop-mobile.jpg"><img src="/assets/img/opticlean-hero-desktop.jpg" alt="OptiClean · live store" loading="eager" fetchpriority="high" decoding="async"></picture></div>
+        <div class="ph has-img" id="heroOcSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/opticlean-hero-desktop-mobile.jpg"><img src="/assets/img/opticlean-hero-desktop.jpg" alt="OptiClean · live store" width="1346" height="634" loading="eager" fetchpriority="high" decoding="async"></picture></div>
         <div class="cap">OptiClean · live store</div>
       </div>
       <span class="fl fl-chat">สวัสดีค่ะ · say it with me</span>
@@ -784,7 +798,7 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
       <div class="vis mio-vis zoomin" id="mioVisWrap">
         <div class="bframe">
           <div class="bbar2"><i></i><i></i><i></i><span class="url">miomika.com</span></div>
-          <div class="shot imgslot has-img" id="mioMainSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/miomika-case-desktop-mobile.jpg"><img src="/assets/img/miomika-case-desktop.jpg" alt="Miomika app" loading="lazy" decoding="async"></picture></div>
+          <div class="shot imgslot has-img" id="mioMainSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/miomika-case-desktop-mobile.jpg"><img src="/assets/img/miomika-case-desktop.jpg" alt="Miomika app" width="1346" height="633" loading="lazy" decoding="async"></picture></div>
         </div>
         <span class="bub b1" id="mb1">Say “hello” in Thai?</span>
         <span class="bub b2" id="mb2">สวัสดีค่ะ · your turn!</span>
@@ -796,7 +810,7 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
       <div class="vis zoomin">
         <div class="bframe">
           <div class="bbar2"><i></i><i></i><i></i><span class="url">opticlean.mikaro.studio</span></div>
-          <div class="shot imgslot has-img" id="ocMainSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/opticlean-case-desktop-mobile.jpg"><img src="/assets/img/opticlean-case-desktop.jpg" alt="OptiClean storefront" loading="lazy" decoding="async"></picture></div>
+          <div class="shot imgslot has-img" id="ocMainSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/opticlean-case-desktop-mobile.jpg"><img src="/assets/img/opticlean-case-desktop.jpg" alt="OptiClean storefront" width="1343" height="632" loading="lazy" decoding="async"></picture></div>
         </div>
         <span class="seal">TEST CARD<br>4242 4242</span>
       </div>
