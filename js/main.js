@@ -160,9 +160,10 @@ if(matchMedia('(pointer:fine)').matches&&!RM){
     if(!en.isIntersecting)return;io.unobserve(en.target);
     const b=en.target,target=+b.dataset.count;
     if(RM||target===0){b.textContent=target;return;}
+    b.textContent=0;
     let cur=0;const step=Math.max(1,Math.round(target/26));
     const iv=setInterval(()=>{cur=Math.min(target,cur+step);b.textContent=cur;if(cur>=target)clearInterval(iv);},40);
-  });},{threshold:.6});
+  });},{threshold:.3});
   document.querySelectorAll('[data-count]').forEach(el=>io.observe(el));
 })();
 
