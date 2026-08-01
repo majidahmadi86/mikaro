@@ -8,7 +8,7 @@
    ================================================================ */
 (function(){
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
-const FORM_ENDPOINT='https://formsubmit.co/ajax/majid.ahmadi86@gmail.com';
+const FORM_ENDPOINT='https://formsubmit.co/ajax/84f718f8c2666a5284f748d3db5c6d02';
 const TH=document.documentElement.lang==='th';
 const TH_HI={a:'สวัสดีค่ะ · ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย',acts:[{q:'เราสร้างอะไร',l:'เราสร้างอะไร?'},{q:'ราคา',l:'เรื่องราคา'}]};
 const TH_INTENTS=[
