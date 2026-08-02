@@ -11,6 +11,10 @@ ROUTING HARDENING · keyword anchors (apply even when the input also mentions pr
 
 If the input is a QUESTION about price rather than a business description, still return the best-guess tier from any business type mentioned, and make the pitch invite them to the form (request a free demo / leave details).
 
+Language examples (copy the field language, not the wording):
+- Input in English with no Thai letters → {"tier":"commerce","tier_reason":"They want online orders with checkout.","features":["Product catalog","Online checkout","Order tracking","Shipping options","Admin dashboard"],"pitch":"Leave your details on the form and we will follow up with a free demo."}
+- Input with Thai letters → {"tier":"essential","tier_reason":"เป็นธุรกิจบริการที่เหมาะกับแพ็กเกจพื้นฐาน","features":["หน้าแรก","หน้ารายการบริการ","ระบบจองคิว","แผนที่ร้าน","หน้าติดต่อ"],"pitch":"กรอกแบบฟอร์มเพื่อขอเดโม่ฟรี แล้วเราจะติดต่อกลับ"}
+
 LANGUAGE RULE (repeat): If the user's input contains ANY Thai characters, EVERY field in your JSON (tier_reason, all 5 features, pitch) MUST be written entirely in Thai. English only when the input has no Thai at all. Never mix languages in one response. Match the input language exactly: Thai input → Thai JSON fields; English input → English JSON fields. Never default to Thai for English input, even if the business is in Bangkok.`;
 
 const Tiers=['essential','catalog','commerce','flagship','signature'];
