@@ -753,8 +753,12 @@ a.biz-chip:hover::after{opacity:.75}
 .biz-pkg.featured:hover{transform:scale(1.05) translateY(-2px)}
 .biz-badge{position:absolute;top:-.9rem;left:50%;transform:translateX(-50%);z-index:3;font-family:var(--disp);font-weight:800;font-size:.7rem;letter-spacing:.02em;background:var(--blue);color:#fff;border-radius:999px;padding:.35rem .85rem;white-space:nowrap;box-shadow:0 8px 18px -10px rgba(36,56,255,.55);pointer-events:none;max-width:none;overflow:visible}
 .biz-pkg h4{font-family:var(--disp);font-weight:800;font-size:1.05rem;margin:.35rem 0 .2rem;line-height:1.35;overflow:visible}
-.biz-price{font-family:var(--disp);font-weight:900;font-size:clamp(1.2rem,2.2vw,1.45rem);letter-spacing:-.02em;margin:.1rem 0 .75rem;line-height:1.25}
+.biz-price{font-family:var(--disp);font-weight:900;font-size:clamp(1.2rem,2.2vw,1.45rem);letter-spacing:-.02em;margin:.1rem 0 .35rem;line-height:1.25}
 .biz-price small{font-size:.68rem;font-weight:700;color:var(--sub);margin-left:.2rem}
+.lang-chip{display:flex;align-items:center;gap:.35rem;width:100%;box-sizing:border-box;margin:0 0 .55rem;padding:.22rem .5rem;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(232,178,60,.28);line-height:1.25}
+.lang-flags{display:inline-flex;align-items:center;gap:.2rem;flex:0 0 auto}
+.lang-chip svg{display:block;width:18px;height:13px;border-radius:2.5px;overflow:hidden;flex:0 0 auto;box-shadow:0 0 0 1px rgba(23,21,31,.06)}
+.lang-chip-label{font-family:var(--body);font-weight:500;font-size:.75rem;color:var(--ink);letter-spacing:.01em;min-width:0}
 .biz-zone{margin-bottom:.75rem}
 .biz-zlab{display:block;font-family:var(--disp);font-weight:800;font-size:.68rem;letter-spacing:.04em;color:var(--blue);margin-bottom:.3rem}
 .biz-zone ul{margin:0;padding-left:1rem}
