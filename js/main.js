@@ -306,6 +306,7 @@ bkk();setInterval(bkk,15000);
       +'<a class="mlink" href="/" style="--d:.05s">Home</a>'
       +'<a class="mlink" href="/work" style="--d:.12s">Work</a>'
       +'<a class="mlink" href="/services" style="--d:.19s">Services</a>'
+      +'<a class="mlink" href="/business" style="--d:.22s">For business</a>'
       +'<a class="mlink" href="/ai-lab" style="--d:.26s">AI Lab</a>'
       +'<a class="mlink" href="/contact" style="--d:.33s">Contact</a>'
       +'<a class="btn btn-blue mcta" href="/contact">Start a project</a>';
@@ -378,17 +379,19 @@ bkk();setInterval(bkk,15000);
   wrap.appendChild(burger);
   const mm=document.createElement('div');
   mm.className='mm';mm.setAttribute('role','dialog');mm.setAttribute('aria-modal','true');mm.setAttribute('aria-label','Menu');
+  const p=THL?'/th':'';
   mm.innerHTML=
-    '<div class="mm-top"><a class="logo" href="/"><i></i>mikaro</a>'
+    '<div class="mm-top"><a class="logo" href="'+(THL?'/th/':'/')+'"><i></i>mikaro</a>'
     +'<button class="mm-x" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'
     +'<nav class="mm-links" aria-label="Mobile">'
-    +'<a href="/" style="--d:.04s">Home</a>'
-    +'<a href="/work" style="--d:.1s">Work</a>'
-    +'<a href="/services" style="--d:.16s">Services</a>'
-    +'<a href="/ai-lab" style="--d:.22s">AI Lab</a>'
-    +'<a href="/contact" style="--d:.28s">Contact</a>'
+    +'<a href="'+(THL?'/th/':'/')+'" style="--d:.04s">'+(THL?'หน้าแรก':'Home')+'</a>'
+    +'<a href="'+p+'/work" style="--d:.1s">'+(THL?'ผลงาน':'Work')+'</a>'
+    +'<a href="'+p+'/services" style="--d:.16s">'+(THL?'บริการ':'Services')+'</a>'
+    +'<a href="'+p+'/business" style="--d:.2s">'+(THL?'สำหรับธุรกิจ':'For business')+'</a>'
+    +'<a href="'+p+'/ai-lab" style="--d:.24s">AI Lab</a>'
+    +'<a href="'+p+'/contact" style="--d:.28s">'+(THL?'ติดต่อ':'Contact')+'</a>'
     +'</nav>'
-    +'<div class="mm-foot"><a class="btn btn-blue" href="/contact">Start a project →</a></div>';
+    +'<div class="mm-foot"><a class="btn btn-blue" href="'+p+'/contact">'+(THL?'เริ่มโปรเจกต์ →':'Start a project →')+'</a></div>';
   document.body.appendChild(mm);
   function open(){mm.classList.add('open');document.documentElement.classList.add('mm-lock');document.body.classList.add('mm-lock');burger.setAttribute('aria-expanded','true');}
   function close(){mm.classList.remove('open');document.documentElement.classList.remove('mm-lock');document.body.classList.remove('mm-lock');burger.setAttribute('aria-expanded','false');}

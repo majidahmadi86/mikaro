@@ -102,6 +102,9 @@ button{cursor:pointer;border:none;background:none}
 .hero p.sub{font-size:1.08rem;color:var(--sub);max-width:30rem;margin-bottom:1.8rem}
 .hero p.sub b{color:var(--ink)}
 .hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.hero-biz{margin:-.6rem 0 1.2rem;font-size:.92rem}
+.hero-biz a{color:var(--ink);font-weight:600;border-bottom:1.5px solid var(--pink)}
+.hero-biz a:hover{color:var(--blue);border-color:var(--blue)}
 .hero-proof{display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:var(--sub)}
 .hero-proof .stars{color:var(--gold);letter-spacing:.12em}
 .hero-proof b{color:var(--ink)}
@@ -283,6 +286,8 @@ button{cursor:pointer;border:none;background:none}
 .footer{border-top:1px solid var(--line);background:#fff}
 .footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1.4rem;flex-wrap:wrap;padding-top:2rem;padding-bottom:2rem}
 .f-note{font-size:.82rem;color:var(--sub)}
+.f-link{font-family:var(--disp);font-weight:700;font-size:.82rem;color:var(--ink);border-bottom:1.5px solid var(--pink)}
+.f-link:hover{color:var(--blue);border-color:var(--blue)}
 .socials{display:flex;gap:.6rem}
 .socials a{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--ink);transition:.25s}
 .socials a:hover{background:var(--ink);color:#fff;transform:translateY(-3px)}
@@ -773,7 +778,7 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
   <div class="wrap">
     <a class="logo" href="/"><span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#17151F"/><text x="10" y="46" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="40" fill="#FFF8F0">m</text><circle cx="50" cy="44" r="7" fill="#FF3D8F"/></svg></span><i></i>mikaro</a>
     <nav class="top-links" aria-label="Main">
-      <a href="/work">Work</a><a href="/services">Services</a><a href="/ai-lab">AI Lab</a><a href="/contact">Contact</a>
+      <a href="/work">Work</a><a href="/services">Services</a><a href="/business">For business</a><a href="/ai-lab">AI Lab</a><a href="/contact">Contact</a>
     </nav>
     <a class="btn btn-blue magnet" href="/contact">Start a project</a>
   </div>
@@ -791,6 +796,7 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
         <a class="btn btn-blue magnet" href="/work">See the live work</a>
         <a class="btn btn-ghost magnet" href="/contact">Start a project</a>
       </div>
+      <p class="hero-biz"><a href="/business">Run a shop, salon or restaurant? → This page is for you</a></p>
       <div class="hero-proof"><span class="stars">★★★★★</span><span><b>“Absolutely beautiful”</b> · Dr. Zac, first client</span></div>
     </div>
     <div class="collage" aria-hidden="true">
@@ -988,6 +994,7 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
   <div class="wrap">
     <a class="logo" href="/"><i></i>mikaro</a>
     <span class="f-note">© 2026 Mikaro Studio · Bangkok · Designed &amp; built in-house. Obviously.</span>
+    <a class="f-link" href="/business">For business</a>
     <div class="socials">
       <a href="https://miomika.com" target="_blank" rel="noopener" aria-label="Miomika" title="Miomika"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 9 3 4l6 3"/><path d="M19 9l2-5-6 3"/><ellipse cx="12" cy="13" rx="8" ry="7"/><circle cx="9.4" cy="12.4" r=".9" fill="currentColor" stroke="none"/><circle cx="14.6" cy="12.4" r=".9" fill="currentColor" stroke="none"/></svg></a>
       <a href="https://www.tiktok.com/@survivalmodemike" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.75 2h2.63c.19 1.4 1.02 2.66 2.2 3.42.83.55 1.8.87 2.8.92v2.7c-1.05-.03-2.08-.28-3.03-.72-.42-.19-.82-.42-1.2-.68v6.16c0 1.5-.5 2.96-1.42 4.14a6.6 6.6 0 0 1-5.2 2.56A6.63 6.63 0 0 1 2.9 14.9a6.63 6.63 0 0 1 6.63-6.63c.37 0 .73.03 1.08.09v2.8a3.9 3.9 0 0 0-1.08-.15 3.83 3.83 0 1 0 3.83 3.83V2z"/></svg></a>

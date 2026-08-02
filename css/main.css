@@ -694,3 +694,51 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
   .top{position:fixed;top:0;left:0;right:0;width:100%;z-index:300}
   main{padding-top:calc(.9rem + .9rem + 46px)}
 }
+
+/* v6.7 · /business page */
+.biz-plan{padding:0 0 clamp(2.4rem,6vh,4rem)}
+.biz-plan-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.4rem,3.5vw,2.2rem);box-shadow:var(--shadow);max-width:720px;margin:0 auto}
+.biz-plan-box label{display:block;font-family:var(--disp);font-weight:800;font-size:.82rem;margin-bottom:.55rem}
+.biz-plan-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.biz-plan-row input{flex:1 1 220px;border:1.5px solid var(--line);border-radius:14px;background:var(--milk);padding:.9rem 1.05rem;font-family:var(--body);font-size:.95rem;color:var(--ink)}
+.biz-plan-row input:focus{outline:none;border-color:var(--blue)}
+.biz-plan-row .btn{flex:0 0 auto}
+.biz-out{margin-top:1.2rem;min-height:0}
+.biz-card{background:var(--ink);color:#fff;border-radius:24px;padding:1.5rem 1.4rem}
+.biz-card .tier{font-family:var(--disp);font-weight:900;font-size:1.35rem;letter-spacing:-.02em;margin-bottom:.35rem}
+.biz-card .tier span{color:var(--mint);font-size:.78rem;font-weight:700;letter-spacing:.04em;margin-left:.45rem;vertical-align:middle}
+.biz-card .why{color:rgba(255,255,255,.72);font-size:.9rem;margin-bottom:1rem}
+.biz-card ul{margin:0 0 1.1rem;padding-left:1.1rem}
+.biz-card li{font-size:.9rem;margin:.35rem 0;color:rgba(255,255,255,.9)}
+.biz-card .pitch{font-size:.92rem;margin-bottom:1.15rem;color:#fff}
+.biz-card .btn{background:#fff;color:var(--ink)}
+.biz-skel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:1.5rem 1.4rem}
+.biz-skel .bar{height:14px;border-radius:8px;background:linear-gradient(90deg,var(--line),#f7f2ea,var(--line));background-size:200% 100%;animation:bizshimmer 1.2s ease infinite;margin:.55rem 0}
+.biz-skel .bar.w40{width:40%}.biz-skel .bar.w70{width:70%}.biz-skel .bar.w90{width:90%}.biz-skel .bar.w55{width:55%}
+@keyframes bizshimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+.biz-err{background:var(--pink-soft);border:1px solid #ffc1d9;border-radius:18px;padding:1rem 1.15rem;color:var(--ink);font-size:.92rem}
+.biz-err a{color:var(--blue);font-weight:700;text-decoration:underline}
+.biz-tiers{padding:0 0 clamp(3rem,8vh,5rem)}
+.biz-price{font-family:var(--disp);font-weight:900;font-size:1.55rem;letter-spacing:-.02em;margin:.15rem 0 .85rem}
+.biz-price small{font-size:.72rem;font-weight:700;color:var(--sub);margin-left:.25rem}
+.biz-tier .sv p.note{margin-top:1rem;font-size:.78rem;color:var(--blue);font-weight:600}
+.biz-tier ul{margin:.2rem 0 0;padding-left:1.05rem}
+.biz-tier li{font-size:.88rem;color:var(--sub);margin:.38rem 0}
+.biz-proof{padding:0 0 clamp(3rem,8vh,5rem)}
+.biz-proof-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+@media(max-width:900px){.biz-proof-g{grid-template-columns:1fr}}
+.biz-pc{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s}
+.biz-pc:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.biz-pc .shot{aspect-ratio:16/10;overflow:hidden;background:var(--milk)}
+.biz-pc .shot img{width:100%;height:100%;object-fit:cover;display:block}
+.biz-pc .body{padding:1.25rem 1.3rem 1.4rem}
+.biz-pc h4{font-family:var(--disp);font-weight:800;font-size:1.05rem;margin-bottom:.3rem}
+.biz-pc p{font-size:.86rem;color:var(--sub);margin-bottom:.9rem}
+.biz-form-sec{padding:0 0 clamp(3.5rem,9vh,5.5rem)}
+.biz-form-sec .cform{max-width:720px;margin:0 auto}
+.f-link{font-family:var(--disp);font-weight:700;font-size:.82rem;color:var(--ink);border-bottom:1.5px solid var(--pink)}
+.f-link:hover{color:var(--blue);border-color:var(--blue)}
+.hero-biz{margin:-.6rem 0 1.2rem;font-size:.92rem}
+.hero-biz a{color:var(--ink);font-weight:600;border-bottom:1.5px solid var(--pink)}
+.hero-biz a:hover{color:var(--blue);border-color:var(--blue)}
+@media(prefers-reduced-motion:reduce){.biz-skel .bar{animation:none}}
