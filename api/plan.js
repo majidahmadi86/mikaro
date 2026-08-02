@@ -29,16 +29,22 @@ export default async function handler(req,res){
     const {description}=req.body||{};
     const text=String(description||'').trim().slice(0,800);
     if(text.length<8)return res.status(400).json({error:true});
-    const key=process.env.GEMINI_API_KEY;
+    const key=process.env.MIKARO_STUDIO;
     if(!key)return res.status(500).json({error:true});
-    const model=process.env.GEMINI_MODEL||'gemini-2.5-flash';
-    const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key='+key,{
+    const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Authorization':'Bearer '+key,
+        'Content-Type':'application/json'
+      },
       body:JSON.stringify({
-        system_instruction:{parts:[{text:SYSTEM}]},
-        contents:[{role:'user',parts:[{text}]}],
-        generationConfig:{temperature:0.4,maxOutputTokens:400}
+        model:'llama-3.3-70b-versatile',
+        response_format:{type:'json_object'},
+        temperature:0.4,
+        messages:[
+          {role:'system',content:SYSTEM},
+          {role:'user',content:text}
+        ]
       })
     });
     if(!r.ok){
@@ -47,7 +53,7 @@ export default async function handler(req,res){
       return res.status(502).json({error:true});
     }
     const data=await r.json();
-    const raw=(data&&data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts||[]).map(p=>p.text||'').join('').trim();
+    const raw=String(data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content||'').trim();
     const cleaned=raw.replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim();
     let parsed;
     try{parsed=JSON.parse(cleaned);}catch(e){

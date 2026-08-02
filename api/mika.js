@@ -13,17 +13,26 @@ export default async function handler(req,res){
   try{
     const {messages}=req.body||{};
     if(!Array.isArray(messages)||!messages.length)return res.status(400).json({error:'bad request'});
-    const key=process.env.GEMINI_API_KEY;
+    const key=process.env.MIKARO_STUDIO;
     if(!key)return res.status(500).json({error:'not configured'});
-    const hist=messages.slice(-8).map(m=>({role:m.role==='user'?'user':'model',parts:[{text:String(m.content||'').slice(0,600)}]}));
-    const model=process.env.GEMINI_MODEL||'gemini-2.5-flash';
-    const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key='+key,{
+    const hist=messages.slice(-8).map(m=>({
+      role:m.role==='user'?'user':'assistant',
+      content:String(m.content||'').slice(0,600)
+    }));
+    const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Authorization':'Bearer '+key,
+        'Content-Type':'application/json'
+      },
       body:JSON.stringify({
-        system_instruction:{parts:[{text:SYSTEM}]},
-        contents:hist,
-        generationConfig:{temperature:0.7,maxOutputTokens:300}
+        model:'llama-3.3-70b-versatile',
+        temperature:0.7,
+        max_tokens:300,
+        messages:[
+          {role:'system',content:SYSTEM},
+          ...hist
+        ]
       })
     });
     if(!r.ok){
@@ -32,7 +41,7 @@ export default async function handler(req,res){
       return res.status(502).json({error:'upstream'});
     }
     const data=await r.json();
-    const reply=(data&&data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts||[]).map(p=>p.text||'').join('').trim();
+    const reply=String(data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content||'').trim();
     if(!reply)return res.status(502).json({error:'empty'});
     return res.status(200).json({reply});
   }catch(e){
