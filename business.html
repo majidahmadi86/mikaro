@@ -94,8 +94,8 @@
       <span class="pill">Packages</span>
       <h2>The same craft in every package · <span class="bl">scope changes, quality does not.</span></h2>
     </div>
-    <div class="biz-ladder">
-      <article class="biz-pkg rv">
+    <div class="biz-ladder" id="bizLadder">
+      <article class="biz-pkg rv" data-tier="essential">
         <h4>Essential</h4>
         <div class="biz-price">24,900<small>THB</small></div>
         <div class="biz-zone">
@@ -121,8 +121,8 @@
           <a class="btn btn-sm btn-ghost magnet" href="#bizLead" data-pkg="essential">Request free demo</a>
         </div>
       </article>
-      <article class="biz-pkg featured rv">
-        <span class="biz-badge">Most shops choose this</span>
+      <article class="biz-pkg featured rv" data-tier="catalog">
+        <span class="biz-badge">★ Most shops choose this</span>
         <h4>Catalog</h4>
         <div class="biz-price">39,000<small>THB</small></div>
         <div class="biz-zone">
@@ -147,7 +147,7 @@
           <a class="btn btn-sm btn-blue magnet" href="#bizLead" data-pkg="catalog">Request free demo</a>
         </div>
       </article>
-      <article class="biz-pkg rv">
+      <article class="biz-pkg rv" data-tier="commerce">
         <h4>Commerce</h4>
         <div class="biz-price">69,000<small>THB</small></div>
         <div class="biz-zone">
@@ -172,7 +172,7 @@
           <a class="btn btn-sm btn-ghost magnet" href="#bizLead" data-pkg="commerce">Request free demo</a>
         </div>
       </article>
-      <article class="biz-pkg rv">
+      <article class="biz-pkg rv" data-tier="flagship">
         <h4>Flagship</h4>
         <div class="biz-price">89,000<small>THB</small></div>
         <div class="biz-zone">
@@ -198,7 +198,7 @@
           <a class="btn btn-sm btn-ghost magnet" href="#bizLead" data-pkg="flagship">Request free demo</a>
         </div>
       </article>
-      <article class="biz-pkg rv">
+      <article class="biz-pkg rv" data-tier="signature">
         <h4>Signature</h4>
         <div class="biz-price">From 150,000<small>· let's talk</small></div>
         <div class="biz-zone">
@@ -223,6 +223,7 @@
         </div>
       </article>
     </div>
+    <div class="biz-dots" id="bizDots" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -235,7 +236,7 @@
     </div>
     <div class="biz-proof-g">
       <article class="biz-pc rv">
-        <div class="shot"><img src="/assets/img/proof/mali.webp" alt="MALI Beauty Studio" width="1200" height="683" loading="lazy" decoding="async"></div>
+        <div class="shot"><img src="/assets/img/proof/mali.webp" alt="MALI Beauty Studio" width="1200" height="683" loading="eager" decoding="async"></div>
         <div class="body">
           <h4>MALI</h4>
           <p>Salon with live booking</p>
@@ -243,7 +244,7 @@
         </div>
       </article>
       <article class="biz-pc rv">
-        <div class="shot"><img src="/assets/img/proof/opticlean.webp" alt="OptiClean store" width="1200" height="683" loading="lazy" decoding="async"></div>
+        <div class="shot"><img src="/assets/img/proof/opticlean.webp" alt="OptiClean store" width="1200" height="683" loading="eager" decoding="async"></div>
         <div class="body">
           <h4>OptiClean</h4>
           <p>Store with real payments</p>
@@ -251,7 +252,7 @@
         </div>
       </article>
       <article class="biz-pc rv">
-        <div class="shot"><img src="/assets/img/proof/outsiders.webp" alt="Outsiders Legal" width="1200" height="683" loading="lazy" decoding="async"></div>
+        <div class="shot"><img src="/assets/img/proof/outsiders.webp" alt="Outsiders Legal" width="1200" height="683" loading="eager" decoding="async"></div>
         <div class="body">
           <h4>Outsiders Legal</h4>
           <p>Services in 3 languages</p>
@@ -409,13 +410,79 @@
   document.querySelectorAll('[data-pkg]').forEach(function(a){
     a.addEventListener('click',function(){if(pkgEl)pkgEl.value=a.getAttribute('data-pkg');});
   });
+
+  var ladder=document.getElementById('bizLadder');
+  var dots=document.getElementById('bizDots');
+  var deskOrder=ladder?Array.prototype.slice.call(ladder.children):[];
+  function mobileRail(){
+    if(!ladder)return;
+    var mobile=window.matchMedia('(max-width:768px)').matches||window.matchMedia('(max-width:820px)').matches;
+    if(mobile){
+      var cat=ladder.querySelector('[data-tier="catalog"]');
+      if(cat&&ladder.firstElementChild!==cat)ladder.insertBefore(cat,ladder.firstElementChild);
+      if(dots){
+        dots.innerHTML='';
+        ladder.querySelectorAll('.biz-pkg').forEach(function(card,i){
+          var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','package '+(i+1));
+          b.addEventListener('click',function(){card.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});});
+          dots.appendChild(b);
+        });
+      }
+      requestAnimationFrame(function(){
+        var cat2=ladder.querySelector('[data-tier="catalog"]');
+        if(cat2)cat2.scrollIntoView({inline:'center',block:'nearest'});
+        syncDots();
+      });
+    }else{
+      deskOrder.forEach(function(el){ladder.appendChild(el);});
+      if(dots)dots.innerHTML='';
+    }
+  }
+  function syncDots(){
+    if(!ladder||!dots||!dots.childElementCount)return;
+    var cards=ladder.querySelectorAll('.biz-pkg');
+    var mid=ladder.scrollLeft+ladder.clientWidth/2;
+    var best=0,bestDist=1e9;
+    cards.forEach(function(c,i){
+      var center=c.offsetLeft+c.offsetWidth/2;
+      var d=Math.abs(center-mid);
+      if(d<bestDist){bestDist=d;best=i;}
+    });
+    Array.prototype.forEach.call(dots.children,function(b,i){b.classList.toggle('on',i===best);});
+  }
+  if(ladder){
+    ladder.addEventListener('scroll',syncDots,{passive:true});
+    window.addEventListener('resize',mobileRail);
+    mobileRail();
+  }
+
   var sticky=document.getElementById('bizSticky');
   var hero=document.querySelector('.phero');
+  var leadForm=document.querySelector('#bizLead form');
+  var formFocus=false;
+  function measureSticky(){
+    if(!sticky)return;
+    if(sticky.classList.contains('on')&&!sticky.classList.contains('hide')){
+      document.documentElement.style.setProperty('--biz-sticky-h',sticky.offsetHeight+'px');
+    }
+  }
   function syncSticky(){
-    if(!sticky||!hero||window.innerWidth>820){if(sticky)sticky.classList.remove('on');document.body.classList.remove('biz-sticky-pad');return;}
+    if(!sticky||!hero||window.innerWidth>820){
+      if(sticky){sticky.classList.remove('on');sticky.classList.remove('hide');}
+      document.body.classList.remove('biz-sticky-pad');
+      return;
+    }
     var past=window.scrollY>hero.offsetTop+hero.offsetHeight*.55;
     sticky.classList.toggle('on',past);
-    document.body.classList.toggle('biz-sticky-pad',past);
+    sticky.classList.toggle('hide',formFocus);
+    document.body.classList.toggle('biz-sticky-pad',past&&!formFocus);
+    measureSticky();
+  }
+  if(leadForm){
+    leadForm.addEventListener('focusin',function(){formFocus=true;syncSticky();});
+    leadForm.addEventListener('focusout',function(){
+      setTimeout(function(){formFocus=!!leadForm.querySelector(':focus');syncSticky();},0);
+    });
   }
   window.addEventListener('scroll',syncSticky,{passive:true});
   window.addEventListener('resize',syncSticky);

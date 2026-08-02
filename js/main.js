@@ -190,8 +190,19 @@ if(matchMedia('(pointer:fine)').matches&&!RM){
 /* ---------- motion pack: reveals (all variants) + zoom + stagger ---------- */
 (function(){
   document.querySelectorAll('.serv-g .sv, .stats-g .stat, .proc-g .pst').forEach((el,i)=>{el.style.transitionDelay=(i%6)*.07+'s';});
-  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12});
-  document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s,.zoomin').forEach(el=>io.observe(el));
+  const SEL='.rv,.rv-l,.rv-r,.rv-s,.zoomin';
+  function mark(el){el.classList.add('in');}
+  function inView(el){
+    const r=el.getBoundingClientRect(),vh=innerHeight||document.documentElement.clientHeight;
+    return r.top<vh*0.95&&r.bottom>vh*-0.05;
+  }
+  function sweep(){document.querySelectorAll(SEL).forEach(el=>{if(inView(el))mark(el);});}
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){mark(en.target);io.unobserve(en.target);}});},{threshold:0.05,rootMargin:'0px 0px 25% 0px'});
+  document.querySelectorAll(SEL).forEach(el=>io.observe(el));
+  // F2 fail-open: mark anything already visible, then force-complete stragglers
+  requestAnimationFrame(sweep);
+  addEventListener('load',sweep,{once:true});
+  setTimeout(()=>{document.querySelectorAll(SEL).forEach(mark);},1800);
 })();
 
 /* ---------- BKK clocks ---------- */
@@ -273,9 +284,15 @@ bkk();setInterval(bkk,15000);
     el.classList.add('wsplit');
   }
   const heads=document.querySelectorAll('.phero h1,.shead h2,.hero h1,.ai h2,.mega h3,.perf-copy h3,.cta-card h2,.consult-band h3');
-  heads.forEach(h=>{try{wsplit(h);}catch(e){}});
-  const hio=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('hin');hio.unobserve(en.target);}});},{threshold:.5});
-  heads.forEach(h=>hio.observe(h));
+  // F1: skip word-split on Thai · overflow:hidden on .wu clips stacked vowels
+  if(!THL){
+    heads.forEach(h=>{try{wsplit(h);}catch(e){}});
+    const hio=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('hin');hio.unobserve(en.target);}});},{threshold:.15,rootMargin:'0px 0px 20% 0px'});
+    heads.forEach(h=>hio.observe(h));
+    setTimeout(()=>heads.forEach(h=>h.classList.add('hin')),1800);
+  }else{
+    heads.forEach(h=>h.classList.add('hin'));
+  }
 
   const AUTO='.mega .txt>p,.mega .txt .tag,.mega .txt .stats-row,.mega .txt .btn-row,.phero .pill,.phero p,.case-body>*,.meta,.ct-card,.cform .cf,.cform button,.cside>*,.next-proj,.consult-band,.hero .sub,.hero-ctas,.hero-proof,.hero .badge,.serv-g .sv,.proc-g .pst,.bloq,.theater,.perf-badges>div';
   const seen=new Set();
@@ -289,8 +306,15 @@ bkk();setInterval(bkk,15000);
     const k=groups.get(p);groups.set(p,k+1);
     el.style.setProperty('--d',(k*.09)+'s');
   });
-  const aio=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');aio.unobserve(en.target);}});},{threshold:.15});
+  function arvIn(el){el.classList.add('in');}
+  function arvView(el){
+    const r=el.getBoundingClientRect(),vh=innerHeight||document.documentElement.clientHeight;
+    return r.top<vh*0.95&&r.bottom>vh*-0.05;
+  }
+  const aio=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){arvIn(en.target);aio.unobserve(en.target);}});},{threshold:0.05,rootMargin:'0px 0px 25% 0px'});
   document.querySelectorAll('.arv').forEach(el=>aio.observe(el));
+  requestAnimationFrame(()=>document.querySelectorAll('.arv').forEach(el=>{if(arvView(el))arvIn(el);}));
+  setTimeout(()=>document.querySelectorAll('.arv').forEach(arvIn),1800);
 })();
 
 /* ---------- v5.4: mobile menu + photo socials ---------- */
