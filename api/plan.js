@@ -41,12 +41,19 @@ export default async function handler(req,res){
         generationConfig:{temperature:0.4,maxOutputTokens:400}
       })
     });
-    if(!r.ok)return res.status(502).json({error:true});
+    if(!r.ok){
+      const body=await r.text().catch(()=>'');
+      console.error('PLAN_DIAG status='+r.status+' body='+String(body).slice(0,500)+' parse=failed');
+      return res.status(502).json({error:true});
+    }
     const data=await r.json();
     const raw=(data&&data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts||[]).map(p=>p.text||'').join('').trim();
     const cleaned=raw.replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim();
     let parsed;
-    try{parsed=JSON.parse(cleaned);}catch(e){return res.status(200).json({error:true});}
+    try{parsed=JSON.parse(cleaned);}catch(e){
+      console.error('PLAN_DIAG status='+r.status+' body='+String(raw).slice(0,300)+' parse=failed');
+      return res.status(200).json({error:true});
+    }
     if(!valid(parsed))return res.status(200).json({error:true});
     return res.status(200).json({
       tier:parsed.tier,

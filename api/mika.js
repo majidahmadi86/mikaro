@@ -26,7 +26,11 @@ export default async function handler(req,res){
         generationConfig:{temperature:0.7,maxOutputTokens:300}
       })
     });
-    if(!r.ok)return res.status(502).json({error:'upstream'});
+    if(!r.ok){
+      const body=await r.text().catch(()=>'');
+      console.error('MIKA_DIAG status='+r.status+' body='+String(body).slice(0,500)+' parse=failed');
+      return res.status(502).json({error:'upstream'});
+    }
     const data=await r.json();
     const reply=(data&&data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts||[]).map(p=>p.text||'').join('').trim();
     if(!reply)return res.status(502).json({error:'empty'});
