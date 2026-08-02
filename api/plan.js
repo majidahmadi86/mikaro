@@ -1,5 +1,6 @@
-const SYSTEM=`You are the intake planner for Mikaro Studio, a Bangkok web studio. Given a short business description, reply ONLY with minified JSON: {tier:'starter'|'catalog'|'commerce', tier_reason:one sentence, features:[5 short strings naming concrete site features tailored to this exact business], pitch:one warm sentence}. Reply in the language of the input. Never use the em dash character anywhere. No emojis. Salon/restaurant/clinic/services with no product catalog → starter. Product seller without online payment need → catalog. Wants to take payment online → commerce.`;
+const SYSTEM=`You are the intake planner for Mikaro Studio, a Bangkok web studio. Given a short business description, reply ONLY with minified JSON: {tier:'essential'|'catalog'|'commerce'|'flagship'|'signature', tier_reason:one sentence, features:[5 short strings naming concrete site features tailored to this exact business], pitch:one warm sentence}. Reply in the language of the input. Never use the em dash character anywhere. No emojis. Service business with no product catalog → essential. Product seller without online payment need → catalog. Wants to take payment online → commerce. Wants an AI assistant, premium brand experience, or a third language → flagship. Custom app, platform, or unusual scope → signature.`;
 
+const Tiers=['essential','catalog','commerce','flagship','signature'];
 const hits=new Map();
 function limited(ip){
   const now=Date.now();
@@ -11,7 +12,7 @@ function limited(ip){
 }
 function valid(p){
   if(!p||typeof p!=='object')return false;
-  if(!['starter','catalog','commerce'].includes(p.tier))return false;
+  if(!Tiers.includes(p.tier))return false;
   if(typeof p.tier_reason!=='string'||!p.tier_reason.trim())return false;
   if(typeof p.pitch!=='string'||!p.pitch.trim())return false;
   if(!Array.isArray(p.features)||p.features.length!==5)return false;
