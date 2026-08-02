@@ -93,7 +93,7 @@ button{cursor:pointer;border:none;background:none}
 .hero h1 .pk{color:var(--pink)}
 .hero h1 .bl{color:var(--blue)}
 .hero h1 .swash{color:var(--gold)}
-.hero p.sub{font-size:1.08rem;color:var(--sub);max-width:30rem;margin-bottom:1.8rem}
+.hero p.sub{font-size:1.08rem;color:var(--sub);max-width:30rem;margin-bottom:1rem}
 .hero p.sub b{color:var(--ink)}
 .hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.6rem}
 .hero-biz{margin:-.6rem 0 1.2rem;font-size:.92rem}
@@ -733,6 +733,15 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
   .top{position:fixed;top:0;left:0;right:0;width:100%;z-index:300}
   main{padding-top:calc(.9rem + .9rem + 46px)}
 }
+
+/* trust chips · shared with /business */
+.biz-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;margin:1.15rem auto 0;max-width:40rem}
+.biz-chip{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--disp);font-weight:700;font-size:.78rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:.45rem .85rem;line-height:1.2}
+a.biz-chip{text-decoration:none;transition:border-color .25s,color .25s,box-shadow .25s}
+a.biz-chip::after{content:"↗";opacity:.42;font-size:.82em;margin-left:.12rem;line-height:1}
+a.biz-chip:hover{border-color:var(--blue);color:var(--blue)}
+a.biz-chip:hover::after{opacity:.75}
+.hero .biz-trust{justify-content:flex-start;margin:0 0 1.45rem;max-width:36rem}
 </style>
 <script type="application/ld+json">
 {
@@ -786,6 +795,11 @@ html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6
       <span class="badge"><span class="dot"></span>2 โปรดักต์ออนไลน์อยู่ตอนนี้ · คลิกดูได้เลย</span>
       <h1>เราสร้าง<span class="pk">โปรดักต์จริง</span> · ไม่ใช่<span class="swash">คำสัญญาสวยหรู</span></h1>
       <p class="sub">Mikaro คือสตูดิโอครีเอทีฟเทคโนโลยีในกรุงเทพฯ <b>กำกับงานสร้างสรรค์โดยมืออาชีพ พร้อมวิศวกรรมที่เร่งด้วย AI</b> · กลยุทธ์ ดีไซน์ โค้ด และการส่งมอบ ครบจบในที่เดียว</p>
+      <div class="biz-trust" aria-label="สัญญาณความน่าเชื่อถือ">
+        <a class="biz-chip" href="https://share.google/W5Y1omsP3xsZjBfuW" target="_blank" rel="noopener">★ 5.0 บน Google · 16 รีวิว</a>
+        <span class="biz-chip">เดโม่ฟรีใน 48 ชม.</span>
+        <span class="biz-chip">ส่งมอบใน 2-3 สัปดาห์</span>
+      </div>
       <div class="hero-ctas">
         <a class="btn btn-blue magnet" href="/th/work">ดูผลงานจริง</a>
         <a class="btn btn-ghost magnet" href="/th/contact">เริ่มโปรเจกต์</a>
