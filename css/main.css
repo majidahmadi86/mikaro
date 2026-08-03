@@ -523,6 +523,7 @@ body{overflow-x:hidden}
 .mega .vis .bframe .shot{aspect-ratio:3/2!important;display:grid;place-items:center}
 .mega .vis .bframe .shot img{width:100%!important;height:100%!important;object-fit:contain!important}
 .slider .track>div{aspect-ratio:3/2;background:#fff;display:grid;place-items:center}
+.case-hero.mio-world .slider .track>div{aspect-ratio:1000/920}
 .slider .track img{width:100%;height:100%;object-fit:contain}
 /* photo social icons */
 .socials a{overflow:hidden}

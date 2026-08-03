@@ -26,11 +26,20 @@ const THL=document.documentElement.lang==='th';
   }
   [...base,...maybe].forEach(src=>{const im=new Image();im.onload=()=>{found.push(src);done();};im.onerror=done;im.src=src;});
 
+  function slideMedia(s){
+    const dims=s.endsWith('miomika-hero-desktop.jpg')?' width="1000" height="920"'
+      :s.endsWith('miomika-case-desktop.jpg')?' width="1346" height="633"':'';
+    const img=`<img src="${s}" alt="${key} screenshot"${dims} loading="lazy" decoding="async">`;
+    if(key==='miomika'&&s.endsWith('miomika-hero-desktop.jpg')){
+      return `<picture><source media="(max-width:768px)" srcset="/assets/img/miomika-hero-mobile.jpg">${img}</picture>`;
+    }
+    return img;
+  }
   function build(shots){
     el.innerHTML=`
       <div class="bframe slider" style="width:min(100%,900px)">
         <div class="bbar2"><i></i><i></i><i></i><span class="url">${key==='miomika'?'miomika.com':'opticlean.mikaro.studio'}</span></div>
-        <div class="track-wrap"><div class="track">${shots.map(s=>`<div><img src="${s}" alt="${key} screenshot" loading="lazy" decoding="async"></div>`).join('')}</div></div>
+        <div class="track-wrap"><div class="track">${shots.map(s=>`<div>${slideMedia(s)}</div>`).join('')}</div></div>
         ${shots.length>1?`
         <button class="sarrow sprev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
         <button class="sarrow snext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
