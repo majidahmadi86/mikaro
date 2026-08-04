@@ -1,6 +1,6 @@
 import { chromium } from 'playwright-core';
 import sharp from 'sharp';
-import { mkdirSync } from 'fs';
+import { mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -9,14 +9,21 @@ const outDir=join(root,'..','assets','img','proof');
 mkdirSync(outDir,{recursive:true});
 
 const sites=[
+  {slug:'praow',url:'https://praow.mikaro.studio'},
   {slug:'mali',url:'https://mali.mikaro.studio'},
   {slug:'opticlean',url:'https://opticlean.mikaro.studio'},
   {slug:'outsiders',url:'https://outsiderslegal.mikaro.studio'}
 ];
 
+const edgeCandidates=[
+  'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+  'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe',
+  'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+];
+const exe=edgeCandidates.find(p=>existsSync(p))||chromium.executablePath();
 const browser=await chromium.launch({
   headless:true,
-  executablePath:chromium.executablePath()
+  executablePath:exe
 });
 const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
 
