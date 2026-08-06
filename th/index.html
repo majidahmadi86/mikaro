@@ -183,7 +183,9 @@ button{cursor:pointer;border:none;background:none}
 .work-slide{position:relative}
 .work-rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:clamp(1.6rem,4vh,2.4rem);scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
 .work-rail::-webkit-scrollbar{display:none}
-.work-rail .mega{flex:0 0 calc(100% - 2.75rem);margin-bottom:0;scroll-snap-align:start}
+.work-rail .mega{flex:0 0 calc(100% - 3rem);margin-bottom:0;scroll-snap-align:start;min-width:0}
+@media(max-width:1023px){.work-rail .mega{flex-basis:calc(100% - 2.5rem)}}
+@media(max-width:639px){.work-rail .mega{flex-basis:calc(100% - 2rem)}}
 .work-nav{display:none;position:absolute;top:50%;z-index:4;transform:translateY(-50%);width:48px;height:48px;padding:0;justify-content:center;background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow)}
 .work-nav:hover{transform:translateY(-50%) scale(1.04)}
 .work-nav-prev{left:.4rem}
