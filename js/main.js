@@ -454,6 +454,22 @@ bkk();setInterval(bkk,15000);
   }
 })();
 
+/* ---------- homepage work rail · prev/next (desktop) ---------- */
+(function(){
+  const rail=document.getElementById('workRail');
+  if(!rail)return;
+  const slide=rail.closest('.work-slide');
+  if(!slide)return;
+  slide.querySelectorAll('[data-work-nav]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const dir=Number(btn.getAttribute('data-work-nav'))||1;
+      const card=rail.querySelector('.mega');
+      const step=card?(card.getBoundingClientRect().width+parseFloat(getComputedStyle(rail).gap||0)):rail.clientWidth*0.9;
+      rail.scrollBy({left:dir*step,behavior:'smooth'});
+    });
+  });
+})();
+
 /* ---------- v6.0: language engine · detect, remember, toggle ---------- */
 (function(){
   const THL=document.documentElement.lang==='th';
