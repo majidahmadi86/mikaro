@@ -62,7 +62,7 @@ button{cursor:pointer;border:none;background:none}
 .hero h1{font-family:var(--disp);font-weight:900;letter-spacing:-.03em;line-height:1.02;font-size:clamp(2.6rem,6.2vw,4.9rem);margin:1.3rem 0 1.2rem}
 .hero h1 .pk{color:var(--pink)}
 .hero h1 .bl{color:var(--blue)}
-.hero h1 .swash{color:var(--gold)}
+.hero h1 .swash{color:#B9851E}
 .hero p.sub{font-size:1.08rem;color:var(--sub);max-width:30rem;margin-bottom:1rem}
 .hero p.sub b{color:var(--ink)}
 .hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.6rem}
@@ -159,9 +159,11 @@ button{cursor:pointer;border:none;background:none}
 .work-nav-next{right:.4rem}
 .work-nav svg{width:18px;height:18px}
 @media(min-width:901px){.work-nav{display:inline-flex}}
-.work-dots{display:flex;justify-content:center;gap:.5rem;margin:1.1rem 0 0;padding:0}
-.work-dots button{width:9px;height:9px;border-radius:50%;padding:0;border:1.5px solid rgba(23,21,31,.22);background:rgba(23,21,31,.12);transition:transform .25s,background .25s,border-color .25s;cursor:pointer}
-.work-dots button.on{background:var(--pink);border-color:var(--pink);transform:scale(1.25)}
+.work-dots{display:flex;justify-content:center;align-items:center;gap:.35rem;margin:1.1rem 0 0;padding:0}
+.work-dots button{width:28px;height:28px;padding:0;border:0;border-radius:50%;background:transparent;display:grid;place-items:center;cursor:pointer;transition:transform .25s}
+.work-dots button::after{content:"";width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(23,21,31,.45);background:rgba(23,21,31,.35);transition:transform .25s,background .25s,border-color .25s}
+.work-dots button.on::after{background:var(--pink);border-color:var(--pink);transform:scale(1.25)}
+.work-dots button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .work-slide::after{content:"";pointer-events:none;position:absolute;top:0;right:0;bottom:2.6rem;width:2.4rem;z-index:3;background:linear-gradient(90deg,transparent,var(--milk));opacity:0;transition:opacity .25s}
 @media(max-width:900px){.work-slide::after{opacity:1}}
 @keyframes work-nudge{0%,100%{transform:translateX(0)}40%{transform:translateX(-24px)}70%{transform:translateX(0)}}
