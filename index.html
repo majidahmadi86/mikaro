@@ -198,6 +198,14 @@ button{cursor:pointer;border:none;background:none}
 .work-nav-next{right:.4rem}
 .work-nav svg{width:18px;height:18px}
 @media(min-width:901px){.work-nav{display:inline-flex}}
+.work-dots{display:flex;justify-content:center;gap:.5rem;margin:1.1rem 0 0;padding:0}
+.work-dots button{width:9px;height:9px;border-radius:50%;padding:0;border:1.5px solid rgba(23,21,31,.22);background:rgba(23,21,31,.12);transition:transform .25s,background .25s,border-color .25s;cursor:pointer}
+.work-dots button.on{background:var(--pink);border-color:var(--pink);transform:scale(1.25)}
+.work-slide::after{content:"";pointer-events:none;position:absolute;top:0;right:0;bottom:2.6rem;width:2.4rem;z-index:3;background:linear-gradient(90deg,transparent,var(--milk));opacity:0;transition:opacity .25s}
+@media(max-width:900px){.work-slide::after{opacity:1}}
+@keyframes work-nudge{0%,100%{transform:translateX(0)}40%{transform:translateX(-24px)}70%{transform:translateX(0)}}
+.work-rail.nudge{animation:work-nudge .6s var(--ease) 1}
+@media(prefers-reduced-motion:reduce){.work-rail.nudge{animation:none}.work-slide::after{display:none}}
 
 /* ============ TESTIMONIAL ============ */
 .testi{padding:0 0 clamp(4rem,10vh,6.5rem)}
@@ -969,6 +977,7 @@ a.biz-chip:hover::after{opacity:.75}
     </article>
       </div>
       <button type="button" class="btn work-nav work-nav-next" aria-label="Next work" data-work-nav="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+      <div class="work-dots" id="workDots" role="tablist" aria-label="Work cards"></div>
     </div>
   </div>
 </section>
