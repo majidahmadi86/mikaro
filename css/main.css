@@ -789,6 +789,8 @@ a.biz-chip:hover::after{opacity:.75}
 .biz-subname{font-size:.78rem;font-weight:600;color:var(--sub);margin:0 0 .2rem;line-height:1.35}
 .biz-price{font-family:var(--disp);font-weight:900;font-size:clamp(1.2rem,2.2vw,1.45rem);letter-spacing:-.02em;margin:.05rem 0 .3rem;line-height:1.2}
 .biz-price small{font-size:.68rem;font-weight:700;color:var(--sub);margin-left:.2rem}
+.biz-policy-line{font-size:.72rem;font-weight:700;color:var(--blue);margin:-.05rem 0 .45rem;line-height:1.35}
+.biz-policy-detail{font-size:.76rem;color:var(--sub);margin:.7rem 0 0;padding-top:.65rem;border-top:1px solid var(--line);line-height:1.5}
 .biz-tagline{font-family:var(--disp);font-weight:700;font-size:.88rem;line-height:1.35;color:var(--ink);margin:.15rem 0 .45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .biz-lead{font-size:.78rem;font-weight:600;color:var(--sub);margin:0 0 .35rem;line-height:1.35}
 .biz-for{font-size:.78rem;color:var(--sub);margin:.55rem 0 0;padding-top:0;line-height:1.45}
