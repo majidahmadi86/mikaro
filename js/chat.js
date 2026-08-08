@@ -44,6 +44,8 @@ const FACTS=Object.freeze({
     },
     demoYes:"Perfect · let's start. Send your business name and a few photos of your products or work on LINE, and the free demo starts today: line.me/ti/p/l059F3WkI7. Within 48 hours you'll have a link with your name on it.",
     contact:"That falls outside my verified facts. The team replies personally · use LINE or the contact form and they'll confirm it directly.",
+    fallback:"Good question · and I want to get it exactly right for you. The quickest path: tell me what kind of business you run, and I'll point you to the right package with a live example. For anything beyond my knowledge, the team replies personally on LINE.",
+    handoff:'For anything beyond my knowledge, the team replies personally on LINE.',
     greeting:"Hello · I'm MIKA, the studio's guide. Ask me about packages, prices, timelines, warranty, the free demo, revisions, or live examples."
   },
   th:{
@@ -76,6 +78,8 @@ const FACTS=Object.freeze({
     },
     demoYes:'เยี่ยมเลยครับ เริ่มกันเลยครับ ส่งชื่อธุรกิจและรูปสินค้าหรือผลงานสัก 2-3 รูปมาทาง LINE ได้เลยครับ: line.me/ti/p/l059F3WkI7 ภายใน 48 ชั่วโมงคุณจะได้ลิงก์เดโม่ในชื่อของคุณครับ',
     contact:'คำถามดีมาก · ฉันเป็นไกด์ตัวเล็ก ๆ เรื่องลึก ๆ ให้มนุษย์ตอบดีกว่า ฝากอีเมลไว้แล้วเราจะติดต่อกลับภายในหนึ่งวัน หรือลองปุ่มด้านล่างนี้',
+    fallback:'คำถามดีครับ และผมอยากตอบให้ตรงที่สุดครับ ทางที่เร็วที่สุดคือบอกผมว่าธุรกิจของคุณเป็นแบบไหน แล้วผมจะแนะนำแพ็กเกจที่เหมาะพร้อมตัวอย่างจริงให้เลยครับ ส่วนเรื่องที่เกินข้อมูลของผม ทีมงานตอบเองทาง LINE ครับ',
+    handoff:'ส่วนเรื่องที่เกินข้อมูลของผม ทีมงานตอบเองทาง LINE ครับ',
     greeting:'สวัสดีค่ะ · ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย'
   }
 });
@@ -155,8 +159,10 @@ const QUALIFY_INTENTS=buildQualifyIntents('en');
 const TH_QUALIFY_INTENTS=buildQualifyIntents('th');
 const DEMO_YES_INTENT=buildDemoYesIntent('en');
 const TH_DEMO_YES_INTENT=buildDemoYesIntent('th');
-const FALLBACK={id:'fallback',a:FACTS.en.contact,acts:actions('en','contact')};
-const TH_FALLBACK={id:'fallback',a:FACTS.th.contact,acts:actions('th','contact')};
+const FALLBACK={id:'fallback',a:FACTS.en.fallback,acts:[...bizTypeActions('en'),...actions('en','contact')]};
+const TH_FALLBACK={id:'fallback',a:FACTS.th.fallback,acts:[...bizTypeActions('th'),...actions('th','contact')]};
+const HANDOFF={id:'handoff',a:FACTS.en.handoff,acts:actions('en','contact')};
+const TH_HANDOFF={id:'handoff',a:FACTS.th.handoff,acts:actions('th','contact')};
 const TH_HI=TH_INTENTS[0];
 
 /* ---------- brain ---------- */
@@ -188,6 +194,7 @@ function createConversation(lang){
   const useThai=lang==='th';
   let awaitingBizType=false;
   let awaitingDemoYes=false;
+  let fallbackLoop=false;
   return {
     ask(q){
       if(awaitingDemoYes&&pickFrom(q,[useThai?TH_DEMO_YES_INTENT:DEMO_YES_INTENT])){
@@ -197,23 +204,45 @@ function createConversation(lang){
       if(awaitingBizType){
         const qualified=pickFrom(q,useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS);
         if(qualified){
+          if(qualified.id==='other'){
+            fallbackLoop=true;
+            return qualified;
+          }
           awaitingBizType=false;
-          if(qualified.id!=='other')awaitingDemoYes=true;
+          fallbackLoop=false;
+          awaitingDemoYes=true;
           return qualified;
         }
+        if(fallbackLoop){
+          awaitingBizType=false;
+          fallbackLoop=false;
+          return useThai?TH_HANDOFF:HANDOFF;
+        }
+        fallbackLoop=true;
         return (useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS).find(it=>it.id==='other');
       }
       const result=pick(q,useThai);
-      if(result.id==='need-customers')awaitingBizType=true;
+      if(result.id==='need-customers'){
+        awaitingBizType=true;
+        fallbackLoop=false;
+      }
+      if(result.id==='fallback'){
+        awaitingBizType=true;
+        fallbackLoop=true;
+      }
+      if(result.id==='other'){
+        awaitingBizType=true;
+        fallbackLoop=true;
+      }
       if(['shop','hotel','clinic-salon','restaurant'].includes(result.id))awaitingDemoYes=true;
       return result;
     },
-    state(){return {awaitingBizType,awaitingDemoYes};}
+    state(){return {awaitingBizType,awaitingDemoYes,fallbackLoop};}
   };
 }
 
 if(typeof module!=='undefined'&&module.exports){
-  module.exports={FACTS,INTENTS,TH_INTENTS,QUALIFY_INTENTS,TH_QUALIFY_INTENTS,DEMO_YES_INTENT,TH_DEMO_YES_INTENT,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
+  module.exports={FACTS,INTENTS,TH_INTENTS,QUALIFY_INTENTS,TH_QUALIFY_INTENTS,DEMO_YES_INTENT,TH_DEMO_YES_INTENT,FALLBACK,TH_FALLBACK,HANDOFF,TH_HANDOFF,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
   return;
 }
 
