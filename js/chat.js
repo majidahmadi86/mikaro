@@ -7,49 +7,116 @@
    Runs fully in-browser; the lead form is the only network call.
    ================================================================ */
 (function(){
-const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const HAS_DOM=typeof document!=='undefined';
+const RM=HAS_DOM&&matchMedia('(prefers-reduced-motion:reduce)').matches;
 const FORM_ENDPOINT='https://formsubmit.co/ajax/84f718f8c2666a5284f748d3db5c6d02';
-const TH=document.documentElement.lang==='th';
-const TH_HI={a:'สวัสดีค่ะ · ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย',acts:[{q:'เราสร้างอะไร',l:'เราสร้างอะไร?'},{q:'ราคา',l:'เรื่องราคา'}]};
-const TH_INTENTS=[
- {k:['สวัสดี','หวัดดี'],a:TH_HI.a,acts:TH_HI.acts},
- {k:['สร้างอะไร','ทำอะไร','บริการ','เราสร้างอะไร'],a:'เราออกแบบและสร้างโปรดักต์ดิจิทัลครบวงจร: เว็บไซต์ที่ตรงแบรนด์ อีคอมเมิร์ซพร้อมระบบชำระเงินจริง และแอปพลัง AI · ตอนนี้มีสามโปรดักต์ออนไลน์อยู่จริง คลิกดูได้เลย',acts:[{h:'/th/work',l:'ดูผลงาน'},{h:'/th/services',l:'บริการทั้งหมด'}]},
- {k:['ผลงาน','ตัวอย่าง','เคส','พอร์ต'],a:'ทุกชิ้นในพอร์ตของเราอยู่ในโปรดักชันจริง · Miomika, OptiClean, The Teak House และอื่น ๆ เปิดใช้ได้จริง',acts:[{h:'/th/work',l:'ดูผลงาน'},{h:'/th/work/miomika',l:'เคส Miomika'}]},
- {k:['ราคา','งบ','เท่าไหร่','ค่าใช้จ่าย','แพง'],a:'ทุกโปรเจกต์ประเมินขอบเขตเป็นรายกรณีในสกุลเงินบาท · คุณบอกงบมา แล้วเราออกแบบให้ลงตัว เล่าคร่าว ๆ ว่ากำลังจะสร้างอะไร หรือฝากอีเมลไว้ เราตอบกลับภายในหนึ่งวัน',acts:[{q:'__lead',l:'ฝากอีเมล'},{h:'/th/contact',l:'ฟอร์มติดต่อ'}]},
- {k:['ai','เอไอ','ปัญญาประดิษฐ์'],a:'Mikaro คือสตูดิโอที่ขับเคลื่อนด้วย AI · ความคิดสร้างสรรค์จากทีมมากประสบการณ์ เสริมด้วยพลังวิศวกรรม AI เต็มรูปแบบ พร้อมส่งมอบระบบระดับสากลภายในไม่กี่สัปดาห์ ไม่ใช่หลายเดือน',acts:[{h:'/th/ai-lab',l:'ชม AI Lab'}]},
- {k:['ร้าน','ธุรกิจ','เสริมสวย','ร้านอาหาร','โรงแรม','จองคิว','แพ็กเกจ','เดโม่'],a:'ถ้าคุณมีร้าน ร้านเสริมสวย ร้านอาหาร คลินิก หรือโรงแรม หน้า สำหรับธุรกิจ มีแพ็กเกจชัด ๆ พร้อมตัวช่วยสร้างแผน และขอเดโม่ฟรีได้เลย',acts:[{h:'/th/business',l:'สำหรับธุรกิจ'}]},
- {k:['ติดต่อ','คุย','จ้าง','เริ่ม'],a:'สองช่องทาง: ฟอร์มติดต่อ (เร็วที่สุด · ถึงสตูดิโอโดยตรง) หรือฝากอีเมลไว้ตรงนี้ แล้วเราติดต่อกลับ',acts:[{h:'/th/contact',l:'เปิดฟอร์มติดต่อ'},{q:'__lead',l:'ฝากอีเมล'}]}
-];
-const TH_FALLBACK={a:'คำถามดีมาก · ฉันเป็นไกด์ตัวเล็ก ๆ เรื่องลึก ๆ ให้มนุษย์ตอบดีกว่า ฝากอีเมลไว้แล้วเราจะติดต่อกลับภายในหนึ่งวัน หรือลองปุ่มด้านล่างนี้',acts:[{q:'__lead',l:'ฝากอีเมล'},{q:'เราสร้างอะไร',l:'เราสร้างอะไร?'},{q:'ราคา',l:'เรื่องราคา'}]};
+const TH=HAS_DOM&&document.documentElement.lang==='th';
+const LINE_URL='https://line.me/ti/p/l059F3WkI7';
+
+const FACTS=Object.freeze({
+  en:{
+    packages:[
+      {name:'Essential',price:'39,000 THB',timeline:'Your business, credible on Google in 2 weeks.',included:['Natives-written bilingual 5-page site','Enquiries to your inbox and LINE','Under 2 seconds on mobile','LINE and phone buttons on every page · one tap and the customer is talking to you','Google Business profile set up so nearby customers actually find you']},
+      {name:'Professional',price:'69,000 THB',timeline:'Delivered in 2-3 weeks',included:['Everything in Essential, plus:','AI receptionist in Thai + English, 24 hours','Online booking confirmed in under a minute','Google reviews live on the site','Full services and gallery pages that sell your work while you work']},
+      {name:'Patient & Guest System',price:'119,000 THB',timeline:'Delivered in 2-3 weeks',included:["Everything in Professional, plus · built in your industry's flavor:",'Clinics: consultation funnel + deposits that end no-shows','Hotels: direct booking, keep the 15-18%','Your own admin panel','Clinics: foreign patients send their case and photos, you reply with a quote. Before/after galleries that convince.','Hotels and villas: card and PromptPay payment · no Booking.com cut','Admin: rooms, treatments, prices, bookings · change anything yourself']},
+      {name:'Flagship Acquisition',price:'189,000 THB',timeline:'Delivered in 2-3 weeks',included:['Everything above, plus:','Third language for your market','Pages engineered to rank on Google','90 days of post-launch iteration','Chinese or Arabic for medical travel, German or French for hospitality','Tracking that shows you exactly where every enquiry came from']},
+      {name:'Signature',price:'Custom scope',timeline:'Custom scope',included:['Every serious project starts with a conversation.']}
+    ],
+    policies:{
+      warrantyLine:'30-day care warranty included · bugs and fixes free',
+      flagshipWarrantyLine:'90-day care warranty included',
+      demoLine:'Includes two rounds of adjustments.',
+      warranty:'Every package includes a 30-day care warranty after launch: bugs, glitches and fixes are on us, free. The Flagship package extends this to 90 days.',
+      demo:"The free demo is one concept, built in your name within 48 hours, with up to two rounds of adjustments included. If it's still not right after that, we part as friends · no charge, no obligation. Full projects include structured revision rounds at every milestone, so nothing ships until you approve it.",
+      revisions:'Full projects include revision rounds at every milestone, from design to pre-launch. Nothing goes live until you approve it.'
+    },
+    proof:'Live proof: teakhouse.mikaro.studio · owner PIN 1234 · praow.mikaro.studio · balzacantiques.ch',
+    positioning:'An AI-powered studio: senior creative direction with an AI-scale engineering engine. We ship international-grade systems in weeks, not months.',
+    services:'We design and build complete digital products: brand-true websites, e-commerce with real payments, and AI-powered apps.',
+    contact:"That falls outside my verified facts. The team replies personally · use LINE or the contact form and they'll confirm it directly.",
+    greeting:"Hello · I'm MIKA, the studio's guide. Ask me about packages, prices, timelines, warranty, the free demo, revisions, or live examples."
+  },
+  th:{
+    packages:[
+      {name:'Essential',price:'39,000 บาท',timeline:'ธุรกิจของคุณ น่าเชื่อถือบน Google ภายใน 2 สัปดาห์',included:['เว็บ 5 หน้า สองภาษา เขียนโดยเจ้าของภาษา','ข้อความเข้าอีเมลและ LINE ของคุณ','โหลดไวใน 2 วินาทีบนมือถือ','ปุ่ม LINE และปุ่มโทรทุกหน้า ลูกค้าแตะครั้งเดียว คุยกับคุณได้ทันที','ตั้งค่า Google Business ให้ลูกค้าแถวคุณค้นหาเจอ']},
+      {name:'Professional',price:'69,000 บาท',timeline:'ส่งมอบใน 2-3 สัปดาห์',included:['ทุกอย่างใน Essential พร้อมด้วย:','AI ต้อนรับไทย + อังกฤษ ตลอด 24 ชั่วโมง','จองคิวออนไลน์ ยืนยันในไม่ถึงหนึ่งนาที','รีวิว Google แสดงบนเว็บจริง','หน้าบริการและแกลเลอรีครบชุด ขายงานให้คุณระหว่างที่คุณทำงาน']},
+      {name:'Patient & Guest System',price:'119,000 บาท',timeline:'ส่งมอบใน 2-3 สัปดาห์',included:['ทุกอย่างใน Professional พร้อมด้วย เลือกตามธุรกิจของคุณ:','คลินิก: ระบบปรึกษา + มัดจำที่ลดการเบี้ยวนัด','โรงแรม: จองตรง เก็บค่าคอม 15-18%','แผงควบคุมของคุณเอง','คลินิก: คนไข้ต่างชาติส่งเคสพร้อมรูป รับใบประเมินราคา และแกลเลอรีผลงานก่อน/หลัง','โรงแรมและวิลล่า: ชำระด้วยบัตรและ PromptPay ไม่เสียค่า Booking.com','แก้ห้อง ทรีตเมนต์ ราคา และการจองได้ด้วยตัวเอง']},
+      {name:'Flagship Acquisition',price:'189,000 บาท',timeline:'ส่งมอบใน 2-3 สัปดาห์',included:['ทุกอย่างข้างต้น พร้อมด้วย:','ภาษาที่ 3 สำหรับตลาดของคุณ','หน้าเว็บออกแบบให้ติดอันดับ Google','ดูแลต่อเนื่อง 90 วันหลังเปิดตัว','จีนหรืออาหรับสำหรับคนไข้ต่างชาติ เยอรมันหรือฝรั่งเศสสำหรับสายที่พัก','ระบบติดตามผล เห็นชัดว่าลูกค้าแต่ละรายมาจากช่องทางไหน']},
+      {name:'Signature',price:'ราคาตามโปรเจกต์',timeline:'ราคาตามโปรเจกต์',included:['โปรเจกต์ที่จริงจัง เริ่มจากการคุยกัน']}
+    ],
+    policies:{
+      warrantyLine:'รวมการรับประกันดูแล 30 วัน · แก้บั๊กฟรี',
+      flagshipWarrantyLine:'รวมการรับประกันดูแล 90 วัน',
+      demoLine:'ปรับแก้ได้ 2 รอบ',
+      warranty:'ทุกแพ็กเกจมีการรับประกันดูแล 30 วันหลังส่งมอบ แก้บั๊กและข้อผิดพลาดให้ฟรีทั้งหมด แพ็กเกจ Flagship ขยายเป็น 90 วันครับ',
+      demo:'เดโม่ฟรีคือ 1 คอนเซปต์ สร้างในชื่อธุรกิจของคุณภายใน 48 ชั่วโมง ปรับแก้ได้ 2 รอบ หากยังไม่ถูกใจ เราแยกย้ายกันด้วยดี ไม่มีค่าใช้จ่ายใดๆ ครับ ส่วนโปรเจกต์เต็มมีรอบปรับแก้ทุกช่วงงาน ไม่มีอะไรออนไลน์จนกว่าคุณจะอนุมัติครับ',
+      revisions:'โปรเจกต์เต็มมีรอบปรับแก้ในทุกช่วงของงานครับ ตั้งแต่ดีไซน์จนถึงก่อนออนไลน์ ไม่มีอะไรเผยแพร่จนกว่าคุณจะอนุมัติครับ'
+    },
+    proof:'ผลงานจริง · teakhouse.mikaro.studio · owner PIN 1234 · praow.mikaro.studio · balzacantiques.ch',
+    positioning:'สตูดิโอที่ขับเคลื่อนด้วย AI · ความคิดสร้างสรรค์จากทีมมากประสบการณ์ เสริมด้วยพลังวิศวกรรม AI เต็มรูปแบบ พร้อมส่งมอบระบบระดับสากลภายในไม่กี่สัปดาห์ ไม่ใช่หลายเดือน',
+    services:'เราออกแบบและสร้างโปรดักต์ดิจิทัลครบวงจร: เว็บไซต์ที่ตรงแบรนด์ อีคอมเมิร์ซพร้อมระบบชำระเงินจริง และแอปพลัง AI',
+    contact:'คำถามดีมาก · ฉันเป็นไกด์ตัวเล็ก ๆ เรื่องลึก ๆ ให้มนุษย์ตอบดีกว่า ฝากอีเมลไว้แล้วเราจะติดต่อกลับภายในหนึ่งวัน หรือลองปุ่มด้านล่างนี้',
+    greeting:'สวัสดีค่ะ · ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย'
+  }
+});
+
+function packageLadder(lang){
+  return FACTS[lang].packages.map(p=>p.name+' '+p.price).join(' · ')+' · Full details: mikaro.studio/business';
+}
+function packageTimelines(lang){
+  return FACTS[lang].packages.map(p=>p.name+': '+p.timeline).join(' · ');
+}
+function actions(lang,type){
+  const th=lang==='th';
+  if(type==='proof')return [
+    {h:'https://teakhouse.mikaro.studio',l:th?'ดูเว็บจริง ↗':'Teak House ↗',x:1},
+    {h:'https://praow.mikaro.studio',l:th?'ดูเว็บจริง ↗':'PRAOW ↗',x:1},
+    {h:'https://balzacantiques.ch',l:th?'ดูเว็บจริง ↗':'Balzac Antiques ↗',x:1}
+  ];
+  if(type==='ai')return [{h:th?'/th/ai-lab':'/ai-lab',l:th?'ชม AI Lab':'Visit the AI Lab'}];
+  if(type==='business')return [{h:th?'/th/business':'/business',l:th?'รายละเอียดทั้งหมด':'Full details'}];
+  if(type==='services')return [{h:th?'/th/services':'/services',l:th?'บริการทั้งหมด':'All services'}];
+  return [
+    {h:LINE_URL,l:th?'แอด LINE':'Chat on LINE',x:1},
+    {h:th?'/th/contact':'/contact',l:th?'เปิดฟอร์มติดต่อ':'Open the contact form'}
+  ];
+}
+function buildIntents(lang){
+  const f=FACTS[lang],th=lang==='th';
+  return [
+    {id:'greeting',k:th?['สวัสดี','หวัดดี']:['hi','hello','hey','sawasdee','bonjour','good morning','good evening'],a:f.greeting,acts:actions(lang,'services')},
+    {id:'services',k:th?['สร้างอะไร','ทำอะไร','บริการ','เราสร้างอะไร']:['build','do you do','services','offer','make','capab'],a:f.services,acts:actions(lang,'services')},
+    {id:'warranty',k:th?['รับประกัน','ประกัน']:['warranty','guarantee','covered','coverage'],a:f.policies.warranty,acts:actions(lang,'business')},
+    {id:'demo',k:th?['เดโม่','ฟรี']:['free demo','demo','prototype','free'],a:f.policies.demo,acts:actions(lang,'business')},
+    {id:'revisions',k:th?['แก้ไข','ปรับ','รอบแก้','รีวิว']:['revisions','revision','adjust','changes','approval','approve'],a:f.policies.revisions,acts:actions(lang,'business')},
+    {id:'pricing',k:th?['ราคา','แพ็กเกจ','งบ','เท่าไหร่','ค่าใช้จ่าย','แพง','โรงแรม','คลินิก']:['price','pricing','package','cost','budget','much','rate','quote','fee','pay','hotel system','clinic system'],a:packageLadder(lang),acts:actions(lang,'business')},
+    {id:'timeline',k:th?['กี่วัน','นานไหม','กี่สัปดาห์','ระยะเวลา','เมื่อไหร่']:['how long','timeline','time','fast','deadline','when','delivery','weeks'],a:packageTimelines(lang),acts:actions(lang,'business')},
+    {id:'examples',k:th?['ผลงาน','ตัวอย่าง','เคส','พอร์ต','teakhouse','praow','balzac']:['examples','example','work','portfolio','case','proof','live','teakhouse','praow','balzac','miomika','opticlean'],a:f.proof,acts:actions(lang,'proof')},
+    {id:'identity',k:th?['ใคร','ai','เอไอ','ปัญญาประดิษฐ์','สตูดิโอ']:['who are you','who','about','team','studio','founder','mike','ai','artificial','llm'],a:f.positioning,acts:actions(lang,'ai')},
+    {id:'contact',k:th?['ติดต่อ','คุย','จ้าง','เริ่ม','line']:['contact','email','reach','talk','call','hire','start','line'],a:f.contact,acts:actions(lang,'contact')}
+  ];
+}
+
+const INTENTS=buildIntents('en');
+const TH_INTENTS=buildIntents('th');
+const FALLBACK={id:'fallback',a:FACTS.en.contact,acts:actions('en','contact')};
+const TH_FALLBACK={id:'fallback',a:FACTS.th.contact,acts:actions('th','contact')};
+const TH_HI=TH_INTENTS[0];
 
 /* ---------- brain ---------- */
-const INTENTS=[
- {k:['hi','hello','hey','sawasdee','สวัสดี','bonjour','good morning','good evening'],a:`Hello · I'm MIKA, the studio's guide. Ask me what we build, how the AI part works, what things cost, or use the buttons below.`,acts:[{q:'What do you build?',l:'What do you build?'},{q:'pricing',l:'Pricing'}]},
- {k:['build','do you do','services','offer','make','capab'],a:`We design and build complete digital products: brand-true websites, e-commerce with real payments, and AI-powered apps. Three are live right now · including Miomika, OptiClean and The Teak House · and you can click them.`,acts:[{h:'/work.html',l:'See the work'},{h:'/services.html',l:'All services'}]},
- {k:['work','portfolio','case','project','live','show','example'],a:`Everything in our portfolio is in production · no mockups. Miomika, OptiClean, The Teak House and more · open them and tap them.`,acts:[{h:'/work.html',l:'See the work'},{h:'/work/miomika.html',l:'Miomika case'}]},
- {k:['miomika','miomi','cat','thai','language','learn'],a:`Miomika is our flagship: a voice-first companion where Miomi the cat teaches Thai and English through real conversation. Teaching brain, speech pipeline, payments with referrals, full admin console · studio-built end to end.`,acts:[{h:'https://miomika.com',l:'Visit miomika.com ↗',x:1},{h:'/work/miomika.html',l:'Read the case'}]},
- {k:['opticlean','zac','store','shop','ecommerce','e-commerce','stripe','checkout'],a:`OptiClean by Dr. Zac · a vintage French apothecary brand we turned into a complete live store from a single reference image. Ten bilingual pages, EUR/CHF, working Stripe checkout. Try a test purchase with card 4242 4242 4242 4242.`,acts:[{h:'https://opticlean.mikaro.studio',l:'Enter the store ↗',x:1},{h:'/work/opticlean.html',l:'Read the case'}]},
- {k:['ai','artificial','llm','gpt','claude','model','machine','automat'],a:`An AI-powered studio: senior creative direction with an AI-scale engineering engine. We ship international-grade systems in weeks, not months. The AI Lab page shows exactly how.`,acts:[{h:'/ai-lab.html',l:'Visit the AI Lab'}]},
- {k:['business','salon','restaurant','clinic','hotel','booking','package','wholesale','for business'],a:`Run a shop, salon, restaurant, clinic or hotel? The For business page has clear packages, an AI plan helper, and a free demo request.`,acts:[{h:'/business',l:'For business'}]},
- {k:['price','cost','budget','much','rate','quote','fee','pay'],a:`Projects are scoped individually · a focused brand site and a full commerce build are different animals. Tell me roughly what you're making and I'll connect you, or leave your email and Mike replies within a day.`,acts:[{q:'__lead',l:'Leave my email'},{h:'/contact.html',l:'Contact form'}]},
- {k:['time','long','timeline','fast','deadline','when','delivery'],a:`Efficient without cutting corners. A focused brand site typically lands in 2–3 weeks; commerce and AI builds are scoped case by case · you get a concrete timeline before anything starts.`,acts:[{q:'__lead',l:'Get an estimate'}]},
- {k:['process','how do you work','steps','method','workflow'],a:`Four steps, no mystery: Listen (the brief is written together), Design (a system built from your world, never a UI kit), Build (custom code end to end · payments, languages, admin), Ship (live on a URL, measured, improved).`,acts:[{h:'/services.html',l:'Services'},{h:'/contact.html',l:'Start a project'}]},
- {k:['language','bilingual','french','thai','english','translat'],a:`We've shipped Thai, English and French so far · proper language switching with per-locale SEO, not machine-translated afterthoughts.`,acts:[{h:'/work/opticlean.html',l:'See a bilingual build'}]},
- {k:['where','location','bangkok','based','country','remote'],a:`Bangkok, Thailand · working worldwide. It's <b data-clock>--:--</b> here right now, and Mike usually replies within a day.`,acts:[{h:'/contact.html',l:'Contact'}]},
- {k:['contact','email','reach','talk','call','hire','start'],a:`Two ways: the contact form (fastest · it lands straight in Mike's inbox), or leave your email right here and he'll write to you.`,acts:[{h:'/contact.html',l:'Open the form'},{q:'__lead',l:'Leave my email'}]},
- {k:['who','about','team','studio','founder','mike'],a:`An AI-powered studio: senior creative direction with an AI-scale engineering engine. We ship international-grade systems in weeks, not months · and everything in the portfolio is live.`,acts:[{h:'/work.html',l:'Proof'}]},
- {k:['seo','performance','speed','lighthouse','schema'],a:`Every build ships with structured data, sitemaps, lazy loading and zero framework bloat · fast by construction, not by afterthought.`,acts:[{q:'What do you build?',l:'What else is included?'}]}
-];
-const FALLBACK={a:`Good question · I'm a compact guide, so for the interesting conversations there's a human. Leave your email and Mike replies within a day, or try one of these.`,acts:[{q:'__lead',l:'Leave my email'},{q:'What do you build?',l:'What do you build?'},{q:'pricing',l:'Pricing'}]};
-
-function pick(q){
+function pick(q,useThai=TH){
   const s=q.toLowerCase();let best=null,score=0;
-  const POOL=TH?TH_INTENTS.concat(INTENTS):INTENTS;
+  const POOL=useThai?TH_INTENTS:INTENTS;
   for(const it of POOL){
     let n=0;for(const k of it.k){if(s.includes(k))n+=k.length>3?2:1;}
     if(n>score){score=n;best=it;}
   }
-  return score>0?best:(TH?TH_FALLBACK:FALLBACK);
+  return score>0?best:(useThai?TH_FALLBACK:FALLBACK);
+}
+
+if(typeof module!=='undefined'&&module.exports){
+  module.exports={FACTS,INTENTS,TH_INTENTS,pick,answer:(q,lang)=>pick(q,lang==='th').a};
+  return;
 }
 
 /* ---------- ui ---------- */
@@ -115,28 +182,9 @@ function mount(root){
     });
   }
 
-  const HIST=[];
-  async function aiReply(q){
-    const t=add('bot typing','<i></i><i></i><i></i>');
-    try{
-      const r=await fetch('/api/mika',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:HIST})});
-      if(!r.ok)throw 0;
-      const d=await r.json();
-      if(!d.reply)throw 0;
-      HIST.push({role:'assistant',content:d.reply});
-      t.classList.remove('typing');
-      t.innerHTML=esc(d.reply).replace(/\n/g,'<br>');
-      if(/contact|budget|price|quote|start/i.test(q+d.reply))renderActs(t,[{h:'/contact',l:'Open the contact form'}]);
-      log.scrollTop=log.scrollHeight;
-    }catch(err){
-      t.remove();
-      reply(pick(q));
-    }
-  }
   function handle(q,label){
     add('user',esc(label||q));
-    HIST.push({role:'user',content:q});
-    aiReply(q);
+    reply(pick(q));
   }
 
   form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';handle(q);});
