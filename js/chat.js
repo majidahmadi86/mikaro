@@ -34,6 +34,7 @@ const FACTS=Object.freeze({
     proof:'Live proof: teakhouse.mikaro.studio · owner PIN 1234 · praow.mikaro.studio · balzacantiques.ch',
     positioning:'An AI-powered studio: senior creative direction with an AI-scale engineering engine. We ship international-grade systems in weeks, not months.',
     services:'We design and build complete digital products: brand-true websites, e-commerce with real payments, and AI-powered apps.',
+    needCustomers:'That is exactly what we build for. Today your customers find you on Google and social media, and they judge in seconds: if they can see your work, your prices, and book or buy right there, they become customers. That is the system we ship.\n\nSo I can point you right: what kind of business do you run · a shop, a hotel, a clinic or salon, a restaurant, or something else?',
     contact:"That falls outside my verified facts. The team replies personally · use LINE or the contact form and they'll confirm it directly.",
     greeting:"Hello · I'm MIKA, the studio's guide. Ask me about packages, prices, timelines, warranty, the free demo, revisions, or live examples."
   },
@@ -57,6 +58,7 @@ const FACTS=Object.freeze({
     proof:'ผลงานจริง · teakhouse.mikaro.studio · owner PIN 1234 · praow.mikaro.studio · balzacantiques.ch',
     positioning:'สตูดิโอที่ขับเคลื่อนด้วย AI · ความคิดสร้างสรรค์จากทีมมากประสบการณ์ เสริมด้วยพลังวิศวกรรม AI เต็มรูปแบบ พร้อมส่งมอบระบบระดับสากลภายในไม่กี่สัปดาห์ ไม่ใช่หลายเดือน',
     services:'เราออกแบบและสร้างโปรดักต์ดิจิทัลครบวงจร: เว็บไซต์ที่ตรงแบรนด์ อีคอมเมิร์ซพร้อมระบบชำระเงินจริง และแอปพลัง AI',
+    needCustomers:'เรื่องนี้ตรงกับสิ่งที่เราสร้างพอดีเลยครับ ทุกวันนี้ลูกค้าหาคุณเจอบน Google และโซเชียล และตัดสินใจในไม่กี่วินาที ถ้าเขาเห็นสินค้า เห็นราคา แล้วสั่งซื้อหรือจองได้ทันที เขาก็กลายเป็นลูกค้าครับ นั่นคือระบบที่เราสร้างให้\n\nขอถามนิดเดียวครับ ธุรกิจของคุณเป็นแบบไหน ร้านค้า โรงแรม คลินิกหรือซาลอน ร้านอาหาร หรืออย่างอื่นครับ',
     contact:'คำถามดีมาก · ฉันเป็นไกด์ตัวเล็ก ๆ เรื่องลึก ๆ ให้มนุษย์ตอบดีกว่า ฝากอีเมลไว้แล้วเราจะติดต่อกลับภายในหนึ่งวัน หรือลองปุ่มด้านล่างนี้',
     greeting:'สวัสดีค่ะ · ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย'
   }
@@ -67,6 +69,11 @@ function packageLadder(lang){
 }
 function packageTimelines(lang){
   return FACTS[lang].packages.map(p=>p.name+': '+p.timeline).join(' · ');
+}
+function bizTypeActions(lang){
+  return lang==='th'
+    ?[{q:'ร้านค้า',l:'ร้านค้า'},{q:'โรงแรม',l:'โรงแรม'},{q:'คลินิก · ซาลอน',l:'คลินิก · ซาลอน'},{q:'ร้านอาหาร',l:'ร้านอาหาร'},{q:'อื่นๆ',l:'อื่นๆ'}]
+    :[{q:'shop',l:'Shop'},{q:'hotel',l:'Hotel'},{q:'clinic · salon',l:'Clinic · Salon'},{q:'restaurant',l:'Restaurant'},{q:'other',l:'Other'}];
 }
 function actions(lang,type){
   const th=lang==='th';
@@ -88,6 +95,7 @@ function buildIntents(lang){
   return [
     {id:'greeting',k:th?['สวัสดี','หวัดดี']:['hi','hello','hey','sawasdee','bonjour','good morning','good evening'],a:f.greeting,acts:actions(lang,'services')},
     {id:'services',k:th?['สร้างอะไร','ทำอะไร','บริการ','เราสร้างอะไร']:['build','do you do','services','offer','make','capab'],a:f.services,acts:actions(lang,'services')},
+    {id:'need-customers',k:th?['ลูกค้าเพิ่ม','อยากได้ลูกค้า','ยอดขาย','อยากขายดี','โปรโมท']:['more customer','grow','sales','marketing','get customers'],a:f.needCustomers,acts:bizTypeActions(lang)},
     {id:'warranty',k:th?['รับประกัน','ประกัน']:['warranty','guarantee','covered','coverage'],a:f.policies.warranty,acts:actions(lang,'business')},
     {id:'demo',k:th?['เดโม่','ฟรี']:['free demo','demo','prototype','free'],a:f.policies.demo,acts:actions(lang,'business')},
     {id:'revisions',k:th?['แก้ไข','ปรับ','รอบแก้','รีวิว']:['revisions','revision','adjust','changes','approval','approve'],a:f.policies.revisions,acts:actions(lang,'business')},
@@ -123,9 +131,21 @@ function pick(q,useThai=TH){
   }
   return score>0?best:(useThai?TH_FALLBACK:FALLBACK);
 }
+function createConversation(lang){
+  const useThai=lang==='th';
+  let awaitingBizType=false;
+  return {
+    ask(q){
+      const result=pick(q,useThai);
+      if(result.id==='need-customers')awaitingBizType=true;
+      return result;
+    },
+    state(){return {awaitingBizType};}
+  };
+}
 
 if(typeof module!=='undefined'&&module.exports){
-  module.exports={FACTS,INTENTS,TH_INTENTS,pick,answer:(q,lang)=>pick(q,lang==='th').a};
+  module.exports={FACTS,INTENTS,TH_INTENTS,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
   return;
 }
 
@@ -134,6 +154,7 @@ function esc(t){const d=document.createElement('div');d.textContent=t;return d.i
 const ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/><path d="M9 11h.01M13 11h.01M17 11h.01"/></svg>';
 
 function mount(root){
+  const conversation=createConversation(TH?'th':'en');
   root.innerHTML=`
   <div class="chat">
     <div class="chat-bar"><span class="av">M</span>MIKA · studio guide<span class="on"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E;display:inline-block"></span>online</span></div>
@@ -164,7 +185,7 @@ function mount(root){
   function reply(intent){
     const t=add('bot typing','<i></i><i></i><i></i>');
     setTimeout(()=>{
-      t.classList.remove('typing');t.innerHTML=intent.a;
+      t.classList.remove('typing');t.innerHTML=intent.a.replace(/\n/g,'<br>');
       renderActs(t,intent.acts);log.scrollTop=log.scrollHeight;
       try{const c=t.querySelector('[data-clock]');if(c){c.textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Bangkok',hour:'2-digit',minute:'2-digit'}).format(new Date());}}catch(e){}
     },RM?0:600+Math.random()*450);
@@ -194,7 +215,7 @@ function mount(root){
 
   function handle(q,label){
     add('user',esc(label||q));
-    reply(pick(q));
+    reply(conversation.ask(q));
   }
 
   form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';handle(q);});
