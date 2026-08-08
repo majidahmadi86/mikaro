@@ -104,11 +104,18 @@ const TH_FALLBACK={id:'fallback',a:FACTS.th.contact,acts:actions('th','contact')
 const TH_HI=TH_INTENTS[0];
 
 /* ---------- brain ---------- */
+function hasKeyword(s,k){
+  if(/^[a-z0-9]+$/i.test(k)&&k.length<=3){
+    const escaped=k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    return new RegExp('(^|\\W)'+escaped+'(?=$|\\W)','i').test(s);
+  }
+  return s.includes(k);
+}
 function pick(q,useThai=TH){
   const s=q.toLowerCase();let best=null,score=0;
   const POOL=useThai?TH_INTENTS:INTENTS;
   for(const it of POOL){
-    let n=0;for(const k of it.k){if(s.includes(k))n+=k.length>3?2:1;}
+    let n=0;for(const k of it.k){if(hasKeyword(s,k))n+=k.length>3?2:1;}
     if(n>score){score=n;best=it;}
   }
   return score>0?best:(useThai?TH_FALLBACK:FALLBACK);
