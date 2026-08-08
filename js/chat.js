@@ -35,6 +35,13 @@ const FACTS=Object.freeze({
     positioning:'An AI-powered studio: senior creative direction with an AI-scale engineering engine. We ship international-grade systems in weeks, not months.',
     services:'We design and build complete digital products: brand-true websites, e-commerce with real payments, and AI-powered apps.',
     needCustomers:'That is exactly what we build for. Today your customers find you on Google and social media, and they judge in seconds: if they can see your work, your prices, and book or buy right there, they become customers. That is the system we ship.\n\nSo I can point you right: what kind of business do you run · a shop, a hotel, a clinic or salon, a restaurant, or something else?',
+    qualify:{
+      shop:"For a shop, the right fit is the Professional package (69,000 THB): a full store where customers browse your products, see prices, and order with real online payment · plus a back office where you update stock and prices yourself. Two live examples: opticlean.mikaro.studio and balzacantiques.ch.\n\nAnd you don't have to imagine it: I can have a free demo page built from your real products within 48 hours · no cost, no obligation. Want to start there?",
+      hotel:"For a hotel or resort, the Patient & Guest System (119,000 THB) is built for exactly this: guests book direct with a deposit, an AI concierge answers them at 2am in Thai and English, and the 15-18% OTA commission stays with you. See it live: teakhouse.mikaro.studio · owner dashboard: teakhouse.mikaro.studio/owner (PIN 1234).\n\nI can also have a free demo built in your hotel's own name within 48 hours. Shall we?",
+      clinicSalon:"For a clinic or salon, the Patient & Guest System (119,000 THB) does the heavy lifting: online booking with deposits that end no-shows, an AI receptionist answering in Thai and English around the clock, and your own management panel. Live example: praow.mikaro.studio.\n\nA free demo in your clinic's name is possible within 48 hours as well. Would you like that?",
+      restaurant:'For a restaurant or cafe, the Essential package (39,000 THB) gets you credible fast: menu, photos, location, hours and contact that works · live in 2 weeks. The Professional (69,000 THB) adds online ordering. Browse our live work: mikaro.studio/work.\n\nThe free 48-hour demo applies to you too: one page from your real menu, no cost. Interested?',
+      other:"Happy to point you right · tell me a little about what your business sells or does, and I'll tell you exactly which package fits, with a live example to click."
+    },
     contact:"That falls outside my verified facts. The team replies personally · use LINE or the contact form and they'll confirm it directly.",
     greeting:"Hello · I'm MIKA, the studio's guide. Ask me about packages, prices, timelines, warranty, the free demo, revisions, or live examples."
   },
@@ -59,6 +66,13 @@ const FACTS=Object.freeze({
     positioning:'สตูดิโอที่ขับเคลื่อนด้วย AI · ความคิดสร้างสรรค์จากทีมมากประสบการณ์ เสริมด้วยพลังวิศวกรรม AI เต็มรูปแบบ พร้อมส่งมอบระบบระดับสากลภายในไม่กี่สัปดาห์ ไม่ใช่หลายเดือน',
     services:'เราออกแบบและสร้างโปรดักต์ดิจิทัลครบวงจร: เว็บไซต์ที่ตรงแบรนด์ อีคอมเมิร์ซพร้อมระบบชำระเงินจริง และแอปพลัง AI',
     needCustomers:'เรื่องนี้ตรงกับสิ่งที่เราสร้างพอดีเลยครับ ทุกวันนี้ลูกค้าหาคุณเจอบน Google และโซเชียล และตัดสินใจในไม่กี่วินาที ถ้าเขาเห็นสินค้า เห็นราคา แล้วสั่งซื้อหรือจองได้ทันที เขาก็กลายเป็นลูกค้าครับ นั่นคือระบบที่เราสร้างให้\n\nขอถามนิดเดียวครับ ธุรกิจของคุณเป็นแบบไหน ร้านค้า โรงแรม คลินิกหรือซาลอน ร้านอาหาร หรืออย่างอื่นครับ',
+    qualify:{
+      shop:'สำหรับร้านค้า แพ็กเกจที่เหมาะที่สุดคือ Professional (69,000 บาท) ครับ ร้านค้าออนไลน์เต็มรูปแบบ ลูกค้าดูสินค้า เห็นราคา และสั่งซื้อพร้อมชำระเงินออนไลน์ได้จริง พร้อมระบบหลังบ้านให้คุณแก้ราคาและสต็อกเองครับ ดูตัวอย่างจริงได้ที่ opticlean.mikaro.studio และ balzacantiques.ch\n\nและไม่ต้องจินตนาการครับ เราทำหน้าเดโม่ฟรีจากสินค้าจริงของร้านคุณได้ภายใน 48 ชั่วโมง ไม่มีค่าใช้จ่าย ไม่มีข้อผูกมัด สนใจเริ่มจากตรงนี้ไหมครับ',
+      hotel:'สำหรับโรงแรมหรือรีสอร์ท ระบบ Patient & Guest System (119,000 บาท) สร้างมาเพื่อสิ่งนี้เลยครับ แขกจองตรงพร้อมมัดจำ มี AI ตอบแขกได้ตอนตี 2 ทั้งไทยและอังกฤษ และค่าคอม 15-18% ของ OTA อยู่กับโรงแรมครับ ดูระบบจริง: teakhouse.mikaro.studio · แผงเจ้าของ: teakhouse.mikaro.studio/owner (PIN 1234)\n\nทำเดโม่ฟรีในชื่อโรงแรมของคุณได้ภายใน 48 ชั่วโมงด้วยครับ สนใจไหมครับ',
+      clinicSalon:'สำหรับคลินิกหรือซาลอน ระบบ Patient & Guest System (119,000 บาท) ช่วยได้ตรงจุดครับ จองคิวออนไลน์พร้อมมัดจำ ลดปัญหาลูกค้าเบี้ยวนัด มี AI ต้อนรับตอบลูกค้าทั้งไทยและอังกฤษตลอดเวลา พร้อมแผงจัดการของคุณเอง ดูตัวอย่างจริง: praow.mikaro.studio\n\nทำเดโม่ฟรีในชื่อคลินิกของคุณภายใน 48 ชั่วโมงได้เช่นกันครับ สนใจไหมครับ',
+      restaurant:'สำหรับร้านอาหารหรือคาเฟ่ แพ็กเกจ Essential (39,000 บาท) ทำให้ร้านดูน่าเชื่อถือได้เร็วครับ เมนู รูป พิกัด เวลาเปิด ติดต่อได้จริง ออนไลน์ใน 2 สัปดาห์ ส่วน Professional (69,000 บาท) เพิ่มระบบสั่งอาหารออนไลน์ครับ ดูผลงานจริงได้ที่ mikaro.studio/work\n\nเดโม่ฟรี 48 ชั่วโมงใช้กับร้านคุณได้เหมือนกันครับ หน้าเดียวจากเมนูจริงของร้าน ไม่มีค่าใช้จ่ายครับ สนใจไหมครับ',
+      other:'ยินดีแนะนำครับ เล่าให้ฟังนิดหนึ่งว่าธุรกิจของคุณขายอะไรหรือทำอะไร แล้วผมจะบอกได้เลยว่าแพ็กเกจไหนเหมาะ พร้อมตัวอย่างจริงให้กดดูครับ'
+    },
     contact:'คำถามดีมาก · ฉันเป็นไกด์ตัวเล็ก ๆ เรื่องลึก ๆ ให้มนุษย์ตอบดีกว่า ฝากอีเมลไว้แล้วเราจะติดต่อกลับภายในหนึ่งวัน หรือลองปุ่มด้านล่างนี้',
     greeting:'สวัสดีค่ะ · ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย'
   }
@@ -75,6 +89,14 @@ function bizTypeActions(lang){
     ?[{q:'ร้านค้า',l:'ร้านค้า'},{q:'โรงแรม',l:'โรงแรม'},{q:'คลินิก · ซาลอน',l:'คลินิก · ซาลอน'},{q:'ร้านอาหาร',l:'ร้านอาหาร'},{q:'อื่นๆ',l:'อื่นๆ'}]
     :[{q:'shop',l:'Shop'},{q:'hotel',l:'Hotel'},{q:'clinic · salon',l:'Clinic · Salon'},{q:'restaurant',l:'Restaurant'},{q:'other',l:'Other'}];
 }
+function qualifyActions(lang,type){
+  const th=lang==='th',live=th?'ดูเว็บจริง ↗':'View live ↗';
+  if(type==='shop')return [{h:'https://opticlean.mikaro.studio',l:live,x:1},{h:'https://balzacantiques.ch',l:live,x:1}];
+  if(type==='hotel')return [{h:'https://teakhouse.mikaro.studio',l:live,x:1},{h:'https://teakhouse.mikaro.studio/owner',l:th?'แผงเจ้าของ':'Owner dashboard',x:1}];
+  if(type==='clinic-salon')return [{h:'https://praow.mikaro.studio',l:live,x:1}];
+  if(type==='restaurant')return [{h:'https://mikaro.studio/work',l:th?'ดูผลงาน':'Browse live work',x:1}];
+  return actions(lang,'business');
+}
 function actions(lang,type){
   const th=lang==='th';
   if(type==='proof')return [
@@ -90,8 +112,19 @@ function actions(lang,type){
     {h:th?'/th/contact':'/contact',l:th?'เปิดฟอร์มติดต่อ':'Open the contact form'}
   ];
 }
+function buildQualifyIntents(lang){
+  const f=FACTS[lang].qualify,th=lang==='th';
+  return [
+    {id:'clinic-salon',k:th?['คลินิก','ซาลอน','ร้านเสริมสวย','สปา']:['clinic','salon','spa'],a:f.clinicSalon,acts:qualifyActions(lang,'clinic-salon')},
+    {id:'restaurant',k:th?['ร้านอาหาร','คาเฟ่','ร้านกาแฟ']:['restaurant','cafe'],a:f.restaurant,acts:qualifyActions(lang,'restaurant')},
+    {id:'hotel',k:th?['โรงแรม','รีสอร์ท','ที่พัก']:['hotel','resort'],a:f.hotel,acts:qualifyActions(lang,'hotel')},
+    {id:'shop',k:th?['ร้านค้า','ขายของ','ร้าน']:['shop','store','sell'],a:f.shop,acts:qualifyActions(lang,'shop')},
+    {id:'other',k:th?['อื่นๆ']:['other'],a:f.other,acts:actions(lang,'business')}
+  ];
+}
 function buildIntents(lang){
   const f=FACTS[lang],th=lang==='th';
+  const qualify=buildQualifyIntents(lang);
   return [
     {id:'greeting',k:th?['สวัสดี','หวัดดี']:['hi','hello','hey','sawasdee','bonjour','good morning','good evening'],a:f.greeting,acts:actions(lang,'services')},
     {id:'services',k:th?['สร้างอะไร','ทำอะไร','บริการ','เราสร้างอะไร']:['build','do you do','services','offer','make','capab'],a:f.services,acts:actions(lang,'services')},
@@ -102,6 +135,7 @@ function buildIntents(lang){
     {id:'payment',k:th?['ชำระ','จ่าย','มัดจำ','ผ่อน','งวด']:['payment','pay','deposit','installment'],a:f.policies.payment,acts:actions(lang,'business')},
     {id:'pricing',k:th?['ราคา','แพ็กเกจ','งบ','เท่าไหร่','ค่าใช้จ่าย','แพง','โรงแรม','คลินิก']:['price','pricing','package','cost','budget','much','rate','quote','fee','hotel system','clinic system'],a:packageLadder(lang),acts:actions(lang,'business')},
     {id:'timeline',k:th?['กี่วัน','นานไหม','กี่สัปดาห์','ระยะเวลา','เมื่อไหร่']:['how long','timeline','time','fast','deadline','when','delivery','weeks'],a:packageTimelines(lang),acts:actions(lang,'business')},
+    ...qualify,
     {id:'examples',k:th?['ผลงาน','ตัวอย่าง','เคส','พอร์ต','teakhouse','praow','balzac']:['examples','example','work','portfolio','case','proof','live','teakhouse','praow','balzac','miomika','opticlean'],a:f.proof,acts:actions(lang,'proof')},
     {id:'identity',k:th?['ใคร','ai','เอไอ','ปัญญาประดิษฐ์','สตูดิโอ']:['who are you','who','about','team','studio','founder','mike','ai','artificial','llm'],a:f.positioning,acts:actions(lang,'ai')},
     {id:'contact',k:th?['ติดต่อ','คุย','จ้าง','เริ่ม','line']:['contact','email','reach','talk','call','hire','start','line'],a:f.contact,acts:actions(lang,'contact')}
@@ -110,6 +144,8 @@ function buildIntents(lang){
 
 const INTENTS=buildIntents('en');
 const TH_INTENTS=buildIntents('th');
+const QUALIFY_INTENTS=buildQualifyIntents('en');
+const TH_QUALIFY_INTENTS=buildQualifyIntents('th');
 const FALLBACK={id:'fallback',a:FACTS.en.contact,acts:actions('en','contact')};
 const TH_FALLBACK={id:'fallback',a:FACTS.th.contact,acts:actions('th','contact')};
 const TH_HI=TH_INTENTS[0];
@@ -131,11 +167,27 @@ function pick(q,useThai=TH){
   }
   return score>0?best:(useThai?TH_FALLBACK:FALLBACK);
 }
+function pickFrom(q,pool){
+  const s=q.toLowerCase();let best=null,score=0;
+  for(const it of pool){
+    let n=0;for(const k of it.k){if(hasKeyword(s,k))n+=k.length>3?2:1;}
+    if(n>score){score=n;best=it;}
+  }
+  return score>0?best:null;
+}
 function createConversation(lang){
   const useThai=lang==='th';
   let awaitingBizType=false;
   return {
     ask(q){
+      if(awaitingBizType){
+        const qualified=pickFrom(q,useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS);
+        if(qualified){
+          awaitingBizType=false;
+          return qualified;
+        }
+        return (useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS).find(it=>it.id==='other');
+      }
       const result=pick(q,useThai);
       if(result.id==='need-customers')awaitingBizType=true;
       return result;
@@ -145,7 +197,7 @@ function createConversation(lang){
 }
 
 if(typeof module!=='undefined'&&module.exports){
-  module.exports={FACTS,INTENTS,TH_INTENTS,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
+  module.exports={FACTS,INTENTS,TH_INTENTS,QUALIFY_INTENTS,TH_QUALIFY_INTENTS,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
   return;
 }
 
