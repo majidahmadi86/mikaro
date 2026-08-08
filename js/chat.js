@@ -144,7 +144,7 @@ function buildIntents(lang){
     {id:'demo',k:th?['เดโม่','ฟรี']:['free demo','demo','prototype','free'],a:f.policies.demo,acts:actions(lang,'business')},
     {id:'revisions',k:th?['แก้ไข','ปรับ','รอบแก้','รีวิว']:['revisions','revision','adjust','changes','approval','approve'],a:f.policies.revisions,acts:actions(lang,'business')},
     {id:'payment',k:th?['ชำระ','จ่าย','มัดจำ','ผ่อน','งวด']:['payment','pay','deposit','installment'],a:f.policies.payment,acts:actions(lang,'business')},
-    {id:'pricing',k:th?['ราคา','แพ็กเกจ','งบ','เท่าไหร่','ค่าใช้จ่าย','แพง','โรงแรม','คลินิก']:['price','pricing','package','cost','budget','much','rate','quote','fee','hotel system','clinic system'],a:packageLadder(lang),acts:actions(lang,'business')},
+    {id:'pricing',k:th?['ราคา','แพ็กเกจ','งบ','เท่าไหร่','ค่าใช้จ่าย','แพง']:['price','pricing','package','cost','budget','much','rate','quote','fee','hotel system','clinic system'],a:packageLadder(lang),acts:actions(lang,'business')},
     {id:'timeline',k:th?['กี่วัน','นานไหม','กี่สัปดาห์','ระยะเวลา','เมื่อไหร่']:['how long','timeline','time','fast','deadline','when','delivery','weeks'],a:packageTimelines(lang),acts:actions(lang,'business')},
     ...qualify,
     {id:'examples',k:th?['ผลงาน','ตัวอย่าง','เคส','พอร์ต','teakhouse','praow','balzac']:['examples','example','work','portfolio','case','proof','live','teakhouse','praow','balzac','miomika','opticlean'],a:f.proof,acts:actions(lang,'proof')},
