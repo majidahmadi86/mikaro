@@ -28,7 +28,8 @@ const FACTS=Object.freeze({
       demoLine:'Includes two rounds of adjustments.',
       warranty:'Every package includes a 30-day care warranty after launch: bugs, glitches and fixes are on us, free. The Flagship package extends this to 90 days.',
       demo:"The free demo is one concept, built in your name within 48 hours, with up to two rounds of adjustments included. If it's still not right after that, we part as friends · no charge, no obligation. Full projects include structured revision rounds at every milestone, so nothing ships until you approve it.",
-      revisions:'Full projects include revision rounds at every milestone, from design to pre-launch. Nothing goes live until you approve it.'
+      revisions:'Full projects include revision rounds at every milestone, from design to pre-launch. Nothing goes live until you approve it.',
+      payment:'Projects start with a 50% deposit; the remaining 50% is due before the site goes live. Until then, everything runs on a private preview link, so you see the finished work before final payment. For Flagship and custom projects we split into three milestones: 40% to start, 30% on design approval, 30% before launch. We accept Thai bank transfer and PromptPay; card payment is available on request.'
     },
     proof:'Live proof: teakhouse.mikaro.studio · owner PIN 1234 · praow.mikaro.studio · balzacantiques.ch',
     positioning:'An AI-powered studio: senior creative direction with an AI-scale engineering engine. We ship international-grade systems in weeks, not months.',
@@ -50,7 +51,8 @@ const FACTS=Object.freeze({
       demoLine:'ปรับแก้ได้ 2 รอบ',
       warranty:'ทุกแพ็กเกจมีการรับประกันดูแล 30 วันหลังส่งมอบ แก้บั๊กและข้อผิดพลาดให้ฟรีทั้งหมด แพ็กเกจ Flagship ขยายเป็น 90 วันครับ',
       demo:'เดโม่ฟรีคือ 1 คอนเซปต์ สร้างในชื่อธุรกิจของคุณภายใน 48 ชั่วโมง ปรับแก้ได้ 2 รอบ หากยังไม่ถูกใจ เราแยกย้ายกันด้วยดี ไม่มีค่าใช้จ่ายใดๆ ครับ ส่วนโปรเจกต์เต็มมีรอบปรับแก้ทุกช่วงงาน ไม่มีอะไรออนไลน์จนกว่าคุณจะอนุมัติครับ',
-      revisions:'โปรเจกต์เต็มมีรอบปรับแก้ในทุกช่วงของงานครับ ตั้งแต่ดีไซน์จนถึงก่อนออนไลน์ ไม่มีอะไรเผยแพร่จนกว่าคุณจะอนุมัติครับ'
+      revisions:'โปรเจกต์เต็มมีรอบปรับแก้ในทุกช่วงของงานครับ ตั้งแต่ดีไซน์จนถึงก่อนออนไลน์ ไม่มีอะไรเผยแพร่จนกว่าคุณจะอนุมัติครับ',
+      payment:'โปรเจกต์เริ่มงานด้วยมัดจำ 50% และชำระส่วนที่เหลือ 50% ก่อนเว็บไซต์ออนไลน์จริงครับ ระหว่างนั้นงานทั้งหมดอยู่บนลิงก์พรีวิวส่วนตัว คุณได้เห็นงานเสร็จสมบูรณ์ก่อนชำระยอดสุดท้ายครับ สำหรับแพ็กเกจ Flagship และงานสเกลพิเศษ แบ่งชำระ 3 งวดครับ: 40% เริ่มงาน · 30% เมื่ออนุมัติดีไซน์ · 30% ก่อนออนไลน์ รับชำระผ่านโอนธนาคารและพร้อมเพย์ หรือบัตรเครดิตได้ตามตกลงครับ'
     },
     proof:'ผลงานจริง · teakhouse.mikaro.studio · owner PIN 1234 · praow.mikaro.studio · balzacantiques.ch',
     positioning:'สตูดิโอที่ขับเคลื่อนด้วย AI · ความคิดสร้างสรรค์จากทีมมากประสบการณ์ เสริมด้วยพลังวิศวกรรม AI เต็มรูปแบบ พร้อมส่งมอบระบบระดับสากลภายในไม่กี่สัปดาห์ ไม่ใช่หลายเดือน',
