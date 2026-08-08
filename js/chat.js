@@ -42,6 +42,7 @@ const FACTS=Object.freeze({
       restaurant:'For a restaurant or cafe, the Essential package (39,000 THB) gets you credible fast: menu, photos, location, hours and contact that works · live in 2 weeks. The Professional (69,000 THB) adds online ordering. Browse our live work: mikaro.studio/work.\n\nThe free 48-hour demo applies to you too: one page from your real menu, no cost. Interested?',
       other:"Happy to point you right · tell me a little about what your business sells or does, and I'll tell you exactly which package fits, with a live example to click."
     },
+    demoYes:"Perfect · let's start. Send your business name and a few photos of your products or work on LINE, and the free demo starts today: line.me/ti/p/l059F3WkI7. Within 48 hours you'll have a link with your name on it.",
     contact:"That falls outside my verified facts. The team replies personally · use LINE or the contact form and they'll confirm it directly.",
     greeting:"Hello · I'm MIKA, the studio's guide. Ask me about packages, prices, timelines, warranty, the free demo, revisions, or live examples."
   },
@@ -73,6 +74,7 @@ const FACTS=Object.freeze({
       restaurant:'สำหรับร้านอาหารหรือคาเฟ่ แพ็กเกจ Essential (39,000 บาท) ทำให้ร้านดูน่าเชื่อถือได้เร็วครับ เมนู รูป พิกัด เวลาเปิด ติดต่อได้จริง ออนไลน์ใน 2 สัปดาห์ ส่วน Professional (69,000 บาท) เพิ่มระบบสั่งอาหารออนไลน์ครับ ดูผลงานจริงได้ที่ mikaro.studio/work\n\nเดโม่ฟรี 48 ชั่วโมงใช้กับร้านคุณได้เหมือนกันครับ หน้าเดียวจากเมนูจริงของร้าน ไม่มีค่าใช้จ่ายครับ สนใจไหมครับ',
       other:'ยินดีแนะนำครับ เล่าให้ฟังนิดหนึ่งว่าธุรกิจของคุณขายอะไรหรือทำอะไร แล้วผมจะบอกได้เลยว่าแพ็กเกจไหนเหมาะ พร้อมตัวอย่างจริงให้กดดูครับ'
     },
+    demoYes:'เยี่ยมเลยครับ เริ่มกันเลยครับ ส่งชื่อธุรกิจและรูปสินค้าหรือผลงานสัก 2-3 รูปมาทาง LINE ได้เลยครับ: line.me/ti/p/l059F3WkI7 ภายใน 48 ชั่วโมงคุณจะได้ลิงก์เดโม่ในชื่อของคุณครับ',
     contact:'คำถามดีมาก · ฉันเป็นไกด์ตัวเล็ก ๆ เรื่องลึก ๆ ให้มนุษย์ตอบดีกว่า ฝากอีเมลไว้แล้วเราจะติดต่อกลับภายในหนึ่งวัน หรือลองปุ่มด้านล่างนี้',
     greeting:'สวัสดีค่ะ · ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย'
   }
@@ -91,10 +93,11 @@ function bizTypeActions(lang){
 }
 function qualifyActions(lang,type){
   const th=lang==='th',live=th?'ดูเว็บจริง ↗':'View live ↗';
-  if(type==='shop')return [{h:'https://opticlean.mikaro.studio',l:live,x:1},{h:'https://balzacantiques.ch',l:live,x:1}];
-  if(type==='hotel')return [{h:'https://teakhouse.mikaro.studio',l:live,x:1},{h:'https://teakhouse.mikaro.studio/owner',l:th?'แผงเจ้าของ':'Owner dashboard',x:1}];
-  if(type==='clinic-salon')return [{h:'https://praow.mikaro.studio',l:live,x:1}];
-  if(type==='restaurant')return [{h:'https://mikaro.studio/work',l:th?'ดูผลงาน':'Browse live work',x:1}];
+  const yes={q:th?'สนใจ':'yes',l:th?'สนใจ':'Yes'};
+  if(type==='shop')return [{h:'https://opticlean.mikaro.studio',l:live,x:1},{h:'https://balzacantiques.ch',l:live,x:1},yes];
+  if(type==='hotel')return [{h:'https://teakhouse.mikaro.studio',l:live,x:1},{h:'https://teakhouse.mikaro.studio/owner',l:th?'แผงเจ้าของ':'Owner dashboard',x:1},yes];
+  if(type==='clinic-salon')return [{h:'https://praow.mikaro.studio',l:live,x:1},yes];
+  if(type==='restaurant')return [{h:'https://mikaro.studio/work',l:th?'ดูผลงาน':'Browse live work',x:1},yes];
   return actions(lang,'business');
 }
 function actions(lang,type){
@@ -122,6 +125,10 @@ function buildQualifyIntents(lang){
     {id:'other',k:th?['อื่นๆ']:['other'],a:f.other,acts:actions(lang,'business')}
   ];
 }
+function buildDemoYesIntent(lang){
+  const th=lang==='th';
+  return {id:'demo-yes',k:th?['สนใจ','เอา','ได้','ตกลง']:['yes','ok','sure','interested'],a:FACTS[lang].demoYes,acts:[{h:LINE_URL,l:th?'แอด LINE':'Start on LINE',x:1}]};
+}
 function buildIntents(lang){
   const f=FACTS[lang],th=lang==='th';
   const qualify=buildQualifyIntents(lang);
@@ -146,6 +153,8 @@ const INTENTS=buildIntents('en');
 const TH_INTENTS=buildIntents('th');
 const QUALIFY_INTENTS=buildQualifyIntents('en');
 const TH_QUALIFY_INTENTS=buildQualifyIntents('th');
+const DEMO_YES_INTENT=buildDemoYesIntent('en');
+const TH_DEMO_YES_INTENT=buildDemoYesIntent('th');
 const FALLBACK={id:'fallback',a:FACTS.en.contact,acts:actions('en','contact')};
 const TH_FALLBACK={id:'fallback',a:FACTS.th.contact,acts:actions('th','contact')};
 const TH_HI=TH_INTENTS[0];
@@ -178,26 +187,33 @@ function pickFrom(q,pool){
 function createConversation(lang){
   const useThai=lang==='th';
   let awaitingBizType=false;
+  let awaitingDemoYes=false;
   return {
     ask(q){
+      if(awaitingDemoYes&&pickFrom(q,[useThai?TH_DEMO_YES_INTENT:DEMO_YES_INTENT])){
+        awaitingDemoYes=false;
+        return useThai?TH_DEMO_YES_INTENT:DEMO_YES_INTENT;
+      }
       if(awaitingBizType){
         const qualified=pickFrom(q,useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS);
         if(qualified){
           awaitingBizType=false;
+          if(qualified.id!=='other')awaitingDemoYes=true;
           return qualified;
         }
         return (useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS).find(it=>it.id==='other');
       }
       const result=pick(q,useThai);
       if(result.id==='need-customers')awaitingBizType=true;
+      if(['shop','hotel','clinic-salon','restaurant'].includes(result.id))awaitingDemoYes=true;
       return result;
     },
-    state(){return {awaitingBizType};}
+    state(){return {awaitingBizType,awaitingDemoYes};}
   };
 }
 
 if(typeof module!=='undefined'&&module.exports){
-  module.exports={FACTS,INTENTS,TH_INTENTS,QUALIFY_INTENTS,TH_QUALIFY_INTENTS,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
+  module.exports={FACTS,INTENTS,TH_INTENTS,QUALIFY_INTENTS,TH_QUALIFY_INTENTS,DEMO_YES_INTENT,TH_DEMO_YES_INTENT,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
   return;
 }
 
