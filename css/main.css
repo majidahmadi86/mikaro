@@ -773,6 +773,7 @@ a.biz-chip:hover::after{opacity:.75}
 .biz-tiers .shead h2,.biz-proof .shead h2,.biz-proc .shead h2,.biz-form-sec .shead h2{position:relative;z-index:5;overflow:visible;max-height:none}
 .biz-demo-banner{display:flex;align-items:flex-start;justify-content:center;gap:.55rem;margin:0 0 .35rem;padding:1.05rem 1.35rem;background:var(--milk);border:1px solid rgba(232,178,60,.55);border-radius:16px;text-align:center;position:relative;z-index:2}
 .biz-demo-banner p{margin:0;font-size:clamp(.88rem,1.5vw,.98rem);line-height:1.55;color:var(--ink);max-width:52rem;font-weight:500}
+.biz-demo-policy{font-size:.78rem;font-weight:800;color:var(--blue);line-height:1.45}
 .biz-demo-mark{flex:0 0 auto;color:var(--gold);font-size:1rem;line-height:1.55;transform:translateY(.05em)}
 .biz-ladder{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;align-items:stretch;position:relative;z-index:1;padding-top:1.6rem;overflow:visible}
 .biz-pkg{background:#fff;border:1px solid var(--line);border-radius:24px;padding:1.55rem 1.15rem 1.35rem;display:flex;flex-direction:column;position:relative;transition:transform .4s var(--ease),box-shadow .4s;min-width:0;overflow:visible;z-index:1;height:100%}
