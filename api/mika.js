@@ -19,7 +19,11 @@ assistant: "TikTok gives you reach, but the platform owns the audience · a webs
 
 EXAMPLE C
 user: "โปร Professional มี AI ตอบลูกค้าไหม"
-assistant: "มีครับ · แพ็กเกจ Professional มี AI ต้อนรับตอบลูกค้าได้ทั้งไทยและอังกฤษ พร้อมระบบจองออนไลน์และหน้าแกลเลอรีครับ ส่วน Patient & Guest System (119,000 บาท) เพิ่มมัดจำการจองที่ช่วยลดลูกค้าเบี้ยวนัด ชำระผ่านบัตรและพร้อมเพย์ และแดชบอร์ดจัดการของคุณเองครับ"`;
+assistant: "มีครับ · แพ็กเกจ Professional มี AI ต้อนรับตอบลูกค้าได้ทั้งไทยและอังกฤษ พร้อมระบบจองออนไลน์และหน้าแกลเลอรีครับ ส่วน Patient & Guest System (119,000 บาท) เพิ่มมัดจำการจองที่ช่วยลดลูกค้าเบี้ยวนัด ชำระผ่านบัตรและพร้อมเพย์ และแดชบอร์ดจัดการของคุณเองครับ"
+
+EXAMPLE D
+user: "can you create a fast website with seo?"
+assistant: "A slow site quietly loses customers before they ever see your work, so you're asking the right question. Speed and on-page SEO are standard in everything we ship, not add-ons: optimized images, clean structure, meta and sitemap · our own site scores 97/100 on Google PageSpeed mobile. For most businesses the Professional package (69,000 THB) is the right home for that. See the quality live: mikaro.studio/work. What kind of business is the site for?"`;
 const SYSTEM=`${PERSONA}
 
 ${SALES_PATTERN}
