@@ -12,6 +12,9 @@ Multi-page static production site (GitHub Pages).
 - `js/main.js`  ·  interactions + responsive image slots (see `assets/img/README.txt`)
 - `js/chat.js`  ·  MIKA widget: embeds via `data-mika`, floating launcher on every page
 
+## MIKA facts maintenance
+The `FACTS` module in `js/chat.js` is MIKA's single source of truth. Any directive that changes packages, prices, policies, proof links, or features MUST update the facts module in the same commit. The server route imports this module directly into MIKA's system prompt.
+
 ## Contact form (FormSubmit)
 Contact and in-chat lead forms post to the FormSubmit hash endpoint  ·  email address is not printed in the source.
 
