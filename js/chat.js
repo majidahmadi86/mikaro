@@ -20,6 +20,7 @@ const LINE_URL='https://line.me/ti/p/l059F3WkI7';
    or features must update this facts module in the same commit. */
 const FACTS=Object.freeze({
   shared:{
+    approvedThaiTerms:['ผลงาน','รูปผลงาน'],
     performanceQuality:{
       en:'Speed and on-page SEO are standard in every package, never an add-on: optimized images, font strategy, clean structure, meta and sitemap. Our own site scores 97/100 on Google PageSpeed mobile. Every build is bilingual-capable (Thai + English). All work happens on a private preview link and nothing goes live until the client approves it.',
       th:'ความเร็วและ SEO เป็นมาตรฐานในทุกแพ็กเกจของเรา ไม่ใช่ส่วนเสริมครับ ปรับแต่งรูปภาพ โครงสร้างสะอาด มี meta และ sitemap ครบ เว็บของเราเองได้คะแนน PageSpeed มือถือ 97/100 ครับ'
