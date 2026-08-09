@@ -3,13 +3,15 @@
    MIKA.mount(el) renders a chat instance; a floating launcher is
    added automatically on every page (skip with <body data-no-fab>).
    Scripted intent brain with keyword scoring, in-answer action
-   chips, and a lead-capture form wired to FormSubmit.
-   Runs fully in-browser; the lead form is the only network call.
+   chips, and Claude fallback for unmatched free text.
    ================================================================ */
 (function(){
 const HAS_DOM=typeof document!=='undefined';
 const RM=HAS_DOM&&matchMedia('(prefers-reduced-motion:reduce)').matches;
 const FORM_ENDPOINT='https://formsubmit.co/ajax/84f718f8c2666a5284f748d3db5c6d02';
+const MIKA_API='/api/mika';
+const AI_MESSAGE_LIMIT=20;
+const AI_TIMEOUT_MS=6000;
 const TH=HAS_DOM&&document.documentElement.lang==='th';
 const LINE_URL='https://line.me/ti/p/l059F3WkI7';
 
@@ -173,7 +175,12 @@ function hasKeyword(s,k){
   }
   return s.includes(k);
 }
-function pick(q,useThai=TH){
+function needsAI(q,useThai){
+  const s=q.toLowerCase();
+  return (useThai&&s.includes('ลดราคา'))||(!useThai&&['discount','negotiate','lower price'].some(k=>s.includes(k)));
+}
+function matchIntent(q,useThai=TH){
+  if(needsAI(q,useThai))return null;
   const s=q.toLowerCase();let best=null,score=0;
   const POOL=useThai?TH_INTENTS:INTENTS;
   const specific=pickFrom(q,(useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS).filter(it=>it.priority));
@@ -183,7 +190,10 @@ function pick(q,useThai=TH){
     const beatsGenericTie=n===score&&n>0&&it.priority&&best&&['need-customers','shop'].includes(best.id);
     if(n>score||beatsGenericTie){score=n;best=it;}
   }
-  return score>0?best:(useThai?TH_FALLBACK:FALLBACK);
+  return score>0?best:null;
+}
+function pick(q,useThai=TH){
+  return matchIntent(q,useThai)||(useThai?TH_FALLBACK:FALLBACK);
 }
 function pickFrom(q,pool){
   const s=q.toLowerCase();let best=null,score=0;
@@ -200,8 +210,13 @@ function createConversation(lang){
   let awaitingBizType=false;
   let awaitingDemoYes=false;
   let fallbackLoop=false;
+  function useFallback(){
+    awaitingBizType=true;
+    fallbackLoop=true;
+    return useThai?TH_FALLBACK:FALLBACK;
+  }
   return {
-    ask(q){
+    ask(q,allowFallback=true){
       if(awaitingDemoYes&&pickFrom(q,[useThai?TH_DEMO_YES_INTENT:DEMO_YES_INTENT])){
         awaitingDemoYes=false;
         return useThai?TH_DEMO_YES_INTENT:DEMO_YES_INTENT;
@@ -226,14 +241,11 @@ function createConversation(lang){
         fallbackLoop=true;
         return (useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS).find(it=>it.id==='other');
       }
-      const result=pick(q,useThai);
+      const result=matchIntent(q,useThai);
+      if(!result)return allowFallback?useFallback():null;
       if(result.id==='need-customers'){
         awaitingBizType=true;
         fallbackLoop=false;
-      }
-      if(result.id==='fallback'){
-        awaitingBizType=true;
-        fallbackLoop=true;
       }
       if(result.id==='other'){
         awaitingBizType=true;
@@ -242,12 +254,13 @@ function createConversation(lang){
       if(['shop','hotel','clinic-salon','restaurant'].includes(result.id))awaitingDemoYes=true;
       return result;
     },
+    fallback:useFallback,
     state(){return {awaitingBizType,awaitingDemoYes,fallbackLoop};}
   };
 }
 
 if(typeof module!=='undefined'&&module.exports){
-  module.exports={FACTS,INTENTS,TH_INTENTS,QUALIFY_INTENTS,TH_QUALIFY_INTENTS,DEMO_YES_INTENT,TH_DEMO_YES_INTENT,FALLBACK,TH_FALLBACK,HANDOFF,TH_HANDOFF,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
+  module.exports={FACTS,INTENTS,TH_INTENTS,QUALIFY_INTENTS,TH_QUALIFY_INTENTS,DEMO_YES_INTENT,TH_DEMO_YES_INTENT,FALLBACK,TH_FALLBACK,HANDOFF,TH_HANDOFF,matchIntent,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
   return;
 }
 
@@ -257,6 +270,9 @@ const ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wi
 
 function mount(root){
   const conversation=createConversation(TH?'th':'en');
+  const history=[];
+  let aiMessages=0;
+  let pending=false;
   root.innerHTML=`
   <div class="chat">
     <div class="chat-bar"><span class="av">M</span>MIKA · studio guide<span class="on"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E;display:inline-block"></span>online</span></div>
@@ -273,6 +289,18 @@ function mount(root){
         input=form.querySelector('input'),chips=root.querySelector('.chat-chips');
 
   function add(cls,html){const m=document.createElement('div');m.className='msg '+cls;m.innerHTML=html;log.appendChild(m);log.scrollTop=log.scrollHeight;return m;}
+  function remember(role,content){
+    history.push({role,content:String(content).slice(0,500)});
+    if(history.length>16)history.splice(0,history.length-16);
+  }
+  function linkify(text){
+    return esc(text).replace(/\b(https?:\/\/[^\s<]+|(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/[^\s<]*)?)/gi,raw=>{
+      let url=raw,trail='';
+      while(/[.,!?;:]$/.test(url)){trail=url.slice(-1)+trail;url=url.slice(0,-1);}
+      const href=/^https?:\/\//i.test(url)?url:'https://'+url;
+      return '<a href="'+href+'" target="_blank" rel="noopener">'+url+'</a>'+trail;
+    }).replace(/\n/g,'<br>');
+  }
 
   function renderActs(m,acts){
     if(!acts||!acts.length)return;
@@ -291,6 +319,49 @@ function mount(root){
       renderActs(t,intent.acts);log.scrollTop=log.scrollHeight;
       try{const c=t.querySelector('[data-clock]');if(c){c.textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Bangkok',hour:'2-digit',minute:'2-digit'}).format(new Date());}}catch(e){}
     },RM?0:600+Math.random()*450);
+  }
+
+  async function aiReply(){
+    if(aiMessages>=AI_MESSAGE_LIMIT){
+      const fallback=conversation.fallback();
+      remember('assistant',fallback.a);
+      reply(fallback);
+      return;
+    }
+    aiMessages+=1;
+    pending=true;
+    input.disabled=true;
+    form.querySelector('button').disabled=true;
+    const typing=add('bot typing','<i></i><i></i><i></i>');
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),AI_TIMEOUT_MS);
+    try{
+      const response=await fetch(MIKA_API,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({messages:history.slice(-8),lang:TH?'th':'en'}),
+        signal:controller.signal
+      });
+      if(!response.ok)throw new Error('MIKA API '+response.status);
+      const data=await response.json();
+      if(!data||!data.reply)throw new Error('Empty MIKA reply');
+      const answer=String(data.reply).slice(0,3000);
+      remember('assistant',answer);
+      typing.classList.remove('typing');
+      typing.innerHTML=linkify(answer);
+      log.scrollTop=log.scrollHeight;
+    }catch(err){
+      typing.remove();
+      const fallback=conversation.fallback();
+      remember('assistant',fallback.a);
+      reply(fallback);
+    }finally{
+      clearTimeout(timer);
+      pending=false;
+      input.disabled=false;
+      form.querySelector('button').disabled=false;
+      input.focus();
+    }
   }
 
   function lead(){
@@ -316,8 +387,17 @@ function mount(root){
   }
 
   function handle(q,label){
-    add('user',esc(label||q));
-    reply(conversation.ask(q));
+    if(pending)return;
+    const clipped=String(q).slice(0,500);
+    add('user',esc(label||clipped));
+    remember('user',clipped);
+    const local=conversation.ask(clipped,false);
+    if(local){
+      remember('assistant',local.a);
+      reply(local);
+      return;
+    }
+    aiReply();
   }
 
   form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';handle(q);});
