@@ -175,12 +175,21 @@ function hasKeyword(s,k){
   }
   return s.includes(k);
 }
-function needsAI(q,useThai){
-  const s=q.toLowerCase();
-  return (useThai&&['ลดราคา','ถ้าเพื่อนผม'].some(k=>s.includes(k)))||(!useThai&&['discount','negotiate','lower price','my friend'].some(k=>s.includes(k)));
+function normalizeQuery(q){
+  return String(q).trim().toLowerCase().replace(/[?!.,:;…]+$/g,'').replace(/\s+/g,' ');
+}
+function isCoreLocalQuery(q,useThai=TH){
+  const s=normalizeQuery(q);
+  if(s==='hotle websit how much')return true;
+  if(!s||s.split(' ').length>3)return false;
+  const pool=[
+    ...(useThai?TH_INTENTS:INTENTS),
+    ...(useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS),
+    useThai?TH_DEMO_YES_INTENT:DEMO_YES_INTENT
+  ];
+  return pool.some(it=>it.k.some(k=>normalizeQuery(k)===s));
 }
 function matchIntent(q,useThai=TH){
-  if(needsAI(q,useThai))return null;
   const s=q.toLowerCase();let best=null,score=0;
   const POOL=useThai?TH_INTENTS:INTENTS;
   const specific=pickFrom(q,(useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS).filter(it=>it.priority));
@@ -260,7 +269,7 @@ function createConversation(lang){
 }
 
 if(typeof module!=='undefined'&&module.exports){
-  module.exports={FACTS,INTENTS,TH_INTENTS,QUALIFY_INTENTS,TH_QUALIFY_INTENTS,DEMO_YES_INTENT,TH_DEMO_YES_INTENT,FALLBACK,TH_FALLBACK,HANDOFF,TH_HANDOFF,matchIntent,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
+  module.exports={FACTS,INTENTS,TH_INTENTS,QUALIFY_INTENTS,TH_QUALIFY_INTENTS,DEMO_YES_INTENT,TH_DEMO_YES_INTENT,FALLBACK,TH_FALLBACK,HANDOFF,TH_HANDOFF,isCoreLocalQuery,matchIntent,pick,createConversation,answer:(q,lang)=>pick(q,lang==='th').a};
   return;
 }
 
@@ -307,7 +316,7 @@ function mount(root){
     const w=document.createElement('div');w.className='acts';
     acts.forEach(a=>{
       if(a.h){const el=document.createElement('a');el.href=a.h;el.textContent=a.l;if(a.x){el.target='_blank';el.rel='noopener';}w.appendChild(el);}
-      else{const el=document.createElement('button');el.type='button';el.textContent=a.l;el.addEventListener('click',()=>a.q==='__lead'?lead():handle(a.q,a.l));w.appendChild(el);}
+      else{const el=document.createElement('button');el.type='button';el.textContent=a.l;el.addEventListener('click',()=>a.q==='__lead'?lead():handle(a.q,a.l,true));w.appendChild(el);}
     });
     m.appendChild(w);log.scrollTop=log.scrollHeight;
   }
@@ -386,12 +395,12 @@ function mount(root){
     });
   }
 
-  function handle(q,label){
+  function handle(q,label,forceLocal=false){
     if(pending)return;
     const clipped=String(q).slice(0,500);
     add('user',esc(label||clipped));
     remember('user',clipped);
-    const local=conversation.ask(clipped,false);
+    const local=(forceLocal||isCoreLocalQuery(clipped,TH))?conversation.ask(clipped,false):null;
     if(local){
       remember('assistant',local.a);
       reply(local);
@@ -401,7 +410,7 @@ function mount(root){
   }
 
   form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';handle(q);});
-  chips.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;handle(b.dataset.q,b.textContent);});
+  chips.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;handle(b.dataset.q,b.textContent,true);});
 
   const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){io.disconnect();reply(TH?TH_HI:INTENTS[0]);}});},{threshold:.3});
   io.observe(log);
