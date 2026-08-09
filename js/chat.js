@@ -177,7 +177,7 @@ function hasKeyword(s,k){
 }
 function needsAI(q,useThai){
   const s=q.toLowerCase();
-  return (useThai&&s.includes('ลดราคา'))||(!useThai&&['discount','negotiate','lower price'].some(k=>s.includes(k)));
+  return (useThai&&['ลดราคา','ถ้าเพื่อนผม'].some(k=>s.includes(k)))||(!useThai&&['discount','negotiate','lower price','my friend'].some(k=>s.includes(k)));
 }
 function matchIntent(q,useThai=TH){
   if(needsAI(q,useThai))return null;
