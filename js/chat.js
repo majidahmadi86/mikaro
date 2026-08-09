@@ -20,18 +20,27 @@ const LINE_URL='https://line.me/ti/p/l059F3WkI7';
    or features must update this facts module in the same commit. */
 const FACTS=Object.freeze({
   shared:{
-    performanceQuality:'Speed and on-page SEO are standard in every package, never an add-on: optimized images, font strategy, clean structure, meta and sitemap. Our own site scores 97/100 on Google PageSpeed mobile. Every build is bilingual-capable (Thai + English). All work happens on a private preview link and nothing goes live until the client approves it.',
+    performanceQuality:{
+      en:'Speed and on-page SEO are standard in every package, never an add-on: optimized images, font strategy, clean structure, meta and sitemap. Our own site scores 97/100 on Google PageSpeed mobile. Every build is bilingual-capable (Thai + English). All work happens on a private preview link and nothing goes live until the client approves it.',
+      th:'ความเร็วและ SEO เป็นมาตรฐานในทุกแพ็กเกจของเรา ไม่ใช่ส่วนเสริมครับ ปรับแต่งรูปภาพ โครงสร้างสะอาด มี meta และ sitemap ครบ เว็บของเราเองได้คะแนน PageSpeed มือถือ 97/100 ครับ'
+    },
     trackRecord:'Live work includes: The Teak House (complete hotel booking system, teakhouse.mikaro.studio), PRAOW (clinic system, praow.mikaro.studio), OptiClean (real online store, opticlean.mikaro.studio), Balzac Antiques (real client in Switzerland, balzacantiques.ch), Miomika (our own AI language app, miomika.com).',
-    process:'How working with us goes: free demo in your name within 48 hours (2 adjustment rounds) → you approve → 50% deposit → we build on a private preview with revision rounds at every milestone → balance → your site goes live → 30-day care warranty (90 days on Flagship).'
+    process:{
+      en:'How working with us goes: free demo in your name within 48 hours (2 adjustment rounds) → you approve → 50% deposit → we build on a private preview with revision rounds at every milestone → balance → your site goes live → 30-day care warranty (90 days on Flagship).',
+      th:'ขั้นตอนการทำงานครับ: เดโม่ฟรีในชื่อของคุณภายใน 48 ชั่วโมง (ปรับแก้ได้ 2 รอบ) → คุณอนุมัติ → มัดจำ 50% → เราสร้างบนลิงก์พรีวิวส่วนตัว มีรอบปรับแก้ทุกช่วงงาน → ชำระส่วนที่เหลือ → เว็บออนไลน์จริง → รับประกันดูแล 30 วัน (Flagship 90 วัน) ครับ'
+    }
   },
   en:{
     packages:[
-      {name:'Essential',price:'39,000 THB',timeline:'Your business, credible on Google in 2 weeks.',included:['Natives-written bilingual 5-page site','Enquiries to your inbox and LINE','Under 2 seconds on mobile','LINE and phone buttons on every page · one tap and the customer is talking to you','Google Business profile set up so nearby customers actually find you']},
-      {name:'Professional',price:'69,000 THB',timeline:'Delivered in 2-3 weeks',included:['Everything in Essential, plus:','AI receptionist in Thai + English, 24 hours','Online booking confirmed in under a minute','Google reviews live on the site','Full services and gallery pages that sell your work while you work']},
-      {name:'Patient & Guest System',price:'119,000 THB',timeline:'Delivered in 2-3 weeks',included:["Everything in Professional, plus · built in your industry's flavor:",'Clinics: consultation funnel + deposits that end no-shows','Hotels: direct booking, keep the 15-18%','Your own admin panel','Clinics: foreign patients send their case and photos, you reply with a quote. Before/after galleries that convince.','Hotels and villas: card and PromptPay payment · no Booking.com cut','Admin: rooms, treatments, prices, bookings · change anything yourself']},
-      {name:'Flagship Acquisition',price:'189,000 THB',timeline:'Delivered in 2-3 weeks',included:['Everything above, plus:','Third language for your market','Pages engineered to rank on Google','90 days of post-launch iteration','Chinese or Arabic for medical travel, German or French for hospitality','Tracking that shows you exactly where every enquiry came from']},
-      {name:'Signature',price:'Custom scope',timeline:'Custom scope',included:['Every serious project starts with a conversation.']}
+      {name:'Essential',price:'39,000 THB',timeline:'Your business, credible on Google in 2 weeks.',features:['Natives-written bilingual 5-page site','Enquiries to your inbox and LINE','Under 2 seconds on mobile','LINE and phone buttons on every page · one tap and the customer is talking to you','Google Business profile set up so nearby customers actually find you']},
+      {name:'Professional',price:'69,000 THB',timeline:'Delivered in 2-3 weeks',features:['Everything in Essential, plus:','AI receptionist in Thai + English, 24 hours','Online booking confirmed in under a minute','Google reviews live on the site','Full services and gallery pages that sell your work while you work']},
+      {name:'Patient & Guest System',price:'119,000 THB',timeline:'Delivered in 2-3 weeks',features:["Everything in Professional, plus · built in your industry's flavor:",'Clinics: consultation funnel + deposits that end no-shows','Hotels: direct booking, keep the 15-18%','Your own admin panel','Clinics: foreign patients send their case and photos, you reply with a quote. Before/after galleries that convince.','Hotels and villas: card and PromptPay payment · no Booking.com cut','Admin: rooms, treatments, prices, bookings · change anything yourself','See the hotel system live ↗ teakhouse.mikaro.studio']},
+      {name:'Flagship Acquisition',price:'189,000 THB',timeline:'Delivered in 2-3 weeks',features:['Everything above, plus:','Third language for your market','Pages engineered to rank on Google','90 days of post-launch iteration','Chinese or Arabic for medical travel, German or French for hospitality','Tracking that shows you exactly where every enquiry came from']},
+      {name:'Signature',price:'Custom scope',timeline:'Custom scope',features:[],description:'Every serious project starts with a conversation.'}
     ],
+    differentiation:{
+      professionalAi:'Yes · the Professional package includes an AI receptionist that answers your customers in Thai and English, plus online booking and gallery pages. The Patient & Guest System (119,000 THB) builds on that with booking deposits that end no-shows, card and PromptPay payments, and your own management dashboard.'
+    },
     policies:{
       warrantyLine:'30-day care warranty included · bugs and fixes free',
       flagshipWarrantyLine:'90-day care warranty included',
@@ -60,12 +69,15 @@ const FACTS=Object.freeze({
   },
   th:{
     packages:[
-      {name:'Essential',price:'39,000 บาท',timeline:'ธุรกิจของคุณ น่าเชื่อถือบน Google ภายใน 2 สัปดาห์',included:['เว็บ 5 หน้า สองภาษา เขียนโดยเจ้าของภาษา','ข้อความเข้าอีเมลและ LINE ของคุณ','โหลดไวใน 2 วินาทีบนมือถือ','ปุ่ม LINE และปุ่มโทรทุกหน้า ลูกค้าแตะครั้งเดียว คุยกับคุณได้ทันที','ตั้งค่า Google Business ให้ลูกค้าแถวคุณค้นหาเจอ']},
-      {name:'Professional',price:'69,000 บาท',timeline:'ส่งมอบใน 2-3 สัปดาห์',included:['ทุกอย่างใน Essential พร้อมด้วย:','AI ต้อนรับไทย + อังกฤษ ตลอด 24 ชั่วโมง','จองคิวออนไลน์ ยืนยันในไม่ถึงหนึ่งนาที','รีวิว Google แสดงบนเว็บจริง','หน้าบริการและแกลเลอรีครบชุด ขายงานให้คุณระหว่างที่คุณทำงาน']},
-      {name:'Patient & Guest System',price:'119,000 บาท',timeline:'ส่งมอบใน 2-3 สัปดาห์',included:['ทุกอย่างใน Professional พร้อมด้วย เลือกตามธุรกิจของคุณ:','คลินิก: ระบบปรึกษา + มัดจำที่ลดการเบี้ยวนัด','โรงแรม: จองตรง เก็บค่าคอม 15-18%','แผงควบคุมของคุณเอง','คลินิก: คนไข้ต่างชาติส่งเคสพร้อมรูป รับใบประเมินราคา และแกลเลอรีผลงานก่อน/หลัง','โรงแรมและวิลล่า: ชำระด้วยบัตรและ PromptPay ไม่เสียค่า Booking.com','แก้ห้อง ทรีตเมนต์ ราคา และการจองได้ด้วยตัวเอง']},
-      {name:'Flagship Acquisition',price:'189,000 บาท',timeline:'ส่งมอบใน 2-3 สัปดาห์',included:['ทุกอย่างข้างต้น พร้อมด้วย:','ภาษาที่ 3 สำหรับตลาดของคุณ','หน้าเว็บออกแบบให้ติดอันดับ Google','ดูแลต่อเนื่อง 90 วันหลังเปิดตัว','จีนหรืออาหรับสำหรับคนไข้ต่างชาติ เยอรมันหรือฝรั่งเศสสำหรับสายที่พัก','ระบบติดตามผล เห็นชัดว่าลูกค้าแต่ละรายมาจากช่องทางไหน']},
-      {name:'Signature',price:'ราคาตามโปรเจกต์',timeline:'กำหนดเวลาตามขอบเขตโปรเจกต์',included:['โปรเจกต์ที่จริงจัง เริ่มจากการคุยกัน']}
+      {name:'Essential',price:'39,000 บาท',timeline:'ธุรกิจของคุณ น่าเชื่อถือบน Google ภายใน 2 สัปดาห์',features:['เว็บ 5 หน้า สองภาษา เขียนโดยเจ้าของภาษา','ข้อความเข้าอีเมลและ LINE ของคุณ','โหลดไวใน 2 วินาทีบนมือถือ','ปุ่ม LINE และปุ่มโทรทุกหน้า ลูกค้าแตะครั้งเดียว คุยกับคุณได้ทันที','ตั้งค่า Google Business ให้ลูกค้าแถวคุณค้นหาเจอ']},
+      {name:'Professional',price:'69,000 บาท',timeline:'ส่งมอบใน 2-3 สัปดาห์',features:['ทุกอย่างใน Essential พร้อมด้วย:','AI ต้อนรับไทย + อังกฤษ ตลอด 24 ชั่วโมง','จองคิวออนไลน์ ยืนยันในไม่ถึงหนึ่งนาที','รีวิว Google แสดงบนเว็บจริง','หน้าบริการและแกลเลอรีครบชุด ขายงานให้คุณระหว่างที่คุณทำงาน']},
+      {name:'Patient & Guest System',price:'119,000 บาท',timeline:'ส่งมอบใน 2-3 สัปดาห์',features:['ทุกอย่างใน Professional พร้อมด้วย เลือกตามธุรกิจของคุณ:','คลินิก: ระบบปรึกษา + มัดจำที่ลดการเบี้ยวนัด','โรงแรม: จองตรง เก็บค่าคอม 15-18%','แผงควบคุมของคุณเอง','คลินิก: คนไข้ต่างชาติส่งเคสพร้อมรูป รับใบประเมินราคา และแกลเลอรีผลงานก่อน/หลัง','โรงแรมและวิลล่า: ชำระด้วยบัตรและ PromptPay ไม่เสียค่า Booking.com','แก้ห้อง ทรีตเมนต์ ราคา และการจองได้ด้วยตัวเอง','ดูระบบโรงแรมของจริง ↗ teakhouse.mikaro.studio']},
+      {name:'Flagship Acquisition',price:'189,000 บาท',timeline:'ส่งมอบใน 2-3 สัปดาห์',features:['ทุกอย่างข้างต้น พร้อมด้วย:','ภาษาที่ 3 สำหรับตลาดของคุณ','หน้าเว็บออกแบบให้ติดอันดับ Google','ดูแลต่อเนื่อง 90 วันหลังเปิดตัว','จีนหรืออาหรับสำหรับคนไข้ต่างชาติ เยอรมันหรือฝรั่งเศสสำหรับสายที่พัก','ระบบติดตามผล เห็นชัดว่าลูกค้าแต่ละรายมาจากช่องทางไหน']},
+      {name:'Signature',price:'ราคาตามโปรเจกต์',timeline:'กำหนดเวลาตามขอบเขตโปรเจกต์',features:[],description:'โปรเจกต์ที่จริงจัง เริ่มจากการคุยกัน'}
     ],
+    differentiation:{
+      professionalAi:'มีครับ · แพ็กเกจ Professional มี AI ต้อนรับตอบลูกค้าได้ทั้งไทยและอังกฤษ พร้อมระบบจองออนไลน์และหน้าแกลเลอรีครับ ส่วน Patient & Guest System (119,000 บาท) เพิ่มมัดจำการจองที่ช่วยลดลูกค้าเบี้ยวนัด ชำระผ่านบัตรและพร้อมเพย์ และแดชบอร์ดจัดการของคุณเองครับ'
+    },
     policies:{
       warrantyLine:'รวมการรับประกันดูแล 30 วัน · แก้บั๊กฟรี',
       flagshipWarrantyLine:'รวมการรับประกันดูแล 90 วัน',
