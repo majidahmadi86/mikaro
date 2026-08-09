@@ -38,7 +38,7 @@ const FACTS=Object.freeze({
     qualify:{
       shop:"For a shop, the right fit is the Professional package (69,000 THB): a full store where customers browse your products, see prices, and order with real online payment · plus a back office where you update stock and prices yourself. Two live examples: opticlean.mikaro.studio and balzacantiques.ch.\n\nAnd you don't have to imagine it: I can have a free demo page built from your real products within 48 hours · no cost, no obligation. Want to start there?",
       hotel:"For a hotel or resort, the Patient & Guest System (119,000 THB) is built for exactly this: guests book direct with a deposit, an AI concierge answers them at 2am in Thai and English, and the 15-18% OTA commission stays with you. See it live: teakhouse.mikaro.studio · owner dashboard: teakhouse.mikaro.studio/owner (PIN 1234).\n\nI can also have a free demo built in your hotel's own name within 48 hours. Shall we?",
-      clinicSalon:"For a clinic or salon, the Patient & Guest System (119,000 THB) does the heavy lifting: online booking with deposits that end no-shows, an AI receptionist answering in Thai and English around the clock, and your own management panel. Live example: praow.mikaro.studio.\n\nA free demo in your clinic's name is possible within 48 hours as well. Would you like that?",
+      clinicSalon:"For a clinic, salon, spa or massage studio, the Patient & Guest System (119,000 THB) does the heavy lifting: online booking with deposits that end no-shows, an AI receptionist answering in Thai and English around the clock, and your own management panel. Live example: praow.mikaro.studio.\n\nA free demo in your clinic's name is possible within 48 hours as well. Would you like that?",
       restaurant:'For a restaurant or cafe, the Essential package (39,000 THB) gets you credible fast: menu, photos, location, hours and contact that works · live in 2 weeks. The Professional (69,000 THB) adds online ordering. Browse our live work: mikaro.studio/work.\n\nThe free 48-hour demo applies to you too: one page from your real menu, no cost. Interested?',
       other:"Happy to point you right · tell me a little about what your business sells or does, and I'll tell you exactly which package fits, with a live example to click."
     },
@@ -72,7 +72,7 @@ const FACTS=Object.freeze({
     qualify:{
       shop:'สำหรับร้านค้า แพ็กเกจที่เหมาะที่สุดคือ Professional (69,000 บาท) ครับ ร้านค้าออนไลน์เต็มรูปแบบ ลูกค้าดูสินค้า เห็นราคา และสั่งซื้อพร้อมชำระเงินออนไลน์ได้จริง พร้อมระบบหลังบ้านให้คุณแก้ราคาและสต็อกเองครับ ดูตัวอย่างจริงได้ที่ opticlean.mikaro.studio และ balzacantiques.ch\n\nและไม่ต้องจินตนาการครับ เราทำหน้าเดโม่ฟรีจากสินค้าจริงของร้านคุณได้ภายใน 48 ชั่วโมง ไม่มีค่าใช้จ่าย ไม่มีข้อผูกมัด สนใจเริ่มจากตรงนี้ไหมครับ',
       hotel:'สำหรับโรงแรมหรือรีสอร์ท ระบบ Patient & Guest System (119,000 บาท) สร้างมาเพื่อสิ่งนี้เลยครับ แขกจองตรงพร้อมมัดจำ มี AI ตอบแขกได้ตอนตี 2 ทั้งไทยและอังกฤษ และค่าคอม 15-18% ของ OTA อยู่กับโรงแรมครับ ดูระบบจริง: teakhouse.mikaro.studio · แผงเจ้าของ: teakhouse.mikaro.studio/owner (PIN 1234)\n\nทำเดโม่ฟรีในชื่อโรงแรมของคุณได้ภายใน 48 ชั่วโมงด้วยครับ สนใจไหมครับ',
-      clinicSalon:'สำหรับคลินิกหรือซาลอน ระบบ Patient & Guest System (119,000 บาท) ช่วยได้ตรงจุดครับ จองคิวออนไลน์พร้อมมัดจำ ลดปัญหาลูกค้าเบี้ยวนัด มี AI ต้อนรับตอบลูกค้าทั้งไทยและอังกฤษตลอดเวลา พร้อมแผงจัดการของคุณเอง ดูตัวอย่างจริง: praow.mikaro.studio\n\nทำเดโม่ฟรีในชื่อคลินิกของคุณภายใน 48 ชั่วโมงได้เช่นกันครับ สนใจไหมครับ',
+      clinicSalon:'สำหรับคลินิก ซาลอน สปา หรือร้านนวด ระบบ Patient & Guest System (119,000 บาท) ช่วยได้ตรงจุดครับ จองคิวออนไลน์พร้อมมัดจำ ลดปัญหาลูกค้าเบี้ยวนัด มี AI ต้อนรับตอบลูกค้าทั้งไทยและอังกฤษตลอดเวลา พร้อมแผงจัดการของคุณเอง ดูตัวอย่างจริง: praow.mikaro.studio\n\nทำเดโม่ฟรีในชื่อคลินิกของคุณภายใน 48 ชั่วโมงได้เช่นกันครับ สนใจไหมครับ',
       restaurant:'สำหรับร้านอาหารหรือคาเฟ่ แพ็กเกจ Essential (39,000 บาท) ทำให้ร้านดูน่าเชื่อถือได้เร็วครับ เมนู รูป พิกัด เวลาเปิด ติดต่อได้จริง ออนไลน์ใน 2 สัปดาห์ ส่วน Professional (69,000 บาท) เพิ่มระบบสั่งอาหารออนไลน์ครับ ดูผลงานจริงได้ที่ mikaro.studio/work\n\nเดโม่ฟรี 48 ชั่วโมงใช้กับร้านคุณได้เหมือนกันครับ หน้าเดียวจากเมนูจริงของร้าน ไม่มีค่าใช้จ่ายครับ สนใจไหมครับ',
       other:'ยินดีแนะนำครับ เล่าให้ฟังนิดหนึ่งว่าธุรกิจของคุณขายอะไรหรือทำอะไร แล้วผมจะบอกได้เลยว่าแพ็กเกจไหนเหมาะ พร้อมตัวอย่างจริงให้กดดูครับ'
     },
@@ -122,9 +122,9 @@ function actions(lang,type){
 function buildQualifyIntents(lang){
   const f=FACTS[lang].qualify,th=lang==='th';
   return [
-    {id:'clinic-salon',k:th?['คลินิก','ซาลอน','ร้านเสริมสวย','สปา']:['clinic','salon','spa'],a:f.clinicSalon,acts:qualifyActions(lang,'clinic-salon')},
-    {id:'restaurant',k:th?['ร้านอาหาร','คาเฟ่','ร้านกาแฟ']:['restaurant','cafe'],a:f.restaurant,acts:qualifyActions(lang,'restaurant')},
-    {id:'hotel',k:th?['โรงแรม','รีสอร์ท','ที่พัก']:['hotel','resort'],a:f.hotel,acts:qualifyActions(lang,'hotel')},
+    {id:'clinic-salon',priority:1,k:th?['คลินิก','ซาลอน','ร้านเสริมสวย','สปา','นวด','ร้านนวด','มาสสาจ','ทำผม','ทำเล็บ','เสริมสวย','ความงาม']:['clinic','salon','spa','massage','nails','hair','beauty','wellness'],a:f.clinicSalon,acts:qualifyActions(lang,'clinic-salon')},
+    {id:'restaurant',priority:1,k:th?['ร้านอาหาร','คาเฟ่','ร้านกาแฟ']:['restaurant','cafe'],a:f.restaurant,acts:qualifyActions(lang,'restaurant')},
+    {id:'hotel',priority:1,k:th?['โรงแรม','รีสอร์ท','ที่พัก']:['hotel','resort'],a:f.hotel,acts:qualifyActions(lang,'hotel')},
     {id:'shop',k:th?['ร้านค้า','ขายของ','ร้าน']:['shop','store','sell'],a:f.shop,acts:qualifyActions(lang,'shop')},
     {id:'other',k:th?['อื่นๆ']:['other'],a:f.other,acts:actions(lang,'business')}
   ];
@@ -176,17 +176,22 @@ function hasKeyword(s,k){
 function pick(q,useThai=TH){
   const s=q.toLowerCase();let best=null,score=0;
   const POOL=useThai?TH_INTENTS:INTENTS;
+  const specific=pickFrom(q,(useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS).filter(it=>it.priority));
   for(const it of POOL){
+    if(specific&&it.id==='shop')continue;
     let n=0;for(const k of it.k){if(hasKeyword(s,k))n+=k.length>3?2:1;}
-    if(n>score){score=n;best=it;}
+    const beatsGenericTie=n===score&&n>0&&it.priority&&best&&['need-customers','shop'].includes(best.id);
+    if(n>score||beatsGenericTie){score=n;best=it;}
   }
   return score>0?best:(useThai?TH_FALLBACK:FALLBACK);
 }
 function pickFrom(q,pool){
   const s=q.toLowerCase();let best=null,score=0;
-  for(const it of pool){
+  const specific=pool.filter(it=>it.priority&&it.k.some(k=>hasKeyword(s,k)));
+  const candidates=specific.length?specific:pool;
+  for(const it of candidates){
     let n=0;for(const k of it.k){if(hasKeyword(s,k))n+=k.length>3?2:1;}
-    if(n>score){score=n;best=it;}
+    if(n>score||(n===score&&n>0&&(it.priority||0)>(best&&best.priority||0))){score=n;best=it;}
   }
   return score>0?best:null;
 }
