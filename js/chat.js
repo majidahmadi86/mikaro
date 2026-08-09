@@ -15,7 +15,15 @@ const AI_TIMEOUT_MS=6000;
 const TH=HAS_DOM&&document.documentElement.lang==='th';
 const LINE_URL='https://line.me/ti/p/l059F3WkI7';
 
+/* MIKA FACTS: SINGLE SOURCE OF TRUTH
+   Any directive that changes packages, prices, policies, proof links,
+   or features must update this facts module in the same commit. */
 const FACTS=Object.freeze({
+  shared:{
+    performanceQuality:'Speed and on-page SEO are standard in every package, never an add-on: optimized images, font strategy, clean structure, meta and sitemap. Our own site scores 97/100 on Google PageSpeed mobile. Every build is bilingual-capable (Thai + English). All work happens on a private preview link and nothing goes live until the client approves it.',
+    trackRecord:'Live work includes: The Teak House (complete hotel booking system, teakhouse.mikaro.studio), PRAOW (clinic system, praow.mikaro.studio), OptiClean (real online store, opticlean.mikaro.studio), Balzac Antiques (real client in Switzerland, balzacantiques.ch), Miomika (our own AI language app, miomika.com).',
+    process:'How working with us goes: free demo in your name within 48 hours (2 adjustment rounds) → you approve → 50% deposit → we build on a private preview with revision rounds at every milestone → balance → your site goes live → 30-day care warranty (90 days on Flagship).'
+  },
   en:{
     packages:[
       {name:'Essential',price:'39,000 THB',timeline:'Your business, credible on Google in 2 weeks.',included:['Natives-written bilingual 5-page site','Enquiries to your inbox and LINE','Under 2 seconds on mobile','LINE and phone buttons on every page · one tap and the customer is talking to you','Google Business profile set up so nearby customers actually find you']},
