@@ -883,3 +883,9 @@ a.biz-chip:hover::after{opacity:.75}
 .hero-biz a{color:var(--ink);font-weight:600;border-bottom:1.5px solid var(--pink)}
 .hero-biz a:hover{color:var(--blue);border-color:var(--blue)}
 @media(prefers-reduced-motion:reduce){.biz-skel .bar{animation:none}.biz-pkg.featured,.biz-pkg.featured:hover{transform:none}.biz-more{transition:none}.biz-more-btn .chev{transition:none}}
+
+/* ================================================================
+   TikTok · hidden site-wide (feature-flag, markup kept intact).
+   To restore Mike's TikTok icon everywhere, delete this one rule.
+   ================================================================ */
+a[aria-label="TikTok"]{display:none!important}

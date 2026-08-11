@@ -773,6 +773,8 @@ a.biz-chip::after{content:"↗";opacity:.42;font-size:.82em;margin-left:.12rem;l
 a.biz-chip:hover{border-color:var(--blue);color:var(--blue)}
 a.biz-chip:hover::after{opacity:.75}
 .hero .biz-trust{justify-content:flex-start;margin:0 0 1.45rem;max-width:36rem}
+/* TikTok · hidden site-wide (feature-flag, markup kept). Delete this rule to restore. */
+a[aria-label="TikTok"]{display:none!important}
 </style>
 <script type="application/ld+json">
 {

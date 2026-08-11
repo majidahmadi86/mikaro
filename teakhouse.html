@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hotelier · A complete hotel system · Mikaro Studio</title>
-<meta name="description" content="A complete, self-hosted hotel system: booking engine, owner dashboard, AI concierge, guest accounts and multi-currency. Next.js and Postgres. One-time license from $149.">
-<link rel="canonical" href="https://mikaro.studio/hotelier">
-<link rel="alternate" hreflang="en" href="https://mikaro.studio/hotelier.html">
-<link rel="alternate" hreflang="x-default" href="https://mikaro.studio/hotelier.html">
+<title>The Teak House Platform · A complete hotel system · Mikaro Studio</title>
+<meta name="description" content="The direct-booking platform behind our boutique hotel builds: booking engine, owner dashboard, AI concierge, guest accounts and multi-currency. Deployed and tailored for your property by Mikaro Studio.">
+<link rel="canonical" href="https://mikaro.studio/teakhouse">
+<link rel="alternate" hreflang="en" href="https://mikaro.studio/teakhouse.html">
+<link rel="alternate" hreflang="x-default" href="https://mikaro.studio/teakhouse.html">
 <meta name="theme-color" content="#FFF8F0">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png">
@@ -15,9 +15,9 @@
 <link rel="manifest" href="/assets/site.webmanifest">
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="Mikaro Studio">
-<meta property="og:title" content="Hotelier · A complete hotel system. Not a template.">
-<meta property="og:description" content="Booking engine, owner dashboard, AI concierge, guest accounts, multi-currency. Next.js and Postgres. One-time license from $149.">
-<meta property="og:url" content="https://mikaro.studio/hotelier">
+<meta property="og:title" content="The Teak House Platform · A complete hotel system. Not a template.">
+<meta property="og:description" content="The direct-booking platform behind our boutique hotel builds. Deployed and tailored for your property by Mikaro Studio.">
+<meta property="og:url" content="https://mikaro.studio/teakhouse">
 <meta property="og:image" content="https://mikaro.studio/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://mikaro.studio/assets/og.png">
@@ -25,7 +25,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/figtree.woff2" crossorigin>
 <link rel="stylesheet" href="/css/main.css">
 <style>
-/* ============ HOTELIER · page-scoped (isolated, no other page uses .ht-*) ============ */
+/* ============ THE TEAK HOUSE PLATFORM · page-scoped (isolated, no other page uses .ht-*) ============ */
 .ht-hero{padding:clamp(2.6rem,7vh,4.6rem) 0 clamp(1.4rem,4vh,2.4rem);text-align:center}
 .ht-hero .wrap{max-width:60rem}
 .ht-hero h1{font-family:var(--disp);font-weight:900;letter-spacing:-.03em;line-height:1.05;font-size:clamp(2.5rem,6vw,4.6rem);margin:1rem 0 1rem;overflow:visible;padding:.06em 0 .1em}
@@ -101,19 +101,18 @@
 /* darker gold for heading accents to meet AA contrast */
 .ht-two h2 .gd,.ht-sec .shead h2 .gd{color:#9A6B12}
 
-/* agencies band */
-.ht-band{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(2rem,5vw,3.4rem);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(1.4rem,4vw,2.6rem);align-items:center;overflow:hidden;position:relative}
-@media(max-width:820px){.ht-band{grid-template-columns:1fr}}
-.ht-band h2{font-family:var(--disp);font-weight:900;letter-spacing:-.025em;line-height:1.08;font-size:clamp(1.8rem,4vw,2.8rem)}
-.ht-band h2 .mint{color:var(--mint)}
-.ht-band p{color:rgba(255,248,240,.78);margin-top:.9rem;max-width:34rem}
-.ht-band p b{color:#fff}
-.ht-band .side{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:1.5rem}
-.ht-band .side .big{font-family:var(--disp);font-weight:900;font-size:clamp(2.2rem,5vw,3rem);letter-spacing:-.02em}
-.ht-band .side .big span{color:var(--mint)}
-.ht-band .side .cap{font-size:.82rem;color:rgba(255,248,240,.72);margin-top:.3rem}
-.ht-band .side .btn{margin-top:1.2rem;width:100%;justify-content:center;background:var(--mint);color:#0E3B30}
-.ht-band .side .btn:hover{transform:translateY(-3px)}
+/* deployment band (premium · replaces pricing) */
+.ht-deploy{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(2.4rem,6vw,4rem);text-align:center;overflow:hidden;position:relative}
+.ht-deploy .pill{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);color:#fff}
+.ht-deploy h2{font-family:var(--disp);font-weight:900;letter-spacing:-.025em;line-height:1.08;font-size:clamp(2rem,4.6vw,3.2rem);margin:1rem 0 .8rem}
+.ht-deploy h2 .mint{color:var(--mint)}
+.ht-deploy p{color:rgba(255,248,240,.8);max-width:40rem;margin:0 auto}
+.ht-deploy p b{color:#fff}
+.ht-deploy .price{font-family:var(--disp);font-weight:900;color:var(--mint)}
+.ht-deploy p a{color:var(--mint);text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.ht-deploy .ht-ctas{margin-top:1.7rem}
+.ht-deploy .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+.ht-deploy .btn-ghost:hover{background:#fff;color:var(--ink)}
 
 /* what's inside */
 .ht-inside{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:1.2rem;align-items:start}
@@ -134,24 +133,6 @@
 .ht-panel.no-panel{background:#fff}
 .ht-panel.no-panel h3{color:var(--ink)}
 .ht-panel.no-panel .ht-li{border-top-color:var(--line)}
-
-/* pricing */
-.ht-price{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:56rem;margin:0 auto}
-@media(max-width:720px){.ht-price{grid-template-columns:1fr;max-width:26rem}}
-.ht-plan{background:#fff;border:1px solid var(--line);border-radius:24px;padding:1.9rem 1.7rem;display:flex;flex-direction:column;position:relative;transition:transform .4s var(--ease),box-shadow .4s}
-.ht-plan:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.ht-plan.featured{border:2px solid var(--blue);box-shadow:0 28px 56px -24px rgba(36,56,255,.4)}
-.ht-plan .tag{position:absolute;top:-.8rem;left:50%;transform:translateX(-50%);font-family:var(--disp);font-weight:800;font-size:.7rem;background:var(--blue);color:#fff;border-radius:999px;padding:.35rem .9rem;white-space:nowrap;box-shadow:0 8px 18px -10px rgba(36,56,255,.55)}
-.ht-plan h3{font-family:var(--disp);font-weight:900;font-size:1.4rem;letter-spacing:-.02em}
-.ht-plan .who{font-size:.84rem;color:var(--sub);margin:.25rem 0 1rem}
-.ht-plan .amt{font-family:var(--disp);font-weight:900;font-size:clamp(2.4rem,5vw,3.1rem);letter-spacing:-.02em;line-height:1}
-.ht-plan .amt small{font-size:.9rem;font-weight:700;color:var(--sub);margin-left:.35rem;letter-spacing:0}
-.ht-plan ul{list-style:none;margin:1.3rem 0 0;padding:0;display:flex;flex-direction:column;gap:.6rem}
-.ht-plan li{display:flex;align-items:flex-start;gap:.55rem;font-size:.9rem}
-.ht-plan li svg{width:17px;height:17px;color:#0E8A6D;flex:0 0 auto;margin-top:.1rem}
-.ht-plan .btn{margin-top:1.5rem;width:100%;justify-content:center}
-.ht-guarantee{text-align:center;font-size:.84rem;color:var(--sub);margin-top:1.4rem}
-.ht-guarantee b{color:var(--ink)}
 
 /* faq */
 .ht-faq{max-width:48rem;margin:0 auto;display:flex;flex-direction:column;gap:.7rem}
@@ -180,7 +161,7 @@
     <nav class="top-links" aria-label="Main">
       <a href="/work">Work</a><a href="/services">Services</a><a href="/business">For business</a><a href="/ai-lab">AI Lab</a><a href="/contact">Contact</a>
     </nav>
-    <a class="btn btn-blue magnet" href="#pricing">Get Hotelier</a>
+    <a class="btn btn-blue magnet" href="/contact">Talk to the studio</a>
   </div>
 </header>
 
@@ -189,9 +170,9 @@
 <!-- HERO -->
 <section class="ht-hero">
   <div class="wrap">
-    <span class="pill">Mikaro Hotelier · a shippable product</span>
+    <span class="pill">The Teak House Platform · by Mikaro Studio</span>
     <h1>A complete hotel system.<br><span class="bl">Not a template.</span></h1>
-    <p class="ht-lead">Everything a small hotel needs to sell rooms direct and run the front desk, in <b>one codebase you own</b>. See it running, then make it yours.</p>
+    <p class="ht-lead">The direct-booking platform behind our boutique hotel builds: booking engine, owner dashboard, AI concierge, guest accounts, multi-currency · <b>deployed and tailored for your property by Mikaro Studio.</b></p>
     <div class="ht-feat">
       <span><i></i>Booking engine</span>
       <span><i></i>Owner dashboard</span>
@@ -202,9 +183,9 @@
     </div>
     <div class="ht-ctas">
       <a class="btn btn-blue magnet" href="https://teakhouse.mikaro.studio" target="_blank" rel="noopener">Open the live demo ↗</a>
-      <a class="btn btn-ghost magnet" data-buy="solo" href="#">Get Hotelier · $149</a>
+      <a class="btn btn-ghost magnet" href="/contact">Talk to the studio</a>
     </div>
-    <p class="ht-note">One-time license · free updates · <b>14-day refund</b>. No subscription, no lock-in.</p>
+    <p class="ht-note">Built, tailored and maintained by the studio · a platform, not a template to wrangle.</p>
   </div>
 </section>
 
@@ -221,7 +202,7 @@
         <div class="lbl"><span class="d"></span>Guest site</div>
         <div class="ht-frame">
           <div class="bar"><i></i><i></i><i></i><span class="url">teakhouse.mikaro.studio</span></div>
-          <img src="/assets/img/proof/hotelier-guest.webp" width="1280" height="800" loading="lazy" decoding="async" alt="Guest-facing booking site: a riverside hotel homepage with a live rate and date picker">
+          <img src="/assets/img/proof/teakhouse-guest.webp" width="1280" height="800" loading="lazy" decoding="async" alt="Guest-facing booking site: a riverside hotel homepage with a live rate and date picker">
         </div>
       </div>
       <div class="ht-swap" aria-hidden="true">
@@ -231,7 +212,7 @@
         <div class="lbl"><span class="d"></span>Owner panel</div>
         <div class="ht-frame">
           <div class="bar"><i></i><i></i><i></i><span class="url">teakhouse.mikaro.studio/owner</span></div>
-          <img src="/assets/img/proof/hotelier-owner.webp" width="1280" height="836" loading="lazy" decoding="async" alt="Owner dashboard: occupancy, arrivals, direct bookings and monthly revenue at a glance">
+          <img src="/assets/img/proof/teakhouse-owner.webp" width="1280" height="836" loading="lazy" decoding="async" alt="Owner dashboard: occupancy, arrivals, direct bookings and monthly revenue at a glance">
         </div>
       </div>
     </div>
@@ -286,56 +267,40 @@
   <div class="wrap">
     <div class="shead rv">
       <span class="pill">AI-native</span>
-      <h2>Customize by <span class="bl">pasting</span>, not by reading docs.</h2>
-      <p>Hotelier ships with a <b>/prompts</b> kit: ready-made prompts for the AI editor you already use. Paste one, describe the change, and let it edit the code for you.</p>
+      <h2>Built AI-native. New features ship in <span class="bl">hours, not weeks.</span></h2>
+      <p>The platform is designed to be extended in plain language. New room types, languages and features are described and shipped the same day, not scoped into a multi-week project.</p>
     </div>
     <div class="ht-two">
       <div class="rv">
         <div class="ht-code">
-          <div class="cbar"><i></i><i></i><i></i>&nbsp;/prompts/add-room-type.md</div>
-<pre><span class="c"># Paste into Claude Code or Cursor</span>
+          <div class="cbar"><i></i><i></i><i></i>&nbsp;request · new room type</div>
+<pre><span class="c"># A change, described in plain language</span>
 
-Add a new room type called <span class="p">"River Loft"</span>
+Add a room type called <span class="p">"River Loft"</span>
 at <span class="p">3,400 THB</span>/night, sleeps 3, with a
 balcony photo. Wire it into the booking
-engine, the owner rooms list, and the
-calendar. Keep the current skin.</pre>
+engine, the owner rooms list and the
+calendar. Keep the current skin.
+
+<span class="c">→ live the same day.</span></pre>
         </div>
       </div>
       <div class="ht-steps rv">
         <div class="ht-step">
           <div class="n">01</div>
-          <h3>Open the kit</h3>
-          <p>The /prompts folder maps every common change to a prompt written for the codebase.</p>
+          <h3>Describe it</h3>
+          <p>Tell the studio the change in plain language: a new room type, a language, a feature.</p>
         </div>
         <div class="ht-step">
           <div class="n">02</div>
-          <h3>Paste and describe</h3>
-          <p>Drop it into your AI editor and say what you want in plain language.</p>
+          <h3>Ships in hours</h3>
+          <p>The AI-native architecture turns that into working code the same day, not a multi-week build.</p>
         </div>
         <div class="ht-step">
           <div class="n">03</div>
-          <h3>Review the diff</h3>
-          <p>You get a clean change to read and ship. No archaeology through the source.</p>
+          <h3>Stays consistent</h3>
+          <p>Every change respects your skin, your data and the guest and owner flows.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOR AGENCIES -->
-<section class="ht-sec" id="agencies">
-  <div class="wrap">
-    <div class="ht-band rv">
-      <div>
-        <span class="pill" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);color:#fff">For agencies and freelancers</span>
-        <h2 style="margin-top:1rem">Deploy a client hotel <span class="mint">in a day</span>.</h2>
-        <p>Clone, rename in one file, point it at a Postgres database, and ship. The <b>agency license</b> lets you build unlimited client hotels on Hotelier, one flat price. Reuse the same skins, the same prompts, the same deploy.</p>
-      </div>
-      <div class="side">
-        <div class="big"><span>$299</span></div>
-        <div class="cap">Agency license · unlimited client hotels · one-time · free updates</div>
-        <a class="btn magnet" data-buy="agency" href="#">Get the agency tier</a>
       </div>
     </div>
   </div>
@@ -346,8 +311,8 @@ calendar. Keep the current skin.</pre>
   <div class="wrap">
     <div class="shead rv">
       <span class="pill">What's inside</span>
-      <h2>Everything you get. And <span class="pk">what you don't.</span></h2>
-      <p>Hotelier is a direct-booking system, not a channel manager. Here is exactly where the line sits, so there are no surprises after you buy.</p>
+      <h2>Everything it does. And <span class="pk">what it doesn't.</span></h2>
+      <p>The Teak House Platform is a direct-booking system, not a channel manager. Here is exactly where the line sits, so the scope is clear from the start.</p>
     </div>
     <div class="ht-inside rv">
       <div class="ht-panel">
@@ -362,7 +327,7 @@ calendar. Keep the current skin.</pre>
           <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Multi-currency pricing and display</span></div>
           <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Bilingual ready, English and Thai included</span></div>
           <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Three preset skins and one-file re-brand</span></div>
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>The /prompts AI customization kit</span></div>
+          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>AI-native · new features added in plain language</span></div>
           <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>SEO, responsive design, fast by construction</span></div>
         </div>
         <div class="ht-stack">
@@ -371,53 +336,28 @@ calendar. Keep the current skin.</pre>
       </div>
       <div class="ht-panel no-panel">
         <h3>Not included</h3>
-        <p class="sub">On purpose. Add these yourself if you need them.</p>
+        <p class="sub">Where the platform's scope ends, on purpose.</p>
         <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No channel manager</span></div>
         <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No OTA sync with Booking.com or Agoda</span></div>
-        <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No payment gateway account (bring your own keys)</span></div>
-        <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No hosting or database included</span></div>
-        <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No white-label reseller rights</span></div>
+        <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No restaurant point-of-sale or accounting module</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="ht-sec" id="pricing">
+<!-- DEPLOYMENT -->
+<section class="ht-sec" id="deploy">
   <div class="wrap">
-    <div class="shead rv">
-      <span class="pill">Pricing</span>
-      <h2>Buy it once. <span class="bl">Own it for good.</span></h2>
-      <p>One-time license, free updates, and a 14-day refund if it is not for you.</p>
-    </div>
-    <div class="ht-price rv">
-      <div class="ht-plan">
-        <h3>Solo</h3>
-        <div class="who">For one hotel you run or build.</div>
-        <div class="amt">$149<small>one-time</small></div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>The full Hotelier codebase</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>License for one hotel</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Three skins and the /prompts kit</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Free updates, forever</li>
-        </ul>
-        <a class="btn btn-ghost magnet" data-buy="solo" href="#">Get Hotelier · $149</a>
-      </div>
-      <div class="ht-plan featured">
-        <span class="tag">Best for builders</span>
-        <h3>Agency</h3>
-        <div class="who">For unlimited client hotels.</div>
-        <div class="amt">$299<small>one-time</small></div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Everything in Solo</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Build unlimited client hotels</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Deploy a new client in a day</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Free updates, forever</li>
-        </ul>
-        <a class="btn btn-blue magnet" data-buy="agency" href="#">Get the agency tier · $299</a>
+    <div class="ht-deploy rv">
+      <span class="pill">Deployment</span>
+      <h2>Deployed and tailored for <span class="mint">your property.</span></h2>
+      <p>Delivered as our <b>Patient &amp; Guest System</b> package · <span class="price">from ฿119,000</span>. Set up, launched and maintained by the studio, tailored to your branding, rooms and rates.</p>
+      <div class="ht-ctas">
+        <a class="btn btn-blue magnet" href="https://teakhouse.mikaro.studio" target="_blank" rel="noopener">Open the live demo ↗</a>
+        <a class="btn btn-ghost magnet" href="/contact">Talk to the studio</a>
+        <a class="btn btn-ghost magnet" href="/business">See all packages</a>
       </div>
     </div>
-    <p class="ht-guarantee rv"><b>14-day refund.</b> One-time payment, no subscription. Try the live demo before you decide.</p>
   </div>
 </section>
 
@@ -430,28 +370,24 @@ calendar. Keep the current skin.</pre>
     </div>
     <div class="ht-faq rv">
       <details class="ht-q">
-        <summary>What is the stack? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">Hotelier is built on <b>Next.js</b> and React with TypeScript, styled with Tailwind, and data handled through Prisma on <b>Postgres</b>. It deploys cleanly to Vercel, or anywhere that runs a Next.js app and a Postgres database.</div>
+        <summary>What is the platform built on? <span class="pl" aria-hidden="true"></span></summary>
+        <div class="ans">The platform is built on <b>Next.js</b> and React with TypeScript, styled with Tailwind, and data handled through Prisma on <b>Postgres</b>. It runs on modern, well-supported foundations and deploys cleanly to Vercel.</div>
       </details>
       <details class="ht-q">
-        <summary>What database does it need? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">A <b>Postgres</b> database. Any provider works: Vercel Postgres, Neon, Supabase, Railway, or your own server. Schema and migrations are included, so you point it at a connection string and run the migration.</div>
+        <summary>Who owns the site and the data? <span class="pl" aria-hidden="true"></span></summary>
+        <div class="ans">You do. It is <b>your property's site and your database</b>, with your guest and booking data. The studio builds, tailors and maintains the platform for you, and you are never locked to a third-party booking marketplace.</div>
       </details>
       <details class="ht-q">
-        <summary>What does the license allow? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">The <b>Solo</b> license covers one hotel that you run or build. The <b>Agency</b> license lets you build unlimited client hotels on Hotelier. Both are one-time purchases with free updates. Reselling Hotelier as its own product or white-label template is not included.</div>
+        <summary>Can it run in more than one language? <span class="pl" aria-hidden="true"></span></summary>
+        <div class="ans">Yes. It is <b>bilingual by default</b>, with English and Thai in the live demo, and more locales added as your property needs them. Pricing and display are multi-currency too.</div>
       </details>
       <details class="ht-q">
-        <summary>Do I need my own AI keys? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">Yes. The AI concierge runs on your own model provider key, which you add as an environment variable. You stay in control of the model and the spend. The /prompts customization kit works with whichever AI editor you already use.</div>
-      </details>
-      <details class="ht-q">
-        <summary>What support do I get? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">You get the full source, setup documentation, the /prompts kit, and free updates. Support scope is <b>setup and update guidance</b>, not bespoke development. If you want custom work or a done-for-you build, that is a separate engagement with the studio.</div>
+        <summary>What does a deployment include? <span class="pl" aria-hidden="true"></span></summary>
+        <div class="ans">A build tailored to your property: your branding, rooms, rates and copy, with the <b>booking engine, owner dashboard, AI concierge and guest accounts</b> wired end to end. The studio sets it up, launches it and keeps it maintained.</div>
       </details>
       <details class="ht-q">
         <summary>Does it sync with Booking.com or Agoda? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">No. Hotelier is a <b>direct-booking</b> system built to keep OTA commission in the house. There is no channel manager and no OTA sync out of the box. The code is yours, so you can wire those in yourself if you need them.</div>
+        <div class="ans">No. The Teak House Platform is a <b>direct-booking</b> system built to keep OTA commission in the house. There is no channel manager and no OTA sync. It is designed to grow your direct bookings, not to manage marketplace listings.</div>
       </details>
     </div>
   </div>
@@ -461,10 +397,10 @@ calendar. Keep the current skin.</pre>
 <section class="cta">
   <div class="wrap">
     <div class="cta-card rv">
-      <h2>Run the demo. Then run your hotel.</h2>
-      <p>See both worlds live, then take the whole system home.</p>
-      <a class="btn magnet" href="https://teakhouse.mikaro.studio" target="_blank" rel="noopener">Open the live demo ↗</a>
-      <div class="avail"><i></i>Product by Mikaro Studio · Bangkok</div>
+      <h2>See it running. Then let's build yours.</h2>
+      <p>Open the live demo, or start the conversation with the studio.</p>
+      <a class="btn magnet" href="/contact">Talk to the studio</a>
+      <div class="avail"><i></i>A Mikaro Studio platform · Bangkok</div>
     </div>
   </div>
 </section>
@@ -474,7 +410,7 @@ calendar. Keep the current skin.</pre>
 <footer class="footer">
   <div class="wrap">
     <a class="logo" href="/"><i></i>mikaro</a>
-    <span class="f-note">Hotelier is a product by Mikaro Studio · © 2026 · Bangkok</span>
+    <span class="f-note">The Teak House Platform · by Mikaro Studio · © 2026 · Bangkok</span>
     <a class="f-link" href="/business">For business</a>
     <div class="socials">
       <a href="https://miomika.com" target="_blank" rel="noopener" aria-label="Miomika" title="Miomika"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 9 3 4l6 3"/><path d="M19 9l2-5-6 3"/><ellipse cx="12" cy="13" rx="8" ry="7"/><circle cx="9.4" cy="12.4" r=".9" fill="currentColor" stroke="none"/><circle cx="14.6" cy="12.4" r=".9" fill="currentColor" stroke="none"/></svg></a>
@@ -485,24 +421,6 @@ calendar. Keep the current skin.</pre>
   </div>
 </footer>
 
-<script>
-/* Buy links · Gumroad handles both tiers via its version picker.
-   Mirrors env NEXT_PUBLIC_HOTELIER_BUY_URL (solo) and NEXT_PUBLIC_HOTELIER_BUY_URL_AGENCY (agency). */
-(function(){
-  var BUY = {
-    solo:   "https://majid862.gumroad.com/l/ujwupv",
-    agency: "https://majid862.gumroad.com/l/ujwupv"
-  };
-  document.querySelectorAll("[data-buy]").forEach(function(a){
-    var url = BUY[a.getAttribute("data-buy")];
-    if(url && url !== "#"){
-      a.setAttribute("href", url);
-      a.setAttribute("target", "_blank");
-      a.setAttribute("rel", "noopener noreferrer");
-    }
-  });
-})();
-</script>
 <script src="/js/main.js" defer></script>
 <script>
 /* Lazy-load the MIKA chat widget after load, on idle or first interaction.

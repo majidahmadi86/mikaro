@@ -57,7 +57,7 @@ const browser = await chromium.launch({ headless: true, executablePath: exe });
   console.log('capturing guest');
   await ready(page, 'https://teakhouse.mikaro.studio');
   const png = await page.screenshot({ type: 'png', clip: { x: 0, y: 0, width: 1440, height: 900 } });
-  await toWebp(png, join(outDir, 'hotelier-guest.webp'), 1280, 150);
+  await toWebp(png, join(outDir, 'teakhouse-guest.webp'), 1280, 150);
   await page.close();
 }
 
@@ -67,7 +67,7 @@ const browser = await chromium.launch({ headless: true, executablePath: exe });
   console.log('capturing owner');
   await ready(page, 'https://teakhouse.mikaro.studio/owner');
   const png = await page.screenshot({ type: 'png', clip: { x: 0, y: 0, width: 1440, height: 940 } });
-  await toWebp(png, join(outDir, 'hotelier-owner.webp'), 1280, 160);
+  await toWebp(png, join(outDir, 'teakhouse-owner.webp'), 1280, 160);
   await page.close();
 }
 
