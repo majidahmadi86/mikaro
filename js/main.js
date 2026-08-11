@@ -272,6 +272,7 @@ bkk();setInterval(bkk,15000);
 /* ---------- v5.3: word-split headlines + auto-motion for every element ---------- */
 (function(){
   if(RM)return;
+  const LITE=document.documentElement.hasAttribute('data-lite'); // perf pages: skip decorative word-split
   function wsplit(el){
     const units=[];
     [...el.childNodes].forEach(n=>{
@@ -294,7 +295,7 @@ bkk();setInterval(bkk,15000);
   }
   const heads=document.querySelectorAll('.phero h1,.shead h2,.hero h1,.ai h2,.mega h3,.perf-copy h3,.cta-card h2,.consult-band h3');
   // F1: skip word-split on Thai · overflow:hidden on .wu clips stacked vowels
-  if(!THL){
+  if(!THL&&!LITE){
     heads.forEach(h=>{try{wsplit(h);}catch(e){}});
     const hio=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('hin');hio.unobserve(en.target);}});},{threshold:.15,rootMargin:'0px 0px 20% 0px'});
     heads.forEach(h=>hio.observe(h));
@@ -563,6 +564,7 @@ bkk();setInterval(bkk,15000);
 
 /* ---------- v6.0: language engine · detect, remember, toggle ---------- */
 (function(){
+  if(document.documentElement.hasAttribute('data-no-th'))return; // EN-only pages: no TH counterpart yet
   const THL=document.documentElement.lang==='th';
   const path=location.pathname;
   const underTH=path==='/th'||path.startsWith('/th/');
