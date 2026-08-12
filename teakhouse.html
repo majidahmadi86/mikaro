@@ -150,6 +150,19 @@
 @media(prefers-reduced-motion:reduce){
   .ht-q summary .pl,.ht-q summary .pl::after{transition:none}
 }
+
+/* ============================================================
+   SALES-PAGE QA · fail-open, static reveals (page-scoped).
+   Every block is visible and settled from first paint · no scroll
+   reveal, word-split or parallax transform can shift one element
+   over another at any scroll position or width. This mirrors the
+   site's prefers-reduced-motion behaviour, made the default here.
+   ============================================================ */
+.rv,.rv-l,.rv-r,.rv-s{opacity:1!important;transform:none!important}
+.clipin{clip-path:none!important;transition:none!important}
+[data-sp]{transform:none!important}
+.wsplit .wu{overflow:visible!important}
+.wsplit .wu i{transform:none!important;transition:none!important;margin:0!important}
 </style>
 </head>
 <body>
