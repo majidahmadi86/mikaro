@@ -69,37 +69,45 @@
   .ht-swap{transform:rotate(90deg);margin:.1rem auto}
 }
 
-/* rebrand / skins */
+/* two-column (owner section: screenshot + list) */
 .ht-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.4rem,4vw,2.6rem);align-items:center}
 @media(max-width:900px){.ht-two{grid-template-columns:1fr}}
+.ht-two>*{min-width:0}
 .ht-two h2{font-family:var(--disp);font-weight:900;letter-spacing:-.025em;line-height:1.08;font-size:clamp(1.8rem,4.2vw,2.9rem)}
-.ht-two h2 .bl{color:var(--blue)}.ht-two h2 .pk{color:var(--pink)}.ht-two h2 .gd{color:#B9851E}
+.ht-two h2 .bl{color:var(--blue)}.ht-two h2 .pk{color:var(--pink)}
 .ht-two p{color:var(--sub);margin-top:1rem;max-width:30rem}
 .ht-two p b{color:var(--ink)}
-.ht-skins{display:flex;flex-direction:column;gap:.7rem;margin-top:1.4rem}
-.ht-skin{display:flex;align-items:center;gap:.9rem;background:#fff;border:1px solid var(--line);border-radius:16px;padding:.8rem 1rem}
-.ht-skin .sw{display:flex;gap:5px;flex:0 0 auto}
-.ht-skin .sw b{width:20px;height:20px;border-radius:6px;display:block}
-.ht-skin .nm{font-family:var(--disp);font-weight:800;font-size:.95rem}
-.ht-skin .ds{font-size:.78rem;color:var(--sub)}
-
-/* code block (config + prompt) */
-.ht-code{background:var(--ink);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
-.ht-code .cbar{display:flex;align-items:center;gap:8px;padding:.7rem 1rem;border-bottom:1px solid rgba(255,255,255,.09);font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.04em;color:rgba(255,248,240,.65)}
-.ht-code .cbar i{width:9px;height:9px;border-radius:50%;background:rgba(255,248,240,.22)}
-.ht-code pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82rem;line-height:1.85;color:#EDE7DE;padding:1.15rem 1.3rem;overflow-x:auto;white-space:pre}
-.ht-code .k{color:#7BE0C8}.ht-code .s{color:#E8B23C}.ht-code .c{color:#8A8594}.ht-code .p{color:#FF7FB0}
-
-/* ai-native steps */
-.ht-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.4rem}
-@media(max-width:760px){.ht-steps{grid-template-columns:1fr}}
-.ht-step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:1.4rem 1.3rem}
-.ht-step .n{font-family:var(--disp);font-weight:900;font-size:1.3rem;color:var(--blue)}
-.ht-step:nth-child(2) .n{color:var(--pink)}.ht-step:nth-child(3) .n{color:#B9851E}
-.ht-step h3{font-family:var(--disp);font-weight:800;font-size:1.02rem;margin:.5rem 0 .35rem}
-.ht-step p{font-size:.86rem;color:var(--sub)}
 /* darker gold for heading accents to meet AA contrast */
-.ht-two h2 .gd,.ht-sec .shead h2 .gd{color:#9A6B12}
+.ht-sec .shead h2 .gd{color:#9A6B12}
+
+/* catalogue list · reused by every package section */
+.ht-list{max-width:58rem;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0 1.8rem;list-style:none;padding:0}
+@media(max-width:640px){.ht-list{grid-template-columns:1fr}}
+.ht-list .it{display:flex;align-items:flex-start;gap:.65rem;min-width:0;padding:.72rem .2rem;border-top:1px solid var(--line);font-size:.95rem;line-height:1.5}
+.ht-list .it:first-child{border-top:0}
+@media(min-width:641px){.ht-list .it:nth-child(2){border-top:0}}
+.ht-list .it svg{width:19px;height:19px;color:#0E8A6D;flex:0 0 auto;margin-top:.15rem}
+.ht-list .it b{color:var(--ink);font-weight:700}
+.ht-list.one{grid-template-columns:1fr;max-width:34rem;margin:0}
+.ht-list.one .it:nth-child(2){border-top:1px solid var(--line)}
+
+/* framed screenshot showcase (owner section) */
+.ht-shot{max-width:860px;margin:0 auto clamp(1.6rem,4vw,2.4rem)}
+
+/* money math callout */
+.ht-math{max-width:52rem;margin:0 auto;background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(1.9rem,4.5vw,3rem);text-align:center;font-size:clamp(1.05rem,2.1vw,1.32rem);line-height:1.62}
+.ht-math b{color:var(--mint);font-weight:800}
+.ht-math .huge{display:block;font-family:var(--disp);font-weight:900;letter-spacing:-.02em;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.1;margin-bottom:.9rem}
+
+/* not-included card */
+.ht-notinc{max-width:44rem;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:24px;padding:clamp(1.5rem,3.5vw,2.2rem)}
+.ht-notinc h3{font-family:var(--disp);font-weight:800;font-size:1.1rem;margin-bottom:.3rem}
+.ht-notinc .sub{font-size:.85rem;color:var(--sub);margin-bottom:1rem}
+
+/* overflow guards · nothing may exceed the viewport at any width */
+.ht-sec .wrap,.ht-hero .wrap{max-width:1280px}
+.ht-frame,.ht-frame img{max-width:100%}
+.ht-deploy,.ht-math,.ht-notinc,.ht-shot{overflow-wrap:break-word}
 
 /* deployment band (premium · replaces pricing) */
 .ht-deploy{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(2.4rem,6vw,4rem);text-align:center;overflow:hidden;position:relative}
@@ -184,21 +192,21 @@
 <section class="ht-hero">
   <div class="wrap">
     <span class="pill">The Teak House Platform · by Mikaro Studio</span>
-    <h1>A complete hotel system.<br><span class="bl">Not a template.</span></h1>
-    <p class="ht-lead">The direct-booking platform behind our boutique hotel builds: booking engine, owner dashboard, AI concierge, guest accounts, multi-currency · <b>deployed and tailored for your property by Mikaro Studio.</b></p>
+    <h1>The complete hotel <span class="bl">website system.</span></h1>
+    <p class="ht-lead">Everything a boutique hotel needs to sell rooms direct: the website, the booking engine, the back office and an AI concierge · <b>one system, built and launched for your property.</b></p>
     <div class="ht-feat">
+      <span><i></i>Guest website</span>
       <span><i></i>Booking engine</span>
-      <span><i></i>Owner dashboard</span>
+      <span><i></i>Owner back office</span>
       <span><i></i>AI concierge</span>
-      <span><i></i>Guest accounts</span>
-      <span><i></i>Multi-currency</span>
-      <span><i></i>Next.js + Postgres</span>
+      <span><i></i>English and Thai</span>
+      <span><i></i>THB · USD · EUR</span>
     </div>
     <div class="ht-ctas">
       <a class="btn btn-blue magnet" href="https://teakhouse.mikaro.studio" target="_blank" rel="noopener">Open the live demo ↗</a>
       <a class="btn btn-ghost magnet" href="/contact">Talk to the studio</a>
     </div>
-    <p class="ht-note">Built, tailored and maintained by the studio · a platform, not a template to wrangle.</p>
+    <p class="ht-note">Built, tailored and launched for your property by Mikaro Studio.</p>
   </div>
 </section>
 
@@ -232,144 +240,142 @@
   </div>
 </section>
 
-<!-- RE-BRAND IN ONE FILE -->
-<section class="ht-sec" id="brand">
-  <div class="wrap">
-    <div class="ht-two">
-      <div class="rv">
-        <span class="pill">Re-brand in one file</span>
-        <h2>Make it <span class="pk">your hotel</span> in an afternoon.</h2>
-        <p>Name, colors, currency, rooms and copy all live in one config file. Pick a preset skin or set your own palette. <b>No theme-hunting across a hundred components.</b></p>
-        <div class="ht-skins">
-          <div class="ht-skin">
-            <span class="sw"><b style="background:#17150F"></b><b style="background:#B9851E"></b><b style="background:#EFE3C8"></b></span>
-            <div><div class="nm">Teak</div><div class="ds">Warm, dark, riverside boutique</div></div>
-          </div>
-          <div class="ht-skin">
-            <span class="sw"><b style="background:#0B3B5C"></b><b style="background:#2AA9C7"></b><b style="background:#EAF6FA"></b></span>
-            <div><div class="nm">Coastal</div><div class="ds">Bright, blue, beach and resort</div></div>
-          </div>
-          <div class="ht-skin">
-            <span class="sw"><b style="background:#14352A"></b><b style="background:#3E9E6E"></b><b style="background:#EDF6EE"></b></span>
-            <div><div class="nm">Botanic</div><div class="ds">Green, calm, retreat and spa</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="rv">
-        <div class="ht-code">
-          <div class="cbar"><i></i><i></i><i></i>&nbsp;hotel.config.ts</div>
-<pre><span class="k">export const</span> hotel = {
-  name: <span class="s">"The Teak House"</span>,
-  skin: <span class="s">"teak"</span>,        <span class="c">// teak | coastal | botanic</span>
-  currency: <span class="s">"THB"</span>,
-  locales: [<span class="s">"en"</span>, <span class="s">"th"</span>],
-  brand: {
-    accent: <span class="s">"#B9851E"</span>,
-    ink:    <span class="s">"#17150F"</span>,
-  },
-  rooms: <span class="s">"./data/rooms.ts"</span>,
-}</pre>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AI-NATIVE -->
-<section class="ht-sec" id="ai">
+<!-- THE GUEST WEBSITE -->
+<section class="ht-sec" id="guest-website">
   <div class="wrap">
     <div class="shead rv">
-      <span class="pill">AI-native</span>
-      <h2>Built AI-native. New features ship in <span class="bl">hours, not weeks.</span></h2>
-      <p>The platform is designed to be extended in plain language. New room types, languages and features are described and shipped the same day, not scoped into a multi-week project.</p>
+      <span class="pill">Part 01 · Guest experience</span>
+      <h2>The <span class="bl">guest website</span></h2>
+      <p>A website built to sell rooms, not just to look nice.</p>
     </div>
-    <div class="ht-two">
-      <div class="rv">
-        <div class="ht-code">
-          <div class="cbar"><i></i><i></i><i></i>&nbsp;request · new room type</div>
-<pre><span class="c"># A change, described in plain language</span>
-
-Add a room type called <span class="p">"River Loft"</span>
-at <span class="p">3,400 THB</span>/night, sleeps 3, with a
-balcony photo. Wire it into the booking
-engine, the owner rooms list and the
-calendar. Keep the current skin.
-
-<span class="c">→ live the same day.</span></pre>
-        </div>
-      </div>
-      <div class="ht-steps rv">
-        <div class="ht-step">
-          <div class="n">01</div>
-          <h3>Describe it</h3>
-          <p>Tell the studio the change in plain language: a new room type, a language, a feature.</p>
-        </div>
-        <div class="ht-step">
-          <div class="n">02</div>
-          <h3>Ships in hours</h3>
-          <p>The AI-native architecture turns that into working code the same day, not a multi-week build.</p>
-        </div>
-        <div class="ht-step">
-          <div class="n">03</div>
-          <h3>Stays consistent</h3>
-          <p>Every change respects your skin, your data and the guest and owner flows.</p>
-        </div>
-      </div>
-    </div>
+    <ul class="ht-list rv">
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Design tailored to your property, not a theme</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Rooms and rates with live availability</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Gallery, experience, location and contact pages</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>English and Thai, written natively, switch in one tap</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Prices in THB, USD and EUR</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Mobile-first: most guests book on a phone</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Loads in about a second, Google PageSpeed 95+</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Built-in SEO so guests find you, not just the OTAs</span></li>
+    </ul>
   </div>
 </section>
 
-<!-- WHAT'S INSIDE -->
-<section class="ht-sec" id="inside">
+<!-- THE DIRECT BOOKING ENGINE -->
+<section class="ht-sec" id="booking-engine">
   <div class="wrap">
     <div class="shead rv">
-      <span class="pill">What's inside</span>
-      <h2>Everything it does. And <span class="pk">what it doesn't.</span></h2>
-      <p>The Teak House Platform is a direct-booking system, not a channel manager. Here is exactly where the line sits, so the scope is clear from the start.</p>
+      <span class="pill">Part 02 · Bookings</span>
+      <h2>The direct <span class="pk">booking engine</span></h2>
+      <p>Guests reserve and pay on your own site, commission-free.</p>
     </div>
-    <div class="ht-inside rv">
-      <div class="ht-panel">
-        <h3>Included</h3>
-        <p class="sub">Shipped, wired end to end, running in the live demo.</p>
-        <div class="ht-cols">
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Direct booking engine with date and rate search</span></div>
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Availability calendar and rooms manager</span></div>
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Owner dashboard: occupancy, arrivals, revenue</span></div>
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>AI concierge that answers guest questions</span></div>
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Guest accounts and booking history</span></div>
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Multi-currency pricing and display</span></div>
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Bilingual ready, English and Thai included</span></div>
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Three preset skins and one-file re-brand</span></div>
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>AI-native · new features added in plain language</span></div>
-          <div class="ht-li yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>SEO, responsive design, fast by construction</span></div>
-        </div>
-        <div class="ht-stack">
-          <span>Next.js</span><span>React</span><span>TypeScript</span><span>Postgres</span><span>Prisma</span><span>Tailwind</span><span>Vercel-ready</span>
-        </div>
+    <ul class="ht-list rv">
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Date search with live availability</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Room selection with photos, amenities and direct prices</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Deposit collection, configurable per property</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Instant booking receipts with reference codes</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Guest accounts with booking history</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>"Best rate direct" messaging that converts OTA browsers into direct bookers</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- THE OWNER BACK OFFICE -->
+<section class="ht-sec" id="back-office">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="pill">Part 03 · Operations</span>
+      <h2>The owner <span class="bl">back office</span></h2>
+      <p>Run the hotel and watch the commission you keep, from one screen.</p>
+    </div>
+    <div class="ht-shot rv">
+      <div class="ht-frame">
+        <div class="bar"><i></i><i></i><i></i><span class="url">teakhouse.mikaro.studio/owner</span></div>
+        <img src="/assets/img/proof/teakhouse-owner.webp" width="1280" height="836" loading="lazy" decoding="async" alt="Owner back office: occupancy, arrivals, revenue and the OTA commission kept this month">
       </div>
-      <div class="ht-panel no-panel">
-        <h3>Not included</h3>
-        <p class="sub">Where the platform's scope ends, on purpose.</p>
-        <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No channel manager</span></div>
-        <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No OTA sync with Booking.com or Agoda</span></div>
-        <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No restaurant point-of-sale or accounting module</span></div>
-      </div>
+    </div>
+    <ul class="ht-list rv">
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Tonight's occupancy, arrivals and revenue at a glance</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>A counter for the OTA commission you <b>kept</b> this month</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Bookings manager</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Rooms manager: edit photos, prices and details yourself</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Availability calendar with occupancy heat view</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Seasonal pricing rules for high and low season</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Export bookings to Excel/CSV</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Confirmation email templates</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>No monthly software fee: you own the system</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- THE AI CONCIERGE -->
+<section class="ht-sec" id="concierge">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="pill">Part 04 · AI concierge</span>
+      <h2>The <span class="gd">AI concierge</span></h2>
+      <p>A receptionist that never sleeps, in two languages.</p>
+    </div>
+    <ul class="ht-list rv">
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Answers guests 24/7 in English and Thai</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Knows your rooms, rates and policies</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Hands guests to the booking flow</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Sign-in ready for Google and LINE accounts</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHY HOTELS SWITCH -->
+<section class="ht-sec" id="why">
+  <div class="wrap">
+    <div class="shead rv">
+      <span class="pill">Why hotels switch</span>
+      <h2>The <span class="pk">money math</span></h2>
+    </div>
+    <div class="ht-math rv">
+      <span class="huge">OTAs charge <b>15-20%</b> of every booking, forever.</span>
+      On <b>฿150,000</b> of monthly bookings, that is up to <b>฿30,000</b> a month leaving the property. This system costs <b>฿119,000</b> once · it pays for itself in months, then every direct booking is commission-free. The owner dashboard shows you exactly how much you keep.
     </div>
   </div>
 </section>
 
-<!-- DEPLOYMENT -->
+<!-- WHAT DEPLOYMENT INCLUDES -->
 <section class="ht-sec" id="deploy">
   <div class="wrap">
-    <div class="ht-deploy rv">
+    <div class="shead rv">
       <span class="pill">Deployment</span>
-      <h2>Deployed and tailored for <span class="mint">your property.</span></h2>
-      <p>Delivered as our <b>Patient &amp; Guest System</b> package · <span class="price">from ฿119,000</span>. Set up, launched and maintained by the studio, tailored to your branding, rooms and rates.</p>
+      <h2>What deployment <span class="bl">includes</span></h2>
+      <p>Not a download. The studio builds, tailors and launches the whole system for your property.</p>
+    </div>
+    <ul class="ht-list rv">
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Your branding, photos, rooms and rates set up by the studio</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>All content written for you in English and Thai</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Domain, hosting and SSL configured</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Launch plus owner training</span></li>
+      <li class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Studio maintenance and support</span></li>
+    </ul>
+    <div class="ht-deploy rv" style="margin-top:clamp(2rem,5vw,3rem)">
+      <span class="pill">The package</span>
+      <h2>Patient &amp; Guest System <span class="mint">package</span></h2>
+      <p><span class="price">from ฿119,000</span> · built, tailored and launched for your property by the studio.</p>
       <div class="ht-ctas">
         <a class="btn btn-blue magnet" href="https://teakhouse.mikaro.studio" target="_blank" rel="noopener">Open the live demo ↗</a>
         <a class="btn btn-ghost magnet" href="/contact">Talk to the studio</a>
         <a class="btn btn-ghost magnet" href="/business">See all packages</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOT INCLUDED -->
+<section class="ht-sec" id="not-included">
+  <div class="wrap">
+    <div class="ht-notinc rv">
+      <h3>Not included · on purpose</h3>
+      <p class="sub">The Teak House system is a direct-booking platform, not a channel manager.</p>
+      <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No channel manager</span></div>
+      <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No OTA sync with Booking.com or Agoda</span></div>
+      <div class="ht-li no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg><span>No restaurant point-of-sale or accounting module</span></div>
     </div>
   </div>
 </section>
@@ -383,24 +389,24 @@ calendar. Keep the current skin.
     </div>
     <div class="ht-faq rv">
       <details class="ht-q">
-        <summary>What is the platform built on? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">The platform is built on <b>Next.js</b> and React with TypeScript, styled with Tailwind, and data handled through Prisma on <b>Postgres</b>. It runs on modern, well-supported foundations and deploys cleanly to Vercel.</div>
+        <summary>Can I edit rooms myself? <span class="pl" aria-hidden="true"></span></summary>
+        <div class="ans">Yes. The rooms manager lets you edit <b>photos, prices, amenities and details yourself</b>, no developer needed. Seasonal pricing rules and availability are yours to change too.</div>
       </details>
       <details class="ht-q">
-        <summary>Who owns the site and the data? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">You do. It is <b>your property's site and your database</b>, with your guest and booking data. The studio builds, tailors and maintains the platform for you, and you are never locked to a third-party booking marketplace.</div>
+        <summary>What languages? <span class="pl" aria-hidden="true"></span></summary>
+        <div class="ans"><b>English and Thai</b>, written natively, with a one-tap switch for guests. More locales can be added for your property. Prices show in THB, USD and EUR.</div>
       </details>
       <details class="ht-q">
-        <summary>Can it run in more than one language? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">Yes. It is <b>bilingual by default</b>, with English and Thai in the live demo, and more locales added as your property needs them. Pricing and display are multi-currency too.</div>
+        <summary>Do I pay monthly? <span class="pl" aria-hidden="true"></span></summary>
+        <div class="ans">No monthly software fee. <b>You own the system.</b> It is a one-time build; the only ongoing costs are your own domain and hosting, with optional studio maintenance if you want it.</div>
       </details>
       <details class="ht-q">
-        <summary>What does a deployment include? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">A build tailored to your property: your branding, rooms, rates and copy, with the <b>booking engine, owner dashboard, AI concierge and guest accounts</b> wired end to end. The studio sets it up, launches it and keeps it maintained.</div>
+        <summary>How long to launch? <span class="pl" aria-hidden="true"></span></summary>
+        <div class="ans">Most properties launch within a <b>few weeks</b>, depending on how ready your photos and room details are. The studio handles the build, content, setup and owner training.</div>
       </details>
       <details class="ht-q">
-        <summary>Does it sync with Booking.com or Agoda? <span class="pl" aria-hidden="true"></span></summary>
-        <div class="ans">No. The Teak House Platform is a <b>direct-booking</b> system built to keep OTA commission in the house. There is no channel manager and no OTA sync. It is designed to grow your direct bookings, not to manage marketplace listings.</div>
+        <summary>Does it sync with Booking.com? <span class="pl" aria-hidden="true"></span></summary>
+        <div class="ans">No, and that is the point. Booking.com and Agoda take <b>15-20% of every booking</b>. This is a direct-booking system built to move guests to your own site and keep that commission in the property. There is no channel manager or OTA sync.</div>
       </details>
     </div>
   </div>
