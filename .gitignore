@@ -5,3 +5,6 @@ package-lock.json
 artifacts/
 .vercel
 .env*
+
+# local capture / verification artefacts
+.shots/

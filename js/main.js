@@ -206,6 +206,13 @@ if(matchMedia('(pointer:fine)').matches&&!RM){
     return r.top<vh*0.95&&r.bottom>vh*-0.05;
   }
   function sweep(){document.querySelectorAll(SEL).forEach(el=>{if(inView(el))mark(el);});}
+  // data-lite pages settle every reveal in CSS, so there is nothing to observe.
+  // sweep() reads getBoundingClientRect on every target, which forces layout of
+  // content-visibility:auto sections and undoes their whole benefit · skip it.
+  if(document.documentElement.hasAttribute('data-lite')){
+    document.querySelectorAll(SEL).forEach(mark);
+    return;
+  }
   const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){mark(en.target);io.unobserve(en.target);}});},{threshold:0.05,rootMargin:'0px 0px 25% 0px'});
   document.querySelectorAll(SEL).forEach(el=>io.observe(el));
   // F2 fail-open: mark anything already visible, then force-complete stragglers
@@ -236,7 +243,10 @@ bkk();setInterval(bkk,15000);
 
 /* ---------- v5.2 scroll engine: parallax depth + marquee velocity + clip reveals ---------- */
 (function(){
-  if(RM)return;
+  // data-lite pages opt out of decorative motion entirely. The permanent rAF loop
+  // below writes a transform every frame, which costs a full style+layout pass on a
+  // long page · that is ~2.6s of main-thread work on a throttled phone for Thai text.
+  if(RM||document.documentElement.hasAttribute('data-lite'))return;
   document.querySelectorAll('.mega .bframe').forEach(el=>el.dataset.sp='0.42');
   document.querySelectorAll('.case-hero .bframe').forEach(el=>el.dataset.sp='0.3');
   document.querySelectorAll('.testi-card .avatar').forEach(el=>el.dataset.sp='0.22');
