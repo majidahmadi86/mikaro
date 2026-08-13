@@ -14,7 +14,10 @@ const THL=document.documentElement.lang==='th';
 /* ---------- case slider: known pair + auto-detected gallery shots ---------- */
 (function(){
   const el=document.getElementById('caseSlider');if(!el)return;
-  const key=el.dataset.project; // 'miomika' | 'opticlean'
+  const key=el.dataset.project; // 'miomika' | 'opticlean' | 'praow'
+  const frameUrl=el.dataset.url||(key==='miomika'?'miomika.com':key+'.mikaro.studio');
+  // a page can list its shots outright · avoids probing for files that do not exist
+  const listed=(el.dataset.shots||'').split(',').map(s=>s.trim()).filter(Boolean);
   const base=['/assets/img/'+key+'-hero-desktop.jpg','/assets/img/'+key+'-case-desktop.jpg'];
   const maybe=[];for(let i=1;i<=6;i++)maybe.push('/assets/img/'+key+'-gallery-'+i+'.jpg');
   const found=[];let pending=base.length+maybe.length;
@@ -24,7 +27,8 @@ const THL=document.documentElement.lang==='th';
     if(!shots.length)return; // keep placeholder
     build(shots);
   }
-  [...base,...maybe].forEach(src=>{const im=new Image();im.onload=()=>{found.push(src);done();};im.onerror=done;im.src=src;});
+  if(listed.length){setTimeout(()=>build(listed),0);}
+  else [...base,...maybe].forEach(src=>{const im=new Image();im.onload=()=>{found.push(src);done();};im.onerror=done;im.src=src;});
 
   function slideMedia(s){
     const dims=s.endsWith('miomika-hero-desktop.jpg')?' width="1000" height="920"'
@@ -38,7 +42,7 @@ const THL=document.documentElement.lang==='th';
   function build(shots){
     el.innerHTML=`
       <div class="bframe slider" style="width:min(100%,900px)">
-        <div class="bbar2"><i></i><i></i><i></i><span class="url">${key==='miomika'?'miomika.com':'opticlean.mikaro.studio'}</span></div>
+        <div class="bbar2"><i></i><i></i><i></i><span class="url">${frameUrl}</span></div>
         <div class="track-wrap"><div class="track">${shots.map(s=>`<div>${slideMedia(s)}</div>`).join('')}</div></div>
         ${shots.length>1?`
         <button class="sarrow sprev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -430,6 +434,8 @@ bkk();setInterval(bkk,15000);
     +'<nav class="mm-links" aria-label="Mobile">'
     +'<a href="'+(THL?'/th/':'/')+'" style="--d:.04s">'+(THL?'หน้าแรก':'Home')+'</a>'
     +'<a href="'+p+'/work" style="--d:.1s">'+(THL?'ผลงาน':'Work')+'</a>'
+    +'<a href="'+p+'/praow" style="--d:.13s">PRAOW</a>'
+    +'<a href="'+p+'/praow" style="--d:.13s">PRAOW</a>'
     +'<a href="'+p+'/services" style="--d:.16s">'+(THL?'บริการ':'Services')+'</a>'
     +'<a href="'+p+'/business" style="--d:.2s">'+(THL?'สำหรับธุรกิจ':'For business')+'</a>'
     +'<a href="'+p+'/ai-lab" style="--d:.24s">AI Lab</a>'

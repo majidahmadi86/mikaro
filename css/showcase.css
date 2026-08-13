@@ -4,17 +4,6 @@
    Prefix .sc-* · nothing here leaks into the rest of the site.
    ================================================================ */
 
-/* ---------- self-hosted Thai type · Prompt (display) + Sarabun (body) --------
-   Only the Thai subsets are shipped. Latin falls through to Gabarito / Figtree,
-   which is the brand face anyway. Pulling these off Google cost ~2.5s of first
-   paint on the Thai pages: the stylesheet landed late, then re-shaped the whole
-   document. Regenerate with scripts/fetch-thai-fonts.mjs. Both families are OFL.
-   -------------------------------------------------------------------------- */
-@font-face{font-family:'Prompt';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/prompt-thai-700.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
-@font-face{font-family:'Prompt';font-style:normal;font-weight:900;font-display:swap;src:url('/assets/fonts/prompt-thai-900.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
-@font-face{font-family:'Sarabun';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/sarabun-thai-400.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
-@font-face{font-family:'Sarabun';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/sarabun-thai-600.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
-@font-face{font-family:'Sarabun';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/sarabun-thai-700.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
 
 /* ---------- hero ---------- */
 .sc-hero{padding:clamp(2.6rem,7vh,4.6rem) 0 clamp(1.4rem,4vh,2.4rem);text-align:center}
@@ -138,6 +127,25 @@ html[lang] .sc-sec .shead h2 .gd,html[lang] .sc-hero h1 .gd{color:#9A6B12}
 .sc-li.no::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF3D8F' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E")}
 .sc-stack{margin-top:1.3rem;padding-top:1.2rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:.5rem}
 .sc-stack span{font-family:var(--disp);font-weight:700;font-size:.76rem;color:var(--ink);background:var(--milk);border:1px solid var(--line);border-radius:999px;padding:.42rem .85rem}
+
+/* ---------- mobile sticky CTA · appears after the first screen, hides at the footer ---------- */
+.sc-sticky{position:fixed;left:0;right:0;bottom:0;z-index:180;display:none;gap:.5rem;align-items:center;
+  padding:.5rem .6rem;padding-bottom:calc(.5rem + env(safe-area-inset-bottom));
+  background:rgba(255,248,240,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);box-shadow:0 -14px 34px -22px rgba(23,21,31,.55);
+  transform:translateY(115%);visibility:hidden;
+  transition:transform .3s var(--ease),visibility 0s linear .3s;pointer-events:none}
+.sc-sticky.on{transform:none;visibility:visible;transition:transform .3s var(--ease);pointer-events:auto}
+.sc-sticky .btn{flex:1 1 0;min-width:0;justify-content:center;gap:.35rem;font-size:.84rem;
+  padding:.78rem .5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc-sticky .btn-line{background:#06C755;color:var(--ink);box-shadow:0 12px 24px -14px rgba(6,199,85,.75)}
+.sc-sticky .btn-line:hover{background:#05B34C;color:var(--ink)}
+@media(max-width:820px){
+  .sc-sticky{display:flex}
+  body.sticky-on .mika-fab{transform:translateY(-62px)}
+}
+@media(prefers-reduced-motion:reduce){.sc-sticky{transition:none}}
+html[lang="th"] .sc-sticky .btn{font-size:.82rem}
 
 /* ---------- faq ---------- */
 .sc-faq{max-width:48rem;margin:0 auto;display:flex;flex-direction:column;gap:.7rem}

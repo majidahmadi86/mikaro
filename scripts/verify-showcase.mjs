@@ -44,7 +44,10 @@ const exe = [
   'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
 ].find(p => existsSync(p)) || chromium.executablePath();
 
-const PAGES = ['/teakhouse', '/praow', '/th/teakhouse', '/th/praow'];
+const PAGES = ['/teakhouse', '/praow', '/th/teakhouse', '/th/praow',
+  '/', '/work', '/work/praow', '/services', '/ai-lab',
+  '/th', '/th/work', '/th/work/praow', '/th/services'];
+const STICKY = new Set(['/teakhouse', '/praow', '/th/teakhouse', '/th/praow']);
 const WIDTHS = [360, 390, 768, 1093, 1366, 1440];
 const SHOTS = process.argv.includes('--shots');
 
@@ -78,7 +81,9 @@ for (const path of PAGES) {
       const de = document.documentElement;
       const vw = de.clientWidth;
       const over = [...document.querySelectorAll('body *')]
-        .filter(e => !e.closest('.skip'))   // skip-to-content is parked offscreen until focused
+        // decorative things that live inside an overflow:hidden parent on purpose:
+        // the skip link, the marquee track, and the cursor-spotlight glow
+        .filter(e => !e.closest('.skip,.mq,.glow,.hero-collage,.collage'))
         .filter(e => {
           const b = e.getBoundingClientRect();
           return b.width > 0 && b.height > 0 && (b.right > vw + 1.5 || b.left < -1.5);
@@ -87,7 +92,10 @@ for (const path of PAGES) {
         .map(e => e.tagName + '.' + String(e.className && (e.className.baseVal || e.className)).slice(0, 44)
           + ' [' + Math.round(e.getBoundingClientRect().left) + ',' + Math.round(e.getBoundingClientRect().right) + ']');
 
-      const unrevealed = [...document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s,.clipin')]
+      // only the showcase pages promise fail-open reveals · elsewhere the site
+      // reveals on scroll by design
+      const failOpen = !!document.querySelector('link[href*="showcase.css"]');
+      const unrevealed = !failOpen ? 0 : [...document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s,.clipin')]
         .filter(e => {
           const cs = getComputedStyle(e);
           return parseFloat(cs.opacity) < 0.99 || (cs.transform !== 'none' && cs.transform !== 'matrix(1, 0, 0, 1, 0, 0)');
@@ -114,20 +122,68 @@ for (const path of PAGES) {
       return {
         vw, docW: de.scrollWidth, bodyW: document.body.scrollWidth,
         over, unrevealed, overlaps: overlaps.slice(0, 5), imgs, broken: broken.slice(0, 5),
-        lang: de.lang, imgCount: document.images.length
+        lang: de.lang, imgCount: document.images.length, failOpen
       };
     });
 
-    const scrolls = r.docW > r.vw + 1 || r.bodyW > r.vw + 1;
+    // the honest test: can the user actually scroll sideways? On the reveal-on-
+    // scroll pages an unsettled .rv-r transform inflates scrollWidth while
+    // body{overflow-x:hidden} means nothing is reachable.
+    const canScroll = await page.evaluate(() => {
+      const el = document.scrollingElement;
+      el.scrollLeft = 9999;
+      const x = el.scrollLeft;
+      el.scrollLeft = 0;
+      return x;
+    });
+    const scrolls = canScroll > 1;
     const bad = scrolls || r.over.length || r.unrevealed || r.overlaps.length || r.imgs || r.broken.length || errors.length;
     console.log(`  ${String(w).padStart(4)}px  doc=${r.docW} vw=${r.vw}  imgs=${r.imgCount}  ${bad ? '' : 'OK'}`);
-    if (scrolls) fail(path, w, 'horizontal scroll doc=' + r.docW + ' vw=' + r.vw);
-    if (r.over.length) fail(path, w, 'out of viewport:', r.over.join(' | '));
+    if (scrolls) fail(path, w, 'horizontal scroll · ' + canScroll + 'px reachable (doc=' + r.docW + ' vw=' + r.vw + ')');
+    if (r.over.length && r.failOpen) fail(path, w, 'out of viewport:', r.over.join(' | '));
     if (r.unrevealed) fail(path, w, r.unrevealed + ' reveal blocks not settled');
     if (r.overlaps.length) fail(path, w, 'overlap:', r.overlaps.join(' | '));
     if (r.imgs) fail(path, w, r.imgs + ' images wider than viewport');
     if (r.broken.length) fail(path, w, 'broken images:', r.broken.join(' | '));
     if (errors.length) fail(path, w, 'console/network:', [...new Set(errors)].slice(0, 4).join(' | '));
+
+    // sticky CTA · mobile only, hidden at first paint, hidden again at the footer
+    if (STICKY.has(path)) {
+      const st = await page.evaluate(async () => {
+        const bar = document.getElementById('scSticky');
+        if (!bar) return { missing: true };
+        const vis = () => bar.classList.contains('on') && getComputedStyle(bar).display !== 'none';
+        const settle = () => new Promise(r => setTimeout(r, 260));
+        window.scrollTo(0, 0); await settle();
+        const atTop = vis();
+        window.scrollTo(0, Math.round(document.body.scrollHeight * 0.45)); await settle();
+        const mid = vis();
+        const bar2 = bar.getBoundingClientRect();
+        const foot = document.querySelector('.footer').getBoundingClientRect();
+        // content-visibility grows the document as sections render, so one
+        // scrollTo lands short · keep going until the position stops moving
+        let last = -1;
+        for (let i = 0; i < 40 && last !== window.scrollY; i++) {
+          last = window.scrollY;
+          window.scrollTo(0, document.documentElement.scrollHeight);
+          await new Promise(r => setTimeout(r, 90));
+        }
+        await settle();
+        const atFoot = vis();
+        window.scrollTo(0, 0); await settle();
+        return { missing: false, atTop, mid, atFoot, h: Math.round(bar2.height),
+                 display: getComputedStyle(bar).display };
+      });
+      if (st.missing) fail(path, w, 'sticky CTA markup missing');
+      else if (w <= 820) {
+        if (st.atTop) fail(path, w, 'sticky CTA visible on the first screen');
+        if (!st.mid) fail(path, w, 'sticky CTA never appears mid-page');
+        if (st.atFoot) fail(path, w, 'sticky CTA still visible over the footer');
+        if (st.h > 78) fail(path, w, 'sticky CTA is ' + st.h + 'px tall, not slim');
+      } else if (st.display !== 'none') {
+        fail(path, w, 'sticky CTA is displayed on desktop (' + st.display + ')');
+      }
+    }
 
     if (SHOTS && (w === 390 || w === 1440)) {
       const dir = join(root, '.shots', 'verify');

@@ -17,7 +17,7 @@ mkdirSync(outDir, { recursive: true });
 mkdirSync(rawDir, { recursive: true });
 
 const TEAK = 'https://teakhouse.mikaro.studio';
-const PRAOW = 'https://praow-v1-preview.vercel.app';
+const PRAOW = 'https://praow.mikaro.studio';
 const only = process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : '';
 const RAW = process.argv.includes('--raw');
 

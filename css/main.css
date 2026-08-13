@@ -4,6 +4,18 @@
 /* v6.3  ·  metric-compatible font fallbacks: kill font-swap CLS */
 @font-face{font-family:'Gabarito Fallback';src:local('Arial Bold'),local('Arial');font-weight:600 900;ascent-override:100%;descent-override:24%;line-gap-override:0%;size-adjust:102%}
 @font-face{font-family:'Figtree Fallback';src:local('Arial');font-weight:400 700;ascent-override:94%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+/* ---------- self-hosted Thai type · Prompt (display) + Sarabun (body) --------
+   Only the Thai subsets are shipped. Latin falls through to Gabarito / Figtree,
+   which is the brand face anyway. Pulling these off Google cost ~2.5s of first
+   paint on the Thai pages: the stylesheet landed late, then re-shaped the whole
+   document. Regenerate with scripts/fetch-thai-fonts.mjs. Both families are OFL.
+   -------------------------------------------------------------------------- */
+@font-face{font-family:'Prompt';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/prompt-thai-700.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:'Prompt';font-style:normal;font-weight:900;font-display:swap;src:url('/assets/fonts/prompt-thai-900.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:'Sarabun';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/sarabun-thai-400.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:'Sarabun';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/sarabun-thai-600.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:'Sarabun';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/sarabun-thai-700.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
+
 /* ================================================================
    MIKARO STUDIO  ·  main stylesheet
    Design system: Candy Showroom (milk / cobalt / pink / gold / mint)
@@ -125,8 +137,8 @@ button{cursor:pointer;border:none;background:none}
 .mega-mio{background:var(--pink-soft);color:#4A1B31}
 .mega-mio .tag{background:#fff;color:#B02762}
 .mega-mio h3{color:#33121F}
-.mega-mio h3 .hl{color:var(--pink)}
-.mega-mio .btn{background:var(--pink);color:#fff;box-shadow:0 14px 28px -12px rgba(255,61,143,.55)}
+.mega-mio h3 .hl{color:#CE1567}
+.mega-mio .btn{background:#D6156B;color:#fff;box-shadow:0 14px 28px -12px rgba(255,61,143,.55)}
 .mega-mio .btn:hover{transform:translateY(-3px) rotate(-1deg)}
 .mio-vis{display:grid;place-items:center;background:radial-gradient(circle at 60% 40%,#FFD1E6,#FFE3F0)}
 .mio-vis .imgslot{width:min(320px,72%);border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -26px rgba(176,39,98,.5);background:#fff;aspect-ratio:4/5;display:grid;place-items:center;position:relative;z-index:2}
@@ -140,7 +152,7 @@ button{cursor:pointer;border:none;background:none}
 .mega-oc{background:var(--gold-soft);color:#5B534A}
 .mega-oc .tag{background:#fff;color:#8A6A1E}
 .mega-oc h3{color:var(--oc-ink);font-family:'Gabarito';letter-spacing:-.02em}
-.mega-oc h3 .hl{color:#B9851E}
+.mega-oc h3 .hl{color:#8F6511}
 .mega-oc .btn{background:var(--oc-ink);color:#F5EFE2}
 .mega-oc .vis{background:radial-gradient(circle at 50% 45%,#F3E9D2,#EFE3C8)}
 .mega-oc .seal{position:absolute;left:6%;bottom:7%;width:96px;height:96px;border-radius:50%;background:var(--gold);color:#3A2C0E;display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:.62rem;text-align:center;line-height:1.35;transform:rotate(-8deg);box-shadow:0 18px 34px -16px rgba(58,44,14,.5);z-index:3;animation:float3 6s ease-in-out infinite}
@@ -297,7 +309,7 @@ button{cursor:pointer;border:none;background:none}
 /* inner page hero */
 .phero{padding:clamp(3rem,8vh,5rem) 0 clamp(1.6rem,4vh,2.6rem);text-align:center}
 .phero h1{font-family:var(--disp);font-weight:900;letter-spacing:-.03em;line-height:1.15;font-size:clamp(2.4rem,5.6vw,4.2rem);margin:1rem 0 .9rem;overflow:visible;padding:.08em 0 .14em}
-.phero h1 .pk{color:var(--pink)}.phero h1 .bl{color:var(--blue)}.phero h1 .gd{color:var(--gold)}
+.phero h1 .pk{color:var(--pink)}.phero h1 .bl{color:var(--blue)}.phero h1 .gd{color:#9A6B12}
 .phero p{color:var(--sub);max-width:36rem;margin:0 auto}
 
 /* case pages */
@@ -403,8 +415,9 @@ button{cursor:pointer;border:none;background:none}
 .slider .sarrow svg{width:16px}
 .slider .sprev{left:14px}.slider .snext{right:14px}
 .slider .sdots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:.45rem;z-index:5}
-.slider .sdots button{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.6);border:1.5px solid rgba(23,21,31,.25);transition:.25s;padding:0}
-.slider .sdots button.on{background:var(--pink);border-color:var(--pink);transform:scale(1.25)}
+.slider .sdots button{width:24px;height:24px;border:0;background:none;padding:0;display:grid;place-items:center;transition:.25s}
+.slider .sdots button::before{content:"";width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.6);border:1.5px solid rgba(23,21,31,.25);transition:.25s}
+.slider .sdots button.on::before{background:var(--pink);border-color:var(--pink);transform:scale(1.25)}
 .case-hero{padding:clamp(1.2rem,3vw,2.2rem);overflow:hidden}
 .case-hero .bframe{width:min(100%,900px)}
 .case-hero .imgslot,#caseSlider{overflow:hidden;max-width:100%;min-width:0}
@@ -412,8 +425,8 @@ button{cursor:pointer;border:none;background:none}
 /* "I want this" pill */
 .want{background:#fff;color:var(--pink);border:2px solid var(--pink)}
 .want:hover{background:var(--pink);color:#fff;transform:translateY(-3px)}
-.mega-oc .want{color:#B9851E;border-color:#B9851E}
-.mega-oc .want:hover{background:#B9851E;color:#fff}
+.mega-oc .want{color:var(--gold);border-color:var(--gold)}
+.mega-oc .want:hover{background:var(--gold);color:#1C1813}
 
 /* performance badges band */
 .perf{padding:0 0 clamp(4rem,10vh,6.5rem)}
@@ -700,7 +713,7 @@ html[lang="th"] .phero h1 .pk,html[lang="th"] .phero h1 .bl,html[lang="th"] .phe
 }
 html[lang="th"] .phero h1 .pk,html[lang="th"] .shead h2 .pk{color:var(--pink)}
 html[lang="th"] .phero h1 .bl,html[lang="th"] .shead h2 .bl{color:var(--blue)}
-html[lang="th"] .phero h1 .gd,html[lang="th"] .shead h2 .gd{color:var(--gold)}
+html[lang="th"] .phero h1 .gd,html[lang="th"] .shead h2 .gd{color:#9A6B12}
 html[lang="th"] body,html[lang="th"] p{line-height:1.8}
 html[lang="th"] .mm-links a{font-size:clamp(1.7rem,6.5vh,2.4rem);line-height:1.6}
 .lang-sw{display:flex;gap:2px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px;flex:0 0 auto}
@@ -889,3 +902,32 @@ a.biz-chip:hover::after{opacity:.75}
    To restore Mike's TikTok icon everywhere, delete this one rule.
    ================================================================ */
 a[aria-label="TikTok"]{display:none!important}
+
+/* ============ CLIENT QUOTE · premium block ============ */
+.quote-band{padding:0 0 clamp(3.4rem,9vh,5.5rem)}
+.qb{position:relative;max-width:52rem;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:clamp(1.8rem,5vw,3.2rem) clamp(1.3rem,4.5vw,3.2rem) clamp(1.5rem,4vw,2.6rem);
+  box-shadow:var(--shadow);overflow:hidden}
+.qb::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--gold),var(--pink))}
+.qb .qb-mark{position:absolute;top:-.36em;right:.04em;font-family:var(--disp);font-weight:900;line-height:1;
+  font-size:clamp(6.5rem,17vw,11rem);color:var(--gold-soft);pointer-events:none;user-select:none}
+.qb blockquote{position:relative;z-index:1;margin:0;color:var(--ink)}
+.qb blockquote p{font-size:clamp(.97rem,1.4vw,1.1rem);line-height:1.85;color:var(--sub)}
+.qb blockquote p+p{margin-top:.85rem}
+.qb blockquote .qb-lead{font-family:var(--disp);font-weight:700;letter-spacing:-.01em;color:var(--ink);
+  font-size:clamp(1.15rem,2.6vw,1.62rem);line-height:1.4}
+.qb figcaption{position:relative;z-index:1;margin-top:clamp(1.2rem,3vw,1.6rem);padding-top:clamp(1rem,2.4vw,1.25rem);
+  border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .7rem}
+.qb .qb-stars{color:#9A6B12;letter-spacing:.14em;font-size:.86rem;flex:0 0 100%}
+.qb figcaption b{font-family:var(--disp);font-weight:800;font-size:1rem;color:var(--ink)}
+.qb figcaption .qb-who{color:var(--sub);font-size:.9rem}
+@media(max-width:560px){.qb .qb-mark{font-size:5.6rem;top:-.3em}}
+html[lang="th"] .qb blockquote p{line-height:2}
+html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
+
+/* the three gauges are 110px each · at 360 they overshoot the gutter, so wrap and shrink */
+@media(max-width:560px){
+  .perf-badges{flex-wrap:wrap;justify-content:center;gap:1rem 1.15rem}
+  .perf-badges .gauge,.perf-badges .gauge svg{width:92px;height:92px}
+  .perf-badges .gauge .val{font-size:1.35rem}
+}
