@@ -819,89 +819,20 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
 }
 
 /* ============ QUIET LINK · the third path, never a third button ============ */
-.quiet-row{margin-top:.85rem}
-.quiet-link{font-family:var(--disp);font-weight:700;font-size:.86rem;color:var(--sub);
-  text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px;
-  text-decoration-color:var(--line);transition:color .25s,text-decoration-color .25s}
-.quiet-link:hover{color:var(--ink);text-decoration-color:currentColor}
-.quiet-link.on-ink{color:rgba(255,248,240,.78);text-decoration-color:rgba(255,248,240,.3)}
-.quiet-link.on-ink:hover{color:#fff}
+.quiet-row{margin:1rem 0 1.05rem}
+.quiet-link{display:inline-flex;align-items:center;gap:.42rem;min-height:44px;
+  font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--blue);
+  text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;
+  text-decoration-color:rgba(36,56,255,.4);transition:color .25s,text-decoration-color .25s}
+.quiet-link::after{content:"\2192";display:inline-block;transition:transform .25s var(--ease)}
+.quiet-link:hover{color:var(--blue-d);text-decoration-color:currentColor}
+.quiet-link:hover::after{transform:translateX(3px)}
+.quiet-link.on-ink{color:#fff;text-decoration-color:rgba(255,248,240,.5)}
+.quiet-link.on-ink:hover{color:#fff;text-decoration-color:#fff}
+@media(prefers-reduced-motion:reduce){.quiet-link::after{transition:none}}
 .sc-deploy .quiet-row{margin-top:1.1rem}
 
-/* ============ FLAGSHIP HERO · one hero device, one supporting layer ============
-   The Teak House browser frame carries the composition. The PRAOW phone sits
-   under it as a smaller, clearly separated second layer. No clipping: the stage
-   is padded so tilted frames and their shadows have room to land. */
-.flagship{position:relative;padding:26px 10px 78px 0;isolation:isolate}
-.fg-stage{position:relative;perspective:1600px;transform-style:preserve-3d}
 
-/* the hero device */
-.fg-desk{position:relative;z-index:2;border-radius:18px;background:#fff;overflow:hidden;
-  border:1px solid rgba(23,21,31,.06);
-  transform:rotateY(-7deg) rotateX(2.2deg) rotate(-.8deg);transform-origin:70% 50%;
-  box-shadow:0 2px 4px rgba(23,21,31,.05),0 14px 26px -12px rgba(23,21,31,.22),
-             0 54px 90px -34px rgba(23,21,31,.45);
-  opacity:0;animation:fgIn .5s var(--ease) .04s forwards}
-.fg-desk .chrome{display:flex;align-items:center;gap:6px;padding:11px 14px;background:#F6F2EB;
-  border-bottom:1px solid rgba(23,21,31,.07)}
-.fg-desk .chrome i{width:9px;height:9px;border-radius:50%;background:#E4DED4;flex:0 0 auto}
-.fg-desk .chrome i:nth-child(1){background:#FF6058}.fg-desk .chrome i:nth-child(2){background:#FFBE2E}.fg-desk .chrome i:nth-child(3){background:#2ACB42}
-.fg-desk .chrome span{margin-left:7px;font-family:var(--disp);font-weight:700;font-size:.63rem;color:var(--sub);
-  background:#fff;border-radius:999px;padding:.24rem .7rem;white-space:nowrap;overflow:hidden;
-  text-overflow:ellipsis;min-width:0;border:1px solid rgba(23,21,31,.06)}
-.fg-desk img{width:100%;height:auto;display:block}
-
-/* the supporting layer · smaller, separated by its own white bezel */
-.fg-phone{position:absolute;z-index:3;right:-2px;bottom:-58px;width:25.5%;min-width:104px;
-  border-radius:20px;background:#fff;padding:6px;overflow:hidden;
-  border:1px solid rgba(23,21,31,.05);
-  transform:rotate(4.5deg);transform-origin:50% 100%;
-  box-shadow:0 3px 8px rgba(23,21,31,.08),0 26px 50px -18px rgba(23,21,31,.42);
-  opacity:0;animation:fgIn .5s var(--ease) .16s forwards}
-.fg-phone .notch{width:26%;height:4px;border-radius:99px;background:#E4DED4;margin:1px auto 5px}
-.fg-phone img{width:100%;height:auto;display:block;border-radius:14px}
-
-/* trust chips · a row under the devices, never over them */
-.fg-meta{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:74px;position:relative;z-index:1;
-  opacity:0;animation:fgIn .42s var(--ease) .3s forwards}
-.fg-meta span{display:inline-flex;align-items:center;gap:.42rem;font-family:var(--disp);font-weight:700;
-  font-size:.73rem;color:var(--ink);background:rgba(255,255,255,.8);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(23,21,31,.07);border-radius:999px;padding:.5rem .85rem;
-  box-shadow:0 12px 26px -18px rgba(23,21,31,.4)}
-.fg-meta span i{width:7px;height:7px;border-radius:50%;background:var(--blue);flex:0 0 auto}
-.fg-meta span:nth-child(2) i{background:#16A34A}
-.fg-meta span:nth-child(3) i{background:var(--pink)}
-.fg-names{display:flex;gap:.4rem;margin-top:.55rem;position:relative;z-index:1;
-  opacity:0;animation:fgIn .42s var(--ease) .38s forwards}
-.fg-names span{font-family:var(--disp);font-weight:800;font-size:.61rem;letter-spacing:.05em;
-  border-radius:999px;padding:.4rem .78rem;background:var(--ink);color:var(--milk)}
-.fg-names span+span{background:var(--gold);color:#2A1E05}
-@keyframes fgIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){
-  .fg-desk,.fg-phone,.fg-meta,.fg-names{animation:none;opacity:1}
-}
-
-/* mobile · one stacked visual, nothing cropped */
-@media(max-width:900px){
-  .flagship{padding:12px 6px 64px 0;margin-top:.2rem}
-  .fg-desk{transform:rotate(-1deg);
-    box-shadow:0 2px 4px rgba(23,21,31,.05),0 10px 20px -10px rgba(23,21,31,.2),
-               0 36px 62px -28px rgba(23,21,31,.42)}
-  .fg-phone{width:30%;right:2px;bottom:-46px;transform:rotate(4deg)}
-  .fg-meta{margin-top:58px;gap:.4rem}
-  .fg-meta span{font-size:.7rem;padding:.46rem .74rem}
-}
-@media(max-width:420px){
-  .fg-phone{width:33%;bottom:-40px}
-  .fg-meta{margin-top:52px}
-  .fg-meta span:nth-child(3){display:none}
-}
-
-.hero h1 .grad{background:linear-gradient(96deg,var(--pink) 0%,#B23BFF 46%,var(--blue) 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  -webkit-text-fill-color:transparent;padding-right:.06em}
-@supports not ((-webkit-background-clip:text) or (background-clip:text)){.hero h1 .grad{color:var(--pink);-webkit-text-fill-color:currentColor}}
 
 /* ============ REVIEWS · the testimonial card, in a rail when there are enough ============
    Default is the calm pair: two cards, no dots, no arrows. The rail only turns
@@ -912,36 +843,45 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
 @media(min-width:900px){.rev-rail{grid-template-columns:1fr 1fr}}
 .rev-card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);
   padding:clamp(1.5rem,3.6vw,2.4rem);display:grid;grid-template-columns:auto 1fr;
-  gap:clamp(1.1rem,2.6vw,1.8rem);align-items:start;position:relative;overflow:hidden;min-width:0}
-.rev-card::before{content:"“";position:absolute;top:.04em;right:.06em;font-family:var(--disp);
+  gap:clamp(1.1rem,2.6vw,1.8rem);align-items:start;position:relative;overflow:hidden;min-width:0;
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.rev-card:hover{transform:translateY(-5px);box-shadow:0 40px 90px -30px rgba(23,21,31,.34)}
+.rev-card::before{content:"\201C";position:absolute;top:.04em;right:.06em;font-family:var(--disp);
   font-weight:900;font-size:6.6rem;color:var(--gold-soft);line-height:1;pointer-events:none;user-select:none;z-index:0}
-.rev-card>div{min-width:0;position:relative;z-index:1}
+.rev-card>div{min-width:0;position:relative;z-index:1;display:flex;flex-direction:column;height:100%}
 .rev-card .avatar{width:clamp(72px,7vw,96px);height:clamp(72px,7vw,96px);border-radius:50%;
   background:var(--gold);color:#3A2C0E;display:grid;place-items:center;font-family:var(--disp);
   font-weight:900;font-size:clamp(1.6rem,2.6vw,2.1rem);overflow:hidden;
   box-shadow:0 16px 34px -14px rgba(58,44,14,.4);flex:0 0 auto;transition:transform .5s var(--ease)}
 .rev-card .avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .rev-card:hover .avatar{transform:rotate(-4deg) scale(1.06)}
-.rev-head{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.6rem}
-.rev-stars{color:#9A6B12;letter-spacing:.12em;font-size:.95rem;line-height:1}
+.rev-head{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.7rem}
+.rev-stars{display:inline-flex;align-items:center;gap:2px;line-height:0}
+.rev-stars svg{width:15px;height:15px;display:block;fill:#C4890E}
+.rev-stars svg.off{fill:none;stroke:#C4890E;stroke-width:1.6}
 .rev-src{font-family:var(--disp);font-weight:800;font-size:.62rem;letter-spacing:.06em;color:var(--sub);
   background:var(--milk);border:1px solid var(--line);border-radius:999px;padding:.28rem .6rem;flex:0 0 auto}
 a.rev-src:hover{color:var(--ink);border-color:var(--ink)}
-.rev-q{font-family:var(--disp);font-weight:700;font-size:clamp(1rem,1.5vw,1.14rem);line-height:1.6;
-  color:var(--ink);margin:0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;overflow:hidden}
+.rev-q{font-family:var(--disp);font-weight:700;font-size:clamp(1.02rem,1.55vw,1.18rem);line-height:1.62;
+  letter-spacing:-.008em;color:var(--ink);margin:0;text-wrap:pretty;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;overflow:hidden}
 .rev-q.open{-webkit-line-clamp:unset;display:block;overflow:visible}
-.rev-more{margin-top:.55rem;font-family:var(--disp);font-weight:700;font-size:.8rem;color:var(--blue);
-  text-decoration:underline;text-underline-offset:3px;padding:0}
-.rev-by{display:block;font-style:normal;font-weight:600;font-size:.9rem;color:var(--sub);margin-top:.9rem}
+.rev-more{align-self:flex-start;margin-top:.6rem;font-family:var(--disp);font-weight:700;font-size:.82rem;
+  color:var(--blue);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px;padding:0}
+.rev-more:hover{color:var(--blue-d)}
+.rev-by{display:block;font-style:normal;font-weight:600;font-size:.9rem;color:var(--sub);
+  margin-top:auto;padding-top:1rem}
 .rev-by b{color:var(--ink);font-family:var(--disp);font-weight:800}
 .rev-foot{display:flex;align-items:center;justify-content:center;gap:.9rem;margin-top:1.2rem;flex-wrap:wrap}
 .rev-dots,.rev-nav{display:none}
 @media(max-width:560px){
   .rev-card{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .rev-card>div{align-items:center}
   .rev-card .rev-head{justify-content:center}
+  .rev-more{align-self:center}
   .rev-card::before{font-size:4.6rem;top:.04em}
 }
-
+@media(prefers-reduced-motion:reduce){.rev-card,.rev-card .avatar{transition:none}}
 /* rail mode · switched on from script once there are more than two cards */
 .reviews.is-rail .rev-rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
   scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:.3rem 0 .2rem}
@@ -1016,7 +956,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
   <div class="wrap">
     <div>
       <span class="badge"><span class="dot"></span>7 builds live right now · click them</span>
-      <h1>We make <span class="grad">real products</span> · not <span class="swash">pretty promises.</span></h1>
+      <h1>We make <span class="pk">real products</span> · not <span class="swash">pretty promises.</span></h1>
       <p class="sub"><b>An AI-powered studio:</b> senior creative direction with an AI-scale engineering engine. We ship international-grade systems in weeks, not months.</p>
       <div class="biz-trust" aria-label="Trust signals">
         <a class="biz-chip" href="https://share.google/W5Y1omsP3xsZjBfuW" target="_blank" rel="noopener">★ 5.0 on Google · 16 reviews</a>
@@ -1031,23 +971,21 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
       <p class="hero-biz"><a href="/business">Run a shop, salon, restaurant or hotel? → This page is for you</a></p>
       <div class="hero-proof"><span class="stars">★★★★★</span><span><b>“Absolutely beautiful”</b> · Dr. Zac, first client</span></div>
     </div>
-    <div class="flagship" aria-hidden="true">
-      <div class="fg-stage">
-        <div class="fg-desk">
-          <div class="chrome"><i></i><i></i><i></i><span>teakhouse.mikaro.studio</span></div>
-          <img src="/assets/img/proof/th-guest-hero-800.webp" srcset="/assets/img/proof/th-guest-hero-800.webp 800w, /assets/img/proof/th-guest-hero.webp 1600w" sizes="(max-width:900px) 94vw, 520px" width="1600" height="828" alt="" loading="eager" fetchpriority="high" decoding="async">
+    <div class="collage" aria-hidden="true">
+      <div class="fl fl-mio">
+        <div class="ph has-img" id="heroPraowSlot">
+          <picture><source media="(max-width:768px)" srcset="/assets/img/praow-hero-mobile.webp"><img src="/assets/img/praow-hero-desktop.webp" alt="PRAOW · live clinic platform" width="735" height="920" loading="eager" fetchpriority="high" decoding="async"></picture>
         </div>
-        <div class="fg-phone">
-          <div class="notch"></div>
-          <img src="/assets/img/proof/pw-mobile.webp" width="780" height="1290" alt="" loading="eager" decoding="async">
-        </div>
+        <div class="cap">PRAOW · clinic platform · live</div>
       </div>
-      <div class="fg-meta">
-        <span><i></i>Direct booking, no OTA cut</span>
-        <span><i></i>฿500 locks the slot</span>
-        <span><i></i>PageSpeed 95+ · TH / EN</span>
+      <div class="fl fl-oc">
+        <div class="ph has-img" id="heroTeakSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/teakhouse-hero-mobile.webp"><img src="/assets/img/teakhouse-hero-desktop.webp" alt="The Teak House · live hotel platform" width="1343" height="632" loading="eager" fetchpriority="high" decoding="async"></picture></div>
+        <div class="cap">The Teak House · live</div>
       </div>
-      <div class="fg-names"><span>THE TEAK HOUSE</span><span>PRAOW</span></div>
+      <span class="fl fl-chat">จองตรง · book direct</span>
+      <span class="fl fl-chat2">฿500 locks the slot</span>
+      <span class="stick st1">SHIPPED, NOT MOCKED</span>
+      <span class="stick st2">MADE IN BKK ✦</span>
     </div>
   </div>
 </section>
@@ -1078,7 +1016,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
         <span class="tag">Concept · TH/EN · Live</span>
         <h3><a class="h3-link" href="/teakhouse">The Teak House · <span class="hl">Riverside Boutique Hotel</span></a></h3>
         <p>Direct-booking system for a riverside boutique hotel: live availability with deposits in three currencies, a bilingual AI concierge, guest accounts, and an owner panel that counts the OTA commission it saves.</p>
-        <p class="quiet-row"><a class="quiet-link" href="/teakhouse">Read the case study →</a></p>
+        <p class="quiet-row"><a class="quiet-link" href="/teakhouse">Read the case study</a></p>
         <div class="stats-row"><span class="sp">Hospitality</span><span class="sp">Booking system</span><span class="sp">AI concierge</span><span class="sp">Concept build</span></div>
         <div class="btn-row">
           <a class="btn want magnet" href="/contact?service=website&want=Teak%20House">I want this →</a>
@@ -1092,7 +1030,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
         <span class="tag">Own product · TH/EN · Live</span>
         <h3><a class="h3-link" href="/work/miomika">A cat that teaches you <span class="hl">to talk.</span></a></h3>
         <p>Miomika is a voice-first AI companion for Thai speakers · Miomi teaches Thai and English through real conversation, not flashcards.</p>
-        <p class="quiet-row"><a class="quiet-link" href="/work/miomika">Read the case study →</a></p>
+        <p class="quiet-row"><a class="quiet-link" href="/work/miomika">Read the case study</a></p>
         <div class="stats-row"><span class="sp">Voice-first</span><span class="sp">LLM brain</span><span class="sp">Stripe + referrals</span><span class="sp">Admin console</span></div>
         <div class="btn-row">
           <a class="btn want magnet" href="/contact?service=ai&want=Miomika">I want this →</a>
@@ -1122,7 +1060,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
         <span class="tag">Client work · FR/EN · Live</span>
         <h3><a class="h3-link" href="/work/opticlean">A 19th-century brand, <span class="hl">reborn online.</span></a></h3>
         <p>OptiClean by Dr. Zac · a vintage French apothecary brand turned into a complete store from a single reference image. Ten bilingual pages, EUR/CHF, working Stripe checkout.</p>
-        <p class="quiet-row"><a class="quiet-link" href="/work/opticlean">Read the case study →</a></p>
+        <p class="quiet-row"><a class="quiet-link" href="/work/opticlean">Read the case study</a></p>
         <div class="stats-row"><span class="sp">10 pages · FR/EN</span><span class="sp">EUR / CHF</span><span class="sp">Stripe checkout</span><span class="sp">SEO + schema</span></div>
         <div class="btn-row">
           <a class="btn want magnet" href="/contact?service=ecommerce&want=OptiClean">I want this →</a>
@@ -1143,7 +1081,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
         <span class="tag">Clinic platform · TH/EN · Live</span>
         <h3><a class="h3-link" href="/praow">PRAOW</a></h3>
         <p>Doctor-led aesthetic clinic in Thonglor: published from-prices, a four-step consultation booking where a ฿500 deposit locks the slot, a clinic back office with today's schedule and availability blocking, and an AI receptionist · in Thai and English.</p>
-        <p class="quiet-row"><a class="quiet-link" href="/praow">Read the case study →</a></p>
+        <p class="quiet-row"><a class="quiet-link" href="/praow">Read the case study</a></p>
         <div class="stats-row"><span class="sp">฿500 deposit locks the slot</span><span class="sp">Clinic back office</span><span class="sp">Before and after</span><span class="sp">AI receptionist</span><span class="sp">TH / EN</span></div>
         <div class="btn-row">
           <a class="btn want magnet" href="/contact?service=website&want=PRAOW">I want this →</a>
@@ -1164,7 +1102,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
         <span class="tag">Concept · EN/FR/DE · Live</span>
         <h3><a class="h3-link" href="/work/outsiders">A law firm site that <span class="hl">qualifies its own leads.</span></a></h3>
         <p>Outsiders Legal · a Swiss-Thai market-entry firm. Interactive structure finder, a gated market-entry checklist and consultation routing, in English, French and German.</p>
-        <p class="quiet-row"><a class="quiet-link" href="/work/outsiders">Read the case study →</a></p>
+        <p class="quiet-row"><a class="quiet-link" href="/work/outsiders">Read the case study</a></p>
         <div class="stats-row"><span class="sp">Trilingual EN/FR/DE</span><span class="sp">Structure finder</span><span class="sp">Lead capture</span><span class="sp">Swiss precision design</span></div>
         <div class="btn-row">
           <a class="btn want magnet" href="/contact?service=website&want=Outsiders%20Legal">I want this →</a>
@@ -1193,7 +1131,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
         <article class="rev-card">
           <div class="avatar"><img src="/assets/img/chango.jpg" alt="Chango Zaza Favre" width="200" height="225" loading="lazy" decoding="async"></div>
           <div>
-            <div class="rev-head"><span class="rev-stars" aria-label="5 out of 5">★★★★★</span></div>
+            <div class="rev-head"><span class="rev-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg></span></div>
             <blockquote class="rev-q">Working with Mikaro Studio on the Balzac Antiques website has been an absolute pleasure. He is an incredibly talented designer with a real eye for detail, aesthetics, and brand identity. He understood the spirit of Balzac Antiques from the beginning and managed to translate our vision into something that feels elegant, distinctive, and truly premium. Beyond his talent, he is creative, thoughtful, responsive, and genuinely invested in getting things right. You can feel that he cares about the work, not just about completing a project. I highly recommend him to anyone looking for a designer who brings both exceptional skills and real sensitivity to a project. Fantastic work from start to finish.</blockquote>
             <cite class="rev-by"><b>Chango Zaza Favre</b> · Balzac Antiques, Bangkok</cite>
           </div>
@@ -1201,18 +1139,26 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
         <article class="rev-card">
           <div class="avatar"><img src="/assets/img/zac.jpg" alt="Dr. Zac" width="200" height="225" loading="lazy" decoding="async"></div>
           <div>
-            <div class="rev-head"><span class="rev-stars" aria-label="5 out of 5">★★★★★</span></div>
+            <div class="rev-head"><span class="rev-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg></span></div>
             <blockquote class="rev-q">It looks absolutely beautiful… it's clear how much care and attention you've put into every detail. Your demo has given me every confidence that you're the right person for this project.</blockquote>
             <cite class="rev-by"><b>Dr. Zac</b> · OptiClean, Bangkok</cite>
           </div>
         </article>
       
+        <article class="rev-card">
+          <div class="avatar"><img src="/assets/img/kik.jpg" alt="Jeeranan" width="200" height="225" loading="lazy" decoding="async"></div>
+          <div>
+            <div class="rev-head"><span class="rev-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg></span></div>
+            <blockquote class="rev-q">Excellent service from beginning to end. Professional, creative, responsive, and easy to work with. The website looks fantastic and functions perfectly. I am extremely happy with the final result and would highly recommend them to anyone looking for high-quality web design services.</blockquote>
+            <cite class="rev-by"><b>Jeeranan</b> · Outsiders Legal, Bangkok</cite>
+          </div>
+        </article>
       </div>
       <button type="button" class="btn rev-nav rev-nav-next" aria-label="Next review" data-rev-nav="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
     <div class="rev-foot">
       <div class="rev-dots" id="revDots" role="group" aria-label="Choose a review"></div>
-      <a class="quiet-link" href="https://share.google/W5Y1omsP3xsZjBfuW" target="_blank" rel="noopener">5.0 on Google · read every review →</a>
+      <a class="quiet-link" href="https://share.google/W5Y1omsP3xsZjBfuW" target="_blank" rel="noopener">5.0 on Google · read every review</a>
     </div>
   </div>
 </section>
@@ -1310,6 +1256,12 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
   function initials(n){return (n.trim().split(/\s+/).map(function(w){return w[0];}).join("").slice(0,2)||"?").toUpperCase();}
 
+  var STAR='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg>';
+  function stars(n){
+    var out='<span class="rev-stars" role="img" aria-label="'+n+'/5">';
+    for(var i=1;i<=5;i++)out+=i<=n?STAR:STAR.replace('<svg ','<svg class="off" ');
+    return out+'</span>';
+  }
   function card(r,placeUrl){
     var href=r.url||placeUrl||"";
     var src=href?'<a class="rev-src" href="'+esc(href)+'" target="_blank" rel="noopener" title="'+T.src+'">Google</a>'
@@ -1317,8 +1269,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
     var el=document.createElement("article");
     el.className="rev-card";
     el.innerHTML='<div class="avatar" aria-hidden="true">'+esc(initials(r.name))+'</div>'
-      +'<div><div class="rev-head"><span class="rev-stars" aria-label="'+r.stars+'/5">'
-      +"\u2605".repeat(r.stars)+"\u2606".repeat(5-r.stars)+'</span>'+src+'</div>'
+      +'<div><div class="rev-head">'+stars(r.stars)+src+'</div>'
       +'<blockquote class="rev-q">'+esc(r.text)+'</blockquote>'
       +'<cite class="rev-by"><b>'+esc(r.name)+'</b>'+(r.when?' · '+esc(r.when):'')+'</cite></div>';
     return el;
