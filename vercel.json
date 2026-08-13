@@ -2,7 +2,35 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/hotelier", "destination": "/teakhouse", "permanent": true },
-    { "source": "/hotelier.html", "destination": "/teakhouse", "permanent": true }
+    {
+      "source": "/hotelier",
+      "destination": "/teakhouse",
+      "permanent": true
+    },
+    {
+      "source": "/hotelier.html",
+      "destination": "/teakhouse",
+      "permanent": true
+    },
+    {
+      "source": "/work/praow",
+      "destination": "/praow",
+      "permanent": true
+    },
+    {
+      "source": "/work/praow.html",
+      "destination": "/praow",
+      "permanent": true
+    },
+    {
+      "source": "/th/work/praow",
+      "destination": "/th/praow",
+      "permanent": true
+    },
+    {
+      "source": "/th/work/praow.html",
+      "destination": "/th/praow",
+      "permanent": true
+    }
   ]
 }

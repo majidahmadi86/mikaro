@@ -45,8 +45,8 @@ const exe = [
 ].find(p => existsSync(p)) || chromium.executablePath();
 
 const PAGES = ['/teakhouse', '/praow', '/th/teakhouse', '/th/praow',
-  '/', '/work', '/work/praow', '/services', '/ai-lab',
-  '/th', '/th/work', '/th/work/praow', '/th/services'];
+  '/', '/work', '/services', '/ai-lab',
+  '/th', '/th/work', '/th/services'];
 const STICKY = new Set(['/teakhouse', '/praow', '/th/teakhouse', '/th/praow']);
 const WIDTHS = [360, 390, 768, 1093, 1366, 1440];
 const SHOTS = process.argv.includes('--shots');
