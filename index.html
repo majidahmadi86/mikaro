@@ -817,6 +817,116 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
   .perf-badges .gauge,.perf-badges .gauge svg{width:92px;height:92px}
   .perf-badges .gauge .val{font-size:1.35rem}
 }
+
+/* ============ QUIET LINK · the third path, never a third button ============ */
+.quiet-row{margin-top:.85rem}
+.quiet-link{font-family:var(--disp);font-weight:700;font-size:.86rem;color:var(--sub);
+  text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px;
+  text-decoration-color:var(--line);transition:color .25s,text-decoration-color .25s}
+.quiet-link:hover{color:var(--ink);text-decoration-color:currentColor}
+.quiet-link.on-ink{color:rgba(255,248,240,.78);text-decoration-color:rgba(255,248,240,.3)}
+.quiet-link.on-ink:hover{color:#fff}
+.sc-deploy .quiet-row{margin-top:1.1rem}
+
+/* ============ FLAGSHIP HERO · layered platform frames ============ */
+.flagship{position:relative;min-height:clamp(392px,60vw,560px);max-width:100%;contain:paint}
+.flagship .fg{position:absolute;border-radius:20px;background:#fff;
+  box-shadow:0 40px 90px -34px rgba(23,21,31,.45),0 8px 22px -12px rgba(23,21,31,.18);
+  opacity:0;transform:translateY(26px) scale(.96);
+  animation:fgIn .5s var(--ease) forwards;will-change:transform,opacity}
+.flagship .fg-desk{width:78%;left:0;top:2%;rotate:-3.5deg;padding:9px 9px 0;animation-delay:.04s;z-index:2}
+.flagship .fg-phone{width:30%;right:1%;bottom:8%;rotate:5deg;padding:7px 7px 7px;animation-delay:.12s;z-index:4}
+.flagship .fg .bar{display:flex;align-items:center;gap:5px;padding:0 4px 8px}
+.flagship .fg .bar i{width:7px;height:7px;border-radius:50%;background:#E4DED4}
+.flagship .fg .bar i:nth-child(1){background:#FF6058}.flagship .fg .bar i:nth-child(2){background:#FFBE2E}.flagship .fg .bar i:nth-child(3){background:#2ACB42}
+.flagship .fg .bar span{margin-left:4px;font-family:var(--disp);font-weight:700;font-size:.58rem;color:var(--sub);
+  background:var(--milk);border-radius:999px;padding:.2rem .55rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.flagship .fg img{width:100%;height:auto;display:block;border-radius:0 0 20px 20px}
+.flagship .fg-phone img{border-radius:12px}
+.flagship .fg-phone .bar span{font-size:.52rem}
+/* glass chips · depth, not flat cards */
+.flagship .gl{position:absolute;z-index:5;display:inline-flex;align-items:center;gap:.42rem;
+  font-family:var(--disp);font-weight:700;font-size:.74rem;color:var(--ink);
+  background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.9);border-radius:999px;padding:.52rem .9rem;
+  box-shadow:0 18px 40px -20px rgba(23,21,31,.4);
+  opacity:0;transform:translateY(14px);animation:fgIn .42s var(--ease) forwards}
+.flagship .gl i{width:7px;height:7px;border-radius:50%;background:#16A34A;flex:0 0 auto}
+.flagship .gl-a{left:2%;top:0;animation-delay:.2s}
+.flagship .gl-a i{background:var(--blue)}
+.flagship .gl-b{right:2%;top:26%;animation-delay:.26s}
+.flagship .gl-c{left:1%;bottom:16%;animation-delay:.32s}
+.flagship .gl-c i{background:var(--pink)}
+.flagship .tagpair{position:absolute;left:0;bottom:0;display:flex;gap:.4rem;z-index:6;
+  opacity:0;transform:translateY(14px);animation:fgIn .42s var(--ease) .38s forwards}
+.flagship .tagpair span{font-family:var(--disp);font-weight:800;font-size:.62rem;letter-spacing:.05em;
+  border-radius:999px;padding:.42rem .8rem;background:var(--ink);color:var(--milk);
+  box-shadow:0 14px 30px -16px rgba(23,21,31,.6)}
+.flagship .tagpair span+span{background:var(--gold);color:#2A1E05}
+@keyframes fgIn{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  .flagship .fg,.flagship .gl,.flagship .tagpair{animation:none;opacity:1;transform:none}
+}
+/* mobile first · a complete, uncrowded first screen at 390 */
+@media(max-width:900px){
+  .flagship{min-height:clamp(340px,86vw,430px);margin-top:.4rem}
+  .flagship .fg-desk{width:82%;top:6%}
+  .flagship .fg-phone{width:34%;right:0;bottom:2%}
+  .flagship .gl-b{display:none}
+  .flagship .gl-a{font-size:.68rem;left:0;top:0}
+  .flagship .gl-c{font-size:.68rem;left:0;bottom:0;max-width:62%}
+  .flagship .tagpair{display:none}
+}
+@media(max-width:400px){
+  .flagship .gl-c{display:none}
+}
+
+.hero h1 .grad{background:linear-gradient(96deg,var(--pink) 0%,#B23BFF 46%,var(--blue) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-fill-color:transparent;padding-right:.06em}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){.hero h1 .grad{color:var(--pink);-webkit-text-fill-color:currentColor}}
+
+/* ============ REVIEWS SLIDER · same mechanics as the work rail ============ */
+.reviews{padding:0 0 clamp(3.4rem,9vh,5.5rem)}
+.rev-slide{position:relative}
+.rev-rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:clamp(.9rem,2.4vw,1.4rem);
+  scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:.4rem 0 .2rem}
+.rev-rail::-webkit-scrollbar{display:none}
+.rev-card{flex:0 0 min(86%,392px);scroll-snap-align:start;min-width:0;display:flex;flex-direction:column;
+  background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);
+  padding:clamp(1.25rem,3.4vw,1.7rem);position:relative;overflow:hidden}
+.rev-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--gold),var(--pink))}
+.rev-head{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.7rem}
+.rev-stars{color:#9A6B12;letter-spacing:.12em;font-size:.9rem;line-height:1}
+.rev-src{font-family:var(--disp);font-weight:800;font-size:.62rem;letter-spacing:.06em;
+  color:var(--sub);background:var(--milk);border:1px solid var(--line);border-radius:999px;padding:.28rem .6rem}
+a.rev-src:hover{color:var(--ink);border-color:var(--ink)}
+.rev-q{font-size:.95rem;line-height:1.75;color:var(--sub);margin:0;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;overflow:hidden}
+.rev-q.open{-webkit-line-clamp:unset;display:block;overflow:visible}
+.rev-more{align-self:flex-start;margin-top:.55rem;font-family:var(--disp);font-weight:700;font-size:.8rem;
+  color:var(--blue);text-decoration:underline;text-underline-offset:3px;padding:0}
+.rev-by{margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;
+  align-items:baseline;gap:.2rem .5rem}
+.rev-by b{font-family:var(--disp);font-weight:800;font-size:.95rem;color:var(--ink)}
+.rev-by span{color:var(--sub);font-size:.86rem}
+.rev-foot{display:flex;align-items:center;justify-content:center;gap:.9rem;margin-top:1.1rem;flex-wrap:wrap}
+.rev-dots{display:flex;justify-content:center;align-items:center;gap:.35rem;margin:0;padding:0}
+.rev-dots button{width:24px;height:24px;border:0;background:none;padding:0;display:grid;place-items:center}
+.rev-dots button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:.25s}
+.rev-dots button.on::before{background:var(--ink);transform:scale(1.3)}
+.rev-nav{display:none;position:absolute;top:42%;z-index:4;transform:translateY(-50%);width:44px;height:44px;
+  padding:0;justify-content:center;background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow)}
+.rev-nav:hover{transform:translateY(-50%) scale(1.04)}
+.rev-nav-prev{left:-.6rem}.rev-nav-next{right:-.6rem}
+.rev-nav svg{width:17px;height:17px}
+@media(min-width:900px){
+  .rev-card{flex:0 0 calc((100% - 2*clamp(.9rem,2.4vw,1.4rem))/3)}
+  .rev-nav{display:grid}
+}
+@media(min-width:600px) and (max-width:899px){.rev-card{flex:0 0 calc((100% - clamp(.9rem,2.4vw,1.4rem))/2)}}
+html[lang="th"] .rev-q{line-height:1.95;-webkit-line-clamp:6}
 </style>
 <script type="application/ld+json">
 {
@@ -856,7 +966,7 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
   <div class="wrap">
     <a class="logo" href="/"><span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#17151F"/><text x="10" y="46" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="40" fill="#FFF8F0">m</text><circle cx="50" cy="44" r="7" fill="#FF3D8F"/></svg></span><i></i>mikaro</a>
     <nav class="top-links" aria-label="Main">
-      <a href="/work">Work</a><a href="/praow">PRAOW</a><a href="/services">Services</a><a href="/business">For business</a><a href="/ai-lab">AI Lab</a><a href="/contact">Contact</a>
+      <a href="/work">Work</a><a href="/services">Services</a><a href="/business">For business</a><a href="/ai-lab">AI Lab</a><a href="/contact">Contact</a>
     </nav>
     <a class="btn btn-blue magnet" href="/contact">Start a project</a>
   </div>
@@ -868,7 +978,7 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
   <div class="wrap">
     <div>
       <span class="badge"><span class="dot"></span>7 builds live right now · click them</span>
-      <h1>We make <span class="pk">real products</span> · not <span class="swash">pretty promises.</span></h1>
+      <h1>We make <span class="grad">real products</span> · not <span class="swash">pretty promises.</span></h1>
       <p class="sub"><b>An AI-powered studio:</b> senior creative direction with an AI-scale engineering engine. We ship international-grade systems in weeks, not months.</p>
       <div class="biz-trust" aria-label="Trust signals">
         <a class="biz-chip" href="https://share.google/W5Y1omsP3xsZjBfuW" target="_blank" rel="noopener">★ 5.0 on Google · 16 reviews</a>
@@ -883,21 +993,19 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
       <p class="hero-biz"><a href="/business">Run a shop, salon, restaurant or hotel? → This page is for you</a></p>
       <div class="hero-proof"><span class="stars">★★★★★</span><span><b>“Absolutely beautiful”</b> · Dr. Zac, first client</span></div>
     </div>
-    <div class="collage" aria-hidden="true">
-      <div class="fl fl-mio">
-        <div class="ph has-img" id="heroMioSlot">
-          <picture><source media="(max-width:768px)" srcset="/assets/img/miomika-hero-mobile.jpg"><img src="/assets/img/miomika-hero-desktop.jpg" alt="Miomika · live app" width="1000" height="920" loading="eager" fetchpriority="high" decoding="async"></picture>
-        </div>
-        <div class="cap">Miomika · AI companion · live</div>
+    <div class="flagship" aria-hidden="true">
+      <div class="fg fg-desk">
+        <div class="bar"><i></i><i></i><i></i><span>teakhouse.mikaro.studio</span></div>
+        <img src="/assets/img/proof/th-guest-hero-800.webp" srcset="/assets/img/proof/th-guest-hero-800.webp 800w, /assets/img/proof/th-guest-hero.webp 1600w" sizes="(max-width:900px) 82vw, 460px" width="1600" height="828" alt="" loading="eager" fetchpriority="high" decoding="async">
       </div>
-      <div class="fl fl-oc">
-        <div class="ph has-img" id="heroOcSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/opticlean-hero-desktop-mobile.jpg"><img src="/assets/img/opticlean-hero-desktop.jpg" alt="OptiClean · live store" width="1346" height="634" loading="eager" fetchpriority="high" decoding="async"></picture></div>
-        <div class="cap">OptiClean · live store</div>
+      <div class="fg fg-phone">
+        <div class="bar"><i></i><i></i><i></i><span>praow</span></div>
+        <img src="/assets/img/proof/pw-mobile.webp" width="780" height="1290" alt="" loading="eager" decoding="async">
       </div>
-      <span class="fl fl-chat">สวัสดีค่ะ · say it with me</span>
-      <span class="fl fl-chat2">Checkout works · try 4242</span>
-      <span class="stick st1">SHIPPED, NOT MOCKED</span>
-      <span class="stick st2">MADE IN BKK ✦</span>
+      <span class="gl gl-a"><i></i>Direct booking, no OTA cut</span>
+      <span class="gl gl-b"><i></i>฿500 locks the slot</span>
+      <span class="gl gl-c"><i></i>PageSpeed 95+ · TH / EN</span>
+      <div class="tagpair"><span>THE TEAK HOUSE</span><span>PRAOW</span></div>
     </div>
   </div>
 </section>
@@ -932,8 +1040,6 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
         <div class="btn-row">
           <a class="btn magnet" href="/teakhouse">Read the case study</a>
           <a class="btn btn-ghost magnet" href="https://teakhouse.mikaro.studio" target="_blank" rel="noopener">Visit live ↗</a>
-          <a class="btn btn-ghost magnet" style="border-color:#1C1813;color:#1C1813;background:transparent" href="https://teakhouse.mikaro.studio" target="_blank" rel="noopener">Enter the hotel ↗</a>
-          <a class="btn want magnet" href="/contact?service=website&want=Teak%20House">I want this →</a>
         </div>
       </div>
     </article>
@@ -947,7 +1053,6 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
         <div class="btn-row">
           <a class="btn magnet" href="/work/miomika">Read the case study</a>
           <a class="btn btn-ghost magnet" href="https://miomika.com" target="_blank" rel="noopener">Visit live ↗</a>
-          <a class="btn want magnet" href="/contact?service=ai&want=Miomika">I want this →</a>
         </div>
       </div>
       <div class="vis mio-vis zoomin" id="mioVisWrap">
@@ -976,8 +1081,7 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
         <div class="stats-row"><span class="sp">10 pages · FR/EN</span><span class="sp">EUR / CHF</span><span class="sp">Stripe checkout</span><span class="sp">SEO + schema</span></div>
         <div class="btn-row">
           <a class="btn magnet" href="/work/opticlean">Read the case study</a>
-          <a class="btn btn-ghost magnet" style="border-color:#1C1813;color:#1C1813;background:transparent" href="https://opticlean.mikaro.studio" target="_blank" rel="noopener">Enter the store ↗</a>
-          <a class="btn want magnet" href="/contact?service=ecommerce&want=OptiClean">I want this →</a>
+          <a class="btn btn-ghost magnet" style="border-color:#1C1813;color:#1C1813;background:transparent" href="https://opticlean.mikaro.studio" target="_blank" rel="noopener">Visit live ↗</a>
         </div>
       </div>
     </article>
@@ -998,9 +1102,8 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
         <div class="btn-row">
           <a class="btn magnet" href="/work/praow">Read the case study</a>
           <a class="btn btn-ghost magnet" style="border-color:#1C1813;color:#1C1813;background:transparent" href="https://praow.mikaro.studio" target="_blank" rel="noopener">Visit live ↗</a>
-          <a class="btn btn-ghost magnet" href="/praow">The clinic platform →</a>
-          <a class="btn want magnet" href="/contact?service=website&want=PRAOW">I want this →</a>
         </div>
+        <p class="quiet-row"><a class="quiet-link" href="/praow">The clinic platform, in full →</a></p>
       </div>
     </article>
 
@@ -1019,8 +1122,7 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
         <div class="stats-row"><span class="sp">Trilingual EN/FR/DE</span><span class="sp">Structure finder</span><span class="sp">Lead capture</span><span class="sp">Swiss precision design</span></div>
         <div class="btn-row">
           <a class="btn magnet" href="/work/outsiders">Read the case study</a>
-          <a class="btn btn-ghost magnet" style="border-color:#1C1813;color:#1C1813;background:transparent" href="https://outsiderslegal.mikaro.studio" target="_blank" rel="noopener">Enter the concept ↗</a>
-          <a class="btn want magnet" href="/contact?service=website&want=Outsiders%20Legal">I want this →</a>
+          <a class="btn btn-ghost magnet" style="border-color:#1C1813;color:#1C1813;background:transparent" href="https://outsiderslegal.mikaro.studio" target="_blank" rel="noopener">See the concept ↗</a>
         </div>
       </div>
     </article>
@@ -1031,60 +1133,44 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
   </div>
 </section>
 
-<!-- ============ CLIENT QUOTE ============ -->
-<section class="quote-band" aria-label="Client words">
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews" aria-label="Client reviews">
   <div class="wrap">
-    <figure class="qb rv">
-      <span class="qb-mark" aria-hidden="true">&ldquo;</span>
-      <blockquote>
-        <p class="qb-lead">Working with Mikaro Studio on the Balzac Antiques website has been an absolute pleasure.</p>
-        <p>He is an incredibly talented designer with a real eye for detail, aesthetics, and brand identity. He understood the spirit of Balzac Antiques from the beginning and managed to translate our vision into something that feels elegant, distinctive, and truly premium.</p>
-        <p>Beyond his talent, he is creative, thoughtful, responsive, and genuinely invested in getting things right. You can feel that he cares about the work, not just about completing a project. I highly recommend him to anyone looking for a designer who brings both exceptional skills and real sensitivity to a project. Fantastic work from start to finish.</p>
-      </blockquote>
-      <figcaption>
-        <span class="qb-stars" aria-label="Five out of five">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <b>Chango Zaza Favre</b><span class="qb-who">· Balzac Antiques, Bangkok</span>
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ============ TESTIMONIAL ============ -->
-<section class="testi" aria-label="Client words">
-  <div class="wrap">
-    <div class="testi-card rv">
-      <div class="avatar" id="zacAvatar">Z</div>
-      <div>
-        <blockquote>“It looks absolutely beautiful… it's clear how much care and attention you've put into every detail. Your demo has given me every confidence that you're the right person for this project.”</blockquote>
-        <cite><b>Dr. Zac</b> · Founder, OptiClean · Bangkok</cite>
-        <div class="stars">★★★★★</div>
+    <div class="shead rv">
+      <span class="pill">In their words</span>
+      <h2>What clients <span class="pk">actually say.</span></h2>
+      <p>Live from our Google Business Profile, alongside the notes clients sent the studio direct.</p>
+    </div>
+    <div class="rev-slide">
+      <button type="button" class="btn rev-nav rev-nav-prev" aria-label="Previous review" data-rev-nav="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg></button>
+      <div class="rev-rail" id="revRail">
+        <article class="rev-card">
+          <div class="rev-head"><span class="rev-stars" aria-label="5/5">★★★★★</span></div>
+          <p class="rev-q">Working with Mikaro Studio on the Balzac Antiques website has been an absolute pleasure. He is an incredibly talented designer with a real eye for detail, aesthetics, and brand identity. He understood the spirit of Balzac Antiques from the beginning and managed to translate our vision into something that feels elegant, distinctive, and truly premium. Beyond his talent, he is creative, thoughtful, responsive, and genuinely invested in getting things right. You can feel that he cares about the work, not just about completing a project. I highly recommend him to anyone looking for a designer who brings both exceptional skills and real sensitivity to a project. Fantastic work from start to finish.</p>
+          <footer class="rev-by"><b>Chango Zaza Favre</b><span>Balzac Antiques, Bangkok</span></footer>
+        </article>
+        <article class="rev-card">
+          <div class="rev-head"><span class="rev-stars" aria-label="5/5">★★★★★</span></div>
+          <p class="rev-q">It looks absolutely beautiful… it's clear how much care and attention you've put into every detail. Your demo has given me every confidence that you're the right person for this project.</p>
+          <footer class="rev-by"><b>Dr. Zac</b><span>OptiClean, Bangkok</span></footer>
+        </article>
       </div>
+      <button type="button" class="btn rev-nav rev-nav-next" aria-label="Next review" data-rev-nav="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <div class="rev-foot">
+      <div class="rev-dots" id="revDots" role="group" aria-label="Choose a review"></div>
+      <a class="quiet-link" href="https://share.google/W5Y1omsP3xsZjBfuW" target="_blank" rel="noopener">5.0 on Google · read every review →</a>
     </div>
   </div>
 </section>
-
-<!-- PENDING-KIK-QUOTE
-<section class="testi" aria-label="Client words">
-  <div class="wrap">
-    <div class="testi-card rv">
-      <div class="avatar" id="kikAvatar">K</div>
-      <div>
-        QUOTE-SLOT
-        <blockquote><a href="/work/outsiders">Partnering with Mikaro on the Outsiders Legal website concept ↗</a></blockquote>
-        <cite><b>Jeeranan (Kik)</b> · Director, Outsiders Legal</cite>
-      </div>
-    </div>
-  </div>
-</section>
--->
 
 <!-- ============ STATS ============ -->
 <section class="stats">
   <div class="wrap">
     <div class="stats-g">
-      <div class="stat rv"><b data-count="3">3</b><span>Products in production</span></div>
-      <div class="stat rv"><b data-count="13">13</b><span>Pages live right now</span></div>
-      <div class="stat rv"><b data-count="3">3</b><span>Languages shipped</span></div>
+      <div class="stat rv"><b data-count="7">7</b><span>Builds live in production</span></div>
+      <div class="stat rv"><b data-count="26">26</b><span>Pages live right now</span></div>
+      <div class="stat rv"><b data-count="4">4</b><span>Languages shipped</span></div>
       <div class="stat rv"><b data-count="0">0</b><span>Templates used</span></div>
     </div>
   </div>
@@ -1157,6 +1243,106 @@ html[lang="th"] .qb blockquote .qb-lead{line-height:1.7}
   </div>
 </footer>
 
+<script>
+/* Reviews rail · dots, arrows, peek, clamp toggle, and a live Google merge.
+   The curated cards are already in the markup, so this only ever adds. */
+(function(){
+  var rail=document.getElementById("revRail");
+  if(!rail)return;
+  var slide=rail.closest(".rev-slide"),dots=document.getElementById("revDots");
+  var TH=document.documentElement.lang==="th";
+  var T=TH?{more:"อ่านเพิ่มเติม",less:"ย่อ",src:"รีวิวจาก Google"}
+          :{more:"Read more",less:"Show less",src:"Google review"};
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function card(r,placeUrl){
+    var stars="\u2605".repeat(r.stars)+"\u2606".repeat(5-r.stars);
+    var href=r.url||placeUrl||"";
+    var src=href?'<a class="rev-src" href="'+esc(href)+'" target="_blank" rel="noopener">Google</a>'
+                :'<span class="rev-src">Google</span>';
+    var el=document.createElement("article");
+    el.className="rev-card";
+    el.innerHTML='<div class="rev-head"><span class="rev-stars" aria-label="'+r.stars+'/5">'+stars+'</span>'+src+'</div>'
+      +'<p class="rev-q">'+esc(r.text)+'</p>'
+      +'<footer class="rev-by"><b>'+esc(r.name)+'</b>'+(r.when?'<span>'+esc(r.when)+'</span>':'')+'</footer>';
+    el.querySelector(".rev-src").setAttribute("title",T.src);
+    return el;
+  }
+
+  function clamps(){
+    rail.querySelectorAll(".rev-card").forEach(function(c){
+      var q=c.querySelector(".rev-q");
+      if(!q||c.querySelector(".rev-more"))return;
+      if(q.scrollHeight-q.clientHeight<8)return;      // not actually clamped
+      var b=document.createElement("button");
+      b.type="button";b.className="rev-more";b.textContent=T.more;
+      b.addEventListener("click",function(){
+        var open=q.classList.toggle("open");
+        b.textContent=open?T.less:T.more;
+        b.setAttribute("aria-expanded",open?"true":"false");
+      });
+      b.setAttribute("aria-expanded","false");
+      q.insertAdjacentElement("afterend",b);
+    });
+  }
+
+  var cards=[],io=null;
+  function mount(){
+    cards=[].slice.call(rail.querySelectorAll(".rev-card"));
+    if(dots){
+      dots.innerHTML="";
+      cards.forEach(function(c,i){
+        var b=document.createElement("button");
+        b.type="button";
+        b.setAttribute("aria-label",(TH?"รีวิวที่ ":"Review ")+(i+1));
+        if(i===0)b.classList.add("on");
+        b.addEventListener("click",function(){rail.scrollTo({left:c.offsetLeft,behavior:"smooth"});});
+        dots.appendChild(b);
+      });
+    }
+    if(io)io.disconnect();
+    if("IntersectionObserver" in window){
+      io=new IntersectionObserver(function(es){
+        var best=null,ratio=0;
+        es.forEach(function(e){if(e.isIntersecting&&e.intersectionRatio>ratio){best=e.target;ratio=e.intersectionRatio;}});
+        if(best&&dots){var i=cards.indexOf(best);
+          [].forEach.call(dots.children,function(b,n){b.classList.toggle("on",n===i);});}
+      },{root:rail,threshold:[.45,.6,.75]});
+      cards.forEach(function(c){io.observe(c);});
+    }
+    clamps();
+  }
+  function index(){
+    var best=0,d=Infinity;
+    cards.forEach(function(c,i){var v=Math.abs(c.offsetLeft-rail.scrollLeft);if(v<d){d=v;best=i;}});
+    return best;
+  }
+  if(slide)slide.querySelectorAll("[data-rev-nav]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var dir=Number(btn.getAttribute("data-rev-nav"))||1;
+      var i=Math.max(0,Math.min(cards.length-1,index()+dir));
+      rail.scrollTo({left:cards[i].offsetLeft,behavior:"smooth"});
+    });
+  });
+  mount();
+
+  // live Google reviews, merged in front of the curated set · never blocking
+  function load(){
+    fetch("/api/reviews?lang="+(TH?"th":"en"),{headers:{accept:"application/json"}})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(d){
+        if(!d||!d.reviews||!d.reviews.length)return;
+        var frag=document.createDocumentFragment();
+        d.reviews.slice(0,5).forEach(function(r){frag.appendChild(card(r,d.placeUrl));});
+        rail.insertBefore(frag,rail.firstChild);
+        rail.scrollLeft=0;
+        mount();
+      })
+      .catch(function(){});
+  }
+  if("requestIdleCallback" in window)requestIdleCallback(load,{timeout:2500});else setTimeout(load,1200);
+})();
+</script>
 <script src="/js/main.js" defer></script>
 <script src="/js/chat.js" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>

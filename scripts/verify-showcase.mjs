@@ -64,7 +64,10 @@ for (const path of PAGES) {
     page.on('pageerror', e => errors.push(String(e)));
     // /_vercel/insights only exists on Vercel; it is expected to 404 locally
     page.on('response', r => {
-      if (r.status() >= 400 && !r.url().includes('/_vercel/')) errors.push('HTTP ' + r.status() + ' ' + r.url());
+      // /_vercel/insights and /api/* are Vercel-only; both 404 on the local server
+      if (r.status() >= 400 && !r.url().includes('/_vercel/') && !r.url().includes('/api/')) {
+        errors.push('HTTP ' + r.status() + ' ' + r.url());
+      }
     });
     await page.goto(BASE + path, { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
