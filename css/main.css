@@ -1025,6 +1025,96 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
    change on the loaded page. */
 .fl .cap,.fl-chat,.fl-chat2,.stick{white-space:nowrap}
 
+/* ================================================================
+   v6.8 · HERO ELEVATION · cinematic entrance, living collage,
+   mobile first-screen proof. Layout, markup order and copy are
+   untouched. Every moving state is keyed on classes main.js adds
+   after first paint (.hx on .hero, .cin on .collage, .hin/.lin on
+   the headline), so no-JS and reduced-motion render the calm static
+   hero and the LCP paint is never hidden. All animation is
+   transform+opacity except the one-shot headline sheen
+   (background-position, runs once, post-entrance, post-LCP).
+   ================================================================ */
+/* static depth polish · applies in every mode */
+.hero{position:relative}
+.hero .wrap{position:relative;z-index:1}
+.hero .badge .dot{position:relative;animation:none}
+.hero .badge .dot::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid rgba(34,197,94,.55);opacity:0;pointer-events:none}
+.fl-mio,.fl-oc{box-shadow:inset 0 1px 0 rgba(255,255,255,.85),inset 0 0 0 1px rgba(255,255,255,.4),var(--shadow)}
+.fl-mio:hover,.fl-oc:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.85),inset 0 0 0 1px rgba(255,255,255,.4),0 34px 80px -28px rgba(23,21,31,.32)}
+.fl-mio .cap::before,.fl-oc .cap::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#22C55E;margin-right:.4em;vertical-align:1px}
+.collage::before{content:"";position:absolute;z-index:1;inset:-16% -20%;pointer-events:none;background:radial-gradient(38% 34% at 24% 26%,rgba(255,61,143,.16),rgba(255,61,143,0) 70%),radial-gradient(44% 40% at 78% 30%,rgba(36,56,255,.11),rgba(36,56,255,0) 70%),radial-gradient(36% 32% at 55% 78%,rgba(232,178,60,.14),rgba(232,178,60,0) 70%)}
+@media(min-width:901px){
+  .hero::before{content:"";position:absolute;z-index:0;left:-4%;top:-10%;width:58%;height:82%;pointer-events:none;background:radial-gradient(42% 38% at 30% 35%,rgba(36,56,255,.07),rgba(36,56,255,0) 70%),radial-gradient(34% 30% at 62% 62%,rgba(255,61,143,.06),rgba(255,61,143,0) 70%)}
+}
+.fl-mio::after,.fl-oc::after{content:"";position:absolute;left:9%;right:9%;top:100%;height:30px;margin-top:2px;border-radius:50%;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(23,21,31,.3),rgba(23,21,31,0) 68%);opacity:0;pointer-events:none}
+.hero-ctas .btn-blue{position:relative}
+.hero-ctas .btn-blue::before{content:"";position:absolute;inset:-6px;border-radius:999px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(36,56,255,0) 55%,rgba(36,56,255,.5) 80%,rgba(36,56,255,0) 100%);opacity:0}
+.collage::after{content:"✦";position:absolute;z-index:6;left:7%;bottom:31%;font-size:15px;color:var(--gold);opacity:0;pointer-events:none}
+.fl-oc::before{content:"✦";position:absolute;z-index:6;right:-22px;top:-16px;font-size:13px;color:var(--gold);opacity:0;pointer-events:none}
+.fl-chat::after{content:"✦";position:absolute;left:-26px;top:-20px;font-size:11px;color:var(--gold);opacity:0;pointer-events:none}
+.st2::after{content:"✦";position:absolute;right:-20px;bottom:-16px;font-size:12px;color:var(--gold);opacity:0;pointer-events:none}
+/* motion · only when the visitor allows it */
+@media(prefers-reduced-motion:no-preference){
+  .hero h1.wsplit .wu{overflow:visible}
+  .hero h1.wsplit .wu i{transform:translateY(24px);opacity:.02;transition:transform .72s var(--ease),opacity .55s ease;transition-delay:calc(var(--d,0s)*1.45)}
+  .hero h1.wsplit.hin .wu i{transform:none;opacity:1}
+  .hero h1.lin{animation:heroLineIn .85s var(--ease) both}
+  .hero h1.hin .pk,.hero h1.lin .pk{background:linear-gradient(105deg,var(--pink) 0 42%,#FF7DB4 46%,#FFE9F3 50%,#FF7DB4 54%,var(--pink) 58% 100%);background-size:320% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:pkSheen 1.25s ease-in-out 1.5s 1 both}
+  .collage.cin .fl-mio{animation:heroCardA .95s var(--ease) both,floatA 8s ease-in-out .95s infinite}
+  .collage.cin .fl-oc{animation:heroCardB 1.05s var(--ease) .08s both,floatB 9.5s ease-in-out 1.13s infinite}
+  .collage.cin .fl-chat{animation:popIn .5s var(--ease) 1.02s both,chatBob 16s ease-in-out 2.1s infinite}
+  .collage.cin .fl-chat2{animation:popIn .5s var(--ease) 1.14s both,chatBob 16s ease-in-out 10.1s infinite}
+  .collage.cin .st1{animation:popRotA .55s var(--ease) 1.24s both}
+  .collage.cin .st2{animation:popRotB .55s var(--ease) 1.34s both}
+  .collage.cin .fl-mio::after{opacity:.5;animation:shBreatheA 8s ease-in-out .95s infinite}
+  .collage.cin .fl-oc::after{opacity:.45;animation:shBreatheB 9.5s ease-in-out 1.13s infinite}
+  .hero.hx .collage::before{animation:aurora 26s ease-in-out infinite alternate}
+  @media(min-width:901px){.hero.hx::before{animation:aurora2 32s ease-in-out infinite alternate}}
+  .hero.hx .badge .dot::after{animation:radar 2.6s ease-out .8s infinite}
+  .hero.hx .hero-ctas .btn-blue::before{animation:ctaGlow 5s ease-in-out 1.6s infinite}
+  .hero.hx .fl-mio .cap::before,.hero.hx .fl-oc .cap::before{animation:capPulse 2.4s ease-in-out infinite}
+  .hero.hx .collage::after{animation:glint 13s linear 3s infinite}
+  .hero.hx .fl-oc::before{animation:glint 17s linear 7s infinite}
+  .hero.hx .fl-chat::after{animation:glint 15s linear 11s infinite}
+  .hero.hx .st2::after{animation:glint 19s linear 5.5s infinite}
+}
+@keyframes heroLineIn{from{opacity:.02;transform:translateY(26px)}}
+@keyframes pkSheen{to{background-position:0% 0}}
+@keyframes heroCardA{from{transform:rotate(-8deg) translateY(34px) scale(.96)}to{transform:rotate(-5deg) translateY(0) scale(1)}}
+@keyframes heroCardB{from{transform:rotate(7deg) translateY(40px) scale(.96)}to{transform:rotate(4deg) translateY(0) scale(1)}}
+@keyframes floatA{0%,100%{transform:rotate(-5deg) translateY(0)}50%{transform:rotate(-4.2deg) translateY(-9px)}}
+@keyframes floatB{0%,100%{transform:rotate(4deg) translateY(0)}50%{transform:rotate(4.8deg) translateY(-7px)}}
+@keyframes popIn{0%{opacity:0;transform:scale(.6) translateY(10px)}70%{opacity:1;transform:scale(1.05) translateY(-2px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes popRotA{0%{opacity:0;transform:rotate(-8deg) scale(.6)}70%{opacity:1;transform:rotate(-8deg) scale(1.07)}100%{opacity:1;transform:rotate(-8deg) scale(1)}}
+@keyframes popRotB{0%{opacity:0;transform:rotate(6deg) scale(.6)}70%{opacity:1;transform:rotate(6deg) scale(1.07)}100%{opacity:1;transform:rotate(6deg) scale(1)}}
+@keyframes chatBob{0%,6%,100%{transform:translateY(0) rotate(0)}2%{transform:translateY(-7px) rotate(-1.6deg)}4%{transform:translateY(1px) rotate(.6deg)}}
+@keyframes shBreatheA{0%,100%{opacity:.5;transform:scaleX(1)}50%{opacity:.26;transform:scaleX(.88)}}
+@keyframes shBreatheB{0%,100%{opacity:.45;transform:scaleX(1)}50%{opacity:.24;transform:scaleX(.9)}}
+@keyframes aurora{from{transform:rotate(-3deg) translate3d(-2%,-1.5%,0) scale(1)}to{transform:rotate(3deg) translate3d(2%,2%,0) scale(1.07)}}
+@keyframes aurora2{from{transform:translate3d(-1.5%,-1%,0) scale(1)}to{transform:translate3d(2%,1.5%,0) scale(1.06)}}
+@keyframes radar{0%{transform:scale(.5);opacity:.75}70%{transform:scale(2.05);opacity:0}100%{transform:scale(2.05);opacity:0}}
+@keyframes ctaGlow{0%,100%{opacity:.22;transform:scale(.985)}50%{opacity:.55;transform:scale(1.03)}}
+@keyframes capPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+@keyframes glint{0%,3.5%,100%{opacity:0;transform:scale(.2) rotate(0)}1.2%{opacity:.9;transform:scale(1) rotate(40deg)}2.4%{opacity:.35;transform:scale(.6) rotate(70deg)}}
+/* reduced motion · the hero holds completely still (base floats included) */
+@media(prefers-reduced-motion:reduce){
+  .fl-mio,.fl-oc,.fl-chat,.fl-chat2{animation:none}
+}
+/* mobile first screen · the proof peeks into the 390x844 viewport */
+@media(max-width:768px){
+  .hero{padding-top:1.5rem;padding-bottom:2rem}
+  .hero h1{font-size:clamp(2.05rem,9.2vw,2.5rem);margin:.95rem 0 .85rem}
+  .hero p.sub{font-size:.95rem;margin-bottom:.85rem}
+  .hero .biz-trust{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;margin:0 calc(var(--gut)*-1) 1.05rem;padding:2px var(--gut) 6px;max-width:none;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
+  .hero .biz-trust::-webkit-scrollbar{display:none}
+  .hero .biz-chip{flex:0 0 auto;white-space:nowrap}
+  .hero-ctas{margin-bottom:1rem}
+  .hero-biz{margin:-.35rem 0 .8rem;font-size:.86rem}
+  .hero-proof{font-size:.8rem}
+  .collage{min-height:380px;margin-top:1rem}
+}
+
 /* fail-open · with scripting unavailable every reveal renders settled */
 @media (scripting: none){
   .rv,.rv-l,.rv-r,.rv-s,.zoomin,.arv,.clipin{opacity:1!important;transform:none!important;clip-path:none!important}

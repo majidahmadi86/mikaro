@@ -316,9 +316,11 @@ bkk();setInterval(bkk,15000);
     setTimeout(()=>heads.forEach(h=>h.classList.add('hin')),1800);
   }else{
     heads.forEach(h=>h.classList.add('hin'));
+    // hero elevation · Thai headline enters as one line (word masks clip stacked vowels)
+    const hh=document.querySelector('.hero h1');if(hh)hh.classList.add('lin');
   }
 
-  const AUTO='.mega .txt>p,.mega .txt .tag,.mega .txt .stats-row,.mega .txt .btn-row,.phero .pill,.phero p,.case-body>*,.meta,.ct-card,.cform .cf,.cform button,.cside>*,.next-proj,.consult-band,.hero .sub,.hero-ctas,.hero-proof,.hero .badge,.serv-g .sv,.proc-g .pst,.bloq,.theater,.perf-badges>div';
+  const AUTO='.mega .txt>p,.mega .txt .tag,.mega .txt .stats-row,.mega .txt .btn-row,.phero .pill,.phero p,.case-body>*,.meta,.ct-card,.cform .cf,.cform button,.cside>*,.next-proj,.consult-band,.hero .sub,.hero-ctas,.hero-proof,.hero .badge,.hero .biz-trust,.hero .hero-biz,.serv-g .sv,.proc-g .pst,.bloq,.theater,.perf-badges>div';
   const seen=new Set();
   document.querySelectorAll(AUTO).forEach(el=>{
     if(seen.has(el)||el.classList.contains('rv')||el.classList.contains('rv-s'))return;
@@ -339,6 +341,12 @@ bkk();setInterval(bkk,15000);
   document.querySelectorAll('.arv').forEach(el=>aio.observe(el));
   requestAnimationFrame(()=>document.querySelectorAll('.arv').forEach(el=>{if(arvView(el))arvIn(el);}));
   setTimeout(()=>document.querySelectorAll('.arv').forEach(arvIn),1800);
+
+  /* hero elevation · arm the entrance and ambient layers (homepage only ·
+     .hero exists nowhere else that loads this file). Classes land one frame
+     after this script runs, so the first paint is never gated on them. */
+  const hero=document.querySelector('.hero');
+  if(hero)requestAnimationFrame(()=>{hero.classList.add('hx');const co=hero.querySelector('.collage');if(co)co.classList.add('cin');});
 })();
 
 /* ---------- v5.4: mobile menu + photo socials ---------- */
