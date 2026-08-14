@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sarabun-thai-400.woff2" crossorigin>
 <!-- inlined from css/main.css · if css/main.css changes, this block must be re-synced -->
 <style>/* v6.4 · self-hosted brand fonts: no third-party, no render-block, no swap-shift */
-@font-face{font-family:'Gabarito';src:url('/assets/fonts/gabarito.woff2') format('woff2');font-weight:400 900;font-style:normal;font-display:swap}
-@font-face{font-family:'Figtree';src:url('/assets/fonts/figtree.woff2') format('woff2');font-weight:300 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Gabarito';src:url('/assets/fonts/gabarito.woff2') format('woff2');font-weight:400 900;font-style:normal;font-display:optional}
+@font-face{font-family:'Figtree';src:url('/assets/fonts/figtree.woff2') format('woff2');font-weight:300 900;font-style:normal;font-display:optional}
 /* v6.3 · metric-compatible font fallbacks: kill font-swap CLS */
-@font-face{font-family:'Gabarito Fallback';src:local('Arial Bold'),local('Arial');font-weight:600 900;ascent-override:100%;descent-override:24%;line-gap-override:0%;size-adjust:102%}
-@font-face{font-family:'Figtree Fallback';src:local('Arial');font-weight:400 700;ascent-override:94%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+@font-face{font-family:'Gabarito Fallback';src:local('Arial Bold'),local('Arial');font-weight:600 900;ascent-override:108%;descent-override:26%;line-gap-override:0%;size-adjust:95%}
+@font-face{font-family:'Figtree Fallback';src:local('Arial');font-weight:400 700;ascent-override:92.1%;descent-override:24.5%;line-gap-override:0%;size-adjust:102%}
 /* ---------- self-hosted Thai type · Prompt (display) + Sarabun (body) --------
    Only the Thai subsets are shipped. Latin falls through to Gabarito / Figtree,
    which is the brand face anyway. Pulling these off Google cost ~2.5s of first
@@ -40,8 +40,8 @@
    document. Regenerate with scripts/fetch-thai-fonts.mjs. Both families are OFL.
    -------------------------------------------------------------------------- */
 @font-face{font-family:'Prompt';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/prompt-thai-700.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
-@font-face{font-family:'Prompt';font-style:normal;font-weight:900;font-display:swap;src:url('/assets/fonts/prompt-thai-900.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
-@font-face{font-family:'Sarabun';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/sarabun-thai-400.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:'Prompt';font-style:normal;font-weight:900;font-display:optional;src:url('/assets/fonts/prompt-thai-900.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:'Sarabun';font-style:normal;font-weight:400;font-display:optional;src:url('/assets/fonts/sarabun-thai-400.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
 @font-face{font-family:'Sarabun';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/sarabun-thai-600.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
 @font-face{font-family:'Sarabun';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/sarabun-thai-700.woff2') format('woff2');unicode-range:U+02D7,U+0303,U+0331,U+0E01-0E5B,U+200C-200D,U+25CC}
 

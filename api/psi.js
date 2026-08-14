@@ -42,6 +42,11 @@ export default async function handler(req, res) {
       renderBlocking: items('render-blocking-resources', 6, i => ({ url: i.url, ms: i.wastedMs })),
       mainThread: items('mainthread-work-breakdown', 8, i => ({ group: i.groupLabel, ms: Math.round(i.duration) })),
       bootup: items('bootup-time', 6, i => ({ url: (i.url || '').split('/').slice(-1)[0], total: Math.round(i.total || 0), script: Math.round(i.scripting || 0) })),
+      shifts: items('layout-shifts', 6, i => ({
+        score: i.score,
+        node: i.node?.snippet?.slice(0, 110) || null,
+        causes: (i.subItems?.items || []).map(x => (x.cause || '') + ' ' + (x.extra?.value || x.extra?.url || '')).slice(0, 3)
+      })),
       preloadLcp: pick('prioritize-lcp-image'),
       fetchTime: lh.fetchTime
     });
