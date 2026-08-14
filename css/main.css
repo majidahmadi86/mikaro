@@ -1019,3 +1019,14 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
 .mega h3 .h3-link{color:inherit;text-decoration:none;transition:color .25s}
 .mega h3 .h3-link:hover{color:var(--blue)}
 .mega .quiet-row{margin:.2rem 0 1rem}
+
+/* font-swap CLS lock · collage text is single-line by design, so freezing the
+   wrap makes fallback and webfont render at identical geometry. Zero visual
+   change on the loaded page. */
+.fl .cap,.fl-chat,.fl-chat2,.stick{white-space:nowrap}
+
+/* fail-open · with scripting unavailable every reveal renders settled */
+@media (scripting: none){
+  .rv,.rv-l,.rv-r,.rv-s,.zoomin,.arv,.clipin{opacity:1!important;transform:none!important;clip-path:none!important}
+  .wsplit .wu i{transform:none!important}
+}

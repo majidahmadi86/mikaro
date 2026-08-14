@@ -31,17 +31,27 @@
       "source": "/th/work/praow.html",
       "destination": "/th/praow",
       "permanent": true
+    },
+    {
+      "source": "/review",
+      "destination": "/banyan",
+      "permanent": true
+    },
+    {
+      "source": "/review/(.*)",
+      "destination": "/banyan",
+      "permanent": true
     }
   ],
   "headers": [
     {
-      "source": "/review",
+      "source": "/banyan",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
       ]
     },
     {
-      "source": "/review/(.*)",
+      "source": "/banyan/(.*)",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
       ]

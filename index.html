@@ -905,6 +905,17 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
 .mega h3 .h3-link{color:inherit;text-decoration:none;transition:color .25s}
 .mega h3 .h3-link:hover{color:var(--blue)}
 .mega .quiet-row{margin:.2rem 0 1rem}
+
+/* font-swap CLS lock · collage text is single-line by design, so freezing the
+   wrap makes fallback and webfont render at identical geometry. Zero visual
+   change on the loaded page. */
+.fl .cap,.fl-chat,.fl-chat2,.stick{white-space:nowrap}
+
+/* fail-open · with scripting unavailable every reveal renders settled */
+@media (scripting: none){
+  .rv,.rv-l,.rv-r,.rv-s,.zoomin,.arv,.clipin{opacity:1!important;transform:none!important;clip-path:none!important}
+  .wsplit .wu i{transform:none!important}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -974,12 +985,12 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
     <div class="collage" aria-hidden="true">
       <div class="fl fl-mio">
         <div class="ph has-img" id="heroTeakSlot">
-          <picture><source media="(max-width:768px)" srcset="/assets/img/teakhouse-hero-mobile.webp"><img src="/assets/img/teakhouse-hero-desktop.webp" alt="The Teak House · live hotel platform" width="735" height="920" loading="eager" fetchpriority="high" decoding="async"></picture>
+          <picture><source media="(max-width:768px)" srcset="/assets/img/teakhouse-hero-mobile.webp"><img src="/assets/img/teakhouse-hero-desktop.webp" srcset="/assets/img/teakhouse-hero-desktop-368.webp 368w, /assets/img/teakhouse-hero-desktop.webp 735w" sizes="(max-width:768px) 74vw, 352px" alt="The Teak House · live hotel platform" width="735" height="920" loading="eager" fetchpriority="high" decoding="async"></picture>
         </div>
         <div class="cap">The Teak House · hotel platform · live</div>
       </div>
       <div class="fl fl-oc">
-        <div class="ph has-img" id="heroPraowSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/praow-hero-mobile.webp"><img src="/assets/img/praow-hero-desktop.webp" alt="PRAOW · live clinic platform" width="1343" height="632" loading="eager" fetchpriority="high" decoding="async"></picture></div>
+        <div class="ph has-img" id="heroPraowSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/praow-hero-mobile.webp"><img src="/assets/img/praow-hero-desktop.webp" srcset="/assets/img/praow-hero-desktop-288.webp 288w, /assets/img/praow-hero-desktop.webp 1343w" sizes="(max-width:768px) 60vw, 272px" alt="PRAOW · live clinic platform" width="1343" height="632" loading="eager" fetchpriority="high" decoding="async"></picture></div>
         <div class="cap">PRAOW · clinic platform · live</div>
       </div>
       <span class="fl fl-chat">฿500 locks the slot</span>
@@ -1129,7 +1140,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
       <button type="button" class="btn rev-nav rev-nav-prev" aria-label="Previous review" data-rev-nav="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg></button>
       <div class="rev-rail" id="revRail">
         <article class="rev-card">
-          <div class="avatar"><img src="/assets/img/chango.jpg" alt="Chango Zaza Favre" width="200" height="225" loading="lazy" decoding="async"></div>
+          <div class="avatar"><img src="/assets/img/chango-192.webp" alt="Chango Zaza Favre" width="192" height="216" loading="lazy" decoding="async"></div>
           <div>
             <div class="rev-head"><span class="rev-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg></span></div>
             <blockquote class="rev-q">Working with Mikaro Studio on the Balzac Antiques website has been an absolute pleasure. He is an incredibly talented designer with a real eye for detail, aesthetics, and brand identity. He understood the spirit of Balzac Antiques from the beginning and managed to translate our vision into something that feels elegant, distinctive, and truly premium. Beyond his talent, he is creative, thoughtful, responsive, and genuinely invested in getting things right. You can feel that he cares about the work, not just about completing a project. I highly recommend him to anyone looking for a designer who brings both exceptional skills and real sensitivity to a project. Fantastic work from start to finish.</blockquote>
@@ -1137,7 +1148,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
           </div>
         </article>
         <article class="rev-card">
-          <div class="avatar"><img src="/assets/img/kik.jpg" alt="Jeeranan" width="200" height="225" loading="lazy" decoding="async"></div>
+          <div class="avatar"><img src="/assets/img/kik-192.webp" alt="Jeeranan" width="192" height="216" loading="lazy" decoding="async"></div>
           <div>
             <div class="rev-head"><span class="rev-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg></span></div>
             <blockquote class="rev-q">Excellent service from beginning to end. Professional, creative, responsive, and easy to work with. The website looks fantastic and functions perfectly. I am extremely happy with the final result and would highly recommend them to anyone looking for high-quality web design services.</blockquote>
@@ -1145,7 +1156,7 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
           </div>
         </article>
         <article class="rev-card">
-          <div class="avatar"><img src="/assets/img/zac.jpg" alt="Dr. Zac" width="200" height="225" loading="lazy" decoding="async"></div>
+          <div class="avatar"><img src="/assets/img/zac-160.webp" alt="Dr. Zac" width="160" height="155" loading="lazy" decoding="async"></div>
           <div>
             <div class="rev-head"><span class="rev-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.7l2.45 5.26 5.5.66-4.07 3.88 1.09 5.55L10 14.3l-4.97 2.75 1.09-5.55L2.05 7.62l5.5-.66z"/></svg></span></div>
             <blockquote class="rev-q">It looks absolutely beautiful… it's clear how much care and attention you've put into every detail. Your demo has given me every confidence that you're the right person for this project.</blockquote>
