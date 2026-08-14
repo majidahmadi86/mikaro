@@ -84,7 +84,8 @@ section{position:relative}
 .on-ink{background:var(--ink);color:var(--ivory)}
 .on-ink h2,.on-ink h3,.on-ink h4{color:#fff}
 .on-ink strong,.on-ink b{color:#fff}
-.cv{content-visibility:auto;contain-intrinsic-size:auto 700px}
+/* content-visibility removed · its lazy section rendering caused pop-in and
+   scrollbar jumps while scrolling · the document now lays out once, smoothly */
 
 /* kicker */
 .kick{font-family:var(--sans);font-weight:680;font-size:.72rem;letter-spacing:.26em;
@@ -110,8 +111,17 @@ section{position:relative}
   html.js .rv-d2.in{animation-delay:.18s}
   html.js .rv-d3.in{animation-delay:.27s}
   html.js .rv-d4.in{animation-delay:.36s}
+  /* blocks the script hid before they were ever painted · they animate in from
+     genuinely unseen, so nothing visible ever blinks off */
+  html.js .rv-h{opacity:0}
+  /* blocks already on screen when the script ran · settle in place, no animation,
+     no counter reset · this is what kills the scroll flash */
+  html.js .rv.in.still{animation:none}
 }
 @keyframes rvin{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+/* lazy images ease in instead of popping */
+html.js img[loading="lazy"]{opacity:0;transition:opacity .55s var(--ease)}
+html.js img[loading="lazy"].ld{opacity:1}
 
 /* ==================================================================
    HERO · cinematic
@@ -690,7 +700,6 @@ html.js:not(.rm) .cta::after{animation:shine 4.8s var(--ease) 1.2s infinite}
   .seo{background:#fff!important}
   .pad{padding-block:2rem}
   section,.u-card,.pcard,.money-card,.titem,.capgroup{page-break-inside:avoid}
-  .cv{content-visibility:visible}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:8pt;color:#59685F;word-break:break-all}
   .pl a::after,.contacts a::after{content:""}
 }
@@ -698,24 +707,25 @@ html.js:not(.rm) .cta::after{animation:shine 4.8s var(--ease) 1.2s infinite}
 /* ================================================================
    POLISH-1 · additive only: bubble density + visibility, sparkles
    ================================================================ */
-/* existing small bubbles · glass catchlight + soft glow (visibility lift) */
+/* existing small dots · brighter core + soft glow (visibility lift, same dot look) */
 .dust i{width:7px;height:7px;
-  background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.9) 0%,rgba(239,217,164,.7) 26%,rgba(199,166,103,.38) 58%,transparent 76%);
-  box-shadow:0 0 10px rgba(199,166,103,.38)}
+  background:radial-gradient(circle,#F6E7BC 0%,#EFD9A4 32%,rgba(199,166,103,.48) 62%,transparent 78%);
+  box-shadow:0 0 12px rgba(199,166,103,.45)}
 
 /* new bubble set · three size bands, sine sway, glass shading */
 .bx{position:absolute;bottom:-6vh;opacity:0;pointer-events:none;
   animation:bxrise var(--dur,18s) linear var(--del,0s) infinite}
 .bx s{display:block;border-radius:50%;
-  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.92) 0%,rgba(255,255,255,.34) 16%,rgba(233,207,146,.2) 38%,rgba(199,166,103,.13) 58%,rgba(199,166,103,.05) 70%,transparent 78%);
-  border:1px solid rgba(238,220,178,.42);
-  box-shadow:inset -2px -3px 6px rgba(199,166,103,.28),inset 1px 1px 2px rgba(255,255,255,.5),0 0 14px rgba(199,166,103,.38);
+  background:radial-gradient(circle,rgba(255,244,214,.95) 0%,#EFD9A4 30%,rgba(199,166,103,.4) 60%,transparent 78%);
+  box-shadow:0 0 16px rgba(199,166,103,.45);
   animation:bxsway var(--swd,4.5s) ease-in-out var(--del,0s) infinite alternate}
 .bx.s s{width:8px;height:8px}
 .bx.m s{width:16px;height:16px}
 .bx.l s{width:30px;height:30px}
-.bx.jade s{border-color:rgba(127,194,155,.42);
-  box-shadow:inset -2px -3px 6px rgba(31,107,76,.3),inset 1px 1px 2px rgba(255,255,255,.5),0 0 16px rgba(127,194,155,.4)}
+.bx.jade s{background:radial-gradient(circle,rgba(233,246,238,.9) 0%,#BFE3CD 30%,rgba(127,194,155,.35) 60%,transparent 78%);
+  box-shadow:0 0 16px rgba(127,194,155,.42)}
+.bx.l s{background:radial-gradient(circle,rgba(246,231,188,.8) 0%,rgba(239,217,164,.5) 34%,rgba(199,166,103,.22) 62%,transparent 80%);
+  box-shadow:0 0 24px rgba(199,166,103,.4)}
 @keyframes bxrise{
   0%{transform:translateY(0) scale(.85);opacity:0}
   10%{opacity:var(--op,.45)}
@@ -1375,8 +1385,14 @@ html.js:not(.rm) .cta::after{animation:shine 4.8s var(--ease) 1.2s infinite}
 
   /* scroll reveals + counters + progress bar */
   var revealed=new WeakSet();
-  function activate(el){
+  function activate(el,fromHidden){
     if(revealed.has(el))return;revealed.add(el);
+    if(!fromHidden){
+      // already painted when the script ran · settle silently, keep markup finals
+      el.classList.add('in','still');
+      return;
+    }
+    el.classList.remove('rv-h');
     el.classList.add('in');
     el.querySelectorAll('[data-count-to]').forEach(function(c){countUp(c);});
     el.querySelectorAll('[data-mini-dial]').forEach(function(d){
@@ -1404,16 +1420,35 @@ html.js:not(.rm) .cta::after{animation:shine 4.8s var(--ease) 1.2s infinite}
       });});
     }
   }
+  /* lazy images fade in on arrival · fail-open on error */
+  try{
+    [].slice.call(document.querySelectorAll('img[loading="lazy"]')).forEach(function(im){
+      var done=function(){im.classList.add('ld');};
+      if(im.complete&&im.naturalWidth>0){done();return;}
+      im.addEventListener('load',done,{once:true});
+      im.addEventListener('error',done,{once:true});
+    });
+  }catch(e){}
+
   var items=[].slice.call(document.querySelectorAll('.rv'));
+  var vh0=window.innerHeight;
   if('IntersectionObserver'in window){
     var io=new IntersectionObserver(function(es){
-      es.forEach(function(en){if(en.isIntersecting){activate(en.target);io.unobserve(en.target);}});
-    },{rootMargin:'0px 0px -10% 0px',threshold:0.1});
+      es.forEach(function(en){if(en.isIntersecting){
+        activate(en.target,en.target.classList.contains('rv-h'));io.unobserve(en.target);}});
+    },{rootMargin:'0px 0px 16% 0px',threshold:0});
     items.forEach(function(el){
-      if(el.classList.contains('in')){el.querySelectorAll('[data-count-to]').forEach(function(c){countUp(c);});return;}
+      if(el.classList.contains('in')){revealed.add(el);return;} // hero · own entrance
+      // on or near the first screen · leave settled, never blink
+      if(el.getBoundingClientRect().top<vh0*1.04){activate(el,false);return;}
+      if(!rm)el.classList.add('rv-h');
       io.observe(el);
     });
-  }else{items.forEach(activate);}
+    // insurance · anything still waiting after 4s reveals itself
+    setTimeout(function(){items.forEach(function(el){
+      if(el.classList.contains('rv-h')&&!revealed.has(el))activate(el,true);
+    });},4000);
+  }else{items.forEach(function(el){activate(el,false);});}
 
   /* compare slider */
   var ba=document.querySelector('[data-ba]');
