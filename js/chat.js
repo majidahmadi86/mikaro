@@ -22,10 +22,10 @@ const FACTS=Object.freeze({
   shared:{
     approvedThaiTerms:['ผลงาน','รูปผลงาน'],
     performanceQuality:{
-      en:'Speed and on-page SEO are standard in every package, never an add-on: optimized images, font strategy, clean structure, meta and sitemap. Our own site scores 97/100 on Google PageSpeed mobile. Every build is bilingual-capable (Thai + English). All work happens on a private preview link and nothing goes live until the client approves it.',
-      th:'ความเร็วและ SEO เป็นมาตรฐานในทุกแพ็กเกจของเรา ไม่ใช่ส่วนเสริมครับ ปรับแต่งรูปภาพ โครงสร้างสะอาด มี meta และ sitemap ครบ เว็บของเราเองได้คะแนน PageSpeed มือถือ 97/100 ครับ'
+      en:'Speed and on-page SEO are standard in every package, never an add-on: optimized images, font strategy, clean structure, meta and sitemap. Our own site scores 99/100 on Google PageSpeed mobile. Every build is bilingual-capable (Thai + English). All work happens on a private preview link and nothing goes live until the client approves it.',
+      th:'ความเร็วและ SEO เป็นมาตรฐานในทุกแพ็กเกจของเรา ไม่ใช่ส่วนเสริมครับ ปรับแต่งรูปภาพ โครงสร้างสะอาด มี meta และ sitemap ครบ เว็บของเราเองได้คะแนน PageSpeed มือถือ 99/100 ครับ'
     },
-    trackRecord:'Live work includes: The Teak House (complete hotel booking system, teakhouse.mikaro.studio), PRAOW (clinic system, praow.mikaro.studio), Groupe Balzac (bilingual English and French corporate hub, balzacgroupe.com), OptiClean (real online store, opticlean.mikaro.studio), Balzac Antiques (real client in Switzerland, balzacantiques.ch), Miomika (our own AI language app, miomika.com).',
+    trackRecord:'Live work includes: The Teak House (complete hotel booking system, teakhouse.mikaro.studio), PRAOW (clinic system, praow.mikaro.studio), Balzac Antiques (Bangkok antiques house selling to collectors in Switzerland, France and Thailand, balzacantiques.ch), Groupe Balzac (bilingual English and French corporate hub, balzacgroupe.com), Miomika (our own AI language app, miomika.com), OptiClean (real online store, opticlean.mikaro.studio).',
     process:{
       en:'How working with us goes: free demo in your name within 48 hours (2 adjustment rounds) → you approve → 50% deposit → we build on a private preview with revision rounds at every milestone → balance → your site goes live → 30-day care warranty (90 days on Flagship).',
       th:'ขั้นตอนการทำงานครับ: เดโม่ฟรีในชื่อของคุณภายใน 48 ชั่วโมง (ปรับแก้ได้ 2 รอบ) → คุณอนุมัติ → มัดจำ 50% → เราสร้างบนลิงก์พรีวิวส่วนตัว มีรอบปรับแก้ทุกช่วงงาน → ชำระส่วนที่เหลือ → เว็บออนไลน์จริง → รับประกันดูแล 30 วัน (Flagship 90 วัน) ครับ'
@@ -51,12 +51,13 @@ const FACTS=Object.freeze({
       revisions:'Full projects include revision rounds at every milestone, from design to pre-launch. Nothing goes live until you approve it.',
       payment:'Projects start with a 50% deposit; the remaining 50% is due before the site goes live. Until then, everything runs on a private preview link, so you see the finished work before final payment. For Flagship and custom projects we split into three milestones: 40% to start, 30% on design approval, 30% before launch. We accept Thai bank transfer and PromptPay; card payment is available on request.'
     },
-    proof:'Live proof: teakhouse.mikaro.studio · owner PIN 1234 · praow.mikaro.studio · balzacantiques.ch',
+    proof:"Everything we show is live, so you can open it right now: The Teak House, a complete hotel booking system (teakhouse.mikaro.studio, owner dashboard PIN 1234) · PRAOW, a clinic system with booking deposits (praow.mikaro.studio) · Balzac Antiques, a Bangkok antiques house selling to collectors in Switzerland, France and Thailand (balzacantiques.ch) · Groupe Balzac, a bilingual corporate hub in English and French (balzacgroupe.com) · Miomika, our own AI language app (miomika.com) · OptiClean, a real online store (opticlean.mikaro.studio).\n\nWhat kind of business are you building for? I'll point you to the closest example.",
+    aiPart:"AI works in two places. How we build: senior creative direction with an AI-scale engineering engine, which is how we ship international-grade systems in weeks, not months. What you get: the Professional package includes an AI receptionist that answers your customers in Thai and English, 24 hours. See one live on praow.mikaro.studio, or try Miomika, our own AI language app, at miomika.com.\n\nWhat kind of business do you run? I'll show you where AI would earn its keep for you.",
     positioning:'An AI-powered studio: senior creative direction with an AI-scale engineering engine. We ship international-grade systems in weeks, not months.',
-    services:'We design and build complete digital products: brand-true websites, e-commerce with real payments, and AI-powered apps.',
+    services:"We design and build complete digital products: brand-true websites, e-commerce with real payments, and AI-powered apps.\n\nWhat kind of business are you building for? I'll show you the closest live example.",
     needCustomers:'That is exactly what we build for. Today your customers find you on Google and social media, and they judge in seconds: if they can see your work, your prices, and book or buy right there, they become customers. That is the system we ship.\n\nSo I can point you right: what kind of business do you run · a shop, a hotel, a clinic or salon, a restaurant, or something else?',
     qualify:{
-      shop:"For a shop, the right fit is the Professional package (69,000 THB): a full store where customers browse your products, see prices, and order with real online payment · plus a back office where you update stock and prices yourself. Two live examples: opticlean.mikaro.studio and balzacantiques.ch.\n\nAnd you don't have to imagine it: I can have a free demo page built from your real products within 48 hours · no cost, no obligation. Want to start there?",
+      shop:"For a shop, the right fit is the Professional package (69,000 THB): a full store where customers browse your products, see prices, and order with real online payment · plus a back office where you update stock and prices yourself. Two live examples: balzacantiques.ch and opticlean.mikaro.studio.\n\nAnd you don't have to imagine it: I can have a free demo page built from your real products within 48 hours · no cost, no obligation. Want to start there?",
       hotel:"For a hotel or resort, the Patient & Guest System (119,000 THB) is built for exactly this: guests book direct with a deposit, an AI concierge answers them at 2am in Thai and English, and the 15-18% OTA commission stays with you. See it live: teakhouse.mikaro.studio · owner dashboard: teakhouse.mikaro.studio/owner (PIN 1234).\n\nI can also have a free demo built in your hotel's own name within 48 hours. Shall we?",
       clinicSalon:"For a clinic, salon, spa or massage studio, the Patient & Guest System (119,000 THB) does the heavy lifting: online booking with deposits that end no-shows, an AI receptionist answering in Thai and English around the clock, and your own management panel. Live example: praow.mikaro.studio.\n\nA free demo in your clinic's name is possible within 48 hours as well. Would you like that?",
       restaurant:'For a restaurant or cafe, the Essential package (39,000 THB) gets you credible fast: menu, photos, location, hours and contact that works · live in 2 weeks. The Professional (69,000 THB) adds online ordering. Browse our live work: mikaro.studio/work.\n\nThe free 48-hour demo applies to you too: one page from your real menu, no cost. Interested?',
@@ -88,27 +89,31 @@ const FACTS=Object.freeze({
       revisions:'โปรเจกต์เต็มมีรอบปรับแก้ในทุกช่วงของงานครับ ตั้งแต่ดีไซน์จนถึงก่อนออนไลน์ ไม่มีอะไรเผยแพร่จนกว่าคุณจะอนุมัติครับ',
       payment:'โปรเจกต์เริ่มงานด้วยมัดจำ 50% และชำระส่วนที่เหลือ 50% ก่อนเว็บไซต์ออนไลน์จริงครับ ระหว่างนั้นงานทั้งหมดอยู่บนลิงก์พรีวิวส่วนตัว คุณได้เห็นงานเสร็จสมบูรณ์ก่อนชำระยอดสุดท้ายครับ สำหรับแพ็กเกจ Flagship และงานสเกลพิเศษ แบ่งชำระ 3 งวดครับ: 40% เริ่มงาน · 30% เมื่ออนุมัติดีไซน์ · 30% ก่อนออนไลน์ รับชำระผ่านโอนธนาคารและพร้อมเพย์ หรือบัตรเครดิตได้ตามตกลงครับ'
     },
-    proof:'ผลงานจริง · teakhouse.mikaro.studio · owner PIN 1234 · praow.mikaro.studio · balzacantiques.ch',
+    proof:'ผลงานทั้งหมดออนไลน์จริง เปิดดูได้เลยครับ: The Teak House ระบบจองโรงแรมเต็มรูปแบบ (teakhouse.mikaro.studio แผงเจ้าของ PIN 1234) · PRAOW ระบบคลินิกพร้อมมัดจำจองคิว (praow.mikaro.studio) · Balzac Antiques ร้านของเก่าจากกรุงเทพฯ ที่จำหน่ายให้นักสะสมในสวิตเซอร์แลนด์ ฝรั่งเศส และไทย (balzacantiques.ch) · Groupe Balzac เว็บไซต์องค์กรสองภาษา อังกฤษและฝรั่งเศส (balzacgroupe.com) · Miomika แอปภาษา AI ของเรา (miomika.com) · OptiClean ร้านค้าออนไลน์จริง (opticlean.mikaro.studio)\n\nธุรกิจของคุณเป็นแบบไหนครับ ผมจะแนะนำตัวอย่างที่ใกล้เคียงที่สุดให้',
+    aiPart:'AI อยู่ในงานของเรา 2 ส่วนครับ ส่วนแรกคือวิธีที่เราสร้างงาน: ความคิดสร้างสรรค์จากทีมมากประสบการณ์ เสริมด้วยพลังวิศวกรรม AI เต็มรูปแบบ จึงส่งมอบระบบระดับสากลได้ภายในไม่กี่สัปดาห์ ไม่ใช่หลายเดือน ส่วนที่สองคือสิ่งที่คุณได้รับ: แพ็กเกจ Professional มี AI ต้อนรับตอบลูกค้าได้ทั้งไทยและอังกฤษ ตลอด 24 ชั่วโมง ดูตัวอย่างจริงได้ที่ praow.mikaro.studio หรือลองใช้ Miomika แอปภาษา AI ของเราที่ miomika.com ครับ\n\nธุรกิจของคุณเป็นแบบไหนครับ ผมจะแนะนำว่า AI ช่วยธุรกิจคุณได้ตรงไหนบ้าง',
     positioning:'สตูดิโอที่ขับเคลื่อนด้วย AI · ความคิดสร้างสรรค์จากทีมมากประสบการณ์ เสริมด้วยพลังวิศวกรรม AI เต็มรูปแบบ พร้อมส่งมอบระบบระดับสากลภายในไม่กี่สัปดาห์ ไม่ใช่หลายเดือน',
-    services:'เราออกแบบและสร้างผลงานดิจิทัลครบวงจร: เว็บไซต์ที่ตรงแบรนด์ อีคอมเมิร์ซพร้อมระบบชำระเงินจริง และแอปพลัง AI',
+    services:'เราออกแบบและสร้างผลงานดิจิทัลครบวงจร: เว็บไซต์ที่ตรงแบรนด์ อีคอมเมิร์ซพร้อมระบบชำระเงินจริง และแอปพลัง AI ครับ\n\nธุรกิจของคุณเป็นแบบไหนครับ ผมจะแนะนำตัวอย่างจริงที่ใกล้เคียงที่สุดให้',
     needCustomers:'เรื่องนี้ตรงกับสิ่งที่เราสร้างพอดีเลยครับ ทุกวันนี้ลูกค้าหาคุณเจอบน Google และโซเชียล และตัดสินใจในไม่กี่วินาที ถ้าเขาเห็นสินค้า เห็นราคา แล้วสั่งซื้อหรือจองได้ทันที เขาก็กลายเป็นลูกค้าครับ นั่นคือระบบที่เราสร้างให้\n\nขอถามนิดเดียวครับ ธุรกิจของคุณเป็นแบบไหน ร้านค้า โรงแรม คลินิกหรือซาลอน ร้านอาหาร หรืออย่างอื่นครับ',
     qualify:{
-      shop:'สำหรับร้านค้า แพ็กเกจที่เหมาะที่สุดคือ Professional (69,000 บาท) ครับ ร้านค้าออนไลน์เต็มรูปแบบ ลูกค้าดูสินค้า เห็นราคา และสั่งซื้อพร้อมชำระเงินออนไลน์ได้จริง พร้อมระบบหลังบ้านให้คุณแก้ราคาและสต็อกเองครับ ดูตัวอย่างจริงได้ที่ opticlean.mikaro.studio และ balzacantiques.ch\n\nและไม่ต้องจินตนาการครับ เราทำหน้าเดโม่ฟรีจากสินค้าจริงของร้านคุณได้ภายใน 48 ชั่วโมง ไม่มีค่าใช้จ่าย ไม่มีข้อผูกมัด สนใจเริ่มจากตรงนี้ไหมครับ',
+      shop:'สำหรับร้านค้า แพ็กเกจที่เหมาะที่สุดคือ Professional (69,000 บาท) ครับ ร้านค้าออนไลน์เต็มรูปแบบ ลูกค้าดูสินค้า เห็นราคา และสั่งซื้อพร้อมชำระเงินออนไลน์ได้จริง พร้อมระบบหลังบ้านให้คุณแก้ราคาและสต็อกเองครับ ดูตัวอย่างจริงได้ที่ balzacantiques.ch และ opticlean.mikaro.studio\n\nและไม่ต้องจินตนาการครับ เราทำหน้าเดโม่ฟรีจากสินค้าจริงของร้านคุณได้ภายใน 48 ชั่วโมง ไม่มีค่าใช้จ่าย ไม่มีข้อผูกมัด สนใจเริ่มจากตรงนี้ไหมครับ',
       hotel:'สำหรับโรงแรมหรือรีสอร์ท ระบบ Patient & Guest System (119,000 บาท) สร้างมาเพื่อสิ่งนี้เลยครับ แขกจองตรงพร้อมมัดจำ มี AI ตอบแขกได้ตอนตี 2 ทั้งไทยและอังกฤษ และค่าคอม 15-18% ของ OTA อยู่กับโรงแรมครับ ดูระบบจริง: teakhouse.mikaro.studio · แผงเจ้าของ: teakhouse.mikaro.studio/owner (PIN 1234)\n\nทำเดโม่ฟรีในชื่อโรงแรมของคุณได้ภายใน 48 ชั่วโมงด้วยครับ สนใจไหมครับ',
       clinicSalon:'สำหรับคลินิก ซาลอน สปา หรือร้านนวด ระบบ Patient & Guest System (119,000 บาท) ช่วยได้ตรงจุดครับ จองคิวออนไลน์พร้อมมัดจำ ลดปัญหาลูกค้าเบี้ยวนัด มี AI ต้อนรับตอบลูกค้าทั้งไทยและอังกฤษตลอดเวลา พร้อมแผงจัดการของคุณเอง ดูตัวอย่างจริง: praow.mikaro.studio\n\nทำเดโม่ฟรีในชื่อคลินิกของคุณภายใน 48 ชั่วโมงได้เช่นกันครับ สนใจไหมครับ',
       restaurant:'สำหรับร้านอาหารหรือคาเฟ่ แพ็กเกจ Essential (39,000 บาท) ทำให้ร้านดูน่าเชื่อถือได้เร็วครับ เมนู รูป พิกัด เวลาเปิด ติดต่อได้จริง ออนไลน์ใน 2 สัปดาห์ ส่วน Professional (69,000 บาท) เพิ่มระบบสั่งอาหารออนไลน์ครับ ดูผลงานจริงได้ที่ mikaro.studio/work\n\nเดโม่ฟรี 48 ชั่วโมงใช้กับร้านคุณได้เหมือนกันครับ หน้าเดียวจากเมนูจริงของร้าน ไม่มีค่าใช้จ่ายครับ สนใจไหมครับ',
       other:'ยินดีแนะนำครับ เล่าให้ฟังนิดหนึ่งว่าธุรกิจของคุณขายอะไรหรือทำอะไร แล้วผมจะบอกได้เลยว่าแพ็กเกจไหนเหมาะ พร้อมตัวอย่างจริงให้กดดูครับ'
     },
     demoYes:'เยี่ยมเลยครับ เริ่มกันเลยครับ ส่งชื่อธุรกิจและรูปสินค้าหรือผลงานสัก 2-3 รูปมาทาง LINE ได้เลยครับ: line.me/ti/p/l059F3WkI7 ภายใน 48 ชั่วโมงคุณจะได้ลิงก์เดโม่ในชื่อของคุณครับ',
-    contact:'คำถามดีมาก · ฉันเป็นไกด์ตัวเล็ก ๆ เรื่องลึก ๆ ให้มนุษย์ตอบดีกว่า ฝากอีเมลไว้แล้วเราจะติดต่อกลับภายในหนึ่งวัน หรือลองปุ่มด้านล่างนี้',
+    contact:'เรื่องนี้อยู่นอกข้อมูลที่ผมยืนยันได้ครับ ทีมงานตอบเองทุกข้อความ ทักมาทาง LINE หรือฟอร์มติดต่อได้เลย แล้วทีมจะยืนยันให้โดยตรงครับ',
     fallback:'คำถามดีครับ และผมอยากตอบให้ตรงที่สุดครับ ทางที่เร็วที่สุดคือบอกผมว่าธุรกิจของคุณเป็นแบบไหน แล้วผมจะแนะนำแพ็กเกจที่เหมาะพร้อมตัวอย่างจริงให้เลยครับ ส่วนเรื่องที่เกินข้อมูลของผม ทีมงานตอบเองทาง LINE ครับ',
     handoff:'ส่วนเรื่องที่เกินข้อมูลของผม ทีมงานตอบเองทาง LINE ครับ',
-    greeting:'สวัสดีค่ะ · ฉันคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย'
+    greeting:'สวัสดีครับ · ผมคือ MIKA ไกด์ประจำสตูดิโอ ถามได้เลยครับว่าเราสร้างอะไร ระบบ AI ทำงานอย่างไร ราคาเป็นแบบไหน หรือกดปุ่มด้านล่างได้เลย'
   }
 });
 
 function packageLadder(lang){
-  return FACTS[lang].packages.map(p=>p.name+' '+p.price).join(' · ')+' · Full details: mikaro.studio/business';
+  const th=lang==='th';
+  return FACTS[lang].packages.map(p=>p.name+' '+p.price).join(' · ')
+    +(th?' · รายละเอียดทั้งหมด: mikaro.studio/th/business\n\nธุรกิจของคุณเป็นแบบไหนครับ ผมจะบอกได้เลยว่าแพ็กเกจไหนเหมาะ'
+        :" · Full details: mikaro.studio/business\n\nWhat kind of business is it for? I'll tell you which one fits.");
 }
 function packageTimelines(lang){
   return FACTS[lang].packages.map(p=>p.name+': '+p.timeline).join(' · ');
@@ -121,7 +126,7 @@ function bizTypeActions(lang){
 function qualifyActions(lang,type){
   const th=lang==='th',live=th?'ดูเว็บจริง ↗':'View live ↗';
   const yes={q:th?'สนใจ':'yes',l:th?'สนใจ':'Yes'};
-  if(type==='shop')return [{h:'https://opticlean.mikaro.studio',l:live,x:1},{h:'https://balzacantiques.ch',l:live,x:1},yes];
+  if(type==='shop')return [{h:'https://balzacantiques.ch',l:live,x:1},{h:'https://opticlean.mikaro.studio',l:live,x:1},yes];
   if(type==='hotel')return [{h:'https://teakhouse.mikaro.studio',l:live,x:1},{h:'https://teakhouse.mikaro.studio/owner',l:th?'แผงเจ้าของ':'Owner dashboard',x:1},yes];
   if(type==='clinic-salon')return [{h:'https://praow.mikaro.studio',l:live,x:1},yes];
   if(type==='restaurant')return [{h:'https://mikaro.studio/work',l:th?'ดูผลงาน':'Browse live work',x:1},yes];
@@ -130,9 +135,9 @@ function qualifyActions(lang,type){
 function actions(lang,type){
   const th=lang==='th';
   if(type==='proof')return [
-    {h:'https://teakhouse.mikaro.studio',l:th?'ดูเว็บจริง ↗':'Teak House ↗',x:1},
-    {h:'https://praow.mikaro.studio',l:th?'ดูเว็บจริง ↗':'PRAOW ↗',x:1},
-    {h:'https://balzacantiques.ch',l:th?'ดูเว็บจริง ↗':'Balzac Antiques ↗',x:1}
+    {h:'https://teakhouse.mikaro.studio',l:'Teak House ↗',x:1},
+    {h:'https://praow.mikaro.studio',l:'PRAOW ↗',x:1},
+    {h:'https://balzacantiques.ch',l:'Balzac Antiques ↗',x:1}
   ];
   if(type==='ai')return [{h:th?'/th/ai-lab':'/ai-lab',l:th?'ชม AI Lab':'Visit the AI Lab'}];
   if(type==='business')return [{h:th?'/th/business':'/business',l:th?'รายละเอียดทั้งหมด':'Full details'}];
@@ -171,7 +176,8 @@ function buildIntents(lang){
     {id:'timeline',k:th?['กี่วัน','นานไหม','กี่สัปดาห์','ระยะเวลา','เมื่อไหร่']:['how long','timeline','time','fast','deadline','when','delivery','weeks'],a:packageTimelines(lang),acts:actions(lang,'business')},
     ...qualify,
     {id:'examples',k:th?['ผลงาน','ตัวอย่าง','เคส','พอร์ต','teakhouse','praow','balzac']:['examples','example','work','portfolio','case','proof','live','teakhouse','praow','balzac','miomika','opticlean'],a:f.proof,acts:actions(lang,'proof')},
-    {id:'identity',k:th?['ใคร','ai','เอไอ','ปัญญาประดิษฐ์','สตูดิโอ']:['who are you','who','about','team','studio','founder','mike','ai','artificial','llm'],a:f.positioning,acts:actions(lang,'ai')},
+    {id:'ai-part',k:th?['เอไอ','ai','ปัญญาประดิษฐ์','ระบบ ai']:['ai part','the ai','use ai','ai work','ai','artificial','llm'],a:f.aiPart,acts:actions(lang,'ai')},
+    {id:'identity',k:th?['ใคร','สตูดิโอ']:['who are you','who','about','team','studio','founder','mike'],a:f.positioning,acts:actions(lang,'ai')},
     {id:'contact',k:th?['ติดต่อ','คุย','จ้าง','เริ่ม','line']:['contact','email','reach','talk','call','hire','start','line'],a:f.contact,acts:actions(lang,'contact')}
   ];
 }
@@ -263,17 +269,21 @@ function createConversation(lang){
           awaitingDemoYes=true;
           return qualified;
         }
-        if(fallbackLoop){
+        const direct=matchIntent(q,useThai);
+        if(direct){awaitingBizType=false;fallbackLoop=false;}
+        else if(fallbackLoop){
           awaitingBizType=false;
           fallbackLoop=false;
           return useThai?TH_HANDOFF:HANDOFF;
         }
-        fallbackLoop=true;
-        return (useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS).find(it=>it.id==='other');
+        if(!direct){
+          fallbackLoop=true;
+          return (useThai?TH_QUALIFY_INTENTS:QUALIFY_INTENTS).find(it=>it.id==='other');
+        }
       }
       const result=matchIntent(q,useThai);
       if(!result)return allowFallback?useFallback():null;
-      if(result.id==='need-customers'){
+      if(['need-customers','examples','ai-part','services','pricing'].includes(result.id)){
         awaitingBizType=true;
         fallbackLoop=false;
       }
@@ -308,7 +318,7 @@ function mount(root){
     <div class="chat-bar"><span class="av">M</span>MIKA · studio guide<span class="on"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E;display:inline-block"></span>online</span></div>
     <div class="chat-log" aria-live="polite"></div>
     <div class="chat-chips">
-      ${TH?'<button data-q="เราสร้างอะไร">เราสร้างอะไร?</button><button data-q="ผลงาน">ผลงานจริง</button><button data-q="เอไอ">ระบบ AI</button><button data-q="ราคา">ราคา</button>':'<button data-q="What do you build?">What do you build?</button><button data-q="show me the live work">Live work</button><button data-q="how does the ai part work">The AI part</button><button data-q="pricing">Pricing</button>'}
+      ${TH?'<button data-q="เราสร้างอะไร">เราสร้างอะไร?</button><button data-q="ผลงาน">ผลงานจริง</button><button data-q="เอไอ">ระบบ AI</button><button data-q="ราคา">ราคา</button>':'<button data-q="What do you build?">What do you build?</button><button data-q="show me the live work">Live work</button><button data-q="the ai part">The AI part</button><button data-q="pricing">Pricing</button>'}
     </div>
     <form class="chat-in">
       <input type="text" placeholder="${TH?'ถาม MIKA เกี่ยวกับสตูดิโอ…':'Ask MIKA about the studio…'}" autocomplete="off" aria-label="Message MIKA">
@@ -408,7 +418,7 @@ function mount(root){
         const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
           body:JSON.stringify({email:f.email.value,message:f.message.value||'(from MIKA chat)',_subject:'New lead via MIKA · mikaro.studio'})});
         if(!r.ok)throw 0;
-        t.innerHTML=TH?'ส่งเรียบร้อย เราจะตอบกลับภายในหนึ่งวัน · ขอบคุณค่ะ':'Sent. You will hear back within a day · thank you.';
+        t.innerHTML=TH?'ส่งเรียบร้อย เราจะตอบกลับภายในหนึ่งวัน · ขอบคุณครับ':'Sent. You will hear back within a day · thank you.';
       }catch(err){
         t.innerHTML=TH?'สายตรงสะดุดนิดหน่อย ใช้<a href="/th/contact">ฟอร์มติดต่อ</a>แทนได้เลย · ช่องทางนั้นชัวร์เสมอ':'Hmm, the direct line hiccuped. Please use the <a href="/contact">contact form</a> instead · it always works.';
       }
