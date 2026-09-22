@@ -26,6 +26,10 @@ const FACTS=Object.freeze({
       th:'ความเร็วและ SEO เป็นมาตรฐานในทุกแพ็กเกจของเรา ไม่ใช่ส่วนเสริมครับ ปรับแต่งรูปภาพ โครงสร้างสะอาด มี meta และ sitemap ครบ เว็บของเราเองได้คะแนน PageSpeed มือถือ 99/100 ครับ'
     },
     trackRecord:'Live work includes: The Teak House (complete hotel booking system, teakhouse.mikaro.studio), PRAOW (clinic system, praow.mikaro.studio), Balzac Antiques (Bangkok antiques house selling to collectors in Switzerland, France and Thailand, balzacantiques.ch), Groupe Balzac (bilingual English and French corporate hub, balzacgroupe.com), Miomika (our own AI language app, miomika.com), OptiClean (real online store, opticlean.mikaro.studio).',
+    caseStudies:{
+      balzacAntiques:"Balzac Antiques (balzacantiques.ch) is a Bangkok antiques house selling watches, books, art and design pieces to collectors in Switzerland, France and Thailand. We built a bilingual English and French store with card checkout in euros, three display currencies and an admin panel the owner runs himself. Case study: mikaro.studio/work/balzacantiques.",
+      groupeBalzac:"Groupe Balzac (balzacgroupe.com) is one home for Balzac Café, Balzac Antiques and Balzac Immobilier: an editorial, bilingual English and French group site delivered in two weeks. Case study: mikaro.studio/work/balzacgroupe."
+    },
     process:{
       en:'How working with us goes: free demo in your name within 48 hours (2 adjustment rounds) → you approve → 50% deposit → we build on a private preview with revision rounds at every milestone → balance → your site goes live → 30-day care warranty (90 days on Flagship).',
       th:'ขั้นตอนการทำงานครับ: เดโม่ฟรีในชื่อของคุณภายใน 48 ชั่วโมง (ปรับแก้ได้ 2 รอบ) → คุณอนุมัติ → มัดจำ 50% → เราสร้างบนลิงก์พรีวิวส่วนตัว มีรอบปรับแก้ทุกช่วงงาน → ชำระส่วนที่เหลือ → เว็บออนไลน์จริง → รับประกันดูแล 30 วัน (Flagship 90 วัน) ครับ'
