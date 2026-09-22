@@ -64,7 +64,9 @@ export default async function handler(req,res){
       .slice(-8)
       .map(m=>({role:m.role,content:String(m.content).slice(0,500)}));
     if(!hist.length||hist[hist.length-1].role!=='user')return res.status(400).json({error:'bad request'});
-    const language=lang==='th'?'Thai':'English';
+    // reply in the language the visitor actually typed; the page language is only the tiebreak
+    const lastUser=hist[hist.length-1].content;
+    const language=/[\u0E00-\u0E7F]/.test(lastUser)?'Thai':/[a-z]/i.test(lastUser)?'English':(lang==='th'?'Thai':'English');
     const r=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{
@@ -74,7 +76,7 @@ export default async function handler(req,res){
       },
       body:JSON.stringify({
         model:'claude-haiku-4-5',
-        max_tokens:400,
+        max_tokens:1000,
         temperature:0.3,
         system:SYSTEM+'\n\nReply in '+language+'.',
         messages:hist
@@ -86,7 +88,13 @@ export default async function handler(req,res){
       return res.status(502).json({error:'upstream'});
     }
     const data=await r.json();
-    const reply=cleanReply(data&&data.content&&data.content.filter(x=>x.type==='text').map(x=>x.text).join('\n'));
+    let reply=cleanReply(data&&data.content&&data.content.filter(x=>x.type==='text').map(x=>x.text).join('\n'));
+    // never ship a reply cut mid-word: trim back to the last complete sentence
+    if(data&&data.stop_reason==='max_tokens'&&reply){
+      const ends=[reply.lastIndexOf('. ')+1,reply.lastIndexOf('? ')+1,reply.lastIndexOf('ครับ')+4];
+      const cut=Math.max(...ends.filter(n=>n>4));
+      if(cut>0&&cut<reply.length)reply=reply.slice(0,cut).trim();
+    }
     if(!reply)return res.status(502).json({error:'empty'});
     const usage=data.usage||{};
     return res.status(200).json({
