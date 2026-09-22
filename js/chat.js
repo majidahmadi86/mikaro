@@ -22,8 +22,8 @@ const FACTS=Object.freeze({
   shared:{
     approvedThaiTerms:['ผลงาน','รูปผลงาน'],
     performanceQuality:{
-      en:'Speed and on-page SEO are standard in every package, never an add-on: optimized images, font strategy, clean structure, meta and sitemap. Our own site scores 97/100 on Google PageSpeed mobile. Every build is bilingual-capable (Thai + English). All work happens on a private preview link and nothing goes live until the client approves it.',
-      th:'ความเร็วและ SEO เป็นมาตรฐานในทุกแพ็กเกจของเรา ไม่ใช่ส่วนเสริมครับ ปรับแต่งรูปภาพ โครงสร้างสะอาด มี meta และ sitemap ครบ เว็บของเราเองได้คะแนน PageSpeed มือถือ 97/100 ครับ'
+      en:'Speed and on-page SEO are standard in every package, never an add-on: optimized images, font strategy, clean structure, meta and sitemap. Our own site scores 99/100 on Google PageSpeed mobile. Every build is bilingual-capable (Thai + English). All work happens on a private preview link and nothing goes live until the client approves it.',
+      th:'ความเร็วและ SEO เป็นมาตรฐานในทุกแพ็กเกจของเรา ไม่ใช่ส่วนเสริมครับ ปรับแต่งรูปภาพ โครงสร้างสะอาด มี meta และ sitemap ครบ เว็บของเราเองได้คะแนน PageSpeed มือถือ 99/100 ครับ'
     },
     trackRecord:'Live work includes: The Teak House (complete hotel booking system, teakhouse.mikaro.studio), PRAOW (clinic system, praow.mikaro.studio), Balzac Antiques (Bangkok antiques house selling to collectors in Switzerland, France and Thailand, balzacantiques.ch), Groupe Balzac (bilingual English and French corporate hub, balzacgroupe.com), Miomika (our own AI language app, miomika.com), OptiClean (real online store, opticlean.mikaro.studio).',
     process:{
