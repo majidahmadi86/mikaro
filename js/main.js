@@ -437,10 +437,10 @@ bkk();setInterval(bkk,15000);
   mm.className='mm';mm.setAttribute('role','dialog');mm.setAttribute('aria-modal','true');mm.setAttribute('aria-label','Menu');
   const p=THL?'/th':'';
   mm.innerHTML=
-    '<div class="mm-top"><a class="logo" href="'+(THL?'/th/':'/')+'"><i></i>mikaro</a>'
+    '<div class="mm-top"><a class="logo" href="'+(THL?'/th':'/')+'"><i></i>mikaro</a>'
     +'<button class="mm-x" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'
     +'<nav class="mm-links" aria-label="Mobile">'
-    +'<a href="'+(THL?'/th/':'/')+'" style="--d:.04s">'+(THL?'หน้าแรก':'Home')+'</a>'
+    +'<a href="'+(THL?'/th':'/')+'" style="--d:.04s">'+(THL?'หน้าแรก':'Home')+'</a>'
     +'<a href="'+p+'/work" style="--d:.1s">'+(THL?'ผลงาน':'Work')+'</a>'
     +'<a href="'+p+'/services" style="--d:.16s">'+(THL?'บริการ':'Services')+'</a>'
     +'<a href="'+p+'/business" style="--d:.2s">'+(THL?'สำหรับธุรกิจ':'For business')+'</a>'
