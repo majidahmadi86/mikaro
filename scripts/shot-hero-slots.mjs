@@ -1,3 +1,5 @@
+/* SUPERSEDED (v17): the hero slots now hold The Teak House (portrait) and Solenne (landscape);
+   use scripts/teakhouse-shots.mjs hero and scripts/solenne-shots.mjs hero instead. */
 /* Hero collage slots · the two platform screenshots, cut to the exact aspect
    ratios the original collage boxes declare so no CSS has to move:
      .fl-mio .ph.has-img   735/920  desktop · 480/808   under 768px  -> The Teak House (phone view)

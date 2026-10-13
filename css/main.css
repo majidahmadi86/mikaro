@@ -855,7 +855,7 @@ a.biz-chip:hover::after{opacity:.75}
   .biz-dots{display:flex}
 }
 .biz-proof{padding:0 0 clamp(3rem,8vh,5rem)}
-.biz-proof-g{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
+.biz-proof-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
 @media(max-width:1200px){.biz-proof-g{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){.biz-proof-g{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.biz-proof-g{grid-template-columns:1fr}}
