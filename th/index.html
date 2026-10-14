@@ -999,6 +999,24 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
   .rv,.rv-l,.rv-r,.rv-s,.zoomin,.arv,.clipin{opacity:1!important;transform:none!important;clip-path:none!important}
   .wsplit .wu i{transform:none!important}
 }
+/* v18 · hero: Solenne in front, The Teak House behind, on neutral frames */
+.fl-mio,.fl-oc{background:#fff;border:1px solid #E6E0D6;border-radius:14px;padding:8px;box-shadow:0 30px 60px -30px rgba(23,21,31,.28),0 10px 24px -14px rgba(23,21,31,.12)}
+.fl-mio:hover,.fl-oc:hover{box-shadow:0 34px 70px -30px rgba(23,21,31,.32),0 12px 26px -14px rgba(23,21,31,.14)}
+.fl-mio{width:90%;left:0;top:30%;z-index:3}
+.fl-oc{width:44%;right:0;top:0;z-index:2}
+.fl-mio .ph,.fl-oc .ph{border-radius:8px}
+.fl-mio .ph.has-img{aspect-ratio:1366/644!important}
+.fl-oc .ph.has-img{aspect-ratio:735/920!important}
+.fl-mio .cap,.fl-oc .cap{display:block;font-family:var(--disp);font-weight:600;font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;color:#8A857C;padding:8px 4px 2px;text-align:center;text-decoration:none;white-space:normal;line-height:1.5}
+.fl-mio .cap:hover,.fl-oc .cap:hover{color:var(--ink)}
+.fl-mio .cap::before,.fl-oc .cap::before{display:none}
+.fl-chat{left:3%;right:auto;top:9%;bottom:auto}
+@media(max-width:768px){
+  .fl-mio{width:94%;top:34%}
+  .fl-oc{width:46%;right:0}
+  .fl-mio .ph.has-img{aspect-ratio:1366/644!important}
+  .fl-oc .ph.has-img{aspect-ratio:480/808!important}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1065,21 +1083,17 @@ html[lang="th"] .rev-q{line-height:1.85;-webkit-line-clamp:5}
       <p class="hero-biz"><a href="/th/business">มีร้านเสริมสวย ร้านอาหาร ร้านค้า หรือโรงแรม? → หน้านี้สำหรับคุณ</a></p>
       <div class="hero-proof"><span class="stars">★★★★★</span><span><b>“สวยงามอย่างแท้จริง”</b> · Dr. Zac ลูกค้ารายแรก</span></div>
     </div>
-    <div class="collage" aria-hidden="true">
+    <div class="collage">
       <div class="fl fl-mio">
-        <div class="ph has-img" id="heroTeakSlot">
-          <picture><source media="(max-width:768px)" srcset="/assets/img/teakhouse-hero-mobile.webp"><img src="/assets/img/teakhouse-hero-desktop.webp" srcset="/assets/img/teakhouse-hero-desktop-368.webp 368w, /assets/img/teakhouse-hero-desktop.webp 735w" sizes="(max-width:768px) 74vw, 352px" alt="The Teak House · แพลตฟอร์มโรงแรมระดับห้าดาวที่ใช้งานจริง" width="735" height="920" loading="eager" fetchpriority="high" decoding="async"></picture>
-        </div>
-        <div class="cap">The Teak House · แพลตฟอร์มโรงแรม · ออนไลน์</div>
+        <div class="ph has-img" id="heroSolenneSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/solenne-hero-1366-m.webp"><img src="/assets/img/solenne-hero-1366.webp" srcset="/assets/img/solenne-hero-1366-560.webp 560w, /assets/img/solenne-hero-1366.webp 1100w" sizes="(max-width:768px) 92vw, 500px" alt="Solenne · live ultra-luxury hotel platform" width="1100" height="519" loading="eager" fetchpriority="high" decoding="async"></picture></div>
+        <a class="cap" href="https://solenne.mikaro.studio" target="_blank" rel="noopener">Solenne · แพลตฟอร์มโรงแรมระดับอัลตราลักชัวรี · ใช้งานจริง</a>
       </div>
       <div class="fl fl-oc">
-        <div class="ph has-img" id="heroSolenneSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/solenne-hero-mobile.webp"><img src="/assets/img/solenne-hero-desktop.webp" srcset="/assets/img/solenne-hero-desktop-288.webp 288w, /assets/img/solenne-hero-desktop.webp 1343w" sizes="(max-width:768px) 60vw, 272px" alt="Solenne · แพลตฟอร์มโรงแรมลักชัวรีที่ใช้งานจริง" width="1343" height="632" loading="eager" fetchpriority="high" decoding="async"></picture></div>
-        <div class="cap">Solenne · แพลตฟอร์มโรงแรมลักชัวรี · ออนไลน์</div>
+        <div class="ph has-img" id="heroTeakSlot"><picture><source media="(max-width:768px)" srcset="/assets/img/teakhouse-hero-mobile.webp"><img src="/assets/img/teakhouse-hero-desktop.webp" srcset="/assets/img/teakhouse-hero-desktop-368.webp 368w, /assets/img/teakhouse-hero-desktop.webp 735w" sizes="(max-width:768px) 74vw, 352px" alt="The Teak House · แพลตฟอร์มโรงแรมระดับห้าดาวที่ใช้งานจริง" width="735" height="920" loading="eager" decoding="async"></picture></div>
+        <a class="cap" href="https://teakhouse.mikaro.studio" target="_blank" rel="noopener">The Teak House · แพลตฟอร์มโรงแรม · ใช้งานจริง</a>
       </div>
-      <span class="fl fl-chat">จองได้ 13 สกุลเงิน</span>
-      <span class="fl fl-chat2">จองตรง ไม่ผ่าน OTA</span>
-      <span class="stick st1">ของจริง ไม่ใช่ม็อกอัป</span>
-      <span class="stick st2">MADE IN BKK ✦</span>
+      <span aria-hidden="true" class="fl fl-chat">จองได้ 13 สกุลเงิน</span>
+      <span aria-hidden="true" class="fl fl-chat2">จองตรง ไม่ผ่าน OTA</span>
     </div>
   </div>
 </section>
